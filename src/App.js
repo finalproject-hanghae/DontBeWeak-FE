@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index element={<StartingPage />} />
         <Route index element={<RecordingPage />} />
-        <Route path="*" element={<NotFoundPage/>}/>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
