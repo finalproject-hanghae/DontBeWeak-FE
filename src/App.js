@@ -1,24 +1,34 @@
 import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import StartingPage from "./pages/StartingPage";
 import WebSection from "./components/WebSection";
 import NotFoundPage from "./pages/NotFoundPage";
 import RecordingPage from "./pages/RecordingPage";
-import A11yHidden from "./utils/A11yHidden";
+import { RowFlexDiv } from "./styled";
+import styled from "styled-components";
+import { devices } from "./device";
+import SearchDrug from "./components/SearchDrug";
 
 function App() {
   return (
-    <div className="App">
-      <WebSection/>
-      <Routes >
-        <Route index element={<StartingPage/>} />
-        <Route index element={<RecordingPage />} />
+    <AppPage className="App">
+      <WebSection />
+      <Routes>
+        <Route path="/record/*" element={<RecordingPage />} />
+        <Route path="/" element={<StartingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </AppPage>
   );
 }
+
+
+const AppPage = styled(RowFlexDiv)`
+  height: 100%;
+  justify-content: space-between;
+`;
 
 
 export default App;
