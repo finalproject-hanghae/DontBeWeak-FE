@@ -9,8 +9,10 @@ import RecordingPage from "./pages/RecordingPage";
 
 import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
-import SignUpModal from "./components/modal/SignUpModal";
-import LogInModal from "./components/modal/LogInModal";
+
+import NotFoundModal from "./components/modals/NotFoundModal";
+import SignUpModal from "./components/modals/SignUpModal";
+import LogInModal from "./components/modals/LogInModal";
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
 
         <Route path="/record/*" element={<RecordingPage />} />
         <Route path="/" element={<StartingPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundModal />} />
       </Routes>
     </AppPage>
   );
