@@ -11,8 +11,8 @@ import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
 
 import NotFoundModal from "./components/modals/NotFoundModal";
-import SignUpModal from "./components/modal/SignUpModal";
-import LogInModal from "./components/modal/LogInModal";
+import SignUpModal from "./components/modals/SignUpModal";
+import LogInModal from "./components/modals/LogInModal";
 
 function App() {
   return (
