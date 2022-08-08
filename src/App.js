@@ -6,18 +6,27 @@ import StartingPage from "./pages/StartingPage";
 import WebSection from "./components/WebSection";
 import NotFoundPage from "./pages/NotFoundPage";
 import RecordingPage from "./pages/RecordingPage";
+import { RowFlexDiv } from "./styled";
+import styled from "styled-components";
+import { devices } from "./device";
+import SearchDrug from "./components/SearchDrug";
 
 function App() {
   return (
-    <div className="App">
+    <AppPage className="App">
       <WebSection />
       <Routes>
-        <Route index element={<StartingPage />} />
-        <Route index element={<RecordingPage />} />
+        <Route path="/record/*" element={<RecordingPage />} />
+        <Route path="/" element={<StartingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </AppPage>
   );
 }
+
+const AppPage = styled(RowFlexDiv)`
+  height: 100%;
+  justify-content: space-between;
+`;
 
 export default App;

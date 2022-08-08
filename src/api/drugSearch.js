@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
 
 const EncodingKey =
   "mXannjyGQuOwS5AW+JOwAeyGU068pNoPi+earzfgfdqykES+IkoKXkVRCuufQz4+9lwYQ/b9owxbkrncKp0+vg==";
