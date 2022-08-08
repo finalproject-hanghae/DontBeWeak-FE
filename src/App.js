@@ -10,6 +10,7 @@ import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
 import { devices } from "./device";
 import SearchDrug from "./components/SearchDrug";
+import NotFoundModal from "./components/modal/NotFoundModal";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/record/*" element={<RecordingPage />} />
         <Route path="/" element={<StartingPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundModal />} />
       </Routes>
     </AppPage>
   );
