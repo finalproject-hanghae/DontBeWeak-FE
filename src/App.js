@@ -10,7 +10,7 @@ import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
 import { devices } from "./device";
 import SearchDrug from "./components/SearchDrug";
-import NotFoundModal from "./components/modal/NotFoundModal";
+import NotFoundModal from "./components/modals/NotFoundModal";
 
 function App() {
   return (
