@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <WebSection/>
+      <A11yHidden tag={"button"} string={"제목"} focusable />
       <Routes >
         <Route index element={<StartingPage/>} />
         <Route index element={<RecordingPage />} />
