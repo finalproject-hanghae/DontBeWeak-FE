@@ -19,3 +19,4 @@ export const drugSearchAPI = async (Prduct = "") => {
 
   return ja.data.body.items;
 };
+
