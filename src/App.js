@@ -4,11 +4,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import StartingPage from "./pages/StartingPage";
 import WebSection from "./components/WebSection";
-import NotFoundPage from "./pages/NotFoundPage";
 import RecordingPage from "./pages/RecordingPage";
 
 import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
+
+import NotFoundModal from "./components/modals/NotFoundModal";
 import SignUpModal from "./components/modals/SignUpModal";
 import LogInModal from "./components/modals/LogInModal";
 
@@ -24,7 +25,7 @@ function App() {
 
         <Route path="/record/*" element={<RecordingPage />} />
         <Route path="/" element={<StartingPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundModal />} />
       </Routes>
     </AppPage>
   );
