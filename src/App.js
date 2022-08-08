@@ -10,12 +10,18 @@ import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
 import { devices } from "./device";
 import SearchDrug from "./components/SearchDrug";
+import SignUpForm from "./components/SignUpForm";
+import SignUpModal from "./components/modal/SignUpModal";
 
 function App() {
   return (
     <AppPage className="App">
       <WebSection />
       <Routes>
+        {/* test .. */}
+        <Route path="/signup" element={<SignUpModal />} />
+        {/* /test .. */}
+
         <Route path="/record/*" element={<RecordingPage />} />
         <Route path="/" element={<StartingPage />} />
         <Route path="*" element={<NotFoundPage />} />
