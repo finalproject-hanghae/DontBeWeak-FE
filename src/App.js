@@ -9,8 +9,8 @@ import RecordingPage from "./pages/RecordingPage";
 
 import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
-import SignUpModal from "./components/modal/SignUpModal";
-import LogInModal from "./components/modal/LogInModal";
+import SignUpModal from "./components/modals/SignUpModal";
+import LogInModal from "./components/modals/LogInModal";
 
 function App() {
   return (

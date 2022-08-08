@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { devices } from '../device'
 import { ColumnFlexDiv } from '../styled'
-import SearchModal from '../components/modal/SearchModal'
+import SearchModal from '../components/modals/SearchModal'
 import SearchDrug from '../components/SearchDrug'
 
 const RecordingPage = () => {
