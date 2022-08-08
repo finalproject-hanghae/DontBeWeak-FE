@@ -6,12 +6,11 @@ import StartingPage from "./pages/StartingPage";
 import WebSection from "./components/WebSection";
 import NotFoundPage from "./pages/NotFoundPage";
 import RecordingPage from "./pages/RecordingPage";
+
 import { RowFlexDiv } from "./styled";
 import styled from "styled-components";
-import { devices } from "./device";
-import SearchDrug from "./components/SearchDrug";
-import SignUpForm from "./components/SignUpForm";
 import SignUpModal from "./components/modal/SignUpModal";
+import LogInModal from "./components/modal/LogInModal";
 
 function App() {
   return (
@@ -20,7 +19,8 @@ function App() {
       <Routes>
         {/* test .. */}
         <Route path="/signup" element={<SignUpModal />} />
-        {/* /test .. */}
+        <Route path="/login" element={<LogInModal />} />
+        {/* {test} */}
 
         <Route path="/record/*" element={<RecordingPage />} />
         <Route path="/" element={<StartingPage />} />
