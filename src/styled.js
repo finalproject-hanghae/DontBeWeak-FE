@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom"
 import { devices } from "./device";
 
 export const ColumnFlexDiv = styled.div`
@@ -10,6 +11,11 @@ export const RowFlexDiv = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+export const LinkC = styled(Link)`
+  text-decoration:none;
+  color: black;
+`
 
 export const ModalBg = styled.div`
   position: fixed;
