@@ -1,32 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import StartingPage from "./pages/StartingPage";
-import WebSection from "./components/WebSection";
-import RecordingPage from "./pages/RecordingPage";
 
-import { RowFlexDiv } from "./styled";
+import { Routes, Route } from "react-router-dom";
+
 import styled from "styled-components";
 
-import NotFoundModal from "./components/modals/NotFoundModal";
-import SignUpModal from "./components/modals/SignUpModal";
-import LogInModal from "./components/modals/LogInModal";
+import { RowFlexDiv } from "./styled";
+
+import WebSection from "./pages/WebSection";
+import MainSection from "./pages/MainSection";
 
 function App() {
   return (
     <AppPage className="App">
       <WebSection />
-      <Routes>
-        {/* test .. */}
-        <Route path="/signup" element={<SignUpModal />} />
-        <Route path="/login" element={<LogInModal />} />
-        {/* {test} */}
-
-        <Route path="/record/*" element={<RecordingPage />} />
-        <Route path="/" element={<StartingPage />} />
-        <Route path="*" element={<NotFoundModal />} />
-      </Routes>
+      <MainSection />
     </AppPage>
   );
 }
