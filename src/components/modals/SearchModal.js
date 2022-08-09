@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody } from "../../styled";
+import { CenterFlexDiv, ModalBg, ModalBody } from "../../styled";
 import SearchDrug from "../SearchDrug";
 
 const SearchModal = () => {
@@ -12,9 +12,11 @@ const SearchModal = () => {
           navigate(-1);
         }}
       />
-      <ModalBody>
-        <SearchDrug/>
-      </ModalBody>
+      <CenterFlexDiv>
+        <ModalBody>
+          <SearchDrug />
+        </ModalBody>
+      </CenterFlexDiv>
     </>
   );
 };

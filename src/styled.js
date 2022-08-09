@@ -12,6 +12,14 @@ export const RowFlexDiv = styled.div`
   flex-direction: row;
 `;
 
+export const CenterFlexDiv = styled.div`
+height:100%;
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+`
+
 export const LinkC = styled(Link)`
   text-decoration:none;
   color: black;
@@ -19,21 +27,23 @@ export const LinkC = styled(Link)`
 
 export const ModalBg = styled.div`
   position: fixed;
+  display: absolute;
   top: 0;
-  right: 0;
-  width: 50vw;
+  right: calc(50%+50px);
+  width: 30%;
+  min-width:745px;
   height: 100vh;
-  display: block;
   background-color: rgba(0, 0, 0, 0.4);
+  
   @media ${devices.tablet} {
-    width: 100vw;
+    width: 100%;
+    right: 0px;
+
   }
 `;
 
 export const ModalBody = styled.div`
   position: fixed;
-  top: 50%;
-  left: 75%;
   z-index: 100;
   width: fit-content;
   height: fit-content;
@@ -42,8 +52,9 @@ export const ModalBody = styled.div`
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-  transform: translateX(-50%) translateY(-50%);
+  
   @media ${devices.tablet} {
+    transform: translateX(-50%) translateY(-50%);
     top: 50%;
     left: 50%;
   }

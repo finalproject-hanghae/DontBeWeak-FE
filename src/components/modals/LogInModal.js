@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody } from "../../styled";
+import { CenterFlexDiv, ModalBg, ModalBody } from "../../styled";
 import LogInForm from "../LogInForm";
 
 const LogInModal = () => {
@@ -12,9 +12,11 @@ const LogInModal = () => {
           navigate(-1);
         }}
       />
-      <ModalBody>
-        <LogInForm/>
-      </ModalBody>
+      <CenterFlexDiv>
+        <ModalBody>
+          <LogInForm />
+        </ModalBody>
+      </CenterFlexDiv>
     </>
   );
 };

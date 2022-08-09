@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import NotFoundPage from "../../pages/NotFoundPage";
-import { ModalBg, ModalBody } from "../../styled";
+import { CenterFlexDiv, ModalBg, ModalBody } from "../../styled";
 
 const NotFoundModal = () => {
   const navigate = useNavigate();
@@ -12,9 +13,11 @@ const NotFoundModal = () => {
           navigate(-1);
         }}
       />
-      <ModalBody>
-        <NotFoundPage />
-      </ModalBody>
+      <CenterFlexDiv>
+        <ModalBody>
+          <NotFoundPage />
+        </ModalBody>
+      </CenterFlexDiv>
     </>
   );
 };

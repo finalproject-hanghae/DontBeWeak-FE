@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody } from "../../styled";
+import { CenterFlexDiv, ModalBg, ModalBody } from "../../styled";
 import SignUpForm from "../SignUpForm";
 
 const SignUpModal = () => {
@@ -12,9 +12,11 @@ const SignUpModal = () => {
           navigate(-1);
         }}
       />
-      <ModalBody>
-        <SignUpForm/>
-      </ModalBody>
+      <CenterFlexDiv>
+        <ModalBody>
+          <SignUpForm />
+        </ModalBody>
+      </CenterFlexDiv>
     </>
   );
 };

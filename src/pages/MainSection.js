@@ -21,15 +21,19 @@ const MainSection = () => {
 };
 
 const MainCard = styled(ColumnFlexDiv)`
-  width: 50%;
-  /* background-color: #fff; */
+  width: 30%;
+  min-width:745px;
+  background-color: #fff;
+  margin: 0 50px;
   @media ${devices.tablet} {
-    width:100%;
-    /* width: 80%; */
-  }
-  /* @media ${devices.mobileL} {
     width: 100%;
-  } */
+    min-width:inherit;
+  }
+  @media ${devices.mobileL} {
+    width: 100%;
+    min-width:280px;
+    margin: 0px 0px;
+  }
 `;
 
 export default MainSection;
