@@ -12,7 +12,7 @@ const RecordingPage = () => {
     <ColumnFlexDiv>RecordingPage
       <button onClick={()=>navigate('search')}>검색하기</button>
       <Routes>
-        <Route index />
+        <Route index element={null}/>
         <Route path="search" element={<SearchModal/>} />
         <Route path="*" element={<NotFoundModal />} />
       </Routes>

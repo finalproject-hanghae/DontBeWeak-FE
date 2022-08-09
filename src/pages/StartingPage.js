@@ -12,7 +12,7 @@ const StartingPage = () => {
     <StartingSection>
       여기ㅏ는 스타팅 페이지입니다.
       <Routes>
-        <Route index />
+        <Route index element={null}/>
         <Route path="login" element={<LogInModal />} />
         <Route path="signup" element={<SignUpModal />} />
         <Route path="*" element={<NotFoundModal />} />
