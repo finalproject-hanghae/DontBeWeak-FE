@@ -22,9 +22,14 @@ const MainSection = () => {
 
 const MainCard = styled(ColumnFlexDiv)`
   width: 50%;
+  /* background-color: #fff; */
   @media ${devices.tablet} {
-    width: 100%;
+    width:100%;
+    /* width: 80%; */
   }
+  /* @media ${devices.mobileL} {
+    width: 100%;
+  } */
 `;
 
 export default MainSection;

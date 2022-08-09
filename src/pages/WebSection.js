@@ -10,7 +10,8 @@ const WebSection = () => {
 }
 
 const WebCard = styled(ColumnFlexDiv)`
-width: 50%;
+width:50%;
+background-color:#CDCDCD;
 @media ${devices.tablet} {
   display:none;
 }

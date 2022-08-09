@@ -19,6 +19,8 @@ function App() {
 const AppPage = styled(RowFlexDiv)`
   height: 100%;
   justify-content: space-between;
+  /* background-color: #cdcdcd; */
+  /* justify-content: space-around; */
 `;
 
 export default App;
