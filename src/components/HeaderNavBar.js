@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LinkC, RowFlexDiv } from "../styled";
+import { LinkC, RowFlexDiv } from "../style/styled";
 
 const HeaderNavBar = () => {
   return (

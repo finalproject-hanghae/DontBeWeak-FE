@@ -1,7 +1,25 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom"
-import { devices } from "./device";
+import { devices } from "../device";
 
+//페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
+export const PageSection = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  background-color: #fff7c7;
+  @media ${devices.tablet} {
+    width: 100%;
+  }
+  button {
+    display: relative;
+  }
+`;
+
+//필요한대로 쓰기 조각조각 레고
 export const ColumnFlexDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,42 +48,8 @@ export const RelaitiveDiv = styled.div`
   height: 100%;
 `;
 
-
+//a tag로 이루어진 Link 태그의 밑줄 및 텍스트 컬러 제거
 export const LinkC = styled(Link)`
   text-decoration:none;
   color: black;
 `
-
-export const ModalBg = styled.div`
-  position:absolute;
-  top:0%;
-  width:100%;
-  height:100%;
-
-  background-color: rgba(3,3,3,0.2);
-  
-  @media ${devices.tablet} {
-    width: 100%;
-    min-width:280px;
-    right: 0px;
-  }
-`;
-
-export const ModalBody = styled.div`
-  display: absolute;
-  z-index: 100;
-  left:50%;
-  top:50%;
-  width: fit-content;
-  height: fit-content;
-  padding: 5px;
-  text-align: center;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-  
-  @media ${devices.tablet} {
-    top: 50%;
-    left: 50%;
-  }
-`;

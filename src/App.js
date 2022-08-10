@@ -2,7 +2,7 @@ import "./App.css";
 
 import styled from "styled-components";
 
-import { RowFlexDiv } from "./styled";
+import { RowFlexDiv } from "./style/styled";
 
 import WebSection from "./pages/WebSection";
 import MainSection from "./pages/MainSection";

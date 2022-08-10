@@ -4,7 +4,7 @@ import styled from "styled-components";
 //Font-Awesome
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CenterFlexDiv } from "../styled";
+import { CenterFlexDiv } from "../style/styled";
 
 function SideFriendBar() {
   return (
