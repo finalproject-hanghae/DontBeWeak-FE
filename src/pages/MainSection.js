@@ -24,7 +24,7 @@ const MainCard = styled(ColumnFlexDiv)`
   width: 30%;
   min-width:745px;
   background-color: #fff;
-  margin: 0 50px;
+  margin: 0 5%;
   @media ${devices.tablet} {
     width: 100%;
     min-width:inherit;

@@ -15,10 +15,21 @@ export const RowFlexDiv = styled.div`
 export const CenterFlexDiv = styled.div`
 height:100%;
 width:100%;
-display:flex;
+display:absolute;
+display: flex;
 justify-content:center;
 align-items:center;
 `
+
+export const RelaitiveDiv = styled.div`
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width: 100%;
+  height: 100%;
+`;
+
 
 export const LinkC = styled(Link)`
   text-decoration:none;
@@ -26,25 +37,25 @@ export const LinkC = styled(Link)`
 `
 
 export const ModalBg = styled.div`
-  position: fixed;
-  display: absolute;
-  top: 0;
-  right: calc(50%+50px);
-  width: 30%;
-  min-width:745px;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  position:absolute;
+  top:0%;
+  width:100%;
+  height:100%;
+
+  background-color: rgba(3,3,3,0.2);
   
   @media ${devices.tablet} {
     width: 100%;
+    min-width:280px;
     right: 0px;
-
   }
 `;
 
 export const ModalBody = styled.div`
-  position: fixed;
+  display: absolute;
   z-index: 100;
+  left:50%;
+  top:50%;
   width: fit-content;
   height: fit-content;
   padding: 5px;
@@ -54,7 +65,6 @@ export const ModalBody = styled.div`
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
   
   @media ${devices.tablet} {
-    transform: translateX(-50%) translateY(-50%);
     top: 50%;
     left: 50%;
   }
