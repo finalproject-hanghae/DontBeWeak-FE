@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { devices } from '../device'
-import { ColumnFlexDiv } from '../styled'
+import { ColumnFlexDiv } from '../style/styled'
 
 const WebSection = () => {
   return (
@@ -10,9 +10,7 @@ const WebSection = () => {
 }
 
 const WebCard = styled(ColumnFlexDiv)`
-width: 50%;
-height: 100vh;
-background: red;
+width:45%;
 @media ${devices.tablet} {
   display:none;
 }

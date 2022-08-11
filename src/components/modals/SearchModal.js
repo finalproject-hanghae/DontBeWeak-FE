@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody } from "../../styled";
+import { ModalBg, ModalBody} from "../../style/modal";
+import { RelaitiveDiv } from "../../style/styled";
 import SearchDrug from "../SearchDrug";
 
 const SearchModal = () => {
@@ -11,10 +12,17 @@ const SearchModal = () => {
         onClick={() => {
           navigate(-1);
         }}
-      />
-      <ModalBody>
-        <SearchDrug/>
-      </ModalBody>
+      >
+        <RelaitiveDiv>
+          <ModalBody
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <SearchDrug />
+          </ModalBody>
+        </RelaitiveDiv>
+      </ModalBg>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { devices } from "../device";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
-import { ColumnFlexDiv } from "../styled";
+import { ColumnFlexDiv } from "../style/styled";
 import HeaderNavBar from "../components/HeaderNavBar";
 
 const MainSection = () => {

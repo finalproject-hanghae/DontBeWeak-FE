@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody } from "../../styled";
+import { ModalBg, ModalBody} from "../../style/modal";
+import { RelaitiveDiv } from "../../style/styled";
 import SignUpForm from "../SignUpForm";
 
 const SignUpModal = () => {
@@ -11,10 +12,17 @@ const SignUpModal = () => {
         onClick={() => {
           navigate(-1);
         }}
-      />
-      <ModalBody>
-        <SignUpForm/>
-      </ModalBody>
+      >
+        <RelaitiveDiv>
+          <ModalBody
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <SignUpForm />
+          </ModalBody>
+        </RelaitiveDiv>
+      </ModalBg>
     </>
   );
 };
