@@ -1,5 +1,5 @@
 import React from "react";
-import { ColumnFlexDiv } from "../styled";
+import { ColumnFlexDiv } from "../style/styled";
 
 const LogInForm = () => {
   const logInIDRef = React.useRef();
