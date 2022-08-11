@@ -17,4 +17,4 @@ width:45%;
 `
 
 
-export default WebSection
+export default WebSection;
