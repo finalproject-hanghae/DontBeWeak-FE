@@ -19,5 +19,4 @@ const StartingPage = () => {
   );
 };
 
-
 export default StartingPage;

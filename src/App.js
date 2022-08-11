@@ -1,7 +1,4 @@
 import "./App.css";
-import React from "react";
-
-import { Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -13,16 +10,13 @@ import MainSection from "./pages/MainSection";
 function App() {
   return (
     <AppPage className="App">
-      <LayoutBox>
-        <WebSection />
-        <MainSection />
-      </LayoutBox>
+      <WebSection />
+      <MainSection />
     </AppPage>
   );
 }
 
 const AppPage = styled(RowFlexDiv)`
-  width: 100vw;
   height: 100%;
   background-color: #FFF096;
   justify-content: center;

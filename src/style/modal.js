@@ -6,7 +6,6 @@ export const ModalBg = styled.div`
   top:0%;
   width:100%;
   height:100%;
-
   background-color: rgba(3,3,3,0.2);
   
   @media ${devices.tablet} {

@@ -10,13 +10,11 @@ const WebSection = () => {
 }
 
 const WebCard = styled(ColumnFlexDiv)`
-
 width:45%;
-
 @media ${devices.tablet} {
   display:none;
 }
 `
 
 
-export default WebSection
+export default WebSection;

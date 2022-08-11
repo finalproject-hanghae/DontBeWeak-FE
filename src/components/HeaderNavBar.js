@@ -34,7 +34,6 @@ const NavBar = styled(RowFlexDiv)`
 const LinkButtons = styled(RowFlexDiv)`
 display:flex;
 align-items:baseline;
-
   .smalla{
     font-size:.7rem;
   }
