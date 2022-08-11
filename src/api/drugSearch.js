@@ -10,7 +10,7 @@ export const drugSearchAPI = async (Prduct = "") => {
       params: {
         Prduct: Prduct,
         pageNo: 1,
-        numOfRows: 10,
+        numOfRows: 5,
         ServiceKey: EncodingKey,
         type: "json",
       },
