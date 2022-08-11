@@ -13,15 +13,23 @@ import MainSection from "./pages/MainSection";
 function App() {
   return (
     <AppPage className="App">
-      <WebSection />
-      <MainSection />
+      <LayoutBox>
+        <WebSection />
+        <MainSection />
+      </LayoutBox>
     </AppPage>
   );
 }
 
 const AppPage = styled(RowFlexDiv)`
+  width: 100vw;
   height: 100%;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+`;
+const LayoutBox = styled.div`
+  width: 1440px;
+  
 `;
 
 export default App;

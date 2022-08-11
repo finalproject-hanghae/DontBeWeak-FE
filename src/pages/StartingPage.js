@@ -21,7 +21,7 @@ const StartingPage = () => {
   );
 };
 const StartingSection = styled(ColumnFlexDiv)`
-  width: 50%;
+  
   @media ${devices.tablet} {
     width: 100%;
   }

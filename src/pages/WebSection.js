@@ -11,6 +11,8 @@ const WebSection = () => {
 
 const WebCard = styled(ColumnFlexDiv)`
 width: 50%;
+height: 100vh;
+background: red;
 @media ${devices.tablet} {
   display:none;
 }
