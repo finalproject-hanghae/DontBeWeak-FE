@@ -22,6 +22,8 @@ const MainSection = () => {
 
 const MainCard = styled(ColumnFlexDiv)`
   width: 50%;
+  height: 100vh;
+  
   @media ${devices.tablet} {
     width: 100%;
   }
