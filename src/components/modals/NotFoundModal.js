@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NotFoundPage from "../../pages/NotFoundPage";
-import { ModalBg, ModalBody } from "../../styled";
+import { ModalBg, ModalBody} from "../../style/modal";
+import { RelaitiveDiv } from "../../style/styled";
 
 const NotFoundModal = () => {
   const navigate = useNavigate();
@@ -11,10 +12,17 @@ const NotFoundModal = () => {
         onClick={() => {
           navigate(-1);
         }}
-      />
-      <ModalBody>
-        <NotFoundPage />
-      </ModalBody>
+      >
+        <RelaitiveDiv>
+          <ModalBody
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <NotFoundPage />
+          </ModalBody>
+        </RelaitiveDiv>
+      </ModalBg>
     </>
   );
 };

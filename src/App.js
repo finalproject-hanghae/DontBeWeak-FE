@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
 
-import { RowFlexDiv } from "./styled";
+import { RowFlexDiv } from "./style/styled";
 
 import WebSection from "./pages/WebSection";
 import MainSection from "./pages/MainSection";
@@ -24,12 +24,8 @@ function App() {
 const AppPage = styled(RowFlexDiv)`
   width: 100vw;
   height: 100%;
-  flex-direction: column;
+  background-color: #FFF096;
   justify-content: center;
-`;
-const LayoutBox = styled.div`
-  width: 1440px;
-  
 `;
 
 export default App;
