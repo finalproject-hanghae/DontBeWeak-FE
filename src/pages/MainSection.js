@@ -14,17 +14,15 @@ const MainSection = () => {
       <Routes>
         <Route path="/*" element={<StartingPage />} />
         <Route path="/record/*" element={<RecordingPage />} />
-      
       </Routes>
     </MainCard>
   );
 };
 
 const MainCard = styled(ColumnFlexDiv)`
-  width: 30%;
+  width: 51.5%;
   min-width:745px;
   background-color: #fff;
-  margin: 0 5%;
   @media ${devices.tablet} {
     width: 100%;
     min-width:inherit;
@@ -32,7 +30,6 @@ const MainCard = styled(ColumnFlexDiv)`
   @media ${devices.mobileL} {
     width: 100%;
     min-width:280px;
-    margin: 0px 0px;
   }
 `;
 
