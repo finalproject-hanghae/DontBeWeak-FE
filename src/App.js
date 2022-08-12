@@ -10,8 +10,8 @@ import MainSection from "./pages/MainSection";
 function App() {
   return (
     <AppPage className="App">
-      <WebSection />
       <MainSection />
+      <WebSection />
     </AppPage>
   );
 }
@@ -19,7 +19,7 @@ function App() {
 const AppPage = styled(RowFlexDiv)`
   height: 100%;
   background-color: #FFF096;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export default App;

@@ -10,48 +10,7 @@ const RecordingPage = () => {
   const navigate = useNavigate();
   return (
     <PageSection>
-      <div>
         <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        
-
-      </div>
-      <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-
 
       <SideFriendBar />
 
