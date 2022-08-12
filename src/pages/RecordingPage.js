@@ -4,55 +4,19 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import SearchModal from "../components/modals/SearchModal";
 import NotFoundModal from "../components/modals/NotFoundModal";
 import SideFriendBar from "../components/SideFriendBar";
-import { PageSection } from "../style/styled";
+import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 
 const RecordingPage = () => {
   const navigate = useNavigate();
   return (
     <PageSection>
-      <div>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        
-
-      </div>
-      <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-        <button onClick={() => navigate("search")}>영양제 등록하기 +</button>
-
-
+      <ColumnFlexDiv className="Padding">
+        {/* 달력 컴포넌트 만들어서 집어넣기 */}
+        <div>달력</div>
+        {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
+        <div>체크박스박스</div>
+      </ColumnFlexDiv>
+      {/* 버튼 수정해서 집어넣기 */}
       <SideFriendBar />
 
       <Routes>
