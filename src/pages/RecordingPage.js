@@ -9,7 +9,7 @@ import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 import MyDrugSection from "./record/MyDrugSection";
 import styled from "styled-components";
 
-import CalenderSection from "../components/CalenderSection"
+import CalenderSection from "./record/CalenderSection"
 
 const RecordingPage = () => {
   const navigate = useNavigate();
@@ -18,13 +18,10 @@ const RecordingPage = () => {
 
       <CalenderAndDrug className="Padding">
         <CalenderSection/>        
-        {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
         <MyDrugSection/>
       </CalenderAndDrug>
       
-      {/* 영양제 등록 버튼 */}
       <SupplementAddBtn />
-      {/* 친구 등록 버튼 */}
       <FriendAddBtn />
 
       <Routes>
