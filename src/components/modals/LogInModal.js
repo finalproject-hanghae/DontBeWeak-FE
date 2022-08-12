@@ -10,7 +10,7 @@ const LogInModal = () => {
     <>
       <ModalBg
         onClick={() => {
-          navigate(-1);
+          navigate('/');
         }}
       >
         <RelaitiveDiv>

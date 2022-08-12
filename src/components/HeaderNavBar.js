@@ -25,7 +25,7 @@ const HeaderNavBar = () => {
 const NavBar = styled(RowFlexDiv)`
   justify-content: space-between;
   align-items:center;
-  height:82px;
+  height: 82px;
   div {
     margin: 0 3px;
   }

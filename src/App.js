@@ -10,17 +10,15 @@ import MainSection from "./pages/MainSection";
 function App() {
   return (
     <AppPage className="App">
-      <Box>
+      <MainSection /> 
       <WebSection />
-      <MainSection />
-      </Box>
     </AppPage>
   );
 }
 
 const AppPage = styled(RowFlexDiv)`
   height: 100%;
-
+  
   justify-content: center;
   background-color: #FFF096
 `;
