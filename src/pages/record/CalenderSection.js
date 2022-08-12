@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import DateViewCard from "./DateViewCard";
+import { RowFlexDiv } from "../../style/styled";
 
 const CalenderSection = () => {
   const myWeek = [
@@ -51,13 +52,18 @@ const CalenderSection = () => {
           color={"orange"}
           onClick={() => {}}
         />
-        <div className="Week">날짜</div>
-        <FontAwesomeIcon icon={faArrowRight} size={"2x"} color={"orange"} />
+        <span>2022년 8월8일~14일</span>
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          size={"2x"}
+          color={"orange"}
+          onClick={() => {}}
+        />
       </WeekBox>
 
       <DateBox>
         {week.map((day, index) => {
-          return <DateViewCard day={day} myWeek={myWeek} />;
+          return <DateViewCard key={"DateViewCard"+index} day={day} myWeek={myWeek} />;
         })}
       </DateBox>
     </CalenderCard>
@@ -69,10 +75,14 @@ const CalenderCard = styled.div`
   flex-direction: column;
 `;
 
-const WeekBox = styled.div`
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
+const WeekBox = styled(RowFlexDiv)`
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:20px;
+  span{
+    font-size:1.5rem;
+    font-weight:bold;
+  }
 `;
 
 const DateBox = styled.div`
@@ -82,18 +92,6 @@ const DateBox = styled.div`
   border: 1px solid #a5a5a5;
   border-radius: 10px;
   display: flex;
-`;
-
-const DateView = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  height: 20vh;
-  border-right: 1px solid #a5a5a5;
-  &:last-child {
-    border-right: none;
-  }
 `;
 
 export default CalenderSection;

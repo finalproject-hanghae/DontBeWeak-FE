@@ -11,7 +11,7 @@ const DateViewCard = ({day, myWeek}) => {
         .filter((value, index) => value.date == day)
         .map((val, index) => {
           return (
-            <div
+            <div key={"colordiv"+index}
               style={{
                 width: "20px",
                 height: "20px",
