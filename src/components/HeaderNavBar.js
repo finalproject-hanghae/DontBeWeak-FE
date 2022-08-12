@@ -9,6 +9,7 @@ const HeaderNavBar = () => {
       {/* 로그인 전 후 분기 나눠야함 */}
       <LinkC to="/">
         <img src={Logo} alt="logo" />
+
       </LinkC>
 
       <LinkButtons>
@@ -61,8 +62,10 @@ const LinkButtons = styled(RowFlexDiv)`
   }
   div {
 
+
     height:20px;
     border-left:solid 1px #858383;
+
   }
   .smalla {
     font-size: 15px;
