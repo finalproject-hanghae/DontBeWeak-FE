@@ -5,7 +5,9 @@ import { ColumnFlexDiv } from '../style/styled'
 
 const WebSection = () => {
   return (
-    <WebCard>WebSection</WebCard>
+    <WebCard>
+      WebSection
+    </WebCard>
   )
 }
 
