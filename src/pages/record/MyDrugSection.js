@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { devices } from "../../device";
 import { ColumnFlexDiv } from "../../style/styled";
 import SingleDrugLine from "./SingleDrugLine";
 
 const MyDrugSection = () => {
   const myDrug = [
     {
-      productName: "365 눈 건강 루테인",
+      productName: "365 눈 건강 루테인dsfsdfsdfsdfsdfdsfsdf",
       customColor: "rgb(167,0,220)",
       done: true,
     },
@@ -105,6 +106,10 @@ const MyDrugCard = styled(ColumnFlexDiv)`
   &::-webkit-scrollbar-track {
     background-color: none;
   }
+  @media ${devices.mobileL} {
+    padding: 0px;
+    height: 190px;
+}
 `;
 
 export default MyDrugSection;
