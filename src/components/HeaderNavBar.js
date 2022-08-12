@@ -23,7 +23,7 @@ const HeaderNavBar = () => {
         <LinkC className="smalla" to="/login">
           로그인
         </LinkC>
-        <div></div>
+        <div/>
         <LinkC className="smalla" to="/signup">
           회원가입
         </LinkC>
