@@ -10,7 +10,7 @@ const SignUpModal = () => {
     <>
       <ModalBg
         onClick={() => {
-          navigate(-1);
+          navigate('/');
         }}
       >
         <RelaitiveDiv>

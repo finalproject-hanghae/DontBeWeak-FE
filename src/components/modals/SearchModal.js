@@ -10,7 +10,7 @@ const SearchModal = () => {
     <>
       <ModalBg
         onClick={() => {
-          navigate(-1);
+          navigate('/record');
         }}
       >
         <RelaitiveDiv>

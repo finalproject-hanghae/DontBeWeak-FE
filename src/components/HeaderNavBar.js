@@ -5,7 +5,8 @@ import { LinkC, RowFlexDiv } from "../style/styled";
 const HeaderNavBar = () => {
   return (
     <NavBar>
-      <h1>약해지지마</h1>
+      {/* 로그인 전 후 분기 나눠야함 */}
+      <LinkC to="/"><h1>약해지지마</h1></LinkC>
 
       <LinkButtons>
         <LinkC className="tabLink" to="/record">
