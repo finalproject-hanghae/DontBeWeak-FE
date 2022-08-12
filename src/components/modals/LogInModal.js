@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalBg, ModalBody} from "../../style/modal";
 import { RelaitiveDiv } from "../../style/styled";
-import LogInForm from "../LogInForm";
+import LogInForm from "../modalforms/LogInForm";
 
 const LogInModal = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const LogInModal = () => {
     <>
       <ModalBg
         onClick={() => {
-          navigate(-1);
+          navigate('/');
         }}
       >
         <RelaitiveDiv>
