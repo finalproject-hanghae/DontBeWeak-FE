@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { LinkC, RowFlexDiv } from "../style/styled";
+import Logo from "../images/logo_small.png";
 
 const HeaderNavBar = () => {
   return (
     <NavBar>
       {/* 로그인 전 후 분기 나눠야함 */}
       <LinkC to="/">
-        <h1>약해지지마</h1>
+        <img src={Logo} alt="logo" />
+
       </LinkC>
 
       <LinkButtons>
         <LinkC className="tabLink" to="/record">
+          About
+        </LinkC>
+        <LinkC className="tabLink" to="/signup">
           하루기록
         </LinkC>
         <LinkC className="tabLink" to="/signup">
@@ -56,8 +61,11 @@ const LinkButtons = styled(RowFlexDiv)`
     margin: 0px 25px;
   }
   div {
-    height: 15px;
-    border-left: solid 1px #858383;
+
+
+    height:20px;
+    border-left:solid 1px #858383;
+
   }
   .smalla {
     font-size: 15px;
