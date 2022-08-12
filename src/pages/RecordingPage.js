@@ -3,7 +3,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import SearchModal from "../components/modals/SearchModal";
 import NotFoundModal from "../components/modals/NotFoundModal";
-import SideFriendBar from "../components/SideFriendBar";
+import SupplementAddBtn from "../components/SupplementAddBtn";
+import FriendAddBtn from "../components/FriendAddBtn";
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 
 const RecordingPage = () => {
@@ -16,8 +17,11 @@ const RecordingPage = () => {
         {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
         <div>체크박스박스</div>
       </ColumnFlexDiv>
-      {/* 버튼 수정해서 집어넣기 */}
-      <SideFriendBar />
+
+      {/* 영양제 등록 버튼 */}
+      <SupplementAddBtn />
+      {/* 친구 등록 버튼 */}
+      <FriendAddBtn />
 
       <Routes>
         <Route index element={null} />

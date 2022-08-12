@@ -9,14 +9,12 @@ import { ColumnFlexDiv } from "../style/styled";
 import Logo from "../images/logo_big.png";
 import MainCatImg from "../images/main_cat.png";
 
-
 const WebSection = () => {
   return (
     <WebCard>
-      <Section> {/* Section Bg - Cat 이미지 삽입 */}
-        {/* logo 이미지 삽입 */}
+      <Section>
+        {/* logo */}
         <img src={Logo} alt="logo" />
-
         <TextBox>
           <p>
             꼬박꼬박 영양제 챙겨 먹기 <br />
@@ -27,6 +25,7 @@ const WebSection = () => {
             챙겨보세요!
           </p>
         </TextBox>
+        <ImgBox />
       </Section>
     </WebCard>
   );
@@ -34,45 +33,50 @@ const WebSection = () => {
 
 const WebCard = styled(ColumnFlexDiv)`
   width: 48.5%;
+  height: 100%;
   justify-content: center;
-
   @media ${devices.tablet} {
     display: none;
   }
 `;
 
 const Section = styled(ColumnFlexDiv)`
-  width: 58%;
-  height: 68.5%;
+  width: fit-content;
+  height: fit-content;
   margin: 0 auto;
-
-  background: url(${MainCatImg}) no-repeat 100%;
-  background-position: bottom center;
   img {
     width: 346px;
     height: 68px;
   }
 `;
 
-const TextBox = styled(ColumnFlexDiv)`
+const TextBox = styled.div`
   width: 100%;
   height: 24%;
   justify-content: space-between;
   p {
     &:first-child {
-      font-size: 42px;
+      font-size: 1.8rem;
       font-weight: 800;
     }
   }
   p {
     &:last-child {
-      font-size: 24px;
+      font-size: 1.2rem;
       font-weight: 600;
     }
   }
   p > span {
-    color: #F98532;
+    color: #f98532;
   }
+`;
+
+const ImgBox = styled.div`
+  width: 528px;
+  height: 402px;
+  margin: 5% auto;
+  background: url(${MainCatImg}) no-repeat 100%;
+  background-position: center;
 `;
 
 export default WebSection;
