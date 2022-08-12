@@ -18,6 +18,9 @@ export const PageSection = styled.div`
   button {
     display: relative;
   }
+  .Padding {
+    padding:0px 45px;
+  }
 `;
 
 //필요한대로 쓰기 조각조각 레고
