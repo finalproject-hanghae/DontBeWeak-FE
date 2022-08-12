@@ -19,15 +19,6 @@ const StartingPage = () => {
   );
 };
 
-// const StartingSection = styled(ColumnFlexDiv)`
-//   width: 100%;
-//   height: 100%;
-//   background-color: #FFF7C7;
-  
-//   @media ${devices.tablet} {
-//     width: 100%;
-//   }
-// `;
-
 
 export default StartingPage;
+
