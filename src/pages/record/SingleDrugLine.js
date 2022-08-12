@@ -15,7 +15,11 @@ const SingleDrugLine = ({ val }) => {
             backgroundColor: val.customColor,
           }}
         />
-        <span>{val.productName.length>13?val.productName.substring(0,11)+'...':val.productName}</span>
+        <span>
+          {val.productName.length > 13
+            ? val.productName.substring(0, 11) + "..."
+            : val.productName}
+        </span>
       </ColorAndDrugName>
       <label
         htmlFor="didEat"
@@ -29,7 +33,7 @@ const SingleDrugLine = ({ val }) => {
         <input
           id="didEat"
           type={"checkbox"}
-          checked={eatDone ? true : false}
+          defaultChecked={eatDone ? true : false}
           disabled={eatDone ? true : false}
         />
       </label>
@@ -71,8 +75,8 @@ const SingleDrugLineBox = styled(RowFlexDiv)`
     display: none;
   }
   @media ${devices.mobileL} {
-  min-width:240px;
-}
+    min-width: 240px;
+  }
 `;
 
 export default SingleDrugLine;
