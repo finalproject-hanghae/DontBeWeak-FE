@@ -6,18 +6,20 @@ import NotFoundModal from "../components/modals/NotFoundModal";
 import SupplementAddBtn from "../components/SupplementAddBtn";
 import FriendAddBtn from "../components/FriendAddBtn";
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
+import MyDrugSection from "./record/MyDrugSection";
+import styled from "styled-components";
 
 const RecordingPage = () => {
   const navigate = useNavigate();
   return (
     <PageSection>
-      <ColumnFlexDiv className="Padding">
+      <CalenderAndDrug className="Padding">
         {/* 달력 컴포넌트 만들어서 집어넣기 */}
         <div>달력</div>
         {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
-        <div>체크박스박스</div>
-      </ColumnFlexDiv>
-
+        <MyDrugSection/>
+      </CalenderAndDrug>
+      
       {/* 영양제 등록 버튼 */}
       <SupplementAddBtn />
       {/* 친구 등록 버튼 */}
@@ -31,5 +33,10 @@ const RecordingPage = () => {
     </PageSection>
   );
 };
+
+const CalenderAndDrug = styled(ColumnFlexDiv)`
+height: 90%;
+justify-content:space-between;
+`
 
 export default RecordingPage;

@@ -27,7 +27,7 @@ const HeaderNavBar = () => {
         <LinkC className="smalla" to="/login">
           로그인
         </LinkC>
-        <div></div>
+        <div/>
         <LinkC className="smalla" to="/signup">
           회원가입
         </LinkC>
@@ -60,8 +60,9 @@ const LinkButtons = styled(RowFlexDiv)`
     margin: 0px 25px;
   }
   div {
-    height: 15px;
-    border-left: solid 1px #858383;
+
+    height:20px;
+    border-left:solid 1px #858383;
   }
   .smalla {
     font-size: 15px;
