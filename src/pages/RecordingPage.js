@@ -10,17 +10,18 @@ import MyDrugSection from "./record/MyDrugSection";
 
 import styled from "styled-components";
 
-import CalenderSection from "./record/CalenderSection"
+import CalenderSection from "./record/CalenderSection";
 
 const RecordingPage = () => {
   return (
     <PageSection>
-
       <CalenderAndDrug className="Padding">
-        <CalenderSection/>        
-        <MyDrugSection/>
-      </CalenderAndDrug> 
-    
+
+        <CalenderSection />
+        <MyDrugSection />
+      </CalenderAndDrug>
+
+
       <SupplementAddBtn />
       <FriendsListBtn />
 
