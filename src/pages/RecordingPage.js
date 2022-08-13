@@ -13,18 +13,16 @@ import styled from "styled-components";
 import CalenderSection from "./record/CalenderSection";
 
 const RecordingPage = () => {
-  const navigate = useNavigate();
-
   return (
     <PageSection>
       <CalenderAndDrug className="Padding">
+
         <CalenderSection />
         <MyDrugSection />
       </CalenderAndDrug>
 
-      {/* 영양제 등록 버튼 */}
+
       <SupplementAddBtn />
-      {/* 친구 등록 버튼 */}
       <FriendsListBtn />
 
       <Routes>

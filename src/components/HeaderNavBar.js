@@ -9,7 +9,6 @@ const HeaderNavBar = () => {
       {/* 로그인 전 후 분기 나눠야함 */}
       <LinkC to="/">
         <img src={Logo} alt="logo" />
-
       </LinkC>
 
       <LinkButtons>
@@ -25,14 +24,14 @@ const HeaderNavBar = () => {
         {/* <LinkC to="/">로그아웃</LinkC> */}
       </LinkButtons>
       <LinkButtons>
-        <LinkC className="smalla" to="/login">
+        {/* <LinkC className="smalla" to="/login">
           로그인
         </LinkC>
-        <div/>
+        <div />
         <LinkC className="smalla" to="/signup">
           회원가입
-        </LinkC>
-        {/* <LinkC to="/">로그아웃</LinkC> */}
+        </LinkC> */}
+        <LinkC to="/">로그아웃</LinkC>
       </LinkButtons>
     </NavBar>
   );
@@ -61,11 +60,8 @@ const LinkButtons = styled(RowFlexDiv)`
     margin: 0px 25px;
   }
   div {
-
-
-    height:20px;
-    border-left:solid 1px #858383;
-
+    height: 20px;
+    border-left: solid 1px #858383;
   }
   .smalla {
     font-size: 15px;
