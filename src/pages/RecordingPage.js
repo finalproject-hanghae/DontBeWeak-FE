@@ -10,26 +10,15 @@ import MyDrugSection from "./record/MyDrugSection";
 
 import styled from "styled-components";
 
-import CalenderSection from "./record/CalenderSection"
+import CalenderSection from "./record/CalenderSection";
 
 const RecordingPage = () => {
   const navigate = useNavigate();
 
   return (
     <PageSection>
-
       <CalenderAndDrug className="Padding">
-
-        <CalenderSection/>        
-        <MyDrugSection/>
-      </CalenderAndDrug>
-      
-      <SupplementAddBtn />
-      <FriendAddBtn />
-
-        {/* 달력 컴포넌트 만들어서 집어넣기 */}
-        <div>달력</div>
-        {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
+        <CalenderSection />
         <MyDrugSection />
       </CalenderAndDrug>
 
@@ -37,7 +26,6 @@ const RecordingPage = () => {
       <SupplementAddBtn />
       {/* 친구 등록 버튼 */}
       <FriendsListBtn />
-
 
       <Routes>
         <Route index element={null} />

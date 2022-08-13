@@ -3,51 +3,59 @@ import styled from "styled-components";
 import { ColumnFlexDiv } from "../../style/styled";
 
 function FriendsListForm() {
-  const friendIdRef = React.useRef(null);
-
-  const friendIdChange = () => {
-    if (friendIdRef.current.value !== "") {
-    }
-  };
-  console.log(friendIdRef.current);
-  
   const [isAddFriend, setIsAddFriend] = React.useState(false);
+  const [list, setList] = React.useState(["INSOCCI"]);
+
+  const addToFriendList = () => {
+    setList((prevList) => {
+      return [isAddFriend, ...prevList];
+    });
+    setIsAddFriend("");
+  };
 
   const showFriendAddInput = () => {
     setIsAddFriend(true);
   };
 
+  // const submitToFriendId = (e) => {
+  //   e.preventDefault();
+
+  // axios 요청하기
+
+  // axios({
+  //   method: "post",
+  //   url: "/friend",
+  //   data: {
+  //     friendname: s
+  //   }
+  // })
+
+  // };
+
   return (
     <Wrap>
       {isAddFriend ? (
-        <False>
+        <FalseForm>
           <FriendIdInput
+            // ref={friendIdRef}
             placeholder="친구 ID를 입력해주세요."
-            ref={friendIdRef}
-            onChange={friendIdChange}
+            onChange={(e) => setIsAddFriend(e.target.value)}
           />
-          <FriendAddBtn>친구추가+</FriendAddBtn>
-        </False>
+          <FriendAddBtn type="button" onClick={addToFriendList}>
+            친구추가+
+          </FriendAddBtn>
+        </FalseForm>
       ) : (
-        <True>
+        <TrueForm>
           <h3>친구 목록</h3>
           <FriendAddBtn onClick={showFriendAddInput}>친구추가+</FriendAddBtn>
-        </True>
+        </TrueForm>
       )}
 
       <FriendsList>
-        <p>김철수</p>
-        <p>정종성</p>
-        <p>박명수</p>
-        <p>김철수</p>
-        <p>이민수</p>
-        <p>박명수</p>
-        <p>김철수</p>
-        <p>이민수</p>
-        <p>박명수</p>
-        <p>김철수</p>
-        <p>이민수</p>
-        <p>박명수</p>
+        {list.map((item) => {
+          return <p key={item}>{item}</p>;
+        })}
       </FriendsList>
     </Wrap>
   );
@@ -57,7 +65,7 @@ const Wrap = styled(ColumnFlexDiv)`
   padding: 10px 30px;
 `;
 
-const True = styled.div`
+const TrueForm = styled.div`
   width: 100%;
   height: 60px;
   border-bottom: 1px solid #a5a5a5;
@@ -69,7 +77,7 @@ const True = styled.div`
     cursor: pointer;
   }
 `;
-const False = styled.div`
+const FalseForm = styled.div`
   width: 100%;
   height: 60px;
   border-bottom: 1px solid #a5a5a5;
