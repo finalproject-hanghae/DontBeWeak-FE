@@ -1,11 +1,15 @@
 import React from "react";
+
+// 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../style/styled";
 
 function FriendsListForm() {
+  // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
   const [list, setList] = React.useState(["INSOCCI"]);
 
+  // 기존 친구 리스트에 새 친구를 추가해주는 함수
   const addToFriendList = () => {
     setList((prevList) => {
       return [isAddFriend, ...prevList];
@@ -13,6 +17,7 @@ function FriendsListForm() {
     setIsAddFriend("");
   };
 
+  // isAddFriend가 true로 변하게 해주는 함수
   const showFriendAddInput = () => {
     setIsAddFriend(true);
   };
@@ -35,23 +40,25 @@ function FriendsListForm() {
   return (
     <Wrap>
       {isAddFriend ? (
-        <FalseForm>
+      // 등록할 친구 ID 입력창
+        <TrueForm>
           <FriendIdInput
-            // ref={friendIdRef}
             placeholder="친구 ID를 입력해주세요."
             onChange={(e) => setIsAddFriend(e.target.value)}
           />
           <FriendAddBtn type="button" onClick={addToFriendList}>
             친구추가+
           </FriendAddBtn>
-        </FalseForm>
+        </TrueForm>
       ) : (
-        <TrueForm>
+      // 친구 목록 Title
+        <FalseForm>
           <h3>친구 목록</h3>
           <FriendAddBtn onClick={showFriendAddInput}>친구추가+</FriendAddBtn>
-        </TrueForm>
+        </FalseForm>
       )}
 
+    {/* 친구 리스트 */}
       <FriendsList>
         {list.map((item) => {
           return <p key={item}>{item}</p>;
@@ -61,10 +68,12 @@ function FriendsListForm() {
   );
 }
 
+
+// styled-component 적용
+
 const Wrap = styled(ColumnFlexDiv)`
   padding: 10px 30px;
 `;
-
 const TrueForm = styled.div`
   width: 100%;
   height: 60px;
@@ -72,10 +81,6 @@ const TrueForm = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* display: none; */
-  button {
-    cursor: pointer;
-  }
 `;
 const FalseForm = styled.div`
   width: 100%;
@@ -84,15 +89,8 @@ const FalseForm = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* display: none; */
-  button {
-    background-color: #f98532;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
+  
 `;
-
 const FriendIdInput = styled.input`
   width: 325px;
   height: 37px;
@@ -100,8 +98,8 @@ const FriendIdInput = styled.input`
   border-radius: 5px;
   padding-left: 10px;
   color: #9a9a9a;
+  outline: none;
 `;
-
 const FriendAddBtn = styled.button`
   width: 111px;
   height: 34px;
@@ -110,8 +108,13 @@ const FriendAddBtn = styled.button`
   border-radius: 30px;
   font-size: 0.95rem;
   font-weight: 800;
+  &:hover {
+    background-color: #f98532;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
 `;
-
 const FriendsList = styled(ColumnFlexDiv)`
   width: 100%;
   height: 150px;
