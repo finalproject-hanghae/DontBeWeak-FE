@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import AddBtn from "../images/supplement_icon.png";
+import AddBtn from "../../../assets/images/supplement_icon.png";
 
 const SupplementAddBtn = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ColumnFlexDiv } from "../../style/styled";
+import { ColumnFlexDiv } from "../../../../style/styled";
 
 function FriendsListForm() {
   const [isAddFriend, setIsAddFriend] = React.useState(false);

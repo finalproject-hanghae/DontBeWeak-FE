@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { LinkC, RowFlexDiv } from "../style/styled";
-import Logo from "../images/logo_small.png";
+import { LinkC, RowFlexDiv } from "../../style/styled";
+import Logo from "../../assets/images/logo_small.png";
 
 const HeaderNavBar = () => {
   return (
