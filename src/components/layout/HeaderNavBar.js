@@ -4,6 +4,7 @@ import { LinkC, RowFlexDiv } from "../../style/styled";
 import Logo from "../../assets/images/logo_small.png";
 
 const HeaderNavBar = () => {
+  const username = "Hajun"
   return (
     <NavBar>
       {/* 로그인 전 후 분기 나눠야함 */}
@@ -18,7 +19,7 @@ const HeaderNavBar = () => {
         <LinkC className="tabLink" to="/record">
           하루기록
         </LinkC>
-        <LinkC className="tabLink" to="/signup">
+        <LinkC className="tabLink" to={"/cat/"+username}>
           고양이 상태
         </LinkC>
         {/* <LinkC to="/">로그아웃</LinkC> */}

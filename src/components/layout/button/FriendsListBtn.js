@@ -4,7 +4,7 @@ import styled from "styled-components";
 import FriendsListModal from "../buttonpop/FriendsListModal";
 import AddBtn from "../../../assets/images/friend_add_icon.png";
 
-function FriendsListBtn() {
+const FriendsListBtn = () => {
   const [friends, setFriends] = React.useState(false);
   const friendListModalRef = React.useRef();
 
