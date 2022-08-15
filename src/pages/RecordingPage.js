@@ -14,12 +14,13 @@ import Modals from "../components/layout/modal/modalList";
 const RecordingPage = () => {
   return (
     <PageSection>
-
       <CalenderAndDrug className="Padding">
-        <CalenderSection/>        
-        <MyDrugSection/>
-      </CalenderAndDrug> 
-    
+
+        <CalenderSection />
+        <MyDrugSection />
+      </CalenderAndDrug>
+
+
       <SupplementAddBtn />
       <FriendsListBtn />
 
