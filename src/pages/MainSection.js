@@ -5,7 +5,7 @@ import { devices } from "../device";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
 import { ColumnFlexDiv } from "../style/styled";
-import HeaderNavBar from "../components/HeaderNavBar";
+import HeaderNavBar from "../components/layout/HeaderNavBar";
 
 const MainSection = () => {
   return (

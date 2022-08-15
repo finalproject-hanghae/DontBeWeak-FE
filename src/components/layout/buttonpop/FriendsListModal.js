@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FriendsListForm from "../modalforms/FriendsListForm";
+import FriendsListForm from "./buttonpopforms/FriendsListForm";
 
 const FriendsListModal = React.forwardRef((props, ref) => {
   return (

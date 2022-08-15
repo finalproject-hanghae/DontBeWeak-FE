@@ -2,8 +2,8 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
-import { devices } from "../../device";
-import { RowFlexDiv } from "../../style/styled";
+import { devices } from "../../../device";
+import { RowFlexDiv } from "../../../style/styled";
 
 const SingleDrugLine = ({ val }) => {
   const [eatDone, setEatDone] = React.useState(val.done);

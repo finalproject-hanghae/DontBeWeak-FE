@@ -1,16 +1,15 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import SearchModal from "../components/modals/SearchModal";
-import NotFoundModal from "../components/modals/NotFoundModal";
-import SupplementAddBtn from "../components/SupplementAddBtn";
-import FriendsListBtn from "../components/FriendsListBtn";
-import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
-import MyDrugSection from "./record/MyDrugSection";
+import SupplementAddBtn from "../components/layout/button/SupplementAddBtn";
+import FriendsListBtn from "../components/layout/button/FriendsListBtn";
+import { ColumnFlexDiv, PageSection} from "../style/styled";
+import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
 
 import styled from "styled-components";
 
-import CalenderSection from "./record/CalenderSection"
+import CalenderSection from "../components/purpose/calender/CalenderSection"
+import Modals from "../components/layout/modal/modalList";
 
 const RecordingPage = () => {
   return (
@@ -26,8 +25,8 @@ const RecordingPage = () => {
 
       <Routes>
         <Route index element={null} />
-        <Route path="search" element={<SearchModal />} />
-        <Route path="*" element={<NotFoundModal />} />
+        <Route path="search" element={Modals.Search} />
+        <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
   );

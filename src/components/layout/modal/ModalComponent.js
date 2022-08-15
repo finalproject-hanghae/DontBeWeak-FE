@@ -1,16 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalBg, ModalBody} from "../../style/modal";
-import { RelaitiveDiv } from "../../style/styled";
-import SearchDrug from "../modalforms/SearchDrug";
+import { ModalBg, ModalBody} from "../../../style/modal";
+import { RelaitiveDiv } from "../../../style/styled";
 
-const SearchModal = () => {
+const ModalComponent = ({to, children}) => {
   const navigate = useNavigate();
   return (
     <>
       <ModalBg
         onClick={() => {
-          navigate('/record');
+          navigate(to);
         }}
       >
         <RelaitiveDiv>
@@ -19,7 +18,7 @@ const SearchModal = () => {
               e.stopPropagation();
             }}
           >
-            <SearchDrug />
+            {children}
           </ModalBody>
         </RelaitiveDiv>
       </ModalBg>
@@ -27,4 +26,4 @@ const SearchModal = () => {
   );
 };
 
-export default SearchModal;
+export default ModalComponent;
