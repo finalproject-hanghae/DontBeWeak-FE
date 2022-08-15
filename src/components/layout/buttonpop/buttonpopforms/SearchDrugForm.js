@@ -12,6 +12,42 @@ import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 
 const SearchDrugForm = () => {
+  //옵저버 선언
+  const obsRef = React.useRef(null);
+  const preventRef = React.useRef(true); //옵저버 중복 실행 방지
+  const [pageNumber, setPageNumber] = React.useState(0);
+  const [searchResult, setSearchResult] = React.useState([]);
+
+  console.log(pageNumber);
+
+  //옵저버 핸들러
+  const obsHandler = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && preventRef.current) {
+      preventRef.current = false;
+      setPageNumber((prev) => prev + 1);
+    }
+  };
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(obsHandler, { threshold: 0.75 });
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const getMoreList = React.useCallback(async () => {
+    const tmpData = await drugSearchAPI(drugName, pageNumber);
+    tmpData && setSearchResult([...searchResult, ...tmpData]);
+  }, [pageNumber]);
+
+  React.useEffect(() => {
+    preventRef.current = true;
+    getMoreList();
+  }, [pageNumber]);
+
+  //
   const [isDirect, setIsDirect] = React.useState(false);
 
   const showDirectInput = () => {
@@ -20,21 +56,21 @@ const SearchDrugForm = () => {
   console.log(isDirect);
 
   const [drugName, setDrugName] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState([]);
 
   const [pickMe, setPickMe] = React.useState();
   const [howEat, setHowEat] = React.useState();
 
   const submitToSearch = async (e) => {
     e.preventDefault();
-    setSearchResult(await drugSearchAPI(drugName));
+    setPageNumber(1);
+    setSearchResult(await drugSearchAPI(drugName, 1));
   };
 
   return (
     <Wrap>
       <SearchForm onSubmit={submitToSearch}>
         <DrugInput
-          placeholder="상품명 또는 제조사명을 입력해주세요."
+          placeholder="상품명을 입력해주세요."
           onChange={(e) => {
             setDrugName(e.target.value);
           }}
@@ -72,12 +108,20 @@ const SearchDrugForm = () => {
         ) : (
           <p>찾을 수 없습니다.</p>
         )}
+        {searchResult && <Observer ref={obsRef}></Observer>}
       </SearchList>
 
       {pickMe && (
         <MyDrug>
           <h4>{pickMe}</h4>
-          <img src={Minus} alt="plus_icon" />
+          <img
+            src={Minus}
+            onClick={() => {
+              setPickMe("");
+              setHowEat("");
+            }}
+            alt="plus_icon"
+          />
         </MyDrug>
       )}
       <small>{howEat}</small>
@@ -95,6 +139,10 @@ const Wrap = styled(ColumnFlexDiv)`
   align-items: center;
   justify-content: space-between;
   position: relative;
+`;
+
+const Observer = styled.div`
+  height: 10px;
 `;
 
 const DirectSearch = styled(RowFlexDiv)`
@@ -184,6 +232,11 @@ const DrugInput = styled.input`
 
 const Idx = styled.li`
   list-style: none;
+  padding: 0px 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #cdcdcd;
+  }
 `;
 
 const SearchBtn = styled.button`
@@ -214,6 +267,7 @@ const MyDrug = styled.div`
     width: 25px;
     height: 25px;
     margin-right: 5%;
+    cursor:pointer;
   }
 `;
 

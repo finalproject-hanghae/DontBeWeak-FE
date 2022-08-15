@@ -6,6 +6,7 @@ import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
 import { ColumnFlexDiv } from "../style/styled";
 import HeaderNavBar from "../components/layout/HeaderNavBar";
+import CatPage from "./CatPage";
 
 const MainSection = () => {
   return (
@@ -14,6 +15,7 @@ const MainSection = () => {
       <Routes>
         <Route path="/*" element={<StartingPage />} />
         <Route path="/record/*" element={<RecordingPage />} />
+        <Route path="/cat/:username" element={<CatPage />} />
       </Routes>
     </MainCard>
   );
