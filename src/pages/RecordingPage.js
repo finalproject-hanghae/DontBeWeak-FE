@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import SupplementAddBtn from "../components/layout/button/SupplementAddBtn";
+import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
 import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import { ColumnFlexDiv, PageSection} from "../style/styled";
 import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
@@ -21,7 +21,7 @@ const RecordingPage = () => {
       </CalenderAndDrug>
 
 
-      <SupplementAddBtn />
+      <SearchDrugBtn />
       <FriendsListBtn />
 
       <Routes>

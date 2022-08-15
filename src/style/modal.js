@@ -15,32 +15,17 @@ export const ModalBg = styled.div`
   }
 `;
 
-export const Dimmed = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const ModalBody = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  display: absolute;
   z-index: 100;
+
+  left: 50%;
+  top: 50%;
   width: fit-content;
   height: fit-content;
-  overflow: hidden;
   padding: 5px;
   text-align: center;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
