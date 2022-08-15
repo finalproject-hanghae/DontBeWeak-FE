@@ -11,7 +11,7 @@ const FriendsListModal = React.forwardRef((props, ref) => {
 });
 const Wrap = styled.div`
   width: 527px;
-  height: 241px;
+  height: 547px;
   border-radius: 1.5rem;
   background-color: #fff;
   position: absolute;
