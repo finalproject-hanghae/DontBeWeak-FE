@@ -8,7 +8,7 @@ export const useCatPageData = () => {
     //axios 불러오는 곳
     const tmp = {
       level: 12,
-      exp: 0,
+      exp: 5,
       maxExp: 20,
       catImg: "catImg1",
     };
