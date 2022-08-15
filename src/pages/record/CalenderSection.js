@@ -65,7 +65,13 @@ const CalenderSection = () => {
 
       <DateBox>
         {week.map((day, index) => {
-          return <DateViewCard key={"DateViewCard"+index} day={day} myWeek={myWeek} />;
+          return (
+            <DateViewCard
+              key={"DateViewCard" + index}
+              day={day}
+              myWeek={myWeek}
+            />
+          );
         })}
       </DateBox>
     </CalenderCard>
@@ -80,10 +86,10 @@ const CalenderCard = styled.div`
 const WeekBox = styled(RowFlexDiv)`
   justify-content: space-between;
   align-items: center;
-  margin-bottom:20px;
-  span{
-    font-size:1.5rem;
-    font-weight:bold;
+  margin-bottom: 20px;
+  span {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 `;
 
