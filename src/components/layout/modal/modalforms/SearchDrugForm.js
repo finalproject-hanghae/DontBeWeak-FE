@@ -1,5 +1,5 @@
 import React from "react";
-import { drugSearchAPI } from "../../api/drugSearch";
+import { drugSearchAPI } from "../../../../api/drugSearch";
 import styled from "styled-components";
 
 const SearchDrug = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { devices } from "../../device";
-import { ColumnFlexDiv } from "../../style/styled";
+import { devices } from "../../../device";
+import { ColumnFlexDiv } from "../../../style/styled";
 import SingleDrugLine from "./SingleDrugLine";
 
 const MyDrugSection = () => {

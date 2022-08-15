@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import AddBtn from "../images/supplement_icon.png";
+import AddBtn from "../../../assets/images/supplement_icon.png";
 
 const SupplementAddBtn = () => {
   const navigate = useNavigate();

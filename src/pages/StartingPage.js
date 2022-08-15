@@ -1,18 +1,9 @@
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-
-// 스타일 관련
 import { PageSection } from "../style/styled";
+import Modals from "../components/layout/modal/modalList";
 import styled from "styled-components";
-
-// 컴포넌트 연결
-import LogInModal from "../components/modals/LogInModal";
-import SignUpModal from "../components/modals/SignUpModal";
-import NotFoundModal from "../components/modals/NotFoundModal";
-
-// 메인 이미지 연결
-import MainCatImg from "../images/main_cat2.png";
-
+import MainCatImg from "../assets/images/main_cat2.png";
 
 const StartingPage = () => {
   const navigate = useNavigate();
@@ -35,9 +26,9 @@ const StartingPage = () => {
       {/* Modal Route */}
       <Routes>
         <Route index element={null} />
-        <Route path="login" element={<LogInModal />} />
-        <Route path="signup" element={<SignUpModal />} />
-        <Route path="*" element={<NotFoundModal />} />
+        <Route path="login" element={Modals.LogIn} />
+        <Route path="signup" element={Modals.SignUp} />
+        <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
   );

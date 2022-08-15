@@ -2,7 +2,7 @@ import React from "react";
 
 // 스타일 관련
 import styled from "styled-components";
-import { ColumnFlexDiv } from "../../style/styled";
+import { ColumnFlexDiv } from "../../../../style/styled";
 
 function FriendsListForm() {
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.

@@ -6,8 +6,8 @@ import { devices } from "../device";
 import { ColumnFlexDiv } from "../style/styled";
 
 // Logo & Cat Background 이미지 연결
-import Logo from "../images/logo_big.png";
-import MainCatImg from "../images/main_cat.png";
+import Logo from "../assets/images/logo_big.png";
+import MainCatImg from "../assets/images/main_cat.png";
 
 
 const WebSection = () => {
