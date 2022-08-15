@@ -108,7 +108,14 @@ const SearchDrugForm = () => {
       {pickMe && (
         <MyDrug>
           <h4>{pickMe}</h4>
-          <img src={Minus} alt="plus_icon" />
+          <img
+            src={Minus}
+            onClick={() => {
+              setPickMe("");
+              setHowEat("");
+            }}
+            alt="plus_icon"
+          />
         </MyDrug>
       )}
       <small>{howEat}</small>
@@ -194,6 +201,11 @@ const DrugInput = styled.input`
 
 const Idx = styled.li`
   list-style: none;
+  padding: 0px 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #cdcdcd;
+  }
 `;
 
 const SearchBtn = styled.button`
@@ -224,6 +236,7 @@ const MyDrug = styled.div`
     width: 25px;
     height: 25px;
     margin-right: 5%;
+    cursor:pointer;
   }
 `;
 
