@@ -5,6 +5,7 @@ import { RelaitiveDiv } from "../../../style/styled";
 
 const ModalComponent = ({to, children}) => {
   const navigate = useNavigate();
+  console.log(children)
   return (
     <>
       <ModalBg

@@ -35,8 +35,9 @@ export const ModalBody = styled.div`
   flex-direction: column;
   justify-content: center;
   z-index: 100;
-  width: 50%;
-  overflow:hidden;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
   padding: 5px;
   text-align: center;
   background-color: #fff;
