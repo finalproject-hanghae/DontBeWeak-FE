@@ -4,22 +4,22 @@ import React from "react";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 
-function FriendsListForm() {
+const FriendsListForm = () => {
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  const [list, setList] = React.useState(["INSOCCI"]);
+
+  // isAddFriend가 true로 변하게 해주는 함수
+  const showFriendAddInput = () => {
+    setIsAddFriend(true);
+  };
 
   // 기존 친구 리스트에 새 친구를 추가해주는 함수
+  const [list, setList] = React.useState(["INSOCCI"]);
   const addToFriendList = () => {
     setList((prevList) => {
       return [isAddFriend, ...prevList];
     });
     setIsAddFriend("");
-  };
-
-  // isAddFriend가 true로 변하게 해주는 함수
-  const showFriendAddInput = () => {
-    setIsAddFriend(true);
   };
 
   // const submitToFriendId = (e) => {
@@ -40,7 +40,7 @@ function FriendsListForm() {
   return (
     <Wrap>
       {isAddFriend ? (
-      // 등록할 친구 ID 입력창
+        // 등록할 친구 ID 입력창
         <TrueForm>
           <FriendIdInput
             placeholder="친구 ID를 입력해주세요."
@@ -51,14 +51,14 @@ function FriendsListForm() {
           </FriendAddBtn>
         </TrueForm>
       ) : (
-      // 친구 목록 Title
+        // 친구 목록 Title
         <FalseForm>
           <h3>친구 목록</h3>
           <FriendAddBtn onClick={showFriendAddInput}>친구추가+</FriendAddBtn>
         </FalseForm>
       )}
 
-    {/* 친구 리스트 */}
+      {/* 친구 리스트 */}
       <FriendsList>
         {list.map((item) => {
           return <p key={item}>{item}</p>;
@@ -66,8 +66,7 @@ function FriendsListForm() {
       </FriendsList>
     </Wrap>
   );
-}
-
+};
 
 // styled-component 적용
 
@@ -89,7 +88,6 @@ const FalseForm = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 `;
 const FriendIdInput = styled.input`
   width: 325px;
