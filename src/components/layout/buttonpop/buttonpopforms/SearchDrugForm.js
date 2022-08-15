@@ -17,8 +17,7 @@ const SearchDrugForm = () => {
   const showDirectInput = () => {
     setIsDirect(true);
   };
-  console.log(isDirect)
-  
+  console.log(isDirect);
 
   const [drugName, setDrugName] = React.useState("");
   const [searchResult, setSearchResult] = React.useState([]);
@@ -48,6 +47,12 @@ const SearchDrugForm = () => {
           찾으시는 영양제가 없으신가요?
           <span onClick={showDirectInput}>직접 입력하기</span>
         </p>
+        {isDirect ? (
+          <DirectSearchModal>
+            <DirectInput placeholder="상품명을 입력해주세요." />
+            <SearchBtn> 확인 </SearchBtn>
+          </DirectSearchModal>
+        ) : null}
       </DirectSearch>
       <SearchList>
         {searchResult ? (
@@ -89,6 +94,7 @@ const Wrap = styled(ColumnFlexDiv)`
   min-height: 70%;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 const DirectSearch = styled(RowFlexDiv)`
@@ -105,6 +111,30 @@ const DirectSearch = styled(RowFlexDiv)`
       border-bottom: 1px solid #f98532;
     }
   }
+`;
+
+const DirectSearchModal = styled(RowFlexDiv)`
+  width: 350px;
+  height: 85px;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+`;
+
+const DirectInput = styled.input`
+  width: 65%;
+  height: 30%;
+  margin-right: 3%;
+  border: 0.5px solid #a4a4a4;
+  outline: none;
+  border-radius: 5px;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding: 1.3% 2%;
 `;
 
 const SearchList = styled.div`
