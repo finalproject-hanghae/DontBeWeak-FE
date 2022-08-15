@@ -8,7 +8,7 @@ function FriendsListBtn() {
   const [friends, setFriends] = React.useState(false);
   const friendListModalRef = React.useRef();
 
-  const openFriendsList = () => {
+  const showFriendsList = () => {
     setFriends(true);
   };
 
@@ -30,14 +30,14 @@ function FriendsListBtn() {
   return (
     <>
       <BtnWrap>
-        <img src={AddBtn} alt="friend_add_btn" onClick={openFriendsList} />
+        <img src={AddBtn} alt="friend_add_btn" onClick={showFriendsList} />
       </BtnWrap>
       {friends ? (
         <FriendsListModal ref={friendListModalRef} setFriends={setFriends} />
       ) : null}
     </>
   );
-}
+};
 
 const BtnWrap = styled.div`
   width: 84px;

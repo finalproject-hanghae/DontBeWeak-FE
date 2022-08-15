@@ -7,10 +7,10 @@ export const PageSection = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff7c7;
+  background-color: #fff9d3;
   padding: 45px 0px 0px;
   @media ${devices.tablet} {
     width: 100%;

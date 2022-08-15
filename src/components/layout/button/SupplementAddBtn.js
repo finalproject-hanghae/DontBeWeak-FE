@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import AddBtn from "../../../assets/images/supplement_icon.png";
 
 const SupplementAddBtn = () => {
+  const navigate = useNavigate();
+
+  const goToSplmnModal = () => {
+    navigate("/record/search");
+  };
+
   return (
     <BtnWrap>
-      <img src={AddBtn} alt="supplement_add_btn" />
+      <img src={AddBtn} alt="supplement_add_btn" onClick={goToSplmnModal} />
     </BtnWrap>
   );
 };
