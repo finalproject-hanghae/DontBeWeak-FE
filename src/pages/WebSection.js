@@ -6,10 +6,12 @@ import { devices } from "../device";
 import { ColumnFlexDiv } from "../style/styled";
 
 // Logo & Cat Background 이미지 연결
-import Logo from "../images/logo_big.png";
-import MainCatImg from "../images/main_cat.png";
+import Logo from "../assets/images/logo_big.png";
+import MainCatImg from "../assets/images/main_cat.png";
+
 
 const WebSection = () => {
+
   return (
     <WebCard>
       <Section>
@@ -30,6 +32,9 @@ const WebSection = () => {
     </WebCard>
   );
 };
+
+
+// styled-component 적용
 
 const WebCard = styled(ColumnFlexDiv)`
   width: 48.5%;
@@ -53,7 +58,6 @@ const Section = styled(ColumnFlexDiv)`
 const TextBox = styled.div`
   width: 100%;
   height: 24%;
-  justify-content: space-between;
   p {
     &:first-child {
       font-size: 1.8rem;
