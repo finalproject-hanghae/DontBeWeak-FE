@@ -1,17 +1,35 @@
+import axios from "axios";
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 
 const LogInForm = () => {
-  const logInIDRef = React.useRef();
-  const logInPWRef = React.useRef();
-  const logInAlertRef = React.useRef();
+  const navigate = useNavigate();
+
+  const logInIDRef = React.useRef(null);
+  const logInPWRef = React.useRef(null);
+  const logInAlertRef = React.useRef(null);
 
   const submitToLogin = (e) => {
     e.preventDefault();
     const username = logInIDRef.current.value;
     const password = logInPWRef.current.value;
+
+    axios
+      .post("http://3.37.88.75/login", {
+        username: logInIDRef.current.value,
+        password: logInPWRef.current.value,
+      })
+      .then((response) => {
+        console.log(response);
+        alert("로그인 성공!");
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
 
     // 공백 유효성 검사
     if (username === "") {
@@ -45,15 +63,15 @@ const LogInForm = () => {
     <LogInModalBox>
       <form onSubmit={submitToLogin}>
         <ColumnFlexDiv>
-          <h2>로그인</h2>
-          <LogInInput
-          type="text" placeholder="ID" ref={logInIDRef} />
+          <h2 style={{ margin: "37px auto 50px auto" }}>로그인</h2>
+          <LogInInput type="text" placeholder="ID" ref={logInIDRef} />
 
-          <LogInInput
-          type="password" placeholder="PW" ref={logInPWRef} />
+          <LogInInput type="password" placeholder="PW" ref={logInPWRef} />
 
           <LogInButton>로그인</LogInButton>
-          <small ref={logInAlertRef}>회원가입안함?</small>
+          <small ref={logInAlertRef}>
+            회원가입안함? <Link to="/signup">여기서하셈</Link>
+          </small>
         </ColumnFlexDiv>
       </form>
       <ColumnFlexDiv>
@@ -64,46 +82,52 @@ const LogInForm = () => {
   );
 };
 
-
 const LogInModalBox = styled.div`
-width: 630px;
-height: 630px;
-
+  width: 630px;
+  height: 630px;
 `;
 
-
 const LogInInput = styled.input`
-width: 30vw;
-height: 3.7vh;
-margin: auto auto 20px auto;
-border: 0.5px solid #a5a5a5;
+  width: 513px;
+  height: 64px;
+  margin: auto auto 20px auto;
+  border: 0.5px solid #a5a5a5;
+  font-size: 15px;
+  border-radius: 4px;
 `;
 
 const LogInButton = styled.button`
-width: 30vw;
-height: 4.5vh;
-background-color: #f98532;
-color: white;
-margin: auto auto 10px auto;
-border: 0.5px solid ;
+  width: 513px;
+  height: 64px;
+  background-color: #f98532;
+  color: white;
+  margin: auto auto 20px auto;
+  border: 0.5px solid;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 const KakaoLogIn = styled.button`
-width: 30vw;
-height: 4.5vh;
-margin: 10px auto 7px auto;
-border: 0.5px solid ;
-background-color: yellow;
-
+  width: 513px;
+  height: 64px;
+  margin: 20px auto 7px auto;
+  border: 0.5px solid;
+  background-color: yellow;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 const NaverLogIn = styled.button`
-width: 30vw;
-height: 4.5vh;
-margin: 10px auto 7px auto;
-border: 0.5px solid ;
-background-color: #24E337;
-
+  width: 513px;
+  height: 64px;
+  margin: 10px auto 7px auto;
+  border: 0.5px solid;
+  background-color: #24e337;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 export default LogInForm;

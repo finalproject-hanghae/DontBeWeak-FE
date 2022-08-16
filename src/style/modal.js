@@ -18,7 +18,6 @@ export const ModalBg = styled.div`
 export const ModalBody = styled.div`
   display: absolute;
   z-index: 100;
-
   left: 50%;
   top: 50%;
   width: fit-content;
