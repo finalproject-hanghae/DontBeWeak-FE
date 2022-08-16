@@ -7,9 +7,19 @@ import { ColumnFlexDiv } from "../../../../style/styled";
 const FriendsListForm = () => {
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  // isAddFriend가 true로 변하게 해주는 함수
   const showFriendAddInput = () => {
     setIsAddFriend(true);
+  };
+
+  // github Issues >> 'isAddFriend state 충돌현상 #50' 해결
+  const [disabled, setDisabled] = React.useState(true);
+  const friendIdRef = React.useRef(null);
+  const change = () => {
+    if (friendIdRef.current.value !== "") {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
   };
 
   // 기존 친구 리스트에 새 친구를 추가해주는 함수
@@ -42,8 +52,10 @@ const FriendsListForm = () => {
         // 등록할 친구 ID 입력창
         <TrueForm>
           <FriendIdInput
+            type="text"
             placeholder="친구 ID를 입력해주세요."
-            onChange={(e) => setIsAddFriend(e.target.value)}
+            ref={friendIdRef}
+            onChange={change}
           />
           <FriendAddBtn type="button" onClick={addToFriendList}>
             친구추가+

@@ -1,23 +1,43 @@
 import React from "react";
-import { ColumnFlexDiv } from "../../../../style/styled";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { ColumnFlexDiv } from "../../../../style/styled";
+import axios from "axios";
+import styled from "styled-components";
 
 function SignUpForm() {
   const navigate = useNavigate();
 
   const signUpIdRef = React.useRef(); // Id
-  const signUpNameRef = React.useRef(); // Name
+  const signUpNicknameRef = React.useRef(); // nickName
   const signUpPwRef = React.useRef(); // Pw
   const signUpPwCheckRef = React.useRef(); // PwCheck
   const signUpAlertRef = React.useRef(); // 경고
 
-  const submitToSignUp = (e) => {
+  const submitToSignUp = async (e) => {
     e.preventDefault();
     const username = signUpIdRef.current.value;
-    const nickname = signUpNameRef.current.value;
+    const nickname = signUpNicknameRef.current.value;
     const password = signUpPwRef.current.value;
     const checkPassword = signUpPwCheckRef.current.value;
+
+    // axios 요청 보낼 자리
+    try {
+      await axios({
+        method: "post",
+        url: "http://3.37.88.75/user/signup",
+        data: {
+          username: username,
+          nickname: nickname,
+          password: password,
+          passwordCheck: checkPassword,
+        },
+      }).then((response) => console.log(response));
+      alert("회원가입 성공!");
+      navigate("/login");
+    } catch (error) {
+      alert(error.response.data.message);
+      console.log(error);
+    }
 
     // 공백 유효성 검사
     if (username === "") {
@@ -35,7 +55,6 @@ function SignUpForm() {
     }
 
     console.log(username, nickname, password, checkPassword);
-
   };
 
   return (
@@ -59,7 +78,7 @@ function SignUpForm() {
           <SignUpInput
             type="text"
             placeholder="Nick name"
-            ref={signUpNameRef}
+            ref={signUpNicknameRef}
           />
           <SignUpInput type="password" placeholder="PW" ref={signUpPwRef} />
           <SignUpInput
