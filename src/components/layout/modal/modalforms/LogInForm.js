@@ -28,23 +28,28 @@ const LogInForm = () => {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
     }
-    console.log(username, password);
-    axios
-      .post("http://3.37.88.75/login", {
-        username: logInIDRef.current.value,
-        password: logInPWRef.current.value,
-      })
-      .then((response) => {
-        console.log(response);
-        alert("로그인 성공!");
-        navigate("/record");
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
+    const userData = { username: username, password: password };
+    dispatch(keepAuthDataMW(userData, navigate));
   };
 
   return (
+    // <>
+    //   <form onSubmit={submitToLogin}>
+    //     <ColumnFlexDiv>
+    //       <h3>로그인</h3>
+    //       <input type="text" placeholder="ID" ref={logInIDRef} />
+
+    //       <input type="password" placeholder="PW" ref={logInPWRef} />
+    //       <small ref={logInAlertRef}></small>
+    //       <button>로그인</button>
+    //     </ColumnFlexDiv>
+    //   </form>
+    //   <ColumnFlexDiv>
+    //     <button>카카오로그인</button>
+    //     <button>네이버로그인</button>
+    //   </ColumnFlexDiv>
+    // </>
+
     <LogInModalBox>
       <form onSubmit={submitToLogin}>
         <ColumnFlexDiv>

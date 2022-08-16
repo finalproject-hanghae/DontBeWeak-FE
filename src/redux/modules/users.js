@@ -2,6 +2,7 @@ import axios from "axios";
 
 // Actions
 const KEEP = "user/KEEP";
+const UPDATE = "user/UPDATE";
 
 const initialState = {
   authorization: null,
@@ -9,6 +10,10 @@ const initialState = {
 
 export function keepAuthData(authorization) {
   return { type: KEEP, authorization };
+}
+
+export function updateUserData(userData) {
+  return { type: UPDATE, userData };
 }
 
 //middlewares

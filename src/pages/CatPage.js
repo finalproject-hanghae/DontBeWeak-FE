@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { keepUserDataMW } from "../redux/modules/users";
 import Modals from "../components/layout/modal/modalList";
 import { useCatPageData } from "../hooks/useCatPageData";
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";

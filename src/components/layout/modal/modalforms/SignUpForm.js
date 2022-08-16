@@ -20,20 +20,6 @@ function SignUpForm() {
     const password = signUpPwRef.current.value;
     const checkPassword = signUpPwCheckRef.current.value;
 
-    // 공백 유효성 검사
-    if (username === "") {
-      signUpAlertRef.current.innerText = "아이디를 입력하세요.";
-      return;
-    } else if (nickname === "") {
-      signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
-      return;
-    } else if (password === "") {
-      signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
-      return;
-    } else if (checkPassword === "") {
-      signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
-      return;
-    }
     // axios 요청 보낼 자리
     try {
       await axios({
@@ -45,7 +31,26 @@ function SignUpForm() {
           password: password,
           passwordCheck: checkPassword,
         },
-      }).then((response) => console.log(response));
+      }).then((response) => {
+
+      // 공백 유효성 검사
+      if (username === "") {
+        signUpAlertRef.current.innerText = "아이디를 입력하세요.";
+        return;
+      } else if (response.status === 200&& response.data === "중복된 아이디가 있습니다") {
+        window.alert(response.data)
+        return;
+      } else if (nickname === "") {
+        signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
+        return;
+      } else if (password === "") {
+        signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
+        return;
+      } else if (checkPassword === "") {
+        signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
+        return;
+      }
+    })
       alert("회원가입 성공!");
       navigate("/login");
     } catch (error) {
@@ -55,7 +60,6 @@ function SignUpForm() {
   };
 
   return (
-
     <SignUpModalBox>
       <form onSubmit={submitToSignUp}>
         <ColumnFlexDiv>
