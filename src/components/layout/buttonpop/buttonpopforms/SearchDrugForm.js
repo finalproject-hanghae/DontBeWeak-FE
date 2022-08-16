@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
+import axios from "axios";
 
 const SearchDrugForm = () => {
   //옵저버 선언
@@ -62,7 +63,24 @@ const SearchDrugForm = () => {
     setSearchResult(await drugSearchAPI(drugName, 1));
   };
 
-  const [isDirect,showDirectInput,DirectModalRef] = useHandleClick();
+  const [isDirect, showDirectInput, DirectModalRef] = useHandleClick();
+
+  const clickToAddDrug = () => {
+    if (pickMe) {
+      let sessionStorage = window.sessionStorage;
+      axios({
+        method: "post",
+        url: "http://3.37.88.75/schedule",
+        headers: { authorization: sessionStorage.getItem("authorization") },
+        data: {
+          productName: pickMe,
+          customColor: "rgb(0,0,30)",
+          done: false,
+        },
+      }).then((res) => console.log(res));
+    }
+    return;
+  };
 
   return (
     <Wrap>
@@ -82,7 +100,7 @@ const SearchDrugForm = () => {
           <span onClick={showDirectInput}>직접 입력하기</span>
         </p>
         {isDirect ? (
-          <DirectSearchModal ref={DirectModalRef} setPickMe={setPickMe}/>
+          <DirectSearchModal ref={DirectModalRef} setPickMe={setPickMe} />
         ) : null}
       </DirectSearch>
       <SearchList>
@@ -121,7 +139,7 @@ const SearchDrugForm = () => {
       )}
       <small>{howEat}</small>
 
-      <AddBtn> 등록 </AddBtn>
+      <AddBtn onClick={clickToAddDrug}> 등록 </AddBtn>
     </Wrap>
   );
 };
@@ -238,7 +256,7 @@ const MyDrug = styled.div`
     width: 25px;
     height: 25px;
     margin-right: 5%;
-    cursor:pointer;
+    cursor: pointer;
   }
 `;
 
