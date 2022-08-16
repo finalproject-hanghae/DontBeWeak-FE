@@ -6,40 +6,14 @@ import SearchBtn from "../../../assets/images/drug_icon.png";
 import useHandleClick from "../../../hooks/useHandleClick";
 
 const SearchDrugBtn = () => {
-
-  const [drug,showSearchDrug,SearchDrugModalRef] = useHandleClick();
-  // const [drug, setDrug] = React.useState(false);
-  // const SearchDrugModalRef = React.useRef();
-
-  // const showSearchDrug = () => {
-  //   setDrug(true);
-  // };
-
-  // React.useEffect(() => {
-  //   const handleClickOutside = (e) => {
-  //     if (
-  //       SearchDrugModalRef.current &&
-  //       !SearchDrugModalRef.current.contains(e.target)
-  //     ) {
-  //       setDrug(false);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [SearchDrugModalRef]);
-
-
+  const [drug, showSearchDrug, SearchDrugModalRef] = useHandleClick();
 
   return (
     <>
       <BtnWrap>
         <img src={SearchBtn} alt="search_drug_btn" onClick={showSearchDrug} />
       </BtnWrap>
-      {drug ? (
-        <SearchDrugModal ref={SearchDrugModalRef} />
-      ) : null}
+      {drug ? <SearchDrugModal ref={SearchDrugModalRef} /> : null}
     </>
   );
 };

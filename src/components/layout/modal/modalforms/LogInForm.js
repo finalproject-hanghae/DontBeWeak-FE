@@ -1,12 +1,15 @@
 import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
+import { keepAuthDataMW } from "../../../../redux/modules/users";
 import { ColumnFlexDiv } from "../../../../style/styled";
 
 const LogInForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logInIDRef = React.useRef(null);
   const logInPWRef = React.useRef(null);
@@ -17,20 +20,6 @@ const LogInForm = () => {
     const username = logInIDRef.current.value;
     const password = logInPWRef.current.value;
 
-    axios
-      .post("http://3.37.88.75/login", {
-        username: logInIDRef.current.value,
-        password: logInPWRef.current.value,
-      })
-      .then((response) => {
-        console.log(response);
-        alert("로그인 성공!");
-        navigate("/record");
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
-
     // 공백 유효성 검사
     if (username === "") {
       logInAlertRef.current.innerText = "아이디를 입력하세요.";
@@ -39,7 +28,8 @@ const LogInForm = () => {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
     }
-    console.log(username, password);
+    const userData = { username: username, password: password };
+    dispatch(keepAuthDataMW(userData, navigate));
   };
 
   return (
