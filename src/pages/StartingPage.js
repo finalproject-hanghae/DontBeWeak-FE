@@ -22,7 +22,6 @@ const StartingPage = () => {
         </button>
       </TextBox>
       <ImgBox /> {/* BackgroundImg : MainCatImg */}
-
       {/* Modal Route */}
       <Routes>
         <Route index element={null} />
@@ -33,7 +32,6 @@ const StartingPage = () => {
     </PageSection>
   );
 };
-
 
 // styled-component 적용
 
