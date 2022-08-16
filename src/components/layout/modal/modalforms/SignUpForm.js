@@ -7,7 +7,7 @@ function SignUpForm() {
   const navigate = useNavigate();
 
   const signUpIdRef = React.useRef(); // Id
-  const signUpNameRef = React.useRef(); // Name
+  const signUpNicknameRef = React.useRef(); // Name
   const signUpPwRef = React.useRef(); // Pw
   const signUpPwCheckRef = React.useRef(); // PwCheck
   const signUpAlertRef = React.useRef(); // 경고
@@ -15,7 +15,7 @@ function SignUpForm() {
   const submitToSignUp = (e) => {
     e.preventDefault();
     const username = signUpIdRef.current.value;
-    const nickname = signUpNameRef.current.value;
+    const nickname = signUpNicknameRef.current.value;
     const password = signUpPwRef.current.value;
     const checkPassword = signUpPwCheckRef.current.value;
 
@@ -59,7 +59,7 @@ function SignUpForm() {
           <SignUpInput
             type="text"
             placeholder="Nick name"
-            ref={signUpNameRef}
+            ref={signUpNicknameRef}
           />
           <SignUpInput type="password" placeholder="PW" ref={signUpPwRef} />
           <SignUpInput
