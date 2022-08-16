@@ -10,6 +10,8 @@ import Minus from "../../../../assets/images/minus_icon.png";
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
+import DirectSearchModal from "../DirectSearchModal";
+import useHandleClick from "../../../../hooks/useHandleClick";
 
 const SearchDrugForm = () => {
   //옵저버 선언
@@ -48,12 +50,6 @@ const SearchDrugForm = () => {
   }, [pageNumber]);
 
   //
-  const [isDirect, setIsDirect] = React.useState(false);
-
-  const showDirectInput = () => {
-    setIsDirect(true);
-  };
-  console.log(isDirect);
 
   const [drugName, setDrugName] = React.useState("");
 
@@ -65,6 +61,8 @@ const SearchDrugForm = () => {
     setPageNumber(1);
     setSearchResult(await drugSearchAPI(drugName, 1));
   };
+
+  const [isDirect,showDirectInput,DirectModalRef] = useHandleClick();
 
   return (
     <Wrap>
@@ -84,10 +82,7 @@ const SearchDrugForm = () => {
           <span onClick={showDirectInput}>직접 입력하기</span>
         </p>
         {isDirect ? (
-          <DirectSearchModal>
-            <DirectInput placeholder="상품명을 입력해주세요." />
-            <SearchBtn> 확인 </SearchBtn>
-          </DirectSearchModal>
+          <DirectSearchModal ref={DirectModalRef} setPickMe={setPickMe}/>
         ) : null}
       </DirectSearch>
       <SearchList>
@@ -159,30 +154,6 @@ const DirectSearch = styled(RowFlexDiv)`
       border-bottom: 1px solid #f98532;
     }
   }
-`;
-
-const DirectSearchModal = styled(RowFlexDiv)`
-  width: 350px;
-  height: 85px;
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-`;
-
-const DirectInput = styled.input`
-  width: 65%;
-  height: 30%;
-  margin-right: 3%;
-  border: 0.5px solid #a4a4a4;
-  outline: none;
-  border-radius: 5px;
-  line-height: 1.5rem;
-  font-size: 1rem;
-  padding: 1.3% 2%;
 `;
 
 const SearchList = styled.div`
