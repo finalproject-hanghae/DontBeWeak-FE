@@ -17,6 +17,15 @@ const LogInForm = () => {
     const username = logInIDRef.current.value;
     const password = logInPWRef.current.value;
 
+    // 공백 유효성 검사
+    if (username === "") {
+      logInAlertRef.current.innerText = "아이디를 입력하세요.";
+      return;
+    } else if (password === "") {
+      logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
+      return;
+    }
+    console.log(username, password);
     axios
       .post("http://3.37.88.75/login", {
         username: logInIDRef.current.value,
@@ -30,36 +39,9 @@ const LogInForm = () => {
       .catch((error) => {
         alert(error.response.data.message);
       });
-
-    // 공백 유효성 검사
-    if (username === "") {
-      logInAlertRef.current.innerText = "아이디를 입력하세요.";
-      return;
-    } else if (password === "") {
-      logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
-      return;
-    }
-    console.log(username, password);
   };
 
   return (
-    // <>
-    //   <form onSubmit={submitToLogin}>
-    //     <ColumnFlexDiv>
-    //       <h3>로그인</h3>
-    //       <input type="text" placeholder="ID" ref={logInIDRef} />
-
-    //       <input type="password" placeholder="PW" ref={logInPWRef} />
-    //       <small ref={logInAlertRef}></small>
-    //       <button>로그인</button>
-    //     </ColumnFlexDiv>
-    //   </form>
-    //   <ColumnFlexDiv>
-    //     <button>카카오로그인</button>
-    //     <button>네이버로그인</button>
-    //   </ColumnFlexDiv>
-    // </>
-
     <LogInModalBox>
       <form onSubmit={submitToLogin}>
         <ColumnFlexDiv>

@@ -20,6 +20,20 @@ function SignUpForm() {
     const password = signUpPwRef.current.value;
     const checkPassword = signUpPwCheckRef.current.value;
 
+    // 공백 유효성 검사
+    if (username === "") {
+      signUpAlertRef.current.innerText = "아이디를 입력하세요.";
+      return;
+    } else if (nickname === "") {
+      signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
+      return;
+    } else if (password === "") {
+      signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
+      return;
+    } else if (checkPassword === "") {
+      signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
+      return;
+    }
     // axios 요청 보낼 자리
     try {
       await axios({
@@ -38,37 +52,9 @@ function SignUpForm() {
       alert(error.response.data.message);
       console.log(error);
     }
-
-    // 공백 유효성 검사
-    if (username === "") {
-      signUpAlertRef.current.innerText = "아이디를 입력하세요.";
-      return;
-    } else if (nickname === "") {
-      signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
-      return;
-    } else if (password === "") {
-      signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
-      return;
-    } else if (checkPassword === "") {
-      signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
-      return;
-    }
-
-    console.log(username, nickname, password, checkPassword);
   };
 
   return (
-    // <form onSubmit={submitToSignUp}>
-    //   <ColumnFlexDiv>
-    //     <h2>회원가입</h2>
-    //     <input type="text" placeholder="ID" ref={signUpIdRef} />
-    //     <input type="text" placeholder="User name" ref={signUpNameRef} />
-    //     <input type="password" placeholder="PW" ref={signUpPwRef} />
-    //     <input type="password" placeholder="PW check" ref={signUpPwCheckRef} />
-    //     <small ref={signUpAlertRef} />
-    //     <button>회원가입</button>
-    //   </ColumnFlexDiv>
-    // </form>
 
     <SignUpModalBox>
       <form onSubmit={submitToSignUp}>
