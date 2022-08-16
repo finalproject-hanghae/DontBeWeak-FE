@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import axios from "axios";
+import styled from "styled-components";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -51,21 +52,71 @@ function SignUpForm() {
       signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
       return;
     }
+
+    console.log(username, nickname, password, checkPassword);
+
   };
 
   return (
-    <form onSubmit={submitToSignUp}>
-      <ColumnFlexDiv>
-        <h2>회원가입</h2>
-        <input type="text" placeholder="ID" ref={signUpIdRef} />
-        <input type="text" placeholder="User name" ref={signUpNicknameRef} />
-        <input type="password" placeholder="PW" ref={signUpPwRef} />
-        <input type="password" placeholder="PW check" ref={signUpPwCheckRef} />
-        <small ref={signUpAlertRef} />
-        <button>회원가입</button>
-      </ColumnFlexDiv>
-    </form>
+    // <form onSubmit={submitToSignUp}>
+    //   <ColumnFlexDiv>
+    //     <h2>회원가입</h2>
+    //     <input type="text" placeholder="ID" ref={signUpIdRef} />
+    //     <input type="text" placeholder="User name" ref={signUpNameRef} />
+    //     <input type="password" placeholder="PW" ref={signUpPwRef} />
+    //     <input type="password" placeholder="PW check" ref={signUpPwCheckRef} />
+    //     <small ref={signUpAlertRef} />
+    //     <button>회원가입</button>
+    //   </ColumnFlexDiv>
+    // </form>
+
+    <SignUpModalBox>
+      <form onSubmit={submitToSignUp}>
+        <ColumnFlexDiv>
+          <h2 style={{ margin: "35px auto 50px auto" }}>회원가입</h2>
+          <SignUpInput type="text" placeholder="ID" ref={signUpIdRef} />
+          <SignUpInput
+            type="text"
+            placeholder="Nick name"
+            ref={signUpNicknameRef}
+          />
+          <SignUpInput type="password" placeholder="PW" ref={signUpPwRef} />
+          <SignUpInput
+            type="password"
+            placeholder="PW check"
+            ref={signUpPwCheckRef}
+          />
+          <small ref={signUpAlertRef} />
+          <SignUpButton>회원가입</SignUpButton>
+        </ColumnFlexDiv>
+      </form>
+    </SignUpModalBox>
   );
 }
+
+const SignUpModalBox = styled.div`
+  width: 630px;
+  height: 630px;
+`;
+
+const SignUpInput = styled.input`
+  width: 513px;
+  height: 64px;
+  margin: auto auto 25px auto;
+  border: 0.5px solid #a5a5a5;
+  font-size: 15px;
+  border-radius: 4px;
+`;
+const SignUpButton = styled.button`
+  width: 513px;
+  height: 64px;
+  background-color: #f98532;
+  color: white;
+  margin: auto auto 20px auto;
+  border: 0.5px solid;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+`;
 
 export default SignUpForm;
