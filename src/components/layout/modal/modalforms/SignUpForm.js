@@ -32,7 +32,8 @@ function SignUpForm() {
           passwordCheck: checkPassword,
         },
       }).then((response) => console.log(response));
-      navigate("/login")
+      alert("회원가입 성공!");
+      navigate("/login");
     } catch (error) {
       alert(error.response.data.message);
       console.log(error);
@@ -54,7 +55,6 @@ function SignUpForm() {
     }
 
     console.log(username, nickname, password, checkPassword);
-
   };
 
   return (

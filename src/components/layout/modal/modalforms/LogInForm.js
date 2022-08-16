@@ -25,7 +25,7 @@ const LogInForm = () => {
       .then((response) => {
         console.log(response);
         alert("로그인 성공!");
-        navigate("/");
+        navigate("/record");
       })
       .catch((error) => {
         alert(error.response.data.message);
