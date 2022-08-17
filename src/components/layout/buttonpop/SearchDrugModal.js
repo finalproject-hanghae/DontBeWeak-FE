@@ -6,7 +6,7 @@ import SeachDrugForm from "./buttonpopforms/SearchDrugForm";
 const SearchDrugModal = React.forwardRef((props, ref) => {
   return (
     <Wrap ref={ref}>
-      <SeachDrugForm />
+      <SeachDrugForm setDrug={props.setDrug}/>
     </Wrap>
   );
 });

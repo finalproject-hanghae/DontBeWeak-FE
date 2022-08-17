@@ -18,7 +18,7 @@ const HeaderNavBar = () => {
       </LinkC>
 
       <LinkButtons>
-        <LinkC className="tabLink" to="/record">
+        <LinkC className="tabLink" to="/">
           About
         </LinkC>
         <LinkC className="tabLink" to={"/record/"+username}>

@@ -6,14 +6,14 @@ import SearchBtn from "../../../assets/images/drug_icon.png";
 import useHandleClick from "../../../hooks/useHandleClick";
 
 const SearchDrugBtn = () => {
-  const [drug, showSearchDrug, SearchDrugModalRef] = useHandleClick();
+  const [drug, setDrug, showSearchDrug, SearchDrugModalRef] = useHandleClick();
 
   return (
     <>
       <BtnWrap>
         <img src={SearchBtn} alt="search_drug_btn" onClick={showSearchDrug} />
       </BtnWrap>
-      {drug ? <SearchDrugModal ref={SearchDrugModalRef} /> : null}
+      {drug ? <SearchDrugModal ref={SearchDrugModalRef} setDrug={setDrug}/> : null}
     </>
   );
 };

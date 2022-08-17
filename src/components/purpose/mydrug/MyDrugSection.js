@@ -1,12 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { devices } from "../../../device";
 import useShowMeTheDrug from "../../../hooks/useShowMeTheDrug";
+import { loadDrugData } from "../../../redux/modules/drugs";
 import { ColumnFlexDiv } from "../../../style/styled";
 import SingleDrugLine from "./SingleDrugLine";
 
 const MyDrugSection = () => {
-  
   const myDrug = useShowMeTheDrug();
 
   return (
