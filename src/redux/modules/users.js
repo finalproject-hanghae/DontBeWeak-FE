@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Actions
 const KEEP = "user/KEEP";
-const UPDATE = "user/UPDATE";
+const AWAY = "user/AWAY";
 
 const initialState = {
   authorization: null,
@@ -12,8 +12,8 @@ export function keepAuthData(authorization) {
   return { type: KEEP, authorization };
 }
 
-export function updateUserData(userData) {
-  return { type: UPDATE, userData };
+export function awayAuthData() {
+    return {type:AWAY, authorization:null}
 }
 
 //middlewares
@@ -46,6 +46,14 @@ export const loadSessionDataMW = () => {
   };
 };
 
+export const awaySessionDataMW = () => {
+    return async function (dispatch) {
+      let sessionStorage = window.sessionStorage;
+      sessionStorage.removeItem("authorization");
+      dispatch(awayAuthData());
+    };
+  };
+
 export default function reducer(state = initialState, action = {}) {
   //매개변수에 값이 안들어오면 넣을 초기상태 값 -> 함수(state = {})
   //dispatch는 action함수에 접근하여 리턴값으로 reducer의 2번째 매개변수(action)를 제공
@@ -53,6 +61,9 @@ export default function reducer(state = initialState, action = {}) {
     case "user/KEEP": {
       return { authorization: action.authorization };
     }
+    case "user/AWAY": {
+        return { authorization: action.authorization };
+      }
     // do reducer stuff
     default:
       return state;

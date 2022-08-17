@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { LinkC, RowFlexDiv } from "../../style/styled";
+import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../assets/images/logo_small.png";
+import { awaySessionDataMW } from "../../redux/modules/users";
 
 const HeaderNavBar = () => {
-  const username = "Hajun"
+  const dispatch = useDispatch()
+  const authorization = useSelector((state) => state.users.authorization);
+  const username = "Hajun";
   return (
     <NavBar>
       {/* 로그인 전 후 분기 나눠야함 */}
@@ -19,20 +23,25 @@ const HeaderNavBar = () => {
         <LinkC className="tabLink" to="/record">
           하루기록
         </LinkC>
-        <LinkC className="tabLink" to={"/cat/"+username}>
+        <LinkC className="tabLink" to={"/cat/" + username}>
           고양이 상태
         </LinkC>
         {/* <LinkC to="/">로그아웃</LinkC> */}
       </LinkButtons>
       <LinkButtons>
-        {/* <LinkC className="smalla" to="/login">
-          로그인
-        </LinkC>
-        <div />
-        <LinkC className="smalla" to="/signup">
-          회원가입
-        </LinkC> */}
-        <LinkC to="/">로그아웃</LinkC>
+        {!authorization ? (
+          <>
+            <LinkC className="smalla" to="/login">
+              로그인
+            </LinkC>
+            <div />
+            <LinkC className="smalla" to="/signup">
+              회원가입
+            </LinkC>
+          </>
+        ) : (
+          <LinkC to="/" onClick={()=>dispatch(awaySessionDataMW())}>로그아웃</LinkC>
+        )}
       </LinkButtons>
     </NavBar>
   );

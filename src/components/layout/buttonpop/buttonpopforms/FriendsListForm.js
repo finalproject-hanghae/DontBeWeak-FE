@@ -20,10 +20,9 @@ const FriendsListForm = () => {
         const res = await axios.get("http://3.37.88.75/friend", {
           headers: {
             authorization: token,
-          }
-        })
+          },
+        });
         setList(res.data);
-        
       } catch (error) {
         console.log(error);
       }
@@ -41,9 +40,6 @@ const FriendsListForm = () => {
       setDisabled(true);
     }
   };
-
-
- 
 
   const submitToFriendId = async () => {
     // axios 요청하기
@@ -96,7 +92,7 @@ const FriendsListForm = () => {
       {/* 친구 리스트 */}
       <FriendsList>
         {list.map((item) => {
-          return <p>{item.nickname}</p>
+          return <p>{item.nickname}</p>;
         })}
       </FriendsList>
     </Wrap>

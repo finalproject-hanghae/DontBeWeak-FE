@@ -1,5 +1,6 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../../device";
@@ -24,7 +25,14 @@ const SingleDrugLine = ({ val }) => {
       <label
         htmlFor="didEat"
         onClick={() => {
-          setEatDone(true);
+          let sessionStorage = window.sessionStorage;
+          axios.patch("http://3.37.88.75/schedule/week", {
+              headers: {
+                authorization: sessionStorage.getItem("authorization"),
+              },
+              data: { datetime: new Date()+"", done: true },
+            })
+            .then((res) => setEatDone(true));
         }}
       >
         {eatDone ? (
