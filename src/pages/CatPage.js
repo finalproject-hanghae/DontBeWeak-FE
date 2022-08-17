@@ -9,9 +9,12 @@ import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 const CatPage = () => {
   const Data = useCatPageData();
   console.log(Data);
-  
+
   axios
-    .get("http://3.37.88.75/cat", { Data })
+    .get("http://3.37.88.75/cat", {
+      Data,
+      headers: { authorization: sessionStorage.getItem("authorization") },
+    })
     .then((response) => {
       console.log(response);
     })
