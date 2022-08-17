@@ -21,8 +21,9 @@ const FriendsListForm = () => {
           headers: {
             authorization: token,
           }
-        });
-        console.log(res);
+        })
+        setList(res.data);
+        
       } catch (error) {
         console.log(error);
       }
@@ -41,14 +42,8 @@ const FriendsListForm = () => {
     }
   };
 
-  // 기존 친구 리스트에 새 친구를 추가해주는 함수
 
-  const addToFriendList = () => {
-    setList((prevList) => {
-      return [isAddFriend, ...prevList];
-    });
-    setIsAddFriend("");
-  };
+ 
 
   const submitToFriendId = async () => {
     // axios 요청하기
@@ -84,7 +79,6 @@ const FriendsListForm = () => {
           <FriendAddBtn
             type="button"
             onClick={() => {
-              addToFriendList();
               submitToFriendId();
             }}
           >
@@ -102,7 +96,7 @@ const FriendsListForm = () => {
       {/* 친구 리스트 */}
       <FriendsList>
         {list.map((item) => {
-          return <p key={item} />;
+          return <p>{item.nickname}</p>
         })}
       </FriendsList>
     </Wrap>
