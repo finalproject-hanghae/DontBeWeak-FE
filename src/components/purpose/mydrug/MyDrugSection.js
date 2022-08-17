@@ -8,6 +8,7 @@ import { ColumnFlexDiv } from "../../../style/styled";
 import SingleDrugLine from "./SingleDrugLine";
 
 const MyDrugSection = () => {
+  const dispatch = useDispatch();
   const myDrug = useShowMeTheDrug();
 
   return (
