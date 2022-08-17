@@ -29,6 +29,7 @@ export const keepAuthDataMW = (userData, navigate) => {
         let sessionStorage = window.sessionStorage;
         console.log(response);
         sessionStorage.setItem("authorization", response.headers.authorization);
+        sessionStorage.setItem("username", userData.username);
         dispatch(keepAuthData(response.headers.authorization));
         navigate("/record");
       })
