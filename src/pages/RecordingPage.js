@@ -26,7 +26,6 @@ const RecordingPage = () => {
 
       <Routes>
         <Route index element={null} />
-        <Route path="search" element={Modals.Search} />
         <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
