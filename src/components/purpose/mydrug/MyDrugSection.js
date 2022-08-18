@@ -1,15 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { devices } from "../../../device";
 import useShowMeTheDrug from "../../../hooks/useShowMeTheDrug";
-import { loadDrugData } from "../../../redux/modules/drugs";
+import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { ColumnFlexDiv } from "../../../style/styled";
 import SingleDrugLine from "./SingleDrugLine";
 
 const MyDrugSection = () => {
   const dispatch = useDispatch();
-  const myDrug = useShowMeTheDrug();
+  const username = useParams().username;
+  const myDrug = useSelector((state)=>state.drugs.drugs)
+  console.log(myDrug)
+
+  React.useEffect(() => {
+    dispatch(loadDrugDataMW(username));
+  }, []);
 
   return (
     <MyDrugCard>

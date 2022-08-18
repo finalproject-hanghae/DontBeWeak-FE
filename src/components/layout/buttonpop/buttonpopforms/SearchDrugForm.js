@@ -15,7 +15,7 @@ import useHandleClick from "../../../../hooks/useHandleClick";
 import axios from "axios";
 
 import { useDispatch } from "react-redux";
-import { keepDrugData} from "../../../../redux/modules/drugs";
+import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 
 const SearchDrugForm = ({ setDrug }) => {
   const dispatch = useDispatch();
@@ -71,20 +71,13 @@ const SearchDrugForm = ({ setDrug }) => {
 
   const clickToAddDrug = () => {
     if (pickMe) {
-      let sessionStorage = window.sessionStorage;
-      axios({
-        method: "post",
-        url: "http://3.37.88.75/schedule",
-        headers: { authorization: sessionStorage.getItem("authorization") },
-        data: {
-          productName: pickMe,
-          customColor: "rgb(0,0,30)",
-          done: false,
-        },
-      }).then((res) => {
-        dispatch(keepDrugData(pickMe));
-        setDrug(false);
-      });
+      let tmpDrugData = {
+        productName: pickMe,
+        customColor: "rgb(0,0,30)",
+        done: false,
+      }
+      dispatch(keepDrugDataMW(tmpDrugData));
+      setDrug(false);
     }
     return;
   };

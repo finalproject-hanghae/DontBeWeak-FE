@@ -8,6 +8,7 @@ import { RowFlexDiv } from "../../../style/styled";
 
 const SingleDrugLine = ({ val }) => {
   const [eatDone, setEatDone] = React.useState(val.done);
+  console.log(val,eatDone)
   return (
     <SingleDrugLineBox style={{ backgroundColor: eatDone ? "none" : "none" }}>
       <ColorAndDrugName>
@@ -32,7 +33,7 @@ const SingleDrugLine = ({ val }) => {
               },
               data: { datetime: new Date()+"", done: true },
             })
-            .then((res) => setEatDone(true));
+            // .then((res) => setEatDone(true));
         }}
       >
         {eatDone ? (
