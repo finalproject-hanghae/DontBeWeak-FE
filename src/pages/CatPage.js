@@ -11,18 +11,6 @@ const CatPage = () => {
   const Data = useCatPageData();
   console.log(Data);
 
-  axios
-    .get( process.env.REACT_APP_DB_HOST + "/cat", {
-      Data,
-      headers: { authorization: sessionStorage.getItem("authorization") },
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error.response.data.massage);
-    });
-
   return (
     <PageSection>
       <FullPage>

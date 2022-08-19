@@ -1,5 +1,4 @@
 import axios from "axios";
-import useShowMeTheDrug from "../../hooks/useShowMeTheDrug";
 
 // Actions
 const KEEP = "drug/KEEP";
