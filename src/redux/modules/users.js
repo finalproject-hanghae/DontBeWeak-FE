@@ -51,6 +51,7 @@ export const awaySessionDataMW = () => {
     return async function (dispatch) {
       let sessionStorage = window.sessionStorage;
       sessionStorage.removeItem("authorization");
+      sessionStorage.removeItem("username");
       dispatch(awayAuthData());
     };
   };

@@ -8,7 +8,6 @@ const CatLevelRight = () => {
     <p>Lv.10</p>
     <p>Lv.20</p>
     <p>Lv.30</p>
-    <p>Lv.40</p>
     </SideCard>
   )
 }

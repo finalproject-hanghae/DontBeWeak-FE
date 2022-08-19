@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { CenterFlexDiv } from "../../../../style/styled";
 
 const CatLevelCenter = ({/*level*/}) => {
-  const level = 5;
-  const maxLevel = 40;
+  const level = 30;
+  const maxLevel = 30;
   return (
     <FlexBox>
       {/* {level}/{maxLevel} */}
@@ -15,7 +15,7 @@ const CatLevelCenter = ({/*level*/}) => {
             return <LevelHole>🍣</LevelHole>;
           })}
       {level &&
-        Array(20 - Math.floor(level / 2))
+        Array(15 - Math.floor(level / 2))
           .fill(0)
           .map((val, idx) => {
             return <LevelHole />;

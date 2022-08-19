@@ -15,13 +15,14 @@ const CatPage = () => {
 
   return (
     <PageSection>
+      {!Data.level && Modals.NotFound}
       <FullPage>
         <ColumnFlexDiv>
           {/* 고양이가 존재하지 않으면 잘못된 접근 추후 백엔드 처리 */}
 
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
-            <h1>{Data.level > 0 ? Data.username : Modals.NotFound}의 고양이</h1>
+            <h1>{Data?.username}의 고양이</h1>
             <div>
               <img src={Data?.catImg} alt="" />
             </div>
