@@ -75,7 +75,7 @@ const SearchDrugForm = ({ setDrug }) => {
         productName: pickMe,
         customColor: "rgb(0,0,30)",
         done: false,
-      }
+      };
       dispatch(keepDrugDataMW(tmpDrugData));
       setDrug(false);
     }
@@ -125,20 +125,28 @@ const SearchDrugForm = ({ setDrug }) => {
       </SearchList>
 
       {pickMe && (
-        <MyDrug>
-          <h4>{pickMe}</h4>
-          <img
-            src={Minus}
-            onClick={() => {
-              setPickMe("");
-              setHowEat("");
-            }}
-            alt="plus_icon"
-          />
-        </MyDrug>
-      )}
-      <small>{howEat}</small>
+        <PickMeBox>
+          <MyDrug>
+            <h4>{pickMe}</h4>
+            <input
+              style={{
+                border: "none",
+              }}
+              type="color"
+            />
+            <img
+              src={Minus}
+              onClick={() => {
+                setPickMe("");
+                setHowEat("");
+              }}
+              alt="minus_icon"
+            />
+          </MyDrug>
 
+          <small>{howEat}</small>
+        </PickMeBox>
+      )}
       <AddBtn onClick={clickToAddDrug}> 등록 </AddBtn>
     </Wrap>
   );
@@ -149,9 +157,8 @@ const SearchDrugForm = ({ setDrug }) => {
 const Wrap = styled(ColumnFlexDiv)`
   width: 90%;
   height: 560px;
-  background:red;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 `;
 
@@ -161,7 +168,7 @@ const Observer = styled.div`
 
 const DirectSearch = styled(RowFlexDiv)`
   width: 95%;
-  height: 15%;
+  height: 10%;
   align-items: center;
   justify-content: center;
   span {
@@ -177,7 +184,7 @@ const DirectSearch = styled(RowFlexDiv)`
 
 const SearchList = styled.div`
   width: 93%;
-  height: 40%;
+  height: 30%;
   margin-bottom: 5%;
   line-height: 3rem;
   padding-left: 2%;
@@ -202,8 +209,7 @@ const SearchList = styled.div`
 const SearchForm = styled.form`
   width: 100%;
   overflow: hidden;
-  margin-top: 5%;
-  padding: 1% 0;
+  margin-top: 8%;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -242,14 +248,20 @@ const SearchBtn = styled.button`
   cursor: pointer;
 `;
 
-const MyDrug = styled.div`
+const PickMeBox = styled.div`
   width: 95%;
-  background: red;
-  height: 3em;
+  small {
+  }
+`;
+
+const MyDrug = styled.div`
+  width: 100%;
+  height: 3.2em;
   background-color: #fff3aa;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3%;
   h4 {
     padding-left: 5%;
     line-height: 1.2em;
@@ -265,7 +277,7 @@ const MyDrug = styled.div`
 const AddBtn = styled.button`
   width: 95%;
   height: 3rem;
-  margin: 5% 0;
+  margin: 8% 0;
   color: #fff;
   background: #f98532;
   text-align: center;
