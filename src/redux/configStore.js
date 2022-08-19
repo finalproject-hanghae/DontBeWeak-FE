@@ -5,10 +5,11 @@ import {
   } from "redux";
   import thunk from "redux-thunk";
   import users from "./modules/users";
+  import drugs from "./modules/drugs";
   
   const middlewares = [thunk];
   const enhancer = applyMiddleware(...middlewares);
-  const rootReducer = combineReducers({ users });
+  const rootReducer = combineReducers({ users, drugs });
   
   const store = createStore(rootReducer, enhancer);
   

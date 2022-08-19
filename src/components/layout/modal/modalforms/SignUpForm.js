@@ -24,7 +24,7 @@ function SignUpForm() {
     try {
       await axios({
         method: "post",
-        url: "http://3.37.88.75/user/signup",
+        url:  process.env.REACT_APP_DB_HOST + "/user/signup",
         data: {
           username: username,
           nickname: nickname,

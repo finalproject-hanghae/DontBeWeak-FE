@@ -23,7 +23,7 @@ const useHandleClick = () => {
     };
   }, [openedModalRef]);
 
-  return [isOpened,showFriendsList,openedModalRef]
+  return [isOpened,setIsOpened,showFriendsList,openedModalRef]
 };
 
 export default useHandleClick;

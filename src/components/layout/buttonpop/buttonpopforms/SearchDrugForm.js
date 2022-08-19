@@ -14,7 +14,11 @@ import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
 import axios from "axios";
 
-const SearchDrugForm = () => {
+import { useDispatch } from "react-redux";
+import { keepDrugDataMW } from "../../../../redux/modules/drugs";
+
+const SearchDrugForm = ({ setDrug }) => {
+  const dispatch = useDispatch();
   //옵저버 선언
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
@@ -67,17 +71,13 @@ const SearchDrugForm = () => {
 
   const clickToAddDrug = () => {
     if (pickMe) {
-      let sessionStorage = window.sessionStorage;
-      axios({
-        method: "post",
-        url: "http://3.37.88.75/schedule",
-        headers: { authorization: sessionStorage.getItem("authorization") },
-        data: {
-          productName: pickMe,
-          customColor: "rgb(0,0,30)",
-          done: false,
-        },
-      }).then((res) => console.log(res));
+      let tmpDrugData = {
+        productName: pickMe,
+        customColor: "rgb(0,0,30)",
+        done: false,
+      }
+      dispatch(keepDrugDataMW(tmpDrugData));
+      setDrug(false);
     }
     return;
   };
