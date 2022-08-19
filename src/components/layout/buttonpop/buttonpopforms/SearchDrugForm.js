@@ -147,8 +147,9 @@ const SearchDrugForm = () => {
 // styled-component 적용
 
 const Wrap = styled(ColumnFlexDiv)`
-  width: 95%;
-  min-height: 70%;
+  width: 90%;
+  height: 560px;
+  background:red;
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -243,14 +244,15 @@ const SearchBtn = styled.button`
 
 const MyDrug = styled.div`
   width: 95%;
-  height: 3rem;
+  background: red;
+  height: 3em;
   background-color: #fff3aa;
   display: flex;
   justify-content: space-between;
   align-items: center;
   h4 {
     padding-left: 5%;
-    line-height: 0.5em;
+    line-height: 1.2em;
   }
   img {
     width: 25px;

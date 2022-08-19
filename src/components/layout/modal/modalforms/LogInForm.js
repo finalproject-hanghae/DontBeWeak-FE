@@ -54,8 +54,8 @@ const LogInForm = () => {
       <form onSubmit={submitToLogin}>
         <ColumnFlexDiv>
           <h2 style={{ margin: "37px auto 50px auto" }}>로그인</h2>
-          <LogInInput type="text" placeholder="ID" ref={logInIDRef} />
-
+          
+          <LogInInput type="text" placeholder="ID" ref={logInIDRef}  />
           <LogInInput type="password" placeholder="PW" ref={logInPWRef} />
 
           <LogInButton>로그인</LogInButton>

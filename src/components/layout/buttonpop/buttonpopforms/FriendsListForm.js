@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 
 const FriendsListForm = () => {
+  const navigate = useNavigate();
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
   const [list, setList] = React.useState([]);
@@ -23,12 +25,13 @@ const FriendsListForm = () => {
           },
         });
         setList(res.data);
+        console.log("안녕 난 모달을 처음 띄웠을 때와 친구등록 시에만 떠야해");
       } catch (error) {
         console.log(error);
       }
     }
     gets();
-  }, []);
+  }, [isAddFriend]);
 
   // github Issues #50 >> 'isAddFriend state 충돌현상' 일단 해결..
   const [disabled, setDisabled] = React.useState(true);
@@ -55,8 +58,7 @@ const FriendsListForm = () => {
     })
       .then((res) => {
         alert("친구추가에 성공하셨습니다.");
-        isAddFriend(false);
-        window.location.reload();
+        setIsAddFriend(false);
       })
       .catch((err) => console.log(err));
   };
@@ -72,12 +74,7 @@ const FriendsListForm = () => {
             ref={friendIdRef}
             onChange={change}
           />
-          <FriendAddBtn
-            type="button"
-            onClick={() => {
-              submitToFriendId();
-            }}
-          >
+          <FriendAddBtn type="button" onClick={submitToFriendId}>
             친구추가+
           </FriendAddBtn>
         </TrueForm>
@@ -92,7 +89,15 @@ const FriendsListForm = () => {
       {/* 친구 리스트 */}
       <FriendsList>
         {list.map((item) => {
-          return <p>{item.nickname}</p>;
+          return (
+            <p
+              onClick={() => {
+                navigate("/cat/{username}");
+              }}
+            >
+              {item.nickname}
+            </p>
+          );
         })}
       </FriendsList>
     </Wrap>
@@ -151,6 +156,9 @@ const FriendsList = styled(ColumnFlexDiv)`
   font-size: 1rem;
   line-height: 10%;
   overflow: auto;
+  p {
+    cursor: pointer;
+  }
   &::-webkit-scrollbar {
     width: 10px;
   }
