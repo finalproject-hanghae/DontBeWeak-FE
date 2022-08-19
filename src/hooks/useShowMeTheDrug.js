@@ -8,7 +8,7 @@ const useShowMeTheDrug = () => {
 
   React.useEffect(() => {
     let sessionStorage = window.sessionStorage;
-    axios(`http://3.37.88.75/schedule/${username}`)
+    axios( process.env.REACT_APP_DB_HOST + `/schedule/${username}`)
       .then((res) => {
         console.log(res);
         setMyDrug(res.data);

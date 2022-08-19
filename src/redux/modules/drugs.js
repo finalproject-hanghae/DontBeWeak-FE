@@ -20,7 +20,7 @@ export function loadDrugData(myDrug) {
 //middlewares
 export function loadDrugDataMW(username) {
   return function (dispatch) {
-    axios(`http://3.37.88.75/schedule/${username}`)
+    axios( process.env.REACT_APP_DB_HOST + `/schedule/${username}`)
       .then((res) => {
         console.log(res);
         let myDrug = res.data;
@@ -36,7 +36,7 @@ export const keepDrugDataMW = (tmpDrugData) => {
         let sessionStorage = window.sessionStorage;
         axios({
           method: "post",
-          url: "http://3.37.88.75/schedule",
+          url:  process.env.REACT_APP_DB_HOST + "/schedule",
           headers: { authorization: sessionStorage.getItem("authorization") },
           data: tmpDrugData,
         }).then((res)=>{

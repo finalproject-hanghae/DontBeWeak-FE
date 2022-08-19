@@ -27,7 +27,7 @@ const SingleDrugLine = ({ val }) => {
         htmlFor="didEat"
         onClick={() => {
           let sessionStorage = window.sessionStorage;
-          axios.patch("http://3.37.88.75/schedule/week", {
+          axios.patch( process.env.REACT_APP_DB_HOST + "/schedule/week", {
               headers: {
                 authorization: sessionStorage.getItem("authorization"),
               },

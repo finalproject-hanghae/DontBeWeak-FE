@@ -12,7 +12,7 @@ const CatPage = () => {
   console.log(Data);
 
   axios
-    .get("http://3.37.88.75/cat", {
+    .get( process.env.REACT_APP_DB_HOST + "/cat", {
       Data,
       headers: { authorization: sessionStorage.getItem("authorization") },
     })
