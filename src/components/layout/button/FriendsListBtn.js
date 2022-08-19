@@ -6,7 +6,7 @@ import AddBtn from "../../../assets/images/friend_add_icon.png";
 import useHandleClick from "../../../hooks/useHandleClick";
 
 const FriendsListBtn = () => {
-  const [friends, showFriendsList, friendListModalRef] = useHandleClick();
+  const [friends, setFriends, showFriendsList, friendListModalRef] = useHandleClick();
 
   return (
     <>

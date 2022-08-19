@@ -19,7 +19,7 @@ const FriendsListForm = () => {
   React.useEffect(() => {
     async function gets() {
       try {
-        const res = await axios.get("http://3.37.88.75/friend", {
+        const res = await axios.get( process.env.REACT_APP_DB_HOST + "/friend", {
           headers: {
             authorization: token,
           },
@@ -48,7 +48,7 @@ const FriendsListForm = () => {
     // axios 요청하기
     await axios({
       method: "post",
-      url: "http://3.37.88.75/friend",
+      url:  process.env.REACT_APP_DB_HOST + "/friend",
       data: {
         friendname: friendIdRef.current.value,
       },

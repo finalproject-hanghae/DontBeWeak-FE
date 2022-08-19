@@ -22,15 +22,16 @@ export const keepAuthDataMW = (userData, navigate) => {
   return async function (dispatch) {
 
     axios
-      .post("http://3.37.88.75/login",
+      .post( process.env.REACT_APP_DB_HOST + "/login",
         userData
       )
       .then((response) => {
         let sessionStorage = window.sessionStorage;
         console.log(response);
         sessionStorage.setItem("authorization", response.headers.authorization);
+        sessionStorage.setItem("username", userData.username);
         dispatch(keepAuthData(response.headers.authorization));
-        navigate("/record");
+        navigate("/record"+userData.username);
       })
       .catch((error) => {
         console.log(error);

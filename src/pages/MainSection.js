@@ -14,7 +14,7 @@ const MainSection = () => {
       <HeaderNavBar />
       <Routes>
         <Route path="/*" element={<StartingPage />} />
-        <Route path="/record/*" element={<RecordingPage />} />
+        <Route path="/record/:username/*" element={<RecordingPage />} />
         <Route path="/cat/:username" element={<CatPage />} />
       </Routes>
     </MainCard>

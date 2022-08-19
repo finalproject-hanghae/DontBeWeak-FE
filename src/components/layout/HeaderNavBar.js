@@ -6,9 +6,10 @@ import Logo from "../../assets/images/logo_small.png";
 import { awaySessionDataMW } from "../../redux/modules/users";
 
 const HeaderNavBar = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  let sessionStorage = window.sessionStorage;
   const authorization = useSelector((state) => state.users.authorization);
-  const username = "Hajun";
+  const username = sessionStorage.getItem("username");
   return (
     <NavBar>
       {/* 로그인 전 후 분기 나눠야함 */}
@@ -17,15 +18,17 @@ const HeaderNavBar = () => {
       </LinkC>
 
       <LinkButtons>
-        <LinkC className="tabLink" to="/record">
+        <LinkC className="tabLink" to="/">
           About
         </LinkC>
-        <LinkC className="tabLink" to="/record">
+        <LinkC className="tabLink" to={"/record/"+username}>
           하루기록
         </LinkC>
-        <LinkC className="tabLink" to={"/cat/" + username}>
-          고양이 상태
-        </LinkC>
+        {authorization && (
+          <LinkC className="tabLink" to={"/cat/" + username}>
+            고양이 상태
+          </LinkC>
+        )}
         {/* <LinkC to="/">로그아웃</LinkC> */}
       </LinkButtons>
       <LinkButtons>
@@ -40,7 +43,9 @@ const HeaderNavBar = () => {
             </LinkC>
           </>
         ) : (
-          <LinkC to="/" onClick={()=>dispatch(awaySessionDataMW())}>로그아웃</LinkC>
+          <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
+            로그아웃
+          </LinkC>
         )}
       </LinkButtons>
     </NavBar>
