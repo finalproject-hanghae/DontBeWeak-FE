@@ -15,14 +15,13 @@ const StartingPage = () => {
         {/* 버튼 클릭 시 로그인 창 이동 */}
         <button
           onClick={() => {
-            navigate("/signup");
+            navigate("/login");
           }}
         >
           치료하러가기
         </button>
       </TextBox>
       <ImgBox /> {/* BackgroundImg : MainCatImg */}
-
       {/* Modal Route */}
       <Routes>
         <Route index element={null} />
@@ -33,7 +32,6 @@ const StartingPage = () => {
     </PageSection>
   );
 };
-
 
 // styled-component 적용
 
