@@ -12,42 +12,56 @@ const HeaderNavBar = () => {
   const username = sessionStorage.getItem("username");
   return (
     <NavBar>
-      {/* 로그인 전 후 분기 나눠야함 */}
-      <LinkC to="/">
-        <img src={Logo} alt="logo" />
-      </LinkC>
-
-      <LinkButtons>
-        <LinkC className="tabLink" to="/">
-          About
-        </LinkC>
-        <LinkC className="tabLink" to={"/record/"+username}>
-          하루기록
-        </LinkC>
-        {authorization && (
-          <LinkC className="tabLink" to={"/cat/" + username}>
-            고양이 상태
+      {!authorization ? (
+        <>
+        {/* 로그아웃 */}
+          <LinkC to="/">
+            <img src={Logo} alt="logo" />
           </LinkC>
-        )}
-        {/* <LinkC to="/">로그아웃</LinkC> */}
-      </LinkButtons>
-      <LinkButtons>
-        {!authorization ? (
-          <>
-            <LinkC className="smalla" to="/login">
-              로그인
+
+          <LinkButtons>
+            <LinkC className="tabLink" to="/">
+              About
             </LinkC>
-            <div />
-            <LinkC className="smalla" to="/signup">
-              회원가입
+            <LinkC className="tabLink" to="/login">
+              하루기록
             </LinkC>
-          </>
-        ) : (
+            <LinkC className="tabLink" to="/login">
+              고양이 상태
+            </LinkC>
+          </LinkButtons>
+
+          <LinkC className="smalla" to="/login">
+            로그인
+          </LinkC>
+          <LinkC className="smalla" to="/signup">
+            회원가입
+          </LinkC>
+        </>
+      ) : (
+        <>
+        {/* 로그인 */}
+          <LinkC to="/">
+            <img src={Logo} alt="logo" />
+          </LinkC>
+
+          <LinkButtons>
+            <LinkC className="tabLink" to="/">
+              About
+            </LinkC>
+            <LinkC className="tabLink" to={"/record/" + username}>
+              하루기록
+            </LinkC>
+            <LinkC className="tabLink" to={"/cat/" + username}>
+              고양이 상태
+            </LinkC>
+          </LinkButtons>
+          
           <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
             로그아웃
           </LinkC>
-        )}
-      </LinkButtons>
+        </>
+      )}
     </NavBar>
   );
 };
