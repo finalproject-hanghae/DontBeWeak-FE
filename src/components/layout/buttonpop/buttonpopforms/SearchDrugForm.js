@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
 // Open API
 import { drugSearchAPI } from "../../../../api/drugSearch";
 
@@ -14,7 +14,7 @@ import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
 import axios from "axios";
 
-import { useDispatch } from "react-redux";
+import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 
 const SearchDrugForm = ({ setDrug }) => {
@@ -128,12 +128,7 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            <input
-              style={{
-                border: "none",
-              }}
-              type="color"
-            />
+            <ColorPicker/>
             <img
               src={Minus}
               onClick={() => {
@@ -143,7 +138,7 @@ const SearchDrugForm = ({ setDrug }) => {
               alt="minus_icon"
             />
           </MyDrug>
-
+              
           <small>{howEat}</small>
         </PickMeBox>
       )}

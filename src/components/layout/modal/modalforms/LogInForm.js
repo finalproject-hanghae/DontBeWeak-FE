@@ -33,22 +33,6 @@ const LogInForm = () => {
   };
 
   return (
-    // <>
-    //   <form onSubmit={submitToLogin}>
-    //     <ColumnFlexDiv>
-    //       <h3>로그인</h3>
-    //       <input type="text" placeholder="ID" ref={logInIDRef} />
-
-    //       <input type="password" placeholder="PW" ref={logInPWRef} />
-    //       <small ref={logInAlertRef}></small>
-    //       <button>로그인</button>
-    //     </ColumnFlexDiv>
-    //   </form>
-    //   <ColumnFlexDiv>
-    //     <button>카카오로그인</button>
-    //     <button>네이버로그인</button>
-    //   </ColumnFlexDiv>
-    // </>
 
     <LogInModalBox>
       <form onSubmit={submitToLogin}>

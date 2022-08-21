@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { PageSection } from "../style/styled";
 import Modals from "../components/layout/modal/modalList";
@@ -6,22 +7,40 @@ import styled from "styled-components";
 import MainCatImg from "../assets/images/main_cat2.png";
 
 const StartingPage = () => {
+  const authorization = useSelector((state) => state.users.authorization);
   const navigate = useNavigate();
 
   return (
     <PageSection>
       <TextBox>
-        <h2>우리 아기고양이를 치료해주세요</h2>
-        {/* 버튼 클릭 시 로그인 창 이동 */}
-        <button
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          치료하러가기
-        </button>
+        <h2>
+          아기고양이를 키우면서
+          <br />
+          영양제도 챙겨 먹어보세요!
+        </h2>
+
+        {/* (상태 분기 처리) 로그아웃 : /login , 로그인 : /record/ */}
+        {!authorization ? (
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            영양제 기록하기
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              navigate("/record/:username/");
+            }}
+          >
+            영양제 기록하기
+          </button>
+        )}
       </TextBox>
-      <ImgBox /> {/* BackgroundImg : MainCatImg */}
+
+      <ImgBox /> {/* 고양이 이미지: background-img 속성 */}
+
       {/* Modal Route */}
       <Routes>
         <Route index element={null} />
@@ -34,7 +53,6 @@ const StartingPage = () => {
 };
 
 // styled-component 적용
-
 const TextBox = styled.div`
   width: 490px;
   overflow: hidden;
@@ -52,6 +70,7 @@ const TextBox = styled.div`
     background-color: #f98532;
     color: #fff;
     font-size: 1.1rem;
+    cursor: pointer;
   }
 `;
 const ImgBox = styled.div`
