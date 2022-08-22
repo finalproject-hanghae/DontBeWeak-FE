@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { keepFriendDataMW, loadFriendDataMW } from "../../../../redux/modules/friends";
+import { FriendAddBtn, FriendIdInput, FriendsList } from "../../../../style/friendList";
 
 const FriendsListForm = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const FriendsListForm = () => {
     }
   };
 
-  const submitToFriendId = async () => {
+  const submitToFriendId = () => {
     const username = friendIdRef.current.value
     try {
     dispatch(keepFriendDataMW(username))
@@ -74,7 +75,7 @@ const FriendsListForm = () => {
       {/* 친구 리스트 */}
       <FriendsList>
         {friendList.map((val,idx) => {
-          return <p>{val.nickname}</p>;
+          return <p key={'friendListItem'+idx}>{val.nickname}</p>;
         })}
       </FriendsList>
     </Wrap>
@@ -94,57 +95,7 @@ const TrueForm = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const FalseForm = styled.div`
-  width: 100%;
-  height: 60px;
-  border-bottom: 1px solid #a5a5a5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const FriendIdInput = styled.input`
-  width: 325px;
-  height: 37px;
-  border: 0.5px solid #282828;
-  border-radius: 5px;
-  padding-left: 10px;
-  color: #9a9a9a;
-  outline: none;
-`;
-const FriendAddBtn = styled.button`
-  width: 111px;
-  height: 34px;
-  background-color: transparent;
-  border: 1px solid #a5a5a5;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: 800;
-  &:hover {
-    background-color: #f98532;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
-`;
-const FriendsList = styled(ColumnFlexDiv)`
-  width: 100%;
-  height: 150px;
-  padding: 1%;
-  font-size: 1rem;
-  line-height: 10%;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #f98532;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: none;
-  }
+const FalseForm = styled(TrueForm)`
 `;
 
 export default FriendsListForm;

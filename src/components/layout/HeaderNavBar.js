@@ -21,13 +21,16 @@ const HeaderNavBar = () => {
         <LinkC className="tabLink" to="/">
           About
         </LinkC>
-        <LinkC className="tabLink" to={"/record/"+username}>
-          하루기록
-        </LinkC>
         {authorization && (
-          <LinkC className="tabLink" to={"/cat/" + username}>
-            고양이 상태
-          </LinkC>
+          <>
+            <LinkC className="tabLink" to={"/record/" + username}>
+              하루기록
+            </LinkC>
+
+            <LinkC className="tabLink" to={"/cat/" + username}>
+              고양이 상태
+            </LinkC>
+          </>
         )}
         {/* <LinkC to="/">로그아웃</LinkC> */}
       </LinkButtons>
@@ -53,10 +56,11 @@ const HeaderNavBar = () => {
 };
 
 const NavBar = styled(RowFlexDiv)`
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 82px;
   border-bottom: solid 1px #a5a5a5;
+  padding: 0px 10px;
   h1 {
     /* line-height: 100%; */
     font-size: 30px;
