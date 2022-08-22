@@ -92,7 +92,7 @@ const FriendsListForm = () => {
           return (
             <p
               onClick={() => {
-                navigate("/cat/{username}");
+                navigate("/cat/"+item.username);
               }}
             >
               {item.nickname}

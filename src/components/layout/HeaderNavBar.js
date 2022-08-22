@@ -20,7 +20,7 @@ const HeaderNavBar = () => {
           </LinkC>
 
           <LinkButtons>
-            <LinkC className="tabLink" to="/">
+            <LinkC className="tabLink" to="/about">
               About
             </LinkC>
             <LinkC className="tabLink" to="/login">
@@ -46,7 +46,7 @@ const HeaderNavBar = () => {
           </LinkC>
 
           <LinkButtons>
-            <LinkC className="tabLink" to="/">
+            <LinkC className="tabLink" to="/about">
               About
             </LinkC>
             <LinkC className="tabLink" to={"/record/" + username}>
