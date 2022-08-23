@@ -1,9 +1,9 @@
 name: React build
 
 on:
-  push: # master Branch에서 push 이벤트가 일어났을 때만 실행
+  push: # main Branch에서 push 이벤트가 일어났을 때만 실행
     branches:
-      - main
+      - Release
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout # 레포지토리 체크아웃
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
