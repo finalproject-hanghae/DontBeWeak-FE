@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { devices } from "../../../device";
 import { RowFlexDiv } from "../../../style/styled";
 
-const SingleDrugLine = ({ val }) => {
+const SingleDrugLine = ({ val, idx }) => {
   const [eatDone, setEatDone] = React.useState(val.done);
   console.log(val,eatDone)
   return (
@@ -24,7 +24,7 @@ const SingleDrugLine = ({ val }) => {
         </span>
       </ColorAndDrugName>
       <label
-        htmlFor="didEat"
+        htmlFor={"didEat"+idx}
         onClick={() => {
           let sessionStorage = window.sessionStorage;
           axios.patch( process.env.REACT_APP_DB_HOST + "/schedule/week", {
@@ -33,14 +33,14 @@ const SingleDrugLine = ({ val }) => {
               },
               data: { datetime: new Date()+"", done: true },
             })
-            // .then((res) => setEatDone(true));
+            .then((res) => setEatDone(true));
         }}
       >
         {eatDone ? (
           <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
         ) : null}
         <input
-          id="didEat"
+          id={"didEat"+idx}
           type={"checkbox"}
           defaultChecked={eatDone ? true : false}
           disabled={eatDone ? true : false}

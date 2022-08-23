@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { CenterFlexDiv } from "../../../../style/styled";
 
-const CatLevelCenter = ({/*level*/}) => {
-  const level = 30;
+const CatLevelCenter = ({level}) => {
+  // const level = 30;
   const maxLevel = 30;
   return (
     <FlexBox>

@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-const ColorPicker = () => {
-  const [color, setColor] = useState("#000000");
-
+const ColorPicker = ({color,setColor}) => {
   const colorRef = useRef();
   console.log(colorRef.current);
 

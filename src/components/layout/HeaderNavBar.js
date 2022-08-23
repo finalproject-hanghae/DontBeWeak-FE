@@ -12,65 +12,55 @@ const HeaderNavBar = () => {
   const username = sessionStorage.getItem("username");
   return (
     <NavBar>
-      {!authorization ? (
-        <>
-        {/* 로그아웃 */}
-          <LinkC to="/">
-            <img src={Logo} alt="logo" />
-          </LinkC>
+      {/* 로그인 전 후 분기 나눠야함 */}
+      <LinkC to="/">
+        <img src={Logo} alt="logo" />
+      </LinkC>
 
-          <LinkButtons>
-            <LinkC className="tabLink" to="/">
-              About
-            </LinkC>
-            <LinkC className="tabLink" to="/login">
-              하루기록
-            </LinkC>
-            <LinkC className="tabLink" to="/login">
-              고양이 상태
-            </LinkC>
-          </LinkButtons>
-
-          <LinkC className="smalla" to="/login">
-            로그인
-          </LinkC>
-          <LinkC className="smalla" to="/signup">
-            회원가입
-          </LinkC>
-        </>
-      ) : (
-        <>
-        {/* 로그인 */}
-          <LinkC to="/">
-            <img src={Logo} alt="logo" />
-          </LinkC>
-
-          <LinkButtons>
-            <LinkC className="tabLink" to="/">
-              About
-            </LinkC>
+      <LinkButtons>
+        <LinkC className="tabLink" to="/">
+          About
+        </LinkC>
+        {authorization && (
+          <>
             <LinkC className="tabLink" to={"/record/" + username}>
               하루기록
             </LinkC>
+
             <LinkC className="tabLink" to={"/cat/" + username}>
               고양이 상태
             </LinkC>
-          </LinkButtons>
-          
+          </>
+        )}
+        {/* <LinkC to="/">로그아웃</LinkC> */}
+      </LinkButtons>
+      <LinkButtons>
+        {!authorization ? (
+          <>
+            <LinkC className="smalla" to="/login">
+              로그인
+            </LinkC>
+            <div />
+            <LinkC className="smalla" to="/signup">
+              회원가입
+            </LinkC>
+          </>
+        ) : (
           <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
             로그아웃
           </LinkC>
-        </>
-      )}
+        )}
+      </LinkButtons>
     </NavBar>
   );
 };
 
 const NavBar = styled(RowFlexDiv)`
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 82px;
   border-bottom: solid 1px #a5a5a5;
+  padding: 0px 10px;
   h1 {
     /* line-height: 100%; */
     font-size: 30px;

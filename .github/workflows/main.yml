@@ -8,11 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout.               # 레포지토리 체크아웃 main으로
-        uses: actions/checkout@main
+      - name: Checkout.               # 레포지토리 체크아웃 Release로
+        uses: actions/checkout@v3
+        with:
+          path: Release
 
       - name: Cache node modules      # node modules 캐싱
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
