@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 스타일 관련
 import styled from "styled-components";
@@ -17,10 +18,6 @@ const FriendsListForm = () => {
   React.useEffect(() => {
     dispatch(loadFriendDataMW())
   }, []);
-
-  const showFriendAddInput = () => {
-    setIsAddFriend(true);
-  };
 
   // github Issues #50 >> 'isAddFriend state 충돌현상' 일단 해결..
   const [disabled, setDisabled] = React.useState(true);
@@ -55,12 +52,7 @@ const FriendsListForm = () => {
             ref={friendIdRef}
             onChange={change}
           />
-          <FriendAddBtn
-            type="button"
-            onClick={() => {
-              submitToFriendId();
-            }}
-          >
+          <FriendAddBtn type="button" onClick={submitToFriendId}>
             친구추가+
           </FriendAddBtn>
         </TrueForm>
@@ -68,7 +60,7 @@ const FriendsListForm = () => {
         // 친구 목록 Title
         <FalseForm>
           <h3>친구 목록</h3>
-          <FriendAddBtn onClick={showFriendAddInput}>친구추가+</FriendAddBtn>
+          <FriendAddBtn onClick={()=>setIsAddFriend(true)}>친구추가+</FriendAddBtn>
         </FalseForm>
       )}
 
@@ -97,5 +89,4 @@ const TrueForm = styled.div`
 `;
 const FalseForm = styled(TrueForm)`
 `;
-
 export default FriendsListForm;
