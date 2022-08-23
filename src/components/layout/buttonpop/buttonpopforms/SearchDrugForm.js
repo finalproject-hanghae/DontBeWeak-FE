@@ -24,7 +24,7 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
-
+  const [color, setColor] = React.useState("#000000");
 
   console.log(pageNumber);
 
@@ -58,9 +58,9 @@ const SearchDrugForm = ({ setDrug }) => {
   //
 
   const [drugName, setDrugName] = React.useState("");
+
   const [pickMe, setPickMe] = React.useState();
   const [howEat, setHowEat] = React.useState();
-  const [color, setColor] = React.useState("#000000");
 
   const submitToSearch = async (e) => {
     e.preventDefault();
@@ -70,20 +70,11 @@ const SearchDrugForm = ({ setDrug }) => {
 
   const [isDirect, showDirectInput, DirectModalRef] = useHandleClick();
 
-  // 컬러피커 핸들러
-  const colorRef = React.useRef("");
-  const handleColorChange = (e) => {
-    setColor(e.target.value);
-  };
-  const customColor = colorRef.current.value;
-  console.log(customColor, "랴랴ㅏ커스텀 컬러 값이ㅣ닷");
-  //
-
   const clickToAddDrug = () => {
     if (pickMe) {
       let tmpDrugData = {
         productName: pickMe,
-        customColor: customColor,
+        customColor: color,
         done: false,
       };
       dispatch(keepDrugDataMW(tmpDrugData));
@@ -138,16 +129,7 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            {/* 컬러피커 */}
-            <Pallete color={color} onClick={() => colorRef.current.click()}>
-              <input
-                type="color"
-                value={color}
-                onChange={handleColorChange}
-                ref={colorRef}
-                hidden
-              />
-            </Pallete>
+            <ColorPicker color={color} setColor={setColor}/>
             <img
               src={Minus}
               onClick={() => {
@@ -157,7 +139,7 @@ const SearchDrugForm = ({ setDrug }) => {
               alt="minus_icon"
             />
           </MyDrug>
-
+              
           <small>{howEat}</small>
         </PickMeBox>
       )}
@@ -266,17 +248,6 @@ const PickMeBox = styled.div`
   width: 95%;
   small {
   }
-`;
-const Pallete = styled.div`
-  width: 1.6rem;
-  height: 1.6rem;
-  /* border: 0.2rem solid orange; */
-  box-sizing: border-box;
-  border-radius: 5rem;
-  background: ${(props) => props.color};
-  position: absolute;
-  right: 5rem;
-  cursor: pointer;
 `;
 
 const MyDrug = styled.div`

@@ -34,7 +34,8 @@ const SingleDrugLine = ({ val, idx }) => {
               data: { datetime: new Date()+"", done: true },
             })
             .then((res) => setEatDone(true));
-        }}
+          
+        }} 
       >
         {eatDone ? (
           <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
