@@ -1,31 +1,40 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import SearchModal from "../components/modals/SearchModal";
-import NotFoundModal from "../components/modals/NotFoundModal";
-import SideFriendBar from "../components/SideFriendBar";
-import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
+import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
+import FriendsListBtn from "../components/layout/button/FriendsListBtn";
+import { ColumnFlexDiv, PageSection} from "../style/styled";
+import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
+
+import styled from "styled-components";
+
+import CalenderSection from "../components/purpose/calender/CalenderSection"
+import Modals from "../components/layout/modal/modalList";
 
 const RecordingPage = () => {
-  const navigate = useNavigate();
   return (
     <PageSection>
-      <ColumnFlexDiv className="Padding">
-        {/* 달력 컴포넌트 만들어서 집어넣기 */}
-        <div>달력</div>
-        {/* 체크박스박스 컴포넌트 만들어서 집어넣기 */}
-        <div>체크박스박스</div>
-      </ColumnFlexDiv>
-      {/* 버튼 수정해서 집어넣기 */}
-      <SideFriendBar />
+      <CalenderAndDrug className="Padding">
+
+        <CalenderSection />
+        <MyDrugSection />
+      </CalenderAndDrug>
+
+
+      <SearchDrugBtn />
+      <FriendsListBtn />
 
       <Routes>
         <Route index element={null} />
-        <Route path="search" element={<SearchModal />} />
-        <Route path="*" element={<NotFoundModal />} />
+        <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
   );
 };
+
+const CalenderAndDrug = styled(ColumnFlexDiv)`
+  height: 90%;
+  justify-content: space-between;
+`;
 
 export default RecordingPage;

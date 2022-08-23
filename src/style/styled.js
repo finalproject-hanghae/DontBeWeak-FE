@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
@@ -7,11 +7,11 @@ export const PageSection = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff7c7;
-  padding:45px 0px 0px;
+  background-color: #fff9d3;
+  padding: 45px 0px 0px;
   @media ${devices.tablet} {
     width: 100%;
   }
@@ -19,7 +19,10 @@ export const PageSection = styled.div`
     display: relative;
   }
   .Padding {
-    padding:0px 45px;
+    padding: 0px 45px;
+    @media ${devices.tablet} {
+      padding: 0px 5px;
+    }
   }
 `;
 
@@ -35,25 +38,25 @@ export const RowFlexDiv = styled.div`
 `;
 
 export const CenterFlexDiv = styled.div`
-height:100%;
-width:100%;
-display:absolute;
-display: flex;
-justify-content:center;
-align-items:center;
-`
+  height: 100%;
+  width: 100%;
+  display: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const RelaitiveDiv = styled.div`
   position: relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 `;
 
 //a tag로 이루어진 Link 태그의 밑줄 및 텍스트 컬러 제거
 export const LinkC = styled(Link)`
-  text-decoration:none;
+  text-decoration: none;
   color: black;
-`
+`;

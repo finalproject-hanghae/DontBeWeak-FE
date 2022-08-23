@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NotFoundPage = () => {
+const NotFoundForm = () => {
   return (
     <div>잘못된 접근입니다.</div>
   )
 }
 
-export default NotFoundPage
+export default NotFoundForm
