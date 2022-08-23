@@ -13,20 +13,20 @@ jobs:
         with:
           path: Release
 
-      - name: Cache node modules      # node modules 캐싱
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+      # - name: Cache node modules      # node modules 캐싱
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.OS }}-build-
+      #       ${{ runner.OS }}-
 
       - name: Install node modules    # node modules 설치
-        run: yarn install             # 스크립트 실행
+        run: npm install             # 스크립트 실행
 
       - name: Build                   # Build
-        run: yarn build
+        run: npm run build
 
       - name: Deploy                  # S3에 배포하기
         env:
