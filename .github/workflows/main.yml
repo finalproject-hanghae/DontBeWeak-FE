@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-      - name: Checkout source code. # 레포지토리 체크아웃
-        uses: actions/checkout@master
+      - name: Checkout.               # 레포지토리 체크아웃 Release로
+        uses: actions/checkout@v3
+        with:
+          path: Release
 
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
