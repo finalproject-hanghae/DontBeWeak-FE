@@ -1,16 +1,11 @@
 import axios from "axios";
 
 // Actions
-const KEEP = "friend/KEEP";
 const LOAD = "friend/LOAD";
 
 const initialState = {
   friends: [],
 };
-
-export function keepFriendData(newFriend) {
-  return { type: KEEP, friends: newFriend };
-}
 
 export function loadFriendData(myFriend) {
   return { type: LOAD, friends: myFriend };
@@ -48,7 +43,7 @@ export const keepFriendDataMW = (username) => {
       },
     })
       .then((res) => {
-        dispatch(keepFriendData(username));
+        dispatch(loadFriendDataMW());
       })
       .catch((err) => console.log(err));
   };
@@ -58,9 +53,6 @@ export default function reducer(state = initialState, action = {}) {
   //매개변수에 값이 안들어오면 넣을 초기상태 값 -> 함수(state = {})
   //dispatch는 action함수에 접근하여 리턴값으로 reducer의 2번째 매개변수(action)를 제공
   switch (action.type) {
-    case "friend/KEEP": {
-      return { friends: [...state.friends, {nickname:action.friends}] };
-    }
     case "friend/LOAD": {
       return { friends: [...action.friends] };
     }
