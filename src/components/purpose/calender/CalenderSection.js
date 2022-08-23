@@ -42,6 +42,13 @@ const CalenderSection = () => {
   ];
 
   const week = ["일", "월", "화", "수", "목", "금", "토"];
+// const todayTime = () => {
+// let now = new Date();
+// let Year = now.getFullYear();
+// let Month = now.getMonth() + 1;
+// let todayDate = now.getDate();
+
+// return Year + '년' + Month + '월' + todayDate + '일' ;}
 
   return (
     <CalenderCard>
@@ -54,6 +61,7 @@ const CalenderSection = () => {
           onClick={() => {}}
         />
         <span>2022년 8월8일~14일</span>
+        {/* <span>{todayTime().slice(0,10)}</span> */}
         <FontAwesomeIcon
           icon={faArrowRight}
           size={"2x"}
