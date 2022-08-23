@@ -1,5 +1,5 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React from "react";
@@ -12,11 +12,8 @@ import { loadDrugDataMW } from "../../../redux/modules/drugs";
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
   const dispatch = useDispatch();
-  const [eatDone,setEatDone] = React.useState(false);
-  const myDrug = useSelector((state) => state.drugs.drugs);
-  console.log(val, eatDone);
   return (
-    <SingleDrugLineBox style={{ backgroundColor: eatDone ? "none" : "none" }}>
+    <SingleDrugLineBox style={{ backgroundColor: val.done ? "none" : "none" }}>
       <ColorAndDrugName>
         <div
           style={{
