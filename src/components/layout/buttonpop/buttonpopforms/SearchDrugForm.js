@@ -24,6 +24,7 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
+  const [color, setColor] = React.useState("#000000");
 
   console.log(pageNumber);
 
@@ -73,7 +74,7 @@ const SearchDrugForm = ({ setDrug }) => {
     if (pickMe) {
       let tmpDrugData = {
         productName: pickMe,
-        customColor: "rgb(0,0,30)",
+        customColor: color,
         done: false,
       };
       dispatch(keepDrugDataMW(tmpDrugData));
@@ -128,7 +129,7 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            <ColorPicker/>
+            <ColorPicker color={color} setColor={setColor}/>
             <img
               src={Minus}
               onClick={() => {

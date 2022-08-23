@@ -6,7 +6,7 @@ import CatItemCost from "./CatItemCost";
 const CatItem = ({ val }) => {
   return (
     <CatItemBox>
-      <img src={val?.itemImg} />
+      <img src={val?.itemImg} alt={val?.itemName} />
       <h3>{val?.itemName}</h3>
       <CatItemCost cost={val?.itemPoint}/>
     </CatItemBox>
