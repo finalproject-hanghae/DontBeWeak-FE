@@ -8,7 +8,7 @@ import { RowFlexDiv } from "../../../style/styled";
 
 const SingleDrugLine = ({ val, idx }) => {
   const [eatDone, setEatDone] = React.useState(val.done);
-  console.log(val,eatDone)
+  console.log(val, eatDone);
   return (
     <SingleDrugLineBox style={{ backgroundColor: eatDone ? "none" : "none" }}>
       <ColorAndDrugName>
@@ -24,26 +24,31 @@ const SingleDrugLine = ({ val, idx }) => {
         </span>
       </ColorAndDrugName>
       <label
-        htmlFor={"didEat"+idx}
-        onClick={() => {
-          let sessionStorage = window.sessionStorage;
-          axios.patch( process.env.REACT_APP_DB_HOST + "/schedule/week", {
-              headers: {
-                authorization: sessionStorage.getItem("authorization"),
-              },
-              data: { datetime: new Date()+"", done: true },
-            })
-            .then((res) => setEatDone(true));
-        }}
+        htmlFor={"didEat" + idx}
       >
         {eatDone ? (
           <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
         ) : null}
         <input
-          id={"didEat"+idx}
+          id={"didEat" + idx}
           type={"checkbox"}
           defaultChecked={eatDone ? true : false}
           disabled={eatDone ? true : false}
+          onClick={() => {
+            let sessionStorage = window.sessionStorage;
+            axios
+              .patch(process.env.REACT_APP_DB_HOST + "/schedule/week", {
+                headers: {
+                  authorization: sessionStorage.getItem("authorization"),
+                },
+                data: {
+                  productName: val.productName,
+                  datetime: new Date().toISOString(),
+                  done: true,
+                },
+              })
+              .then((res) => setEatDone(true));
+          }}
         />
       </label>
     </SingleDrugLineBox>
