@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     strategy:
       matrix:
         node: [16.15.1]
@@ -32,13 +35,10 @@ jobs:
       #       ${{ runner.OS }}-
 
       - name: Install node modules    # node modules 설치
-        run: yarn install             # 스크립트 실행
-        
-      - name: Post Build                   # Build
-        run: cd ..
+        run: npm install              # 스크립트 실행
 
       - name: Build                   # Build
-        run: yarn build
+        run: npm run build
 
       - name: Deploy                  # S3에 배포하기
         env:
