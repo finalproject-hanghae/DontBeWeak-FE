@@ -7,11 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16.15.1]
+    name: Node ${{ matrix.node }} sample
     steps:
       - name: Checkout.               # 레포지토리 체크아웃 Release로
         uses: actions/checkout@v3
         with:
           path: Release
+          
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
 
       # - name: Cache node modules      # node modules 캐싱
       #   uses: actions/cache@v3
