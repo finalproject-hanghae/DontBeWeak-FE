@@ -30,10 +30,7 @@ jobs:
         run: npm install
 
       - name: Build                   # Build
-        env:
-          CI: "" 
         run: npm run build
-          
 
       - name: Deploy # S3에 배포하기
         env:
@@ -41,7 +38,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
         run: |
-
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
