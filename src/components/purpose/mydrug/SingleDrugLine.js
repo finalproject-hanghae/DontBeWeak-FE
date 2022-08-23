@@ -49,7 +49,8 @@ const SingleDrugLine = ({ val, idx }) => {
                 done: true,
               },
             }).then((res) => dispatch(loadDrugDataMW(username)));
-          }}
+            
+        }} 
         />
       </label>
     </SingleDrugLineBox>
