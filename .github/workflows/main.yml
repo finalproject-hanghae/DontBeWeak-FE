@@ -1,0 +1,37 @@
+name: DontBeWeak FE Build
+on: 
+  push:                               # Release Branch에서 push 이벤트가 일어났을 때만 실행
+    branches:
+      - Release
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout.               # 레포지토리 체크아웃 main으로
+        uses: actions/checkout@main
+
+      - name: Cache node modules      # node modules 캐싱
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install node modules    # node modules 설치
+        run: yarn install             # 스크립트 실행
+
+      - name: Build                   # Build
+        run: yarn build
+
+      - name: Deploy                  # S3에 배포하기
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp \
+            --recursive \
+            --region ap-northeast-2 \
+            build s3://dontbeweak
