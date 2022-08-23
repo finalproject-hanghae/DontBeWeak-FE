@@ -24,7 +24,7 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
-  const [color, setColor] = React.useState("#000000");
+
 
   console.log(pageNumber);
 
