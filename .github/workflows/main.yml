@@ -29,19 +29,18 @@ jobs:
       - name: Install node modules    # node modules 설치
         run: npm install
 
-      - name: Build                   # Build
-        env:
-          CI: "" 
-        run: npm run build
-          
+      - name: CI                      # CI
+        run: npm ci
 
-      - name: Deploy # S3에 배포하기
+      - name: Build                   # Build
+        run: npm run build
+
+      - name: Deploy                  # S3에 배포하기
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
         run: |
-
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
