@@ -14,6 +14,7 @@ import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
 import axios from "axios";
 
+import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 
 const SearchDrugForm = ({ setDrug }) => {
