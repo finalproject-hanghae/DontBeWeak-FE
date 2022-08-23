@@ -29,11 +29,10 @@ jobs:
       - name: Install node modules    # node modules 설치
         run: npm install
 
-      - name: CI                      # CI
-        run: npm ci
-
       - name: Build                   # Build
-        run: npm run build
+        env:
+          CI: "" 
+        run: npm run build   
 
       - name: Deploy                  # S3에 배포하기
         env:
