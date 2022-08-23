@@ -1,16 +1,19 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../../device";
 import { RowFlexDiv } from "../../../style/styled";
+import { useParams } from "react-router-dom";
+import { loadDrugDataMW } from "../../../redux/modules/drugs";
 
 const SingleDrugLine = ({ val, idx }) => {
-  const [eatDone, setEatDone] = React.useState(val.done);
-  console.log(val,eatDone)
+  const username = useParams().username;
+  const dispatch = useDispatch();
   return (
-    <SingleDrugLineBox style={{ backgroundColor: eatDone ? "none" : "none" }}>
+    <SingleDrugLineBox style={{ backgroundColor: val.done ? "none" : "none" }}>
       <ColorAndDrugName>
         <div
           style={{
@@ -23,28 +26,31 @@ const SingleDrugLine = ({ val, idx }) => {
             : val.productName}
         </span>
       </ColorAndDrugName>
-      <label
-        htmlFor={"didEat"+idx}
-        onClick={() => {
-          let sessionStorage = window.sessionStorage;
-          axios.patch( process.env.REACT_APP_DB_HOST + "/schedule/week", {
-              headers: {
-                authorization: sessionStorage.getItem("authorization"),
-              },
-              data: { datetime: new Date()+"", done: true },
-            })
-            .then((res) => setEatDone(true));
-          
-        }} 
-      >
-        {eatDone ? (
+      <label htmlFor={"didEat" + idx}>
+        {val.done ? (
           <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
         ) : null}
         <input
-          id={"didEat"+idx}
+          id={"didEat" + idx}
           type={"checkbox"}
-          defaultChecked={eatDone ? true : false}
-          disabled={eatDone ? true : false}
+          defaultChecked={val.done ? true : false}
+          disabled={val.done ? true : false}
+          onClick={() => {
+            let sessionStorage = window.sessionStorage;
+            axios({
+              method: "patch",
+              url: process.env.REACT_APP_DB_HOST + "/schedule/week",
+              headers: {
+                authorization: sessionStorage.getItem("authorization"),
+              },
+              data: {
+                productName: val.productName,
+                usedAt: new Date().toISOString(),
+                done: true,
+              },
+            }).then((res) => dispatch(loadDrugDataMW(username)));
+            
+        }} 
         />
       </label>
     </SingleDrugLineBox>

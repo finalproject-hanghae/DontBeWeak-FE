@@ -73,7 +73,7 @@ const SearchDrugForm = ({ setDrug }) => {
   const clickToAddDrug = () => {
     if (pickMe) {
       let tmpDrugData = {
-        productName: pickMe,
+        productName: pickMe.trim(),
         customColor: color,
         done: false,
       };

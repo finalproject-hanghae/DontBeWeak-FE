@@ -12,7 +12,6 @@ const MyDrugSection = () => {
   const dispatch = useDispatch();
   const username = useParams().username;
   const myDrug = useSelector((state)=>state.drugs.drugs)
-  console.log(myDrug)
 
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));
