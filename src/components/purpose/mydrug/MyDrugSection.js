@@ -21,7 +21,7 @@ const MyDrugSection = () => {
   return (
     <MyDrugCard>
       {myDrug.map((val, idx) => {
-        return <SingleDrugLine key={"SingleDrugLine" + idx} val={val} />;
+        return <SingleDrugLine key={"SingleDrugLine" + idx} val={val} idx={idx} />;
       })}
     </MyDrugCard>
   );

@@ -5,33 +5,19 @@ import { useNavigate } from "react-router-dom";
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
+import { useDispatch, useSelector } from "react-redux";
+import { keepFriendDataMW, loadFriendDataMW } from "../../../../redux/modules/friends";
+import { FriendAddBtn, FriendIdInput, FriendsList } from "../../../../style/friendList";
 
 const FriendsListForm = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  const [list, setList] = React.useState([]);
-  const token = sessionStorage.getItem("authorization");
-  const showFriendAddInput = () => {
-    setIsAddFriend(true);
-  };
+  const friendList = useSelector((state)=>state.friends.friends)
 
   React.useEffect(() => {
-    async function gets() {
-      try {
-        const res = await axios.get( process.env.REACT_APP_DB_HOST + "/friend", {
-          headers: {
-            authorization: token,
-          },
-        });
-        setList(res.data);
-        console.log("안녕 난 모달을 처음 띄웠을 때와 친구등록 시에만 떠야해");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    gets();
-  }, [isAddFriend]);
+    dispatch(loadFriendDataMW())
+  }, []);
 
   // github Issues #50 >> 'isAddFriend state 충돌현상' 일단 해결..
   const [disabled, setDisabled] = React.useState(true);
@@ -44,23 +30,14 @@ const FriendsListForm = () => {
     }
   };
 
-  const submitToFriendId = async () => {
-    // axios 요청하기
-    await axios({
-      method: "post",
-      url:  process.env.REACT_APP_DB_HOST + "/friend",
-      data: {
-        friendname: friendIdRef.current.value,
-      },
-      headers: {
-        authorization: token,
-      },
-    })
-      .then((res) => {
-        alert("친구추가에 성공하셨습니다.");
-        setIsAddFriend(false);
-      })
-      .catch((err) => console.log(err));
+  const submitToFriendId = () => {
+    const username = friendIdRef.current.value
+    try {
+    dispatch(keepFriendDataMW(username))
+  } catch{
+    alert('친구추가에 성공했습니다.')
+    setIsAddFriend(false)
+  }
   };
 
   return (
@@ -82,22 +59,14 @@ const FriendsListForm = () => {
         // 친구 목록 Title
         <FalseForm>
           <h3>친구 목록</h3>
-          <FriendAddBtn onClick={showFriendAddInput}>친구추가+</FriendAddBtn>
+          <FriendAddBtn onClick={()=>setIsAddFriend(true)}>친구추가+</FriendAddBtn>
         </FalseForm>
       )}
 
       {/* 친구 리스트 */}
       <FriendsList>
-        {list.map((item) => {
-          return (
-            <p
-              onClick={() => {
-                navigate("/cat/"+item.username);
-              }}
-            >
-              {item.nickname}
-            </p>
-          );
+        {friendList.map((val,idx) => {
+          return <p key={'friendListItem'+idx}>{val.nickname}</p>;
         })}
       </FriendsList>
     </Wrap>
