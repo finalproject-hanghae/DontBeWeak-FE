@@ -1,19 +1,22 @@
 name: React build
 
 on:
-  push: # main Branch에서 push 이벤트가 일어났을 때만 실행
+  push: # Release Branch에서 push 이벤트가 일어났을 때만 실행
     branches:
       - Release
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout # 레포지토리 체크아웃
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Checkout                # 레포지토리 체크아웃 main으로
         uses: actions/checkout@v3
 
-      - name: Cache node modules # node modules 캐싱
+      - name: Cache node modules      # node modules 캐싱
         uses: actions/cache@v1
 
         with:
@@ -23,10 +26,10 @@ jobs:
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
 
-      - name: Install Dependencies # 의존 파일 설치
+      - name: Install node modules    # node modules 설치
         run: npm install
 
-      - name: Build # React Build
+      - name: Build                   # Build
         env:
           CI: "" 
         run: npm run build
