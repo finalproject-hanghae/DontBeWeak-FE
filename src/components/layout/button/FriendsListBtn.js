@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import FriendsListModal from "../buttonpop/FriendsListModal";
-import AddBtn from "../../../assets/images/friend_add_icon.png";
 import useHandleClick from "../../../hooks/useHandleClick";
+
+import AddBtn from "../../../assets/images/friend_add_icon.png";
 
 const FriendsListBtn = () => {
   const [friends, setFriends, showFriendsList, friendListModalRef] = useHandleClick();

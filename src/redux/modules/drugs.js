@@ -1,4 +1,3 @@
-import axios from "axios";
 import { drugApi } from "../../api/basicAPI";
 
 // Actions

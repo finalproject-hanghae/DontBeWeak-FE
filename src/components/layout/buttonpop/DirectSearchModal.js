@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import { RowFlexDiv } from "../../../style/styled";
 
 const DirectSearchModal = React.forwardRef((props, ref) => {

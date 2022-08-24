@@ -1,14 +1,14 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
+
 import { devices } from "../../../device";
-import { RowFlexDiv } from "../../../style/styled";
-import { useParams } from "react-router-dom";
-import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { drugApi } from "../../../api/basicAPI";
+import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import { RowFlexDiv } from "../../../style/styled";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;

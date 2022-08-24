@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import applyInterceptorsTo from "./axiosInterceptors";
 
 const baseApi = axios.create({
@@ -47,6 +48,8 @@ const apiDrugWeek = async (path, params) => {
   });
   return DataApiDrugWeek;
 };
+
+//friend 관련 API ->friendApi
 
 export const userApi = {
   apiSignup: (data) => apiSignup(data),

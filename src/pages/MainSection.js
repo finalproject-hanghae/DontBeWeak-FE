@@ -1,12 +1,13 @@
+import { Routes, Route } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
-import { Routes, Route } from "react-router-dom";
+
+import { ColumnFlexDiv } from "../style/styled";
 import { devices } from "../device";
+import CatPage from "./CatPage";
+import HeaderNavBar from "../components/layout/HeaderNavBar";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
-import { ColumnFlexDiv } from "../style/styled";
-import HeaderNavBar from "../components/layout/HeaderNavBar";
-import CatPage from "./CatPage";
 
 const MainSection = () => {
   return (
