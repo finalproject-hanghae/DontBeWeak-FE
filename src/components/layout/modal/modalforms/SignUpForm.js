@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import axios from "axios";
 import styled from "styled-components";
-import { apiSignup } from "../../../../api/basicAPI";
+import { userApi } from "../../../../api/basicAPI";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ function SignUpForm() {
     };
 
     // axios 요청 보낼 자리
-    apiSignup(data)
+    userApi.apiSignup(data)
       .then((res) => {
         console.log(res);
         alert("회원가입 성공!");

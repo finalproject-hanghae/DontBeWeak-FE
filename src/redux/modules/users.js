@@ -1,4 +1,5 @@
 import axios from "axios";
+import { userApi } from "../../api/basicAPI";
 
 // Actions
 const KEEP = "user/KEEP";
@@ -20,19 +21,12 @@ export function awayAuthData() {
 //로그인 입력값(userData)을 받아 로그인 후 로그인 정보를 로그인 데이타(authorization)에 저장
 export const keepAuthDataMW = (userData, navigate) => {
   return async function (dispatch) {
-    axios
-      .post(process.env.REACT_APP_DB_HOST + "/login", userData)
+    userApi.apiLogin(userData)
       .then((response) => {
         let sessionStorage = window.sessionStorage;
-        console.log(response);
         sessionStorage.setItem("authorization", response.headers.authorization);
         //이어서 user API실행
-        axios
-          .get(process.env.REACT_APP_DB_HOST + "/user", {
-            headers: {
-              authorization: sessionStorage.getItem("authorization"),
-            },
-          })
+        userApi.apiUser()
           .then((res) => {
             sessionStorage.setItem("username", res.data.username);
             dispatch(keepAuthData(response.headers.authorization));
@@ -40,7 +34,7 @@ export const keepAuthDataMW = (userData, navigate) => {
           });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data);
       });
   };
 };
