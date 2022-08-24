@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../device";
 import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
 
@@ -58,17 +58,20 @@ const HeaderNavBar = () => {
 };
 
 const NavBar = styled(RowFlexDiv)`
-  justify-content: space-between;
   align-items: center;
-  height: 82px;
+  width: 100%;
+  height: 80px;
   border-bottom: solid 1px #a5a5a5;
-  padding: 0px 10px;
+  box-sizing: border-box;
+  align-content: center;
+  padding: 0px 5%;
   h1 {
-    /* line-height: 100%; */
     font-size: 30px;
     font-weight: bolder;
     color: #f98532;
   }
+
+  justify-content: space-between;
 `;
 
 const LinkButtons = styled(RowFlexDiv)`
