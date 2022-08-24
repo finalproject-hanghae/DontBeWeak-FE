@@ -1,4 +1,3 @@
-import axios from "axios";
 import { userApi } from "../../api/basicAPI";
 
 // Actions

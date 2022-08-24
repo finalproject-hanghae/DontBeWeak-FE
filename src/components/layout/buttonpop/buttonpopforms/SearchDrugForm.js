@@ -1,10 +1,10 @@
-import React from "react";
 import { useDispatch } from "react-redux";
+import React from "react";
+
 // Open API
 import { drugSearchAPI } from "../../../../api/drugSearch";
 
 // Icon
-import Plus from "../../../../assets/images/plus_icon.png";
 import Minus from "../../../../assets/images/minus_icon.png";
 
 // 스타일 관련
@@ -12,7 +12,6 @@ import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
-import axios from "axios";
 
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";

@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한

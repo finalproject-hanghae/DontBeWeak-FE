@@ -1,14 +1,11 @@
 import React from "react";
-
-// 스타일 관련 컴포넌트
 import styled from "styled-components";
-import { devices } from "../device";
-import { ColumnFlexDiv } from "../style/styled";
 
-// Logo & Cat Background 이미지 연결
+import { ColumnFlexDiv } from "../style/styled";
+import { devices } from "../device";
+
 import Logo from "../assets/images/logo_big.png";
 import MainCatImg from "../assets/images/main_cat.png";
-
 
 const WebSection = () => {
 

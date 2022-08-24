@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const onApiRequest = (config) => {
   //API 요청을 보내기 전에
   let authorization = sessionStorage.getItem("authorization");

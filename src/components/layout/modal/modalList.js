@@ -1,8 +1,8 @@
-import SignUpForm from "./modalforms/SignUpForm";
 import LogInForm from "./modalforms/LogInForm";
+import ModalComponent from "./ModalComponent";
 import NotFoundForm from "./modalforms/NotFoundForm";
 import SearchDrugForm from "../buttonpop/buttonpopforms/SearchDrugForm";
-import ModalComponent from "./ModalComponent";
+import SignUpForm from "./modalforms/SignUpForm";
 
 const List = ["LogIn", "SignUp", "NotFound", "Search"];
 

@@ -1,9 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import React from "react";
+import styled from "styled-components";
+
 import { PageSection } from "../style/styled";
 import Modals from "../components/layout/modal/modalList";
-import styled from "styled-components";
+
 import MainCatImg from "../assets/images/main_cat2.png";
 
 const StartingPage = () => {

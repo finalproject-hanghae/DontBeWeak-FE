@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { devices } from "../device";
+
 import { ColumnFlexDiv } from "./styled";
 
 export const FriendIdInput = styled.input`

@@ -1,9 +1,11 @@
+import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-import { LinkC, RowFlexDiv } from "../../style/styled";
-import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../assets/images/logo_small.png";
+
 import { awaySessionDataMW } from "../../redux/modules/users";
+import { LinkC, RowFlexDiv } from "../../style/styled";
+
+import Logo from "../../assets/images/logo_small.png";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
