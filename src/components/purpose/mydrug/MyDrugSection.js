@@ -40,7 +40,6 @@ const MyDrugCard = styled(ColumnFlexDiv)`
   padding: 10px 50px;
   margin-bottom: 130px;
   background-color: white;
-
   overflow: auto;
   &::-webkit-scrollbar {
     width: 10px;
@@ -63,8 +62,9 @@ const MyDrugCard = styled(ColumnFlexDiv)`
 const CatState = styled.div`
   width: 221px;
   height: 221px;
-  margin: 40px 0px 10px auto;
+  margin: 50px 0px 10px 360px;
   background: url(${DrugCat}) no-repeat 100%;
+  position: absolute;
   p {
     margin: 30px 20px 0px 40px;
     font-size: 1rem;
