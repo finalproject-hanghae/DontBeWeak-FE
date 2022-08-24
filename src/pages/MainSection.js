@@ -24,15 +24,16 @@ const MainSection = () => {
 
 const MainCard = styled(ColumnFlexDiv)`
   width: 51.5%;
-  min-width:745px;
+  min-width: 745px;
   background-color: #fff;
   @media ${devices.tablet} {
     width: 100%;
-    min-width:inherit;
+    min-width: inherit;
+    height: 100vh;
   }
   @media ${devices.mobileL} {
     width: 100%;
-    min-width:280px;
+    min-width: 280px;
   }
 `;
 

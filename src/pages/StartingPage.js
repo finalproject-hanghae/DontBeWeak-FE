@@ -2,12 +2,15 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../device";
 import { ColumnFlexDiv, PageSection } from "../style/styled";
 import Modals from "../components/layout/modal/modalList";
 
 import drugIcon from "../assets/images/icons/drug.png";
+import one from "../assets/images/icons/num_1.png";
+import two from "../assets/images/icons/num_2.png";
 import catImg from "../assets/images/cats/cat1.png";
+import bean from "../assets/images/cats/blackbean.png";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
@@ -17,24 +20,24 @@ const StartingPage = () => {
     <PageSection>
       <Section>
         <Main>
-          <img src={drugIcon} alt="drug" />
+          <img src={drugIcon} alt="drug_icon" />
           <h2>
             아기고양이를 키우면서
             <br />
             영양제도 챙겨 먹어보세요!
           </h2>
-          <img src={catImg} alt="drug" />
+          <img src={bean} alt="cat_img" />
         </Main>
         <Sub>
           <div>
-            <Num>1</Num>
+            <img src={one} alt="1st" />
             <p>
               영양제를 제때 챙겨먹으면 경험치가 오르면서
               <br /> 아픈 고양이를 회복시킬 수 있어요
             </p>
           </div>
           <div>
-            <Num>2</Num>
+            <img src={two} alt="2nd" />
             <p>
               경험치는 고양이를 성장시키는 것 뿐 아니라
               <br /> 고양이에게 줄 아이템도 구매할 수 있어요
@@ -80,17 +83,21 @@ const Section = styled(ColumnFlexDiv)`
   text-align: center;
   justify-content: space-between;
   align-items: center;
-
   button {
     width: 266px;
     height: 65px;
-    border: none;
+    border: 2px solid #000;
     border-radius: 30px;
     background-color: #fabc4f;
     color: #000;
     font-size: 20px;
-    margin: 0px 0px 45px;
+    font-weight: 900;
+    /* margin: 0px 0px 40px; */
     cursor: pointer;
+  }
+  @media ${devices.mobileL} {
+    width: fit-content;
+    min-width: 280px;
   }
 `;
 const Main = styled(ColumnFlexDiv)`
@@ -100,34 +107,37 @@ const Main = styled(ColumnFlexDiv)`
   align-items: center;
   text-align: center;
   justify-content: center;
+
   img {
     &:first-child {
-      width: 62px;
-      height: 65px;
+      width: 90px;
+      height: 90px;
     }
     &:last-child {
-      width: 249px;
-      height: 194px;
+      width: 219px;
+      height: 164px;
+      margin-top: 30px;
     }
   }
 `;
 
 const Sub = styled(ColumnFlexDiv)`
   width: 100%;
-  height: 120px;
+  height: 150px;
+  font-size: 16px;
+  line-height: 24px;
   div {
+    width: 75%;
     height: 50%;
     display: flex;
     align-self: center;
     align-items: center;
   }
-`;
-const Num = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 80%;
-  background-color: #fabc4f;
-  margin-right: 22px;
+  img {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+  }
 `;
 
 export default StartingPage;

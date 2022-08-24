@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../device";
 import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
 
@@ -14,68 +14,64 @@ const HeaderNavBar = () => {
   const username = sessionStorage.getItem("username");
   return (
     <NavBar>
-      <LinkBox>
-        {/* 로그인 전 후 분기 나눠야함 */}
-        <LinkC to="/">
-          <img src={Logo} alt="logo" />
+      {/* 로그인 전 후 분기 나눠야함 */}
+      <LinkC to="/">
+        <img src={Logo} alt="logo" />
+      </LinkC>
+
+      <LinkButtons>
+        <LinkC className="tabLink" to="/">
+          About
         </LinkC>
-
-        <LinkButtons>
-          <LinkC className="tabLink" to="/">
-            About
-          </LinkC>
-          {authorization && (
-            <>
-              <LinkC className="tabLink" to={"/record/" + username}>
-                하루기록
-              </LinkC>
-
-              <LinkC className="tabLink" to={"/cat/" + username}>
-                고양이 상태
-              </LinkC>
-            </>
-          )}
-          {/* <LinkC to="/">로그아웃</LinkC> */}
-        </LinkButtons>
-        <LinkButtons>
-          {!authorization ? (
-            <>
-              <LinkC className="smalla" to="/login">
-                로그인
-              </LinkC>
-              <div />
-              <LinkC className="smalla" to="/signup">
-                회원가입
-              </LinkC>
-            </>
-          ) : (
-            <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
-              로그아웃
+        {authorization && (
+          <>
+            <LinkC className="tabLink" to={"/record/" + username}>
+              하루기록
             </LinkC>
-          )}
-        </LinkButtons>
-      </LinkBox>
+
+            <LinkC className="tabLink" to={"/cat/" + username}>
+              고양이 상태
+            </LinkC>
+          </>
+        )}
+        {/* <LinkC to="/">로그아웃</LinkC> */}
+      </LinkButtons>
+      <LinkButtons>
+        {!authorization ? (
+          <>
+            <LinkC className="smalla" to="/login">
+              로그인
+            </LinkC>
+            <div />
+            <LinkC className="smalla" to="/signup">
+              회원가입
+            </LinkC>
+          </>
+        ) : (
+          <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
+            로그아웃
+          </LinkC>
+        )}
+      </LinkButtons>
     </NavBar>
   );
 };
 
 const NavBar = styled(RowFlexDiv)`
-  justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 80px;
   border-bottom: solid 1px #a5a5a5;
-`;
-const LinkBox = styled(RowFlexDiv)`
-  width: 900px;
-  justify-content: space-between;
-  align-items: center;
-  margin:0 auto;
+  box-sizing: border-box;
+  align-content: center;
+  padding: 0px 5%;
   h1 {
-    /* line-height: 100%; */
     font-size: 30px;
     font-weight: bolder;
     color: #f98532;
   }
+
+  justify-content: space-between;
 `;
 
 const LinkButtons = styled(RowFlexDiv)`

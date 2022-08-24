@@ -30,7 +30,7 @@ const WebSection = () => {
 
 const WebCard = styled(ColumnFlexDiv)`
   width: 48.5%;
-  margin-top: 80px;
+  margin-top: 100px;
   justify-content: center;
   @media ${devices.tablet} {
     display: none;
@@ -40,7 +40,6 @@ const WebCard = styled(ColumnFlexDiv)`
 const Section = styled(ColumnFlexDiv)`
   width: 517px;
   height: 673px;
-
   margin: 0 auto;
   img {
     &:first-child {

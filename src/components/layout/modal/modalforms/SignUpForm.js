@@ -43,7 +43,8 @@ function SignUpForm() {
       passwordCheck: checkPassword,
     };
 
-    userApi.apiSignup(data)
+    userApi
+      .apiSignup(data)
       .then((res) => {
         console.log(res);
         alert("회원가입 성공!");
@@ -61,7 +62,7 @@ function SignUpForm() {
     <SignUpModalBox>
       <form onSubmit={submitToSignUp}>
         <ColumnFlexDiv>
-          <h2 style={{ margin: "35px auto 50px auto" }}>회원가입</h2>
+          <h2>회원가입</h2>
           <SignUpInput type="text" placeholder="ID" ref={signUpIdRef} />
           <SignUpInput
             type="text"
@@ -74,7 +75,7 @@ function SignUpForm() {
             placeholder="PW check"
             ref={signUpPwCheckRef}
           />
-          <small ref={signUpAlertRef} style={{color:"red"}}/>
+          <small ref={signUpAlertRef} style={{ color: "red" }} />
           <SignUpButton>회원가입</SignUpButton>
         </ColumnFlexDiv>
       </form>
@@ -82,27 +83,41 @@ function SignUpForm() {
   );
 }
 
-const SignUpModalBox = styled.div`
+const SignUpModalBox = styled(ColumnFlexDiv)`
   width: 630px;
   height: 630px;
+  justify-content: center;
+
+  h2 {
+    font-size: 35px;
+    margin: 35px 0px;
+  }
+  form {
+    width: 100%;
+    height: 90%;
+  }
 `;
 
 const SignUpInput = styled.input`
   width: 513px;
   height: 64px;
   margin: auto auto 25px auto;
-  border: 0.5px solid #a5a5a5;
-  font-size: 15px;
+  border: 0.5px solid #c5c5c5;
+  padding: 3%;
+  color: #000;
+  box-sizing: border-box;
+  font-size: 14px;
   border-radius: 4px;
 `;
 const SignUpButton = styled.button`
   width: 513px;
   height: 64px;
-  background-color: #f98532;
-  color: white;
+  background: #fabc4f;
+  color: #000;
+  font-weight: 800;
   margin: auto auto 20px auto;
-  border: 0.5px solid;
-  font-size: 15px;
+  border: none;
+  font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
 `;
