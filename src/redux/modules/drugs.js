@@ -1,4 +1,5 @@
 import axios from "axios";
+import { drugApi } from "../../api/basicAPI";
 
 // Actions
 const KEEP = "drug/KEEP";
@@ -19,7 +20,8 @@ export function loadDrugData(myDrug) {
 //middlewares
 export function loadDrugDataMW(username) {
   return function (dispatch) {
-    axios(process.env.REACT_APP_DB_HOST + `/schedule/${username}`)
+    drugApi
+      .apiDrugList(username)
       .then((res) => {
         dispatch(loadDrugData(res.data));
       })
@@ -29,16 +31,13 @@ export function loadDrugDataMW(username) {
 
 export const keepDrugDataMW = (tmpDrugData) => {
   return function (dispatch) {
-    let sessionStorage = window.sessionStorage;
-    axios({
-      method: "post",
-      url: process.env.REACT_APP_DB_HOST + "/schedule",
-      headers: { authorization: sessionStorage.getItem("authorization") },
-      data: tmpDrugData,
-    }).then((res) => {
-      console.log(res);
-      dispatch(keepDrugData(tmpDrugData));
-    });
+    drugApi
+      .apiDrugAdd(tmpDrugData)
+      .then((res) => {
+        console.log(res);
+        dispatch(keepDrugData(tmpDrugData));
+      })
+      .catch((err) => console.log(err));
   };
 };
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import axios from "axios";
 import styled from "styled-components";
+import { userApi } from "../../../../api/basicAPI";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -20,43 +21,41 @@ function SignUpForm() {
     const password = signUpPwRef.current.value;
     const checkPassword = signUpPwCheckRef.current.value;
 
-    // axios 요청 보낼 자리
-    try {
-      await axios({
-        method: "post",
-        url:  process.env.REACT_APP_DB_HOST + "/user/signup",
-        data: {
-          username: username,
-          nickname: nickname,
-          password: password,
-          passwordCheck: checkPassword,
-        },
-      }).then((response) => {
-
-      // 공백 유효성 검사
-      if (username === "") {
-        signUpAlertRef.current.innerText = "아이디를 입력하세요.";
-        return;
-      } else if (response.status === 200&& response.data === "중복된 아이디가 있습니다") {
-        window.alert(response.data)
-        return;
-      } else if (nickname === "") {
-        signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
-        return;
-      } else if (password === "") {
-        signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
-        return;
-      } else if (checkPassword === "") {
-        signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
-        return;
-      }
-    })
-      alert("회원가입 성공!");
-      navigate("/login");
-    } catch (error) {
-      alert(error.response.data.message);
-      console.log(error);
+    // 공백 유효성 검사
+    if (username === "") {
+      signUpAlertRef.current.innerText = "아이디를 입력하세요.";
+      return;
+    } else if (nickname === "") {
+      signUpAlertRef.current.innerText = "닉네임을 입력하세요.";
+      return;
+    } else if (password === "") {
+      signUpAlertRef.current.innerText = "비밀번호를 입력하세요.";
+      return;
+    } else if (checkPassword === "") {
+      signUpAlertRef.current.innerText = "비밀번호를 다시 입력하세요.";
+      return;
     }
+
+    const data = {
+      username: username,
+      nickname: nickname,
+      password: password,
+      passwordCheck: checkPassword,
+    };
+
+    // axios 요청 보낼 자리
+    userApi.apiSignup(data)
+      .then((res) => {
+        console.log(res);
+        alert("회원가입 성공!");
+        navigate("/login");
+      })
+      .catch((err) => {
+        if (err.response.data.message === "중복된 아이디가 있습니다") {
+          signUpAlertRef.current.innerText = err.response.data.message;
+          return;
+        }
+      });
   };
 
   return (
@@ -76,7 +75,7 @@ function SignUpForm() {
             placeholder="PW check"
             ref={signUpPwCheckRef}
           />
-          <small ref={signUpAlertRef} />
+          <small ref={signUpAlertRef} style={{color:"red"}}/>
           <SignUpButton>회원가입</SignUpButton>
         </ColumnFlexDiv>
       </form>

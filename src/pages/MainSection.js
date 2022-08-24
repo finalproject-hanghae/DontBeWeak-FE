@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { devices } from "../device";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
-import AboutPage from "./AboutPage";
 import { ColumnFlexDiv } from "../style/styled";
 import HeaderNavBar from "../components/layout/HeaderNavBar";
 import CatPage from "./CatPage";
@@ -15,7 +14,6 @@ const MainSection = () => {
       <HeaderNavBar />
       <Routes>
         <Route path="/*" element={<StartingPage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/record/:username/*" element={<RecordingPage />} />
         <Route path="/cat/:username" element={<CatPage />} />
       </Routes>

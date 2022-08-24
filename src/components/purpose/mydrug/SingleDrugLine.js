@@ -8,10 +8,22 @@ import { devices } from "../../../device";
 import { RowFlexDiv } from "../../../style/styled";
 import { useParams } from "react-router-dom";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import { drugApi } from "../../../api/basicAPI";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
   const dispatch = useDispatch();
+
+  const clickToCheckDrug = () => {
+    const data = {
+      productName: val.productName,
+      usedAt: new Date().toISOString(),
+      done: true,
+    }
+    drugApi.apiDrugCheck(data)
+    .then((res) => dispatch(loadDrugDataMW(username)));
+  }
+
   return (
     <SingleDrugLineBox style={{ backgroundColor: val.done ? "none" : "none" }}>
       <ColorAndDrugName>
@@ -35,22 +47,7 @@ const SingleDrugLine = ({ val, idx }) => {
           type={"checkbox"}
           defaultChecked={val.done ? true : false}
           disabled={val.done ? true : false}
-          onClick={() => {
-            let sessionStorage = window.sessionStorage;
-            axios({
-              method: "patch",
-              url: process.env.REACT_APP_DB_HOST + "/schedule/week",
-              headers: {
-                authorization: sessionStorage.getItem("authorization"),
-              },
-              data: {
-                productName: val.productName,
-                usedAt: new Date().toISOString(),
-                done: true,
-              },
-            }).then((res) => dispatch(loadDrugDataMW(username)));
-            
-        }} 
+          onClick={clickToCheckDrug}
         />
       </label>
     </SingleDrugLineBox>
