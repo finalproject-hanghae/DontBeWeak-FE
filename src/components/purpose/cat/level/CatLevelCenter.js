@@ -34,7 +34,7 @@ const FlexBox = styled.div`
 const LevelHole = styled(CenterFlexDiv)`
   width: 36px;
   height: 36px;
-  background-color: #FFF3AA;
+  background-color: #FABC4F;
   border: solid 1px #ffc329;
   border-radius: 40px;
   margin: 6px 7px 6px 7px;
