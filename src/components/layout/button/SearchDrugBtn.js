@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SearchDrugModal from "../buttonpop/SearchDrugModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
-import SearchBtn from "../../../assets/images/drug_icon.png";
+import SearchBtn from "../../../assets/images/icons/drug.png";
 
 const SearchDrugBtn = () => {
   const [drug, setDrug, showSearchDrug, SearchDrugModalRef] = useHandleClick();

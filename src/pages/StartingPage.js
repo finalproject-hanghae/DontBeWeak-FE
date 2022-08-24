@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { PageSection } from "../style/styled";
 import Modals from "../components/layout/modal/modalList";
 
-import MainCatImg from "../assets/images/main_cat2.png";
+import MainCatImg from "../assets/images/cats/cat1.png";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);

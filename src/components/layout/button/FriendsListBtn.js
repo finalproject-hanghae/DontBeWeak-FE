@@ -4,7 +4,7 @@ import styled from "styled-components";
 import FriendsListModal from "../buttonpop/FriendsListModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
-import AddBtn from "../../../assets/images/friend_add_icon.png";
+import AddBtn from "../../../assets/images/icons/friend_add.png";
 
 const FriendsListBtn = () => {
   const [friends, setFriends, showFriendsList, friendListModalRef] = useHandleClick();
