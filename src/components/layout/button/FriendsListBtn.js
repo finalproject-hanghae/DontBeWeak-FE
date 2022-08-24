@@ -20,13 +20,13 @@ const FriendsListBtn = () => {
 };
 
 const BtnWrap = styled.div`
-  width: 84px;
-  height: 84px;
+  width: 61px;
+  height: 61px;
   padding: 8px;
   text-align: center;
   position: absolute;
-  right: 20px;
-  bottom: 120px;
+  right: 38px;
+  bottom: 83px;
   &:hover {
     cursor: pointer;
   }
