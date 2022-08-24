@@ -1,4 +1,4 @@
-import axios from "axios";
+import { drugApi } from "../../api/basicAPI";
 
 // Actions
 const KEEP = "drug/KEEP";
@@ -19,32 +19,26 @@ export function loadDrugData(myDrug) {
 //middlewares
 export function loadDrugDataMW(username) {
   return function (dispatch) {
-    axios( process.env.REACT_APP_DB_HOST + `/schedule/${username}`)
+    drugApi
+      .apiDrugList(username)
       .then((res) => {
-        console.log(res);
-        let myDrug = res.data;
-        console.log(myDrug)
-        dispatch(loadDrugData(myDrug));
+        dispatch(loadDrugData(res.data));
       })
       .catch((err) => console.log(err));
   };
 }
 
 export const keepDrugDataMW = (tmpDrugData) => {
-    return function (dispatch) {
-        let sessionStorage = window.sessionStorage;
-        axios({
-          method: "post",
-          url:  process.env.REACT_APP_DB_HOST + "/schedule",
-          headers: { authorization: sessionStorage.getItem("authorization") },
-          data: tmpDrugData,
-        }).then((res)=>{
-            console.log(res);
-            dispatch(keepDrugData(tmpDrugData));
-        })
-     
-    };
+  return function (dispatch) {
+    drugApi
+      .apiDrugAdd(tmpDrugData)
+      .then((res) => {
+        console.log(res);
+        dispatch(keepDrugData(tmpDrugData));
+      })
+      .catch((err) => console.log(err));
   };
+};
 
 export default function reducer(state = initialState, action = {}) {
   //매개변수에 값이 안들어오면 넣을 초기상태 값 -> 함수(state = {})

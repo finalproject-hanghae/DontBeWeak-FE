@@ -1,18 +1,13 @@
-import axios from "axios";
-import React from "react";
-
 import { useParams } from "react-router-dom";
+import React from "react";
+import { catApi } from "../api/basicAPI";
 
 export const useCatPageData = () => {
   const myname = useParams().username;
   const [myCat, setMyCat] = React.useState({});
-  let sessionStorage = window.sessionStorage;
-  React.useEffect(() => {
-    axios
 
-    .get( process.env.REACT_APP_DB_HOST + `/cat/${myname}`, {
-      headers: { authorization: sessionStorage.getItem("authorization") },
-    })
+  React.useEffect(() => {
+    catApi.apiSomeCatStatus(myname)
     .then((response) => {
       console.log(response.data);
       setMyCat({ ...response.data, username: myname });
@@ -21,7 +16,6 @@ export const useCatPageData = () => {
       console.log(error);
     });
   }, []);
-
 
   return myCat;
 };

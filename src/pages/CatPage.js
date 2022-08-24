@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Modals from "../components/layout/modal/modalList";
-import { useCatPageData } from "../hooks/useCatPageData";
+
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
+import { useCatPageData } from "../hooks/useCatPageData";
 import CatItemList from "../components/purpose/cat/item/CatItemList";
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
-import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
+import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
+import Modals from "../components/layout/modal/modalList";
 
 const CatPage = () => {
   const Data = useCatPageData();

@@ -1,18 +1,18 @@
-import axios from "axios";
 import React from "react";
-import useCatItemList from "../../../../hooks/useCatItemList";
-import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
+
+import { RowFlexDiv } from "../../../../style/styled";
 import CatItem from "./CatItem";
+import useCatItemList from "../../../../hooks/useCatItemList";
 
 const CatItemList = () => {
-  // const list = useCatItemList();
-  const list = [
-    { itemImg: "x", itemName: "츄르", itemPoint: 1 },
-    { itemImg: "x", itemName: "털실", itemPoint: 2 },
-    { itemImg: "x", itemName: "황태", itemPoint: 4 },
-    { itemImg: "x", itemName: "레이저", itemPoint: 5 },
- 
-  ];
+  const list = useCatItemList();
+  // const list = [
+  //   { itemImg: "x", itemName: "츄르", itemPoint: 1 },
+  //   { itemImg: "x", itemName: "털실", itemPoint: 2 },
+  //   { itemImg: "x", itemName: "황태", itemPoint: 4 },
+  //   { itemImg: "x", itemName: "레이저", itemPoint: 5 },
+  // ];
+
   return (
     <RowFlexDiv>
       {list &&
