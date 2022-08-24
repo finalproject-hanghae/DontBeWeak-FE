@@ -7,7 +7,6 @@ const useShowMeTheDrug = () => {
   const username = useParams().username;
 
   React.useEffect(() => {
-    let sessionStorage = window.sessionStorage;
     axios( process.env.REACT_APP_DB_HOST + `/schedule/${username}`)
       .then((res) => {
         console.log(res);

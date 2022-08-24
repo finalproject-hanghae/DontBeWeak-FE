@@ -7,7 +7,6 @@ import { ColumnFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import SingleDrugLine from "./SingleDrugLine";
-import useShowMeTheDrug from "../../../hooks/useShowMeTheDrug";
 
 const MyDrugSection = () => {
   const dispatch = useDispatch();
