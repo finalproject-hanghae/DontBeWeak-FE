@@ -128,7 +128,6 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            <ColorPicker color={color} setColor={setColor}/>
             <img
               src={Minus}
               onClick={() => {
@@ -137,8 +136,9 @@ const SearchDrugForm = ({ setDrug }) => {
               }}
               alt="minus_icon"
             />
+            <ColorPicker color={color} setColor={setColor} />
           </MyDrug>
-              
+
           <small>{howEat}</small>
         </PickMeBox>
       )}
@@ -151,7 +151,7 @@ const SearchDrugForm = ({ setDrug }) => {
 
 const Wrap = styled(ColumnFlexDiv)`
   width: 90%;
-  height: 560px;
+  height: 540px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -169,7 +169,7 @@ const DirectSearch = styled(RowFlexDiv)`
   span {
     font-weight: bolder;
     margin-left: 5px;
-    color: #FABC4F;
+    color: #fabc4f;
     cursor: pointer;
     &:hover {
       border-bottom: 1px solid #f98532;
@@ -203,7 +203,6 @@ const SearchList = styled.div`
 
 const SearchForm = styled.form`
   width: 100%;
-  overflow: hidden;
   margin-top: 8%;
   display: flex;
   align-items: center;
@@ -235,7 +234,7 @@ const SearchBtn = styled.button`
   height: 2.5rem;
   text-align: center;
   line-height: 1.9rem;
-  background: #FABC4F;
+  background: #fabc4f;
   color: #fff;
   font-size: 0.8rem;
   border: none;
@@ -245,16 +244,14 @@ const SearchBtn = styled.button`
 
 const PickMeBox = styled.div`
   width: 95%;
-  small {
-  }
 `;
 
 const MyDrug = styled.div`
   width: 100%;
   height: 3.2em;
-  background-color: #FCDCBE;
+  background-color: #fcdcbe;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 3%;
   h4 {
@@ -264,7 +261,7 @@ const MyDrug = styled.div`
   img {
     width: 25px;
     height: 25px;
-    margin-right: 5%;
+    margin-left: 5%;
     cursor: pointer;
   }
 `;
@@ -274,7 +271,7 @@ const AddBtn = styled.button`
   height: 3rem;
   margin: 8% 0;
   color: #fff;
-  background: #FABC4F;
+  background: #fabc4f;
   text-align: center;
   font-size: 1rem;
   font-weight: 800;

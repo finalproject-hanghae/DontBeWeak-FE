@@ -7,7 +7,8 @@ import useHandleClick from "../../../hooks/useHandleClick";
 import AddBtn from "../../../assets/images/icons/friend_add.png";
 
 const FriendsListBtn = () => {
-  const [friends, setFriends, showFriendsList, friendListModalRef] = useHandleClick();
+  const [friends, setFriends, showFriendsList, friendListModalRef] =
+    useHandleClick();
 
   return (
     <>
@@ -26,7 +27,7 @@ const BtnWrap = styled.div`
   text-align: center;
   position: absolute;
   right: 38px;
-  bottom: 83px;
+  bottom: 88px;
   &:hover {
     cursor: pointer;
   }
