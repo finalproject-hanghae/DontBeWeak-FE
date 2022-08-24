@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SearchDrugModal from "../buttonpop/SearchDrugModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
-import SearchBtn from "../../../assets/images/icons/drug.png";
+import SearchBtn from "../../../assets/images/icons/drug_add.png";
 
 const SearchDrugBtn = () => {
   const [drug, setDrug, showSearchDrug, SearchDrugModalRef] = useHandleClick();
@@ -20,13 +20,13 @@ const SearchDrugBtn = () => {
 };
 
 const BtnWrap = styled.div`
-  width: 84px;
-  height: 84px;
+  width: 61px;
+  height: 61px;
   padding: 8px;
   text-align: center;
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 38px;
+  bottom: 10px;
   &:hover {
     cursor: pointer;
   }

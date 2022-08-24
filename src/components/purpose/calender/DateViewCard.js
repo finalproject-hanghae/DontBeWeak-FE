@@ -28,7 +28,7 @@ const DateView = styled.div`
   text-align: center;
   width: 100%;
   height: 20vh;
-  border-right: 1px solid #a5a5a5;
+  border-right: 2px solid #000;
   &:last-child {
     border-right: none;
   }

@@ -98,8 +98,8 @@ const SignUpInput = styled.input`
 const SignUpButton = styled.button`
   width: 513px;
   height: 64px;
-  background-color: #f98532;
-  color: white;
+  background-color: #FABC4F;
+  color: black;
   margin: auto auto 20px auto;
   border: 0.5px solid;
   font-size: 15px;

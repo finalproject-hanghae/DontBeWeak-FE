@@ -42,7 +42,7 @@ const SearchBtn = styled.button`
   height: 2.5rem;
   text-align: center;
   line-height: 1.9rem;
-  background: #f98532;
+  background: #FABC4F;
   color: #fff;
   font-size: 0.8rem;
   border: none;

@@ -169,7 +169,7 @@ const DirectSearch = styled(RowFlexDiv)`
   span {
     font-weight: bolder;
     margin-left: 5px;
-    color: #f98532;
+    color: #FABC4F;
     cursor: pointer;
     &:hover {
       border-bottom: 1px solid #f98532;
@@ -191,7 +191,7 @@ const SearchList = styled.div`
     width: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #f98532;
+    background-color: #a5a5a5;
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
@@ -235,7 +235,7 @@ const SearchBtn = styled.button`
   height: 2.5rem;
   text-align: center;
   line-height: 1.9rem;
-  background: #f98532;
+  background: #FABC4F;
   color: #fff;
   font-size: 0.8rem;
   border: none;
@@ -252,7 +252,7 @@ const PickMeBox = styled.div`
 const MyDrug = styled.div`
   width: 100%;
   height: 3.2em;
-  background-color: #fff3aa;
+  background-color: #FCDCBE;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -274,7 +274,7 @@ const AddBtn = styled.button`
   height: 3rem;
   margin: 8% 0;
   color: #fff;
-  background: #f98532;
+  background: #FABC4F;
   text-align: center;
   font-size: 1rem;
   font-weight: 800;
