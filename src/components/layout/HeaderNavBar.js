@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
 
-import Logo from "../../assets/images/logo_small.png";
+import Logo from "../../assets/images/logo/logo_small.png";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
