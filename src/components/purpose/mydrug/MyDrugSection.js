@@ -63,13 +63,12 @@ const MyDrugCard = styled(ColumnFlexDiv)`
 const CatState = styled.div`
   width: 221px;
   height: 221px;
-  margin: 40px 30px 10px auto;
+  margin: 40px 0px 10px auto;
   background: url(${DrugCat}) no-repeat 100%;
-p{
-  margin: 30px 20px 0px 40px;
-font-size: 1rem;
-
-}
+  p {
+    margin: 30px 20px 0px 40px;
+    font-size: 1rem;
+  }
 `;
 
 export default MyDrugSection;
