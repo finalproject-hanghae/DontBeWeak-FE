@@ -97,9 +97,10 @@ const DateBox = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 20vh;
-  border: 1px solid #a5a5a5;
+  border: 2px solid #000;
   border-radius: 10px;
   display: flex;
+  background-color: white;
 `;
 
 export default CalenderSection;

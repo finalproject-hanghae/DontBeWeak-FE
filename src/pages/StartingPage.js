@@ -6,6 +6,8 @@ import Modals from "../components/layout/modal/modalList";
 import styled from "styled-components";
 import MainCatImg from "../assets/images/main_cat2.png";
 
+import Drug from "../assets/images/drug_icon.png";
+
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
   const navigate = useNavigate();
@@ -13,12 +15,15 @@ const StartingPage = () => {
   return (
     <PageSection>
       <TextBox>
+        <img src={Drug} alt="Drug" />
         <h2>
           아기고양이를 키우면서
           <br />
           영양제도 챙겨 먹어보세요!
         </h2>
-
+      </TextBox>
+      <ImgBox /> {/* 고양이 이미지: background-img 속성 */}
+      <ButtonBox>
         {/* (상태 분기 처리) 로그아웃 : /login , 로그인 : /record/ */}
         {!authorization ? (
           <button
@@ -37,10 +42,7 @@ const StartingPage = () => {
             영양제 기록하기
           </button>
         )}
-      </TextBox>
-
-      <ImgBox /> {/* 고양이 이미지: background-img 속성 */}
-
+      </ButtonBox>
       {/* Modal Route */}
       <Routes>
         <Route index element={null} />
@@ -62,16 +64,6 @@ const TextBox = styled.div`
     font-size: 2rem;
     margin-bottom: 10%;
   }
-  button {
-    width: 266px;
-    height: 65px;
-    border: none;
-    border-radius: 30px;
-    background-color: #f98532;
-    color: #fff;
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
 `;
 const ImgBox = styled.div`
   width: 548px;
@@ -82,6 +74,22 @@ const ImgBox = styled.div`
   img {
     width: 377px;
     height: 196px;
+  }
+`;
+const ButtonBox = styled.div`
+  width: 490px;
+  overflow: hidden;
+  margin: 0px auto;
+  text-align: center;
+  button {
+    width: 266px;
+    height: 65px;
+    border: none;
+    border-radius: 30px;
+    background-color: #FABC4F;
+    color: #000;
+    font-size: 1.1rem;
+    cursor: pointer;
   }
 `;
 

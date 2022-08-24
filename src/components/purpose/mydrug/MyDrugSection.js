@@ -30,7 +30,7 @@ const MyDrugSection = () => {
 const MyDrugCard = styled(ColumnFlexDiv)`
   height: 352px;
   border-radius: 10px;
-  border: solid 1px #a5a5a5;
+  border: solid 2px #000;
   padding: 10px 50px;
 
   overflow: auto;

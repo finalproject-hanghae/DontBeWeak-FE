@@ -10,7 +10,7 @@ export const PageSection = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff9d3;
+  background-color: #FCDCBE;
   padding: 45px 0px 0px;
   @media ${devices.tablet} {
     width: 100%;

@@ -60,13 +60,13 @@ const TextBox = styled.div`
   height: 24%;
   p {
     &:first-child {
-      font-size: 1.8rem;
+      font-size: 2.1rem;
       font-weight: 800;
     }
   }
   p {
     &:last-child {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
     }
   }
@@ -76,11 +76,11 @@ const TextBox = styled.div`
 `;
 
 const ImgBox = styled.div`
-  width: 528px;
-  height: 402px;
-  margin: 5% auto;
+  width: 271px;
+  height: 317px;
+  margin: 20% auto 10% auto;
   background: url(${MainCatImg}) no-repeat 100%;
   background-position: center;
-`;
+`;  
 
 export default WebSection;
