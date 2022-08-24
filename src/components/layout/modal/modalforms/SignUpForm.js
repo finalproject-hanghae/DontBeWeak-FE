@@ -43,7 +43,6 @@ function SignUpForm() {
       passwordCheck: checkPassword,
     };
 
-    // axios 요청 보낼 자리
     userApi.apiSignup(data)
       .then((res) => {
         console.log(res);
