@@ -41,6 +41,7 @@ const MyDrugCard = styled(ColumnFlexDiv)`
   margin-bottom: 130px;
   background-color: white;
   overflow: auto;
+  box-shadow: 10px 10px 0px #ffc58e;
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -67,7 +68,8 @@ const CatState = styled.div`
   position: absolute;
   p {
     margin: 30px 20px 0px 40px;
-    font-size: 1rem;
+
+    font-size: 1em;
   }
 `;
 
