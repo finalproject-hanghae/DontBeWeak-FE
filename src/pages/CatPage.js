@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 import { useCatPageData } from "../hooks/useCatPageData";
-import CatItemList from "../components/purpose/cat/item/CatItemList";
+
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
@@ -23,7 +23,7 @@ const CatPage = () => {
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
             <select>
-              <option>{Data?.username}의 고양이</option>
+              <option>{Data?.username}의 고양이　🢓</option>
               <option>{Data?.username}의 고양이</option>
             </select>
             <div>
@@ -52,43 +52,43 @@ const CatPage = () => {
 };
 
 const FullPage = styled.div`
-  height: 90%;
+  height: 80%;
   width: 100%;
-  background-color: red;
 `;
 
 const CatNameAndImage = styled(ColumnFlexDiv)`
-  text-align: center;
-  h1 {
-    line-height: 100%;
-    margin: 0px;
-  }
+  align-items: center;
   div {
-    margin: 15px;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
   }
-`;
-
-const CatLevelCard = styled(RowFlexDiv)`
-  width: fit-content;
-  margin: 20px auto;
-`;
-
-const CatShopCard = styled(ColumnFlexDiv)`
   img {
-    width: 60px;
-    height: 60px;
+    width: 269px;
   }
   select {
-    width: 200px;
-    padding: 0.8em 0.5em;
-    border: 1px solid #999;
+    width: 308px;
+    height: 50px;
+    border: 2px solid #fabc4f;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.2rem;
     font-family: inherit;
-    background: url("arrow.jpg") no-repeat 95% 50%;
-    border-radius: 0px;
+    background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
   }
 `;
+
+const CatLevelCard = styled(RowFlexDiv)`
+  width: fit-content;
+  margin: 0px auto;
+`;
+
+const CatShopCard = styled(ColumnFlexDiv)``;
 
 export default CatPage;
