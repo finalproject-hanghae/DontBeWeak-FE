@@ -59,6 +59,7 @@ const HeaderNavBar = () => {
 
 const NavBar = styled(RowFlexDiv)`
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 80px;
   border-bottom: solid 1px #a5a5a5;
@@ -70,8 +71,6 @@ const NavBar = styled(RowFlexDiv)`
     font-weight: bolder;
     color: #f98532;
   }
-
-  justify-content: space-between;
 `;
 
 const LinkButtons = styled(RowFlexDiv)`

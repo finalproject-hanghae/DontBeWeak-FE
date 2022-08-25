@@ -19,13 +19,20 @@ const SingleDrugLine = ({ val, idx }) => {
       productName: val.productName,
       usedAt: new Date().toISOString(),
       done: true,
-    }
-    drugApi.apiDrugCheck(data)
-    .then((res) => dispatch(loadDrugDataMW(username)));
-  }
+    };
+    drugApi
+      .apiDrugCheck(data)
+      .then((res) => dispatch(loadDrugDataMW(username)));
+  };
 
   return (
-    <SingleDrugLineBox style={{ backgroundColor: val.done ? "none" : "none" }}>
+    <SingleDrugLineBox
+      style={{
+        backgroundColor: val.done ? "none" : "none",
+        width: "45%",
+        fontSize: "0.8rem",
+      }}
+    >
       <ColorAndDrugName>
         <div
           style={{
@@ -56,27 +63,24 @@ const SingleDrugLine = ({ val, idx }) => {
 
 const ColorAndDrugName = styled(RowFlexDiv)`
   div {
-    width: 29px;
-    height: 29px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
     margin-right: 10px;
   }
   span {
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 1rem;
   }
 `;
 const SingleDrugLineBox = styled(RowFlexDiv)`
   justify-content: space-between;
   align-items: center;
   width: 50%;
-  margin: 5px 0px;
   padding: 5px;
   label {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 20px;
     height: 20px;
     background-color: #fff;
@@ -88,7 +92,7 @@ const SingleDrugLineBox = styled(RowFlexDiv)`
     display: none;
   }
   @media ${devices.mobileL} {
-    min-width: 240px;
+    width: 240px;
   }
 `;
 

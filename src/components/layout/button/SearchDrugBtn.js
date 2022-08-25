@@ -14,7 +14,9 @@ const SearchDrugBtn = () => {
       <BtnWrap>
         <img src={SearchBtn} alt="search_drug_btn" onClick={showSearchDrug} />
       </BtnWrap>
-      {drug ? <SearchDrugModal ref={SearchDrugModalRef} setDrug={setDrug}/> : null}
+      {drug ? (
+        <SearchDrugModal ref={SearchDrugModalRef} setDrug={setDrug} />
+      ) : null}
     </>
   );
 };
@@ -26,7 +28,7 @@ const BtnWrap = styled.div`
   text-align: center;
   position: absolute;
   right: 38px;
-  bottom: 10px;
+  bottom: 15px;
   &:hover {
     cursor: pointer;
   }
