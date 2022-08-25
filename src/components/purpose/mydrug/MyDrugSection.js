@@ -26,9 +26,11 @@ const MyDrugSection = () => {
           <SingleDrugLine key={"SingleDrugLine" + idx} val={val} idx={idx} />
         );
       })}
-      <CatState>
+              {/* <img src={DrugCat} alt="cat_state" /> */}
+
+      {/* <CatState>
         <p>Lv.1 기운없는 고양이 </p>
-      </CatState>
+      </CatState> */}
     </MyDrugCard>
   );
 };
@@ -59,18 +61,24 @@ const MyDrugCard = styled(ColumnFlexDiv)`
     padding: 0px;
     height: 190px;
   }
-`;
-const CatState = styled.div`
-  width: 221px;
-  height: 221px;
-  margin: 50px 0px 10px 360px;
-  background: url(${DrugCat}) no-repeat 100%;
-  position: absolute;
-  p {
-    margin: 30px 20px 0px 40px;
+  img {
+    width: 50%;
+    height: 50%;
 
-    font-size: 1em;
   }
 `;
+// const CatState = styled.div`
+//   max-width: 100%;
+//   height: auto;
+//   margin: 0px 0px 10px 360px;
+//   background: url(${DrugCat}) no-repeat 100%;
+//   position: absolute;
+//   z-index: 99;
+//   p {
+//     margin: 30px 20px 0px 40px;
+
+//     font-size: 1em;
+//   }
+// `;
 
 export default MyDrugSection;
