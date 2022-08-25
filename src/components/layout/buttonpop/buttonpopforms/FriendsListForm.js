@@ -53,11 +53,11 @@ const FriendsListForm = () => {
           <FriendAddBtn type="button" onClick={submitToFriendId}>
             친구추가+
           </FriendAddBtn>
-        </TrueForm>
+        </TrueForm> 
       ) : (
         // 친구 목록 Title
         <FalseForm>
-          <h3>친구 목록</h3>
+          <h3>친구 목록</h3> 
           <FriendAddBtn onClick={()=>setIsAddFriend(true)}>친구추가+</FriendAddBtn>
         </FalseForm>
       )}

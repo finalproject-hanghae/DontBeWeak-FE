@@ -7,13 +7,13 @@ import useHandleClick from "../../../hooks/useHandleClick";
 import AddBtn from "../../../assets/images/icons/friend_add.png";
 
 const FriendsListBtn = () => {
-  const [friends, setFriends, showFriendsList, friendListModalRef] =
+  const [friends, setFriends, showModal, friendListModalRef] =
     useHandleClick();
 
   return (
     <>
       <BtnWrap>
-        <img src={AddBtn} alt="friend_add_btn" onClick={showFriendsList} />
+        <img src={AddBtn} alt="friend_add_btn" onClick={showModal} />
       </BtnWrap>
       {friends ? <FriendsListModal ref={friendListModalRef} /> : null}
     </>
