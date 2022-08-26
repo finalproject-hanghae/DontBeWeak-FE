@@ -16,14 +16,18 @@ const SingleDrugLine = ({ val, idx }) => {
   const dispatch = useDispatch();
 
   const clickToCheckDrug = () => {
+    var tmpDate = new Date();
+
+    let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+
     const data = {
       productName: val.productName,
-      usedAt: new Date().toISOString(),
+      usedAt: new Date(tmpDate.getTime() - offset).toISOString(),
       done: true,
     };
     drugApi.apiDrugCheck(data).then((res) => {
       dispatch(loadDrugDataMW(username));
-      dispatch(keepWeekDataMW(data,val.customColor));
+      dispatch(keepWeekDataMW(data, val.customColor));
     });
   };
 
