@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { drugApi } from "../../../api/basicAPI";
+
 
 import arrowIcon from "../../../assets/images/icons/arrow.png";
 
@@ -7,6 +9,33 @@ import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 
 const CalenderSection = () => {
+
+  const useDrugWeek = (username) => {
+    return function (dispatch) {
+      drugApi
+      .apiDrugWeek()
+      .then((res) => {
+        console.log(res.data);
+        dispatch(res.data);
+      })
+      .catch((err) => console.log(err));
+    }, [];
+   
+
+  };
+
+  // export function loadDrugDataMW(username) {
+  //   return function (dispatch) {
+  //     drugApi
+  //       .apiDrugList(username)
+  //       .then((res) => {
+  //         dispatch(loadDrugData(res.data));
+  //       })
+  //       .catch((err) => console.log(err));
+  //   };
+  // }
+  
+
   const myWeek = [
     {
       date: "화",
@@ -46,7 +75,8 @@ const CalenderSection = () => {
     <CalenderCard>
       <WeekBox>
         <img src={arrowIcon} alt="left_arrow_icon" />
-        <h2>2022.08.08 ~ 08.14</h2>
+        {/* <h2>2022.08.08 ~ 08.14</h2> */}
+<useDrugWeek/>
         <img src={arrowIcon} alt="right_arrow_icon" />
       </WeekBox>
 
