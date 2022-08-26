@@ -9,7 +9,7 @@ export const useCatPageData = () => {
   React.useEffect(() => {
     catApi.apiSomeCatStatus(myname)
     .then((response) => {
-      console.log(response.data,"ㅇ다아");
+      console.log(response.data);
       setMyCat({ ...response.data, username: myname });
     })
     .catch((error) => {

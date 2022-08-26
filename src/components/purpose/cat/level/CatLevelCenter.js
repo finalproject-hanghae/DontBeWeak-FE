@@ -11,7 +11,7 @@ const CatLevelCenter = ({level}) => {
     <FlexBox>
       {/* {level}/{maxLevel} */}
       {level &&
-        Array(Math.floor(level / 1))
+        Array(Math.floor(level / 2))
           .fill(0)
           .map((val, idx) => {
             return <LevelHole><img src={stamp} alt="stamp" /></LevelHole>;
@@ -35,8 +35,8 @@ const FlexBox = styled.div`
 const LevelHole = styled(CenterFlexDiv)`
   width: 36px;
   height: 36px;
-  background-color: #FABC4F;
-  border: solid 1px #ffc329;
+  background-color: #fff;
+  border: solid 1px #fabc4f;
   border-radius: 40px;
   margin: 6px 7px 6px 7px;
 `;
