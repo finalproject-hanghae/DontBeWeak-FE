@@ -4,9 +4,10 @@ const useHandleClick = () => {
   const [isOpened, setIsOpened] = React.useState(false);
   const openedModalRef = React.useRef();
 
-  const showFriendsList = () => {
+  const showModal = () => {
     setIsOpened(true);
   };
+
 
   React.useEffect(() => {
     const handleClickOutside = (e) => {
@@ -23,10 +24,10 @@ const useHandleClick = () => {
     };
   }, [openedModalRef]);
 
-  return [isOpened,setIsOpened,showFriendsList,openedModalRef]
+  return [isOpened,setIsOpened,showModal,openedModalRef]
 };
 
 export default useHandleClick;
 
-//  const [friends,showFriendsList,friendListModalRef] = useHandleClick();
+//  const [friends,showModal,friendListModalRef] = useHandleClick();
 // 스테이트 오픈함수 모달범위Ref

@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
@@ -10,10 +11,11 @@ export const PageSection = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff9d3;
-  padding: 45px 0px 0px;
+  background-color: #FCDCBE;
+  /* padding: 45px 0px 0px; */
   @media ${devices.tablet} {
     width: 100%;
+    height: 100%;
   }
   button {
     display: relative;

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { friendApi } from "../../api/basicAPI";
 
 // Actions
 const LOAD = "friend/LOAD";
@@ -14,13 +14,7 @@ export function loadFriendData(myFriend) {
 //middlewares
 export function loadFriendDataMW() {
   return function (dispatch) {
-    let sessionStorage = window.sessionStorage;
-    axios
-      .get(process.env.REACT_APP_DB_HOST + "/friend", {
-        headers: {
-          authorization: sessionStorage.getItem("authorization"),
-        },
-      })
+    friendApi.apiFriendList()
       .then((res) => {
         console.log(res.data)
         dispatch(loadFriendData(res.data));
@@ -31,17 +25,10 @@ export function loadFriendDataMW() {
 
 export const keepFriendDataMW = (username) => {
   return function (dispatch) {
-    let sessionStorage = window.sessionStorage;
-    axios({
-      method: "post",
-      url: process.env.REACT_APP_DB_HOST + "/friend",
-      data: {
-        friendname: username,
-      },
-      headers: {
-        authorization: sessionStorage.getItem("authorization"),
-      },
-    })
+    const data = {
+      friendname: username,
+    }
+    friendApi.apiFriendAdd(data)
       .then((res) => {
         dispatch(loadFriendDataMW());
       })

@@ -1,13 +1,13 @@
-import "./App.css";
+import { useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 
-import { RowFlexDiv } from "./style/styled";
-
-import WebSection from "./pages/WebSection";
-import MainSection from "./pages/MainSection";
 import { loadSessionDataMW } from "./redux/modules/users";
+import { RowFlexDiv } from "./style/styled";
+import MainSection from "./pages/MainSection";
+import WebSection from "./pages/WebSection";
+
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();

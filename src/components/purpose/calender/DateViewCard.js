@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-
-
-const DateViewCard = ({day, myWeek}) => {
+const DateViewCard = ({day, myWeek, array}) => {
   return (
     <DateView>
       <h3>{day}</h3>
-      {myWeek
-        .filter((value, index) => value.date == day)
+      {myWeek && myWeek
+        .filter((value, index) => value.dayOfWeekValue == array.indexOf(day))
         .map((val, index) => {
           return (
             <div key={"colordiv"+index}
@@ -30,7 +28,7 @@ const DateView = styled.div`
   text-align: center;
   width: 100%;
   height: 20vh;
-  border-right: 1px solid #a5a5a5;
+  border-right: 2px solid #000;
   &:last-child {
     border-right: none;
   }

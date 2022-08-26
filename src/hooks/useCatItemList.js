@@ -1,19 +1,16 @@
-import axios from "axios";
 import React from "react";
+import { itemApi } from "../api/basicAPI";
 
 const useCatItemList = () => {
-  let sessionStorage = window.sessionStorage;
-  let authorization = sessionStorage.getItem("authorization");
   const [list, setList] = React.useState();
   React.useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_DB_HOST + "/items", {
-        headers: { authorization: authorization },
-      })
+    itemApi
+      .apiItemList()
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setList(res.data);
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
   return list;
 };

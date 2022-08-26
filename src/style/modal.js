@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { devices } from "../device";
 
 export const ModalBg = styled.div`
@@ -24,7 +25,7 @@ export const ModalBody = styled.div`
   height: fit-content;
   padding: 5px;
   text-align: center;
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 

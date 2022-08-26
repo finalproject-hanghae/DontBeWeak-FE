@@ -1,9 +1,12 @@
+import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
-import { LinkC, RowFlexDiv } from "../../style/styled";
-import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../assets/images/logo_small.png";
+import { devices } from "../../device";
 import { awaySessionDataMW } from "../../redux/modules/users";
+import { LinkC, RowFlexDiv } from "../../style/styled";
+
+import Logo from "../../assets/images/logo/logo_small.png";
+import { loadDrugDataMW } from "../../redux/modules/drugs";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
@@ -23,7 +26,7 @@ const HeaderNavBar = () => {
         </LinkC>
         {authorization && (
           <>
-            <LinkC className="tabLink" to={"/record/" + username}>
+            <LinkC className="tabLink" to={"/record/" + username} onClick={()=>dispatch(loadDrugDataMW(username))}>
               하루기록
             </LinkC>
 
@@ -56,13 +59,15 @@ const HeaderNavBar = () => {
 };
 
 const NavBar = styled(RowFlexDiv)`
-  justify-content: space-between;
   align-items: center;
-  height: 82px;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
   border-bottom: solid 1px #a5a5a5;
-  padding: 0px 10px;
+  box-sizing: border-box;
+  align-content: center;
+  padding: 0px 5%;
   h1 {
-    /* line-height: 100%; */
     font-size: 30px;
     font-weight: bolder;
     color: #f98532;

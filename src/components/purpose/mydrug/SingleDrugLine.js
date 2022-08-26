@@ -1,19 +1,43 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
+
 import { devices } from "../../../device";
-import { RowFlexDiv } from "../../../style/styled";
-import { useParams } from "react-router-dom";
+import { drugApi } from "../../../api/basicAPI";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import { RowFlexDiv } from "../../../style/styled";
+import { keepWeekDataMW } from "../../../redux/modules/weeks";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
   const dispatch = useDispatch();
+
+  const clickToCheckDrug = () => {
+    var tmpDate = new Date();
+    let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+
+    const data = {
+      productName: val.productName,
+      usedAt: new Date(tmpDate.getTime() - offset).toISOString(),
+      done: true,
+    };
+    drugApi.apiDrugCheck(data).then((res) => {
+      dispatch(loadDrugDataMW(username));
+      dispatch(keepWeekDataMW(data, val.customColor));
+    });
+  };
+
   return (
-    <SingleDrugLineBox style={{ backgroundColor: val.done ? "none" : "none" }}>
+    <SingleDrugLineBox
+      style={{
+        backgroundColor: val.done ? "none" : "none",
+        width: "45%",
+        fontSize: "0.8rem",
+      }}
+    >
       <ColorAndDrugName>
         <div
           style={{
@@ -26,59 +50,44 @@ const SingleDrugLine = ({ val, idx }) => {
             : val.productName}
         </span>
       </ColorAndDrugName>
-      <label htmlFor={"didEat" + idx}>
-        {val.done ? (
-          <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
-        ) : null}
-        <input
-          id={"didEat" + idx}
-          type={"checkbox"}
-          defaultChecked={val.done ? true : false}
-          disabled={val.done ? true : false}
-          onClick={() => {
-            let sessionStorage = window.sessionStorage;
-            axios({
-              method: "patch",
-              url: process.env.REACT_APP_DB_HOST + "/schedule/week",
-              headers: {
-                authorization: sessionStorage.getItem("authorization"),
-              },
-              data: {
-                productName: val.productName,
-                usedAt: new Date().toISOString(),
-                done: true,
-              },
-            }).then((res) => dispatch(loadDrugDataMW(username)));
-          }}
-        />
-      </label>
+      {username == sessionStorage.getItem("username") && (
+        <label htmlFor={"didEat" + idx}>
+          {val.done ? (
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
+          ) : null}
+          <input
+            id={"didEat" + idx}
+            type={"checkbox"}
+            defaultChecked={val.done ? true : false}
+            disabled={val.done ? true : false}
+            onClick={clickToCheckDrug}
+          />
+        </label>
+      )}
     </SingleDrugLineBox>
   );
 };
 
 const ColorAndDrugName = styled(RowFlexDiv)`
   div {
-    width: 29px;
-    height: 29px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
     margin-right: 10px;
   }
   span {
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 1rem;
   }
 `;
 const SingleDrugLineBox = styled(RowFlexDiv)`
   justify-content: space-between;
   align-items: center;
   width: 50%;
-  margin: 5px 0px;
   padding: 5px;
   label {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 20px;
     height: 20px;
     background-color: #fff;
@@ -90,7 +99,7 @@ const SingleDrugLineBox = styled(RowFlexDiv)`
     display: none;
   }
   @media ${devices.mobileL} {
-    min-width: 240px;
+    width: 240px;
   }
 `;
 

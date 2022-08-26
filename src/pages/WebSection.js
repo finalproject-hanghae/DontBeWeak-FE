@@ -1,17 +1,13 @@
 import React from "react";
-
-// 스타일 관련 컴포넌트
 import styled from "styled-components";
-import { devices } from "../device";
+
 import { ColumnFlexDiv } from "../style/styled";
+import { devices } from "../device";
 
-// Logo & Cat Background 이미지 연결
-import Logo from "../assets/images/logo_big.png";
-import MainCatImg from "../assets/images/main_cat.png";
-
+import Logo from "../assets/images/logo/logo_big.png";
+import catImg from "../assets/images/cats/cat4.png";
 
 const WebSection = () => {
-
   return (
     <WebCard>
       <Section>
@@ -20,25 +16,21 @@ const WebSection = () => {
         <TextBox>
           <p>
             꼬박꼬박 영양제 챙겨 먹기 <br />
-            번거로우셨죠?
+            번거로우셨죠? <br />
+            <span>작은 아기고양이를 키우면서 건강도 함께 챙겨보세요</span>
           </p>
-          <p>
-            작은 <span>아기고양이</span>를 키우면서 <span>건강</span>도 함께
-            챙겨보세요!
-          </p>
+          <img src={catImg} alt="catImg" />
         </TextBox>
-        <ImgBox />
       </Section>
     </WebCard>
   );
 };
 
-
 // styled-component 적용
 
 const WebCard = styled(ColumnFlexDiv)`
   width: 48.5%;
-  height: 100%;
+  margin-top: 100px;
   justify-content: center;
   @media ${devices.tablet} {
     display: none;
@@ -46,41 +38,38 @@ const WebCard = styled(ColumnFlexDiv)`
 `;
 
 const Section = styled(ColumnFlexDiv)`
-  width: fit-content;
-  height: fit-content;
+  width: 517px;
+  height: 673px;
   margin: 0 auto;
   img {
-    width: 346px;
-    height: 68px;
+    &:first-child {
+      width: 346px;
+      height: 68px;
+    }
   }
 `;
 
-const TextBox = styled.div`
+const TextBox = styled(ColumnFlexDiv)`
   width: 100%;
-  height: 24%;
+  height: 580px;
+  margin-top: 30px;
   p {
     &:first-child {
-      font-size: 1.8rem;
+      font-size: 42px;
       font-weight: 800;
-    }
-  }
-  p {
-    &:last-child {
-      font-size: 1.2rem;
-      font-weight: 600;
+      margin: 0px 0px 30px;
     }
   }
   p > span {
-    color: #f98532;
+    font-size: 20px;
+    font-weight: 900;
+    border-bottom: 2px solid #000;
   }
-`;
-
-const ImgBox = styled.div`
-  width: 528px;
-  height: 402px;
-  margin: 5% auto;
-  background: url(${MainCatImg}) no-repeat 100%;
-  background-position: center;
+  img {
+    width: 271px;
+    height: 317px;
+    margin: 44px auto;
+  }
 `;
 
 export default WebSection;

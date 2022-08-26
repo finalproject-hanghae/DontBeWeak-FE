@@ -1,21 +1,21 @@
-import React from "react";
 import { useDispatch } from "react-redux";
+import React from "react";
+
 // Open API
 import { drugSearchAPI } from "../../../../api/drugSearch";
 
 // Icon
-import Plus from "../../../../assets/images/plus_icon.png";
-import Minus from "../../../../assets/images/minus_icon.png";
+import Minus from "../../../../assets/images/icons/remove.png";
 
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
-import axios from "axios";
 
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
+import { getRandomInt } from "../../../../hooks/getRandomInt";
 
 const SearchDrugForm = ({ setDrug }) => {
   const dispatch = useDispatch();
@@ -24,7 +24,8 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
-  const [color, setColor] = React.useState("#000000");
+  const randomColor = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
+  const [color, setColor] = React.useState(randomColor);
 
   console.log(pageNumber);
 
@@ -129,7 +130,6 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            <ColorPicker color={color} setColor={setColor}/>
             <img
               src={Minus}
               onClick={() => {
@@ -138,8 +138,9 @@ const SearchDrugForm = ({ setDrug }) => {
               }}
               alt="minus_icon"
             />
+            <ColorPicker color={color} setColor={setColor} />
           </MyDrug>
-              
+
           <small>{howEat}</small>
         </PickMeBox>
       )}
@@ -152,7 +153,7 @@ const SearchDrugForm = ({ setDrug }) => {
 
 const Wrap = styled(ColumnFlexDiv)`
   width: 90%;
-  height: 560px;
+  height: 540px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -170,7 +171,7 @@ const DirectSearch = styled(RowFlexDiv)`
   span {
     font-weight: bolder;
     margin-left: 5px;
-    color: #f98532;
+    color: #fabc4f;
     cursor: pointer;
     &:hover {
       border-bottom: 1px solid #f98532;
@@ -192,7 +193,7 @@ const SearchList = styled.div`
     width: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #f98532;
+    background-color: #a5a5a5;
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
@@ -204,7 +205,6 @@ const SearchList = styled.div`
 
 const SearchForm = styled.form`
   width: 100%;
-  overflow: hidden;
   margin-top: 8%;
   display: flex;
   align-items: center;
@@ -236,7 +236,7 @@ const SearchBtn = styled.button`
   height: 2.5rem;
   text-align: center;
   line-height: 1.9rem;
-  background: #f98532;
+  background: #fabc4f;
   color: #fff;
   font-size: 0.8rem;
   border: none;
@@ -246,16 +246,14 @@ const SearchBtn = styled.button`
 
 const PickMeBox = styled.div`
   width: 95%;
-  small {
-  }
 `;
 
 const MyDrug = styled.div`
   width: 100%;
   height: 3.2em;
-  background-color: #fff3aa;
+  background-color: #fcdcbe;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 3%;
   h4 {
@@ -265,7 +263,7 @@ const MyDrug = styled.div`
   img {
     width: 25px;
     height: 25px;
-    margin-right: 5%;
+    margin-left: 5%;
     cursor: pointer;
   }
 `;
@@ -275,7 +273,7 @@ const AddBtn = styled.button`
   height: 3rem;
   margin: 8% 0;
   color: #fff;
-  background: #f98532;
+  background: #fabc4f;
   text-align: center;
   font-size: 1rem;
   font-weight: 800;
