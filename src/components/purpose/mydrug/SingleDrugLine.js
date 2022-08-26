@@ -17,7 +17,6 @@ const SingleDrugLine = ({ val, idx }) => {
 
   const clickToCheckDrug = () => {
     var tmpDate = new Date();
-
     let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
 
     const data = {
