@@ -33,7 +33,7 @@ const HeaderNavBar = () => {
             <LinkC className="tabLink" to={"/cat/" + username}>
               고양이 상태
             </LinkC>
-          </p>
+          </>
         )}
         {/* <LinkC to="/">로그아웃</LinkC> */}
       </LinkButtons>
