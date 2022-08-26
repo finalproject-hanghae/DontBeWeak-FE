@@ -15,6 +15,7 @@ import useHandleClick from "../../../../hooks/useHandleClick";
 
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
+import { getRandomInt } from "../../../../hooks/getRandomInt";
 
 const SearchDrugForm = ({ setDrug }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,8 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
-  const [color, setColor] = React.useState("#000000");
+  const randomColor = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
+  const [color, setColor] = React.useState(randomColor);
 
   console.log(pageNumber);
 
