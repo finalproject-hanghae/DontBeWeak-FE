@@ -1,21 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { drugApi } from "../../../api/basicAPI";
+import { useDispatch, useSelector } from "react-redux";
 
 import arrowIcon from "../../../assets/images/icons/arrow.png";
-import { useDrugPageData } from "../../../hooks/useDrugPageData";
 import { useFindWeek } from "../../../hooks/useFindWeek";
 
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
+import { useParams } from "react-router-dom";
+import { loadWeekDataMW } from "../../../redux/modules/weeks";
 
 const CalenderSection = () => {
+  const dispatch = useDispatch();
+
   const [week, setWeek] = React.useState(0);
   let [startDate, endDate] = useFindWeek(week);
   console.log("startDate", startDate);
   console.log("endDate", endDate);
 
-  const myWeek = useDrugPageData(startDate, endDate);
+  const myWeek = useSelector((state) => state.weeks.weeks);
+
+  
+  const myname = useParams().username;
+
+  React.useEffect(() => {
+    const params = {
+      startDate:startDate.replace('.',''),
+      endDate:endDate.replace('.',''),
+    }
+    dispatch(loadWeekDataMW(myname,params))
+  }, [week]);
+
+
 
   const weekName = ["일", "월", "화", "수", "목", "금", "토"];
 
