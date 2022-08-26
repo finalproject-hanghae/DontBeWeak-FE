@@ -9,7 +9,6 @@ import shopBtn from "../../../assets/images/icons/shop.png";
 const ShopBtn = () => {
   const [shop, setShop,showModal,shopModalRef] =
     useHandleClick();
-
   return (
     <>
     <BtnWrap>

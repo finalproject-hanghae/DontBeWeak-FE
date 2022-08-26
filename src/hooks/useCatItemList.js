@@ -7,7 +7,7 @@ const useCatItemList = () => {
     itemApi
       .apiItemList()
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setList(res.data);
       })
       .catch((err) => console.log(err));
