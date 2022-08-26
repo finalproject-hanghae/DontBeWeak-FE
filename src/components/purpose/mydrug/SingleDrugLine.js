@@ -9,20 +9,25 @@ import { devices } from "../../../device";
 import { drugApi } from "../../../api/basicAPI";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
+import { keepWeekDataMW } from "../../../redux/modules/weeks";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
   const dispatch = useDispatch();
 
   const clickToCheckDrug = () => {
+    var tmpDate = new Date();
+    let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+
     const data = {
       productName: val.productName,
-      usedAt: new Date().toISOString(),
+      usedAt: new Date(tmpDate.getTime() - offset).toISOString(),
       done: true,
     };
-    drugApi
-      .apiDrugCheck(data)
-      .then((res) => dispatch(loadDrugDataMW(username)));
+    drugApi.apiDrugCheck(data).then((res) => {
+      dispatch(loadDrugDataMW(username));
+      dispatch(keepWeekDataMW(data, val.customColor));
+    });
   };
 
   return (
@@ -45,18 +50,20 @@ const SingleDrugLine = ({ val, idx }) => {
             : val.productName}
         </span>
       </ColorAndDrugName>
-      <label htmlFor={"didEat" + idx}>
-        {val.done ? (
-          <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
-        ) : null}
-        <input
-          id={"didEat" + idx}
-          type={"checkbox"}
-          defaultChecked={val.done ? true : false}
-          disabled={val.done ? true : false}
-          onClick={clickToCheckDrug}
-        />
-      </label>
+      {username == sessionStorage.getItem("username") && (
+        <label htmlFor={"didEat" + idx}>
+          {val.done ? (
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
+          ) : null}
+          <input
+            id={"didEat" + idx}
+            type={"checkbox"}
+            defaultChecked={val.done ? true : false}
+            disabled={val.done ? true : false}
+            onClick={clickToCheckDrug}
+          />
+        </label>
+      )}
     </SingleDrugLineBox>
   );
 };

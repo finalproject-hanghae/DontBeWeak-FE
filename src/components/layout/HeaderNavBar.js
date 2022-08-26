@@ -6,6 +6,7 @@ import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
 
 import Logo from "../../assets/images/logo/logo_small.png";
+import { loadDrugDataMW } from "../../redux/modules/drugs";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
@@ -24,8 +25,8 @@ const HeaderNavBar = () => {
           About
         </LinkC>
         {authorization && (
-          <p>
-            <LinkC className="tabLink" to={"/record/" + username}>
+          <>
+            <LinkC className="tabLink" to={"/record/" + username} onClick={()=>dispatch(loadDrugDataMW(username))}>
               하루기록
             </LinkC>
 

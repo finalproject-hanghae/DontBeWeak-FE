@@ -11,13 +11,13 @@ const CatLevelCenter = ({level}) => {
     <FlexBox>
       {/* {level}/{maxLevel} */}
       {level &&
-        Array(Math.floor(level / 2))
+        Array(Math.floor(level / 2)+1)
           .fill(0)
           .map((val, idx) => {
             return <LevelHole><img src={stamp} alt="stamp" /></LevelHole>;
           })}
       {level &&
-        Array(15 - Math.floor(level / 2))
+        Array(15 - Math.floor(level / 2)-1)
           .fill(0)
           .map((val, idx) => {
             return <LevelHole />;
