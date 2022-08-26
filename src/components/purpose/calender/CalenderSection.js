@@ -1,9 +1,9 @@
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { RowFlexDiv } from "../../../style/styled";
+import arrowIcon from "../../../assets/images/icons/arrow.png";
+
+import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 
 const CalenderSection = () => {
@@ -45,21 +45,9 @@ const CalenderSection = () => {
   return (
     <CalenderCard>
       <WeekBox>
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          size={"2x"}
-          color={"orange"}
-          cursor={"pointer"}
-          onClick={() => {}}
-        />
-        <span>2022년 8월8일~14일</span>
-        <FontAwesomeIcon
-          icon={faArrowRight}
-          size={"2x"}
-          color={"orange"}
-          cursor={"pointer"}
-          onClick={() => {}}
-        />
+        <img src={arrowIcon} alt="left_arrow_icon" />
+        <h2>2022.08.08 ~ 08.14</h2>
+        <img src={arrowIcon} alt="right_arrow_icon" />
       </WeekBox>
 
       <DateBox>
@@ -77,28 +65,49 @@ const CalenderSection = () => {
   );
 };
 
-const CalenderCard = styled.div`
-  display: flex;
-  flex-direction: column;
+const CalenderCard = styled(ColumnFlexDiv)`
+  width: 90%;
+  height: 10rem;
+  align-self: center;
+  margin-bottom: 8rem;
 `;
 
 const WeekBox = styled(RowFlexDiv)`
-  justify-content: space-between;
+  width: 80%;
+  height: 70px;
   align-items: center;
-  margin-bottom: 20px;
-  span {
-    font-size: 1.5rem;
-    font-weight: bold;
+  align-self: center;
+  justify-content: center;
+  h2 {
+    font-size: 2rem;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50px;
+    &:hover {
+      width: 3.1rem;
+      height: 3.1rem;
+      background-color: #fff;
+      box-shadow: 2.5px 2.5px 0px #ffc58e;
+      cursor: pointer;
+    }
+    &:first-child {
+      transform: scaleX(-1);
+    }
   }
 `;
 
-const DateBox = styled.div`
+const DateBox = styled(RowFlexDiv)`
   margin: 0 auto;
   width: 100%;
   height: 20vh;
   border: 2px solid #000;
+  box-shadow: 10px 10px 0px #ffc58e;
   border-radius: 10px;
-  display: flex;
   background-color: white;
 `;
 

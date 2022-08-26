@@ -17,7 +17,7 @@ const FriendsListForm = () => {
     dispatch(loadFriendDataMW())
   }, []);
 
-  // github Issues #50 >> 'isAddFriend state 충돌현상' 일단 해결..
+
   const [disabled, setDisabled] = React.useState(true);
   const friendIdRef = React.useRef(null);
 
@@ -53,11 +53,11 @@ const FriendsListForm = () => {
           <FriendAddBtn type="button" onClick={submitToFriendId}>
             친구추가+
           </FriendAddBtn>
-        </TrueForm>
+        </TrueForm> 
       ) : (
         // 친구 목록 Title
         <FalseForm>
-          <h3>친구 목록</h3>
+          <h3>친구 목록</h3> 
           <FriendAddBtn onClick={()=>setIsAddFriend(true)}>친구추가+</FriendAddBtn>
         </FalseForm>
       )}

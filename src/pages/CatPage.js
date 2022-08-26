@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 import { useCatPageData } from "../hooks/useCatPageData";
-import CatItemList from "../components/purpose/cat/item/CatItemList";
+
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import Modals from "../components/layout/modal/modalList";
-
+import ShopBtn from "../components/layout/button/ShopBtn";
 const CatPage = () => {
   const Data = useCatPageData();
-  console.log(Data);
+  console.log(Data,"sksksksk");
 
   return (
     <PageSection>
@@ -22,7 +22,10 @@ const CatPage = () => {
 
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
-            <h1>{Data?.username}의 고양이</h1>
+            <select>
+              <option>{Data?.username}의 고양이　🢓</option>
+              <option>{Data?.username}의 고양이 🢓</option>
+            </select>
             <div>
               <img src={Data?.catImg} alt="" />
             </div>
@@ -32,16 +35,13 @@ const CatPage = () => {
           {/* 고양이 레벨표시 구역 Start */}
           <CatLevelCard>
             <CatLevelLeft />
-            <CatLevelCenter level={Data.level} />
+            <CatLevelCenter level={Data?.level} />
             <CatLevelRight />
           </CatLevelCard>
           {/* 고양이 레벨표시 구역 End */}
 
           {/* 고양이 상점 표시구역 Start */}
-          <CatShopCard>
-            <h2>구매가능 아이템</h2>
-            <CatItemList />
-          </CatShopCard>
+          <ShopBtn />
           {/* 고양이 상점 표시구역 End */}
         </ColumnFlexDiv>
       </FullPage>
@@ -50,33 +50,43 @@ const CatPage = () => {
 };
 
 const FullPage = styled.div`
-  height: 100%;
+  height: 80%;
   width: 100%;
 `;
 
 const CatNameAndImage = styled(ColumnFlexDiv)`
-  text-align: center;
-  h1{
-    line-height:100%;
-    margin:0px;
+  align-items: center;
+  div {
+    width: 350px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
   }
-  div{
-    margin: 15px;
+  img {
+    width: 269px;
+  }
+  select {
+    width: 308px;
+    height: 50px;
+    border: 2px solid #fabc4f;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: inherit;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 `;
 
 const CatLevelCard = styled(RowFlexDiv)`
   width: fit-content;
-  margin: 20px auto;
+  margin: 0px auto;
 `;
 
-const CatShopCard = styled(ColumnFlexDiv)`
-  text-align: center;
-  width:90%;
-  margin:0px auto;
-  h2{
-    margin: 0px;
-  }
-`;
+const CatShopCard = styled(ColumnFlexDiv)``;
 
 export default CatPage;

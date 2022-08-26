@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import stamp from "../../../../assets/images/icons/stamp.png";
 import { CenterFlexDiv } from "../../../../style/styled";
 
 const CatLevelCenter = ({level}) => {
@@ -10,10 +11,10 @@ const CatLevelCenter = ({level}) => {
     <FlexBox>
       {/* {level}/{maxLevel} */}
       {level &&
-        Array(Math.floor(level / 2))
+        Array(Math.floor(level / 1))
           .fill(0)
           .map((val, idx) => {
-            return <LevelHole>🍣</LevelHole>;
+            return <LevelHole><img src={stamp} alt="stamp" /></LevelHole>;
           })}
       {level &&
         Array(15 - Math.floor(level / 2))

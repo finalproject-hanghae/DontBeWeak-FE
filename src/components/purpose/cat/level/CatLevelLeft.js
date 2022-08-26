@@ -17,7 +17,7 @@ const SideCard = styled(ColumnFlexDiv)`
 p{
   text-align:right;
   font-weight:bold;
-  margin: 15px 0px;
+  margin: 20px 0px;
 }
 `
 

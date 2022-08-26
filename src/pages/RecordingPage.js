@@ -2,8 +2,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 
-import { ColumnFlexDiv, PageSection} from "../style/styled";
-import CalenderSection from "../components/purpose/calender/CalenderSection"
+import { ColumnFlexDiv, PageSection } from "../style/styled";
+import CalenderSection from "../components/purpose/calender/CalenderSection";
 import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import Modals from "../components/layout/modal/modalList";
 import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
@@ -12,15 +12,12 @@ import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
 const RecordingPage = () => {
   return (
     <PageSection>
-      <CalenderAndDrug className="Padding">
-
+      <Wrap>
         <CalenderSection />
         <MyDrugSection />
-      </CalenderAndDrug>
-
-
-      <SearchDrugBtn />
-      <FriendsListBtn />
+        <SearchDrugBtn />
+        <FriendsListBtn />
+      </Wrap>
 
       <Routes>
         <Route index element={null} />
@@ -30,9 +27,10 @@ const RecordingPage = () => {
   );
 };
 
-const CalenderAndDrug = styled(ColumnFlexDiv)`
-  height: 90%;
-  justify-content: space-between;
+const Wrap = styled(ColumnFlexDiv)`
+  width: 100%;
+  height: 95%;
+  overflow: hidden;
 `;
 
 export default RecordingPage;
