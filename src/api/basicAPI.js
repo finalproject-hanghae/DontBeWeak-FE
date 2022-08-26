@@ -8,7 +8,7 @@ const baseApi = axios.create({
 
 const useThisApi = applyInterceptorsTo(baseApi);
 
-//명세서 https://www.notion.so/SA-2-703bf495f2044436b2e8274f23a7f297
+//명세서 https://octagonal-archeology-790.notion.site/SA-2-703bf495f2044436b2e8274f23a7f297
 //이런 페이지에서도 한 눈에 데이터의 값들을 명시 가능하면 좋겠음. => TypeScript?!
 
 //user 관련 API -> userApi
