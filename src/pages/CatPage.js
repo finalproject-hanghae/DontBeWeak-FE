@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { loadFriendDataMW } from "../redux/modules/friends";
 import { ColumnFlexDiv, LinkC, PageSection, RowFlexDiv } from "../style/styled";
 import { useCatPageData } from "../hooks/useCatPageData";
-import useUserData from "../hooks/useUserData";
-
+import ExpBar from "../components/purpose/cat/level/ExpBar";
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
@@ -17,6 +16,7 @@ import ShopBtn from "../components/layout/button/ShopBtn";
 
 const CatPage = () => {
   const dispatch = useDispatch();
+
   const Data = useCatPageData();
   console.log(Data, "에");
 
@@ -36,7 +36,7 @@ const CatPage = () => {
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
             <select>
-              <option>{Data?.username}의 고양이　🢓</option>
+              <option style={{cursor:"pointer"}}>{Data?.username}의 고양이　🢓</option>
               {friendList.map((val, idx) => {
                 return (
                   <option key={"friendListItem" + idx}>
@@ -53,11 +53,7 @@ const CatPage = () => {
 
           {/*  경험치 표시 */}
           <ExCard>
-            <p>exp</p>
-            <Exbar>
-              <div />
-              {/* {userData?.exp} */}
-            </Exbar>
+            <p>exp</p> <ExpBar />
           </ExCard>
 
           {/* 고양이 레벨표시 구역 Start */}
@@ -106,9 +102,9 @@ const CatNameAndImage = styled(ColumnFlexDiv)`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
   }
 `;
-
 const ExCard = styled(RowFlexDiv)`
   width: 50%;
   height: 50px;
@@ -121,16 +117,6 @@ const ExCard = styled(RowFlexDiv)`
     font-size: 16px;
   }
 `;
-const Exbar = styled(RowFlexDiv)`
-  width: 90%;
-  height: 30%;
-  align-items: center;
-  margin-left: 1%;
-  border: 1px solid #000;
-  border-radius: 2rem;
-  position: relative;
-`;
-
 const CatLevelCard = styled(RowFlexDiv)`
   width: fit-content;
   margin: 0px auto;

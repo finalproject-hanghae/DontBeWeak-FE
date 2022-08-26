@@ -53,7 +53,7 @@ const SingleDrugLine = ({ val, idx }) => {
       {username == sessionStorage.getItem("username") && (
         <label htmlFor={"didEat" + idx}>
           {val.done ? (
-            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"}/>
           ) : null}
           <input
             id={"didEat" + idx}
