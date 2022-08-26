@@ -1,61 +1,49 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { drugApi } from "../../../api/basicAPI";
 
 import arrowIcon from "../../../assets/images/icons/arrow.png";
+import { useDrugPageData } from "../../../hooks/useDrugPageData";
+import { useFindWeek } from "../../../hooks/useFindWeek";
 
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 
 const CalenderSection = () => {
-  const myWeek = [
-    {
-      date: "화",
-      productName: "365 눈 건강 루테인",
-      customColor: "rgba(100,5,30)",
-      done: true,
-    },
-    {
-      date: "화",
-      productName: "오메가3 DHA",
-      customColor: "rgba(6,200,70)",
-      done: false,
-    },
-    {
-      date: "수",
-      productName: "365 눈 건강 루테인",
-      customColor: "rgba(200,0,30)",
-      done: true,
-    },
-    {
-      date: "수",
-      productName: "오메가3 DHA",
-      customColor: "rgba(0,212,70)",
-      done: false,
-    },
-    {
-      date: "목",
-      productName: "365 눈 건강 루테인",
-      customColor: "rgba(135,0,30)",
-      done: true,
-    },
-  ];
+  const [week, setWeek] = React.useState(0);
+  let [startDate, endDate] = useFindWeek(week);
+  console.log("startDate", startDate);
+  console.log("endDate", endDate);
 
-  const week = ["일", "월", "화", "수", "목", "금", "토"];
+  const myWeek = useDrugPageData(startDate, endDate);
+
+  const weekName = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
     <CalenderCard>
       <WeekBox>
-        <img src={arrowIcon} alt="left_arrow_icon" />
-        <h2>2022.08.08 ~ 08.14</h2>
-        <img src={arrowIcon} alt="right_arrow_icon" />
+        <img
+          src={arrowIcon}
+          alt="left_arrow_icon"
+          onClick={() => setWeek((prev) => prev - 1)}
+        />
+        <h2>
+          {startDate} ~ {endDate}
+        </h2>
+        <img
+          src={arrowIcon}
+          alt="right_arrow_icon"
+          onClick={() => setWeek((prev) => prev + 1)}
+        />
       </WeekBox>
 
       <DateBox>
-        {week.map((day, index) => {
+        {weekName.map((day, index, array) => {
           return (
             <DateViewCard
               key={"DateViewCard" + index}
               day={day}
+              array={array}
               myWeek={myWeek}
             />
           );
@@ -110,8 +98,7 @@ const DateBox = styled(RowFlexDiv)`
   box-shadow: 10px 10px 0px #ffc58e;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 10px 10px 0px #FFC58E;
-
+  box-shadow: 10px 10px 0px #ffc58e;
 `;
 
 export default CalenderSection;
