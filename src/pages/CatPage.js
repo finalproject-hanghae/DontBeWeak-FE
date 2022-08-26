@@ -12,7 +12,7 @@ import ShopBtn from "../components/layout/button/ShopBtn";
 
 const CatPage = () => {
   const Data = useCatPageData();
-  console.log(Data);
+  console.log(Data,"sksksksk");
 
   return (
     <PageSection>
@@ -25,7 +25,7 @@ const CatPage = () => {
           <CatNameAndImage>
             <select>
               <option>{Data?.username}의 고양이　🢓</option>
-              <option>{Data?.username}의 고양이</option>
+              <option>{Data?.username}의 고양이 🢓</option>
             </select>
             <div>
               <img src={Data?.catImg} alt="" />
@@ -36,15 +36,13 @@ const CatPage = () => {
           {/* 고양이 레벨표시 구역 Start */}
           <CatLevelCard>
             <CatLevelLeft />
-            <CatLevelCenter level={Data.level} />
+            <CatLevelCenter level={Data?.level} />
             <CatLevelRight />
           </CatLevelCard>
           {/* 고양이 레벨표시 구역 End */}
 
           {/* 고양이 상점 표시구역 Start */}
-          <CatShopCard>
-            <ShopBtn />
-          </CatShopCard>
+          <ShopBtn />
           {/* 고양이 상점 표시구역 End */}
         </ColumnFlexDiv>
       </FullPage>

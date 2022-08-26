@@ -17,7 +17,7 @@ const FriendsListForm = () => {
     dispatch(loadFriendDataMW())
   }, []);
 
-  // github Issues #50 >> 'isAddFriend state 충돌현상' 일단 해결..
+
   const [disabled, setDisabled] = React.useState(true);
   const friendIdRef = React.useRef(null);
 
