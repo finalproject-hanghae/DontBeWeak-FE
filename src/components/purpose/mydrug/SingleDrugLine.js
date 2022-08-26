@@ -9,6 +9,7 @@ import { devices } from "../../../device";
 import { drugApi } from "../../../api/basicAPI";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
+import { keepWeekDataMW } from "../../../redux/modules/weeks";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
@@ -20,9 +21,10 @@ const SingleDrugLine = ({ val, idx }) => {
       usedAt: new Date().toISOString(),
       done: true,
     };
-    drugApi
-      .apiDrugCheck(data)
-      .then((res) => dispatch(loadDrugDataMW(username)));
+    drugApi.apiDrugCheck(data).then((res) => {
+      dispatch(loadDrugDataMW(username));
+      dispatch(keepWeekDataMW(data,val.customColor));
+    });
   };
 
   return (
