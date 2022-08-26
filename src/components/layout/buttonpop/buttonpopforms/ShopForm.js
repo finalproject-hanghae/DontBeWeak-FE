@@ -3,11 +3,18 @@ import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 import item1 from "../../../../assets/images/cats/item1.png";
 import point from "../../../../assets/images/cats/stamp.png";
+import useCatItemList from "../../../../hooks/useCatItemList";
+import CatItemList from "../../../purpose/cat/item/CatItemList";
+
 
 const ShopForm = () => {
+const Data = CatItemList();
+console.log(Data);
+
   return (
     <Wrap>
       <ItemsBox>
+
         <Item>
           <Img>
             <img src={item1} alt="item1" />
