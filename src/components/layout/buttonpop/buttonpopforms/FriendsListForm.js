@@ -4,19 +4,29 @@ import React from "react";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { useDispatch, useSelector } from "react-redux";
-import { keepFriendDataMW, loadFriendDataMW } from "../../../../redux/modules/friends";
-import { FriendAddBtn, FriendIdInput, FriendsList } from "../../../../style/friendList";
+import {
+  keepFriendDataMW,
+  loadFriendDataMW,
+} from "../../../../redux/modules/friends";
+import {
+  FriendAddBtn,
+  FriendIdInput,
+  FriendsList,
+} from "../../../../style/friendList";
+import { useNavigate, useParams } from "react-router-dom";
+import { loadDrugDataMW } from "../../../../redux/modules/drugs";
 
 const FriendsListForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  const friendList = useSelector((state)=>state.friends.friends)
+  const friendList = useSelector((state) => state.friends.friends);
+  const friendname = useParams().username;
 
   React.useEffect(() => {
-    dispatch(loadFriendDataMW())
-  }, []);
-
+    dispatch(loadFriendDataMW());
+  }, [friendname]);
 
   const [disabled, setDisabled] = React.useState(true);
   const friendIdRef = React.useRef(null);
@@ -30,13 +40,13 @@ const FriendsListForm = () => {
   };
 
   const submitToFriendId = () => {
-    const username = friendIdRef.current.value
+    const username = friendIdRef.current.value;
     try {
-    dispatch(keepFriendDataMW(username))
-  } catch{
-    alert('친구추가에 성공했습니다.')
-    setIsAddFriend(false)
-  }
+      dispatch(keepFriendDataMW(username));
+    } catch {
+      alert("친구추가에 성공했습니다.");
+      setIsAddFriend(false);
+    }
   };
 
   return (
@@ -53,19 +63,31 @@ const FriendsListForm = () => {
           <FriendAddBtn type="button" onClick={submitToFriendId}>
             친구추가+
           </FriendAddBtn>
-        </TrueForm> 
+        </TrueForm>
       ) : (
         // 친구 목록 Title
         <FalseForm>
-          <h3>친구 목록</h3> 
-          <FriendAddBtn onClick={()=>setIsAddFriend(true)}>친구추가+</FriendAddBtn>
+          <h3>친구 목록</h3>
+          <FriendAddBtn onClick={() => setIsAddFriend(true)}>
+            친구추가+
+          </FriendAddBtn>
         </FalseForm>
       )}
 
       {/* 친구 리스트 */}
       <FriendsList>
-        {friendList.map((val,idx) => {
-          return <p key={'friendListItem'+idx}>{val.nickname}</p>;
+        {friendList.map((val, idx) => {
+          return (
+            <p
+              key={"friendListItem" + idx}
+              onClick={() => {
+                navigate("/record/" + val.friendname);
+                dispatch(loadDrugDataMW(val.friendname));
+              }}
+            >
+              {val.nickname}
+            </p>
+          );
         })}
       </FriendsList>
     </Wrap>
@@ -85,6 +107,5 @@ const TrueForm = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const FalseForm = styled(TrueForm)`
-`;
+const FalseForm = styled(TrueForm)``;
 export default FriendsListForm;

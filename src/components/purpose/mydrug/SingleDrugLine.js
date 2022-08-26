@@ -50,18 +50,20 @@ const SingleDrugLine = ({ val, idx }) => {
             : val.productName}
         </span>
       </ColorAndDrugName>
-      <label htmlFor={"didEat" + idx}>
-        {val.done ? (
-          <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
-        ) : null}
-        <input
-          id={"didEat" + idx}
-          type={"checkbox"}
-          defaultChecked={val.done ? true : false}
-          disabled={val.done ? true : false}
-          onClick={clickToCheckDrug}
-        />
-      </label>
+      {username == sessionStorage.getItem("username") && (
+        <label htmlFor={"didEat" + idx}>
+          {val.done ? (
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
+          ) : null}
+          <input
+            id={"didEat" + idx}
+            type={"checkbox"}
+            defaultChecked={val.done ? true : false}
+            disabled={val.done ? true : false}
+            onClick={clickToCheckDrug}
+          />
+        </label>
+      )}
     </SingleDrugLineBox>
   );
 };
