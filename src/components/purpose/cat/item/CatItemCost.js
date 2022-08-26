@@ -10,13 +10,15 @@ const CatItemCost = ({ cost }) => {
         Array(cost)
           .fill(0)
           .map((val, idx) => {
-            return <div><img src={point} alt="point" /></div>;
+            return (
+              <div>
+                <img src={point} alt="point" />
+              </div>
+            );
           })}
     </ItemCost>
-    
   );
 };
-
 
 const ItemCost = styled(RowFlexDiv)`
   width: 70%;

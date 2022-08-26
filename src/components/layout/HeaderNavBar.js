@@ -67,18 +67,13 @@ const NavBar = styled(RowFlexDiv)`
   box-sizing: border-box;
   align-content: center;
   padding: 0px 5%;
-  h1 {
-    font-size: 30px;
-    font-weight: bolder;
-    color: #f98532;
-  }
 `;
 
 const LinkButtons = styled(RowFlexDiv)`
   display: flex;
   align-items: center;
   .tabLink {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
     color: #383838;
     margin: 0px 25px;

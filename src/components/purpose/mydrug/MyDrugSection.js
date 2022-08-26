@@ -7,10 +7,9 @@ import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import SingleDrugLine from "./SingleDrugLine";
+import DrugCat from "../../../assets/images/cats/cat1.png";
 
-import DrugCat from "../../../assets/images/cats/drug_cat.png";
-
-const MyDrugSection = () => {
+const MyDrugSection = ({ Data }) => {
   const dispatch = useDispatch();
   const username = useParams().username;
   const myDrug = useSelector((state) => state.drugs.drugs);
@@ -29,18 +28,21 @@ const MyDrugSection = () => {
         })}
       </MyDrugs>
       <CatState>
-        <img src={DrugCat} alt="cat_img" />
-        <p>Lv.1 기운없는 고양이 </p>
+        <p>Lv.{Data?.level} 고먐미</p>
+        <CatImg>
+          <img src={Data?.catImg} alt="cat_img" />
+        </CatImg>
       </CatState>
     </MyDrugCard>
   );
 };
 
 const MyDrugCard = styled(RowFlexDiv)`
-  width: 90%;
+  width: 85%;
   margin: 0px auto;
+  padding: 3% 3%;
   height: 352px;
-  border-radius: 10px;
+  border-radius: 0.625em;
   border: solid 2px #000;
   box-shadow: 10px 10px 0px #ffc58e;
   justify-content: center;
@@ -49,8 +51,8 @@ const MyDrugCard = styled(RowFlexDiv)`
 const MyDrugs = styled.div`
   width: 65%;
   height: 80%;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap;
   justify-content: flex-start;
   gap: 15px;
   align-content: center;
@@ -73,22 +75,25 @@ const MyDrugs = styled.div`
   @media ${devices.mobileL} {
     padding: 0px;
     height: 190px;
+  } */
+`;
+const CatState = styled(ColumnFlexDiv)`
+  width: 15rem;
+  height: 15rem;
+  /* position: relative; */
+  background-color: #fabc4f;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 1rem;
+    margin-bottom: 10%;
+    font-weight: 600;
   }
 `;
-const CatState = styled.div`
-  width: 221px;
-  height: 221px;
-  position: relative;
-  left: 2%;
+const CatImg = styled(ColumnFlexDiv)`
   img {
-    position: absolute;
-  }
-  p {
-    position: absolute;
-    top: 7%;
-    left: 17%;
-    font-size: 1rem;
-    font-weight: 600;
+    width: 9rem;
   }
 `;
 
