@@ -76,6 +76,7 @@ const WeekBox = styled(RowFlexDiv)`
   width: 80%;
   height: 70px;
   align-items: center;
+
   align-self: center;
   justify-content: center;
   h2 {
@@ -109,6 +110,8 @@ const DateBox = styled(RowFlexDiv)`
   box-shadow: 10px 10px 0px #ffc58e;
   border-radius: 10px;
   background-color: white;
+  box-shadow: 10px 10px 0px #FFC58E;
+
 `;
 
 export default CalenderSection;

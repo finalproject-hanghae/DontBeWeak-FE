@@ -9,6 +9,7 @@ import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import Modals from "../components/layout/modal/modalList";
 import ShopBtn from "../components/layout/button/ShopBtn";
+
 const CatPage = () => {
   const Data = useCatPageData();
   console.log(Data,"sksksksk");
@@ -88,5 +89,6 @@ const CatLevelCard = styled(RowFlexDiv)`
 `;
 
 const CatShopCard = styled(ColumnFlexDiv)``;
+
 
 export default CatPage;
