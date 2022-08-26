@@ -35,5 +35,4 @@ const Name = styled.p`
   font-weight: bold;
 `;
 
-
 export default CatItem;

@@ -79,7 +79,7 @@ const WeekBox = styled(RowFlexDiv)`
   align-self: center;
   justify-content: center;
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     display: inline-block;
     text-align: center;
     width: 100%;

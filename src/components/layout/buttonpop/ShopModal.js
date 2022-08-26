@@ -21,6 +21,7 @@ const ShopModal = React.forwardRef((props, ref) => {
           </p>
         </MyPoint>
       </Section>
+      
     </Wrap>
   );
 });

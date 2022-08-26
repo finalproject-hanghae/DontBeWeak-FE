@@ -17,7 +17,6 @@ import ShopBtn from "../components/layout/button/ShopBtn";
 
 const CatPage = () => {
   const dispatch = useDispatch();
-  const userData = useUserData();
   const Data = useCatPageData();
   console.log(Data, "에");
 

@@ -7,14 +7,15 @@ export const useCatPageData = () => {
   const [myCat, setMyCat] = React.useState({});
 
   React.useEffect(() => {
-    catApi.apiSomeCatStatus(myname)
-    .then((response) => {
-      console.log(response.data);
-      setMyCat({ ...response.data, username: myname });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    catApi
+      .apiSomeCatStatus(myname)
+      .then((response) => {
+        console.log(response.data);
+        setMyCat({ ...response.data, username: myname });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return myCat;
