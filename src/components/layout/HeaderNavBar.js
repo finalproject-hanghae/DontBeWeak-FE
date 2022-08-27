@@ -6,6 +6,7 @@ import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
 
 import Logo from "../../assets/images/logo/logo_small.png";
+import { loadDrugDataMW } from "../../redux/modules/drugs";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const HeaderNavBar = () => {
         </LinkC>
         {authorization && (
           <>
-            <LinkC className="tabLink" to={"/record/" + username}>
+            <LinkC className="tabLink" to={"/record/" + username} onClick={()=>dispatch(loadDrugDataMW(username))}>
               하루기록
             </LinkC>
 
@@ -66,18 +67,13 @@ const NavBar = styled(RowFlexDiv)`
   box-sizing: border-box;
   align-content: center;
   padding: 0px 5%;
-  h1 {
-    font-size: 30px;
-    font-weight: bolder;
-    color: #f98532;
-  }
 `;
 
 const LinkButtons = styled(RowFlexDiv)`
   display: flex;
   align-items: center;
   .tabLink {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
     color: #383838;
     margin: 0px 25px;

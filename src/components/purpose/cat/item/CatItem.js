@@ -5,9 +5,13 @@ import { ColumnFlexDiv } from "../../../../style/styled";
 import CatItemCost from "./CatItemCost";
 
 const CatItem = ({ val }) => {
+  const buy = () => {
+    alert("살래?");
+  };
+
   return (
     <Item>
-      <Img>
+      <Img onClick={buy}>
         <img src={val?.itemImg} alt={val?.itemName} />
       </Img>
       <Name> {val?.itemName} </Name>
@@ -29,11 +33,11 @@ const Img = styled(ColumnFlexDiv)`
   justify-content: center;
   border-radius: 4px;
   background-color: #fcdcbe;
+  cursor: pointer;
 `;
 const Name = styled.p`
   font-size: 14px;
   font-weight: bold;
 `;
-
 
 export default CatItem;

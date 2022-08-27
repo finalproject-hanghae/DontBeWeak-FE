@@ -8,7 +8,6 @@ const useHandleClick = () => {
     setIsOpened(true);
   };
 
-
   React.useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -24,7 +23,7 @@ const useHandleClick = () => {
     };
   }, [openedModalRef]);
 
-  return [isOpened,setIsOpened,showModal,openedModalRef]
+  return [isOpened, setIsOpened, showModal, openedModalRef];
 };
 
 export default useHandleClick;

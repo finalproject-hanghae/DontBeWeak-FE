@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import CatItemList from "../../purpose/cat/item/CatItemList";
+import useUserData from "../../../hooks/useUserData";
 
 const ShopModal = React.forwardRef((props, ref) => {
+  const data = useUserData();
+
   return (
     <Wrap ref={ref}>
       <TiltelBar>
@@ -14,10 +17,11 @@ const ShopModal = React.forwardRef((props, ref) => {
         <CatItemList />
         <MyPoint>
           <p>
-            MY 포인트 :<span>4</span>
+            MY 포인트 :<span>{data?.point}</span>
           </p>
         </MyPoint>
       </Section>
+      
     </Wrap>
   );
 });

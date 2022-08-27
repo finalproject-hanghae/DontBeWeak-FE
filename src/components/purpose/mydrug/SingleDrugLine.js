@@ -17,7 +17,6 @@ const SingleDrugLine = ({ val, idx }) => {
 
   const clickToCheckDrug = () => {
     var tmpDate = new Date();
-
     let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
 
     const data = {
@@ -51,18 +50,20 @@ const SingleDrugLine = ({ val, idx }) => {
             : val.productName}
         </span>
       </ColorAndDrugName>
-      <label htmlFor={"didEat" + idx}>
-        {val.done ? (
-          <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
-        ) : null}
-        <input
-          id={"didEat" + idx}
-          type={"checkbox"}
-          defaultChecked={val.done ? true : false}
-          disabled={val.done ? true : false}
-          onClick={clickToCheckDrug}
-        />
-      </label>
+      {username == sessionStorage.getItem("username") && (
+        <label htmlFor={"didEat" + idx}>
+          {val.done ? (
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"}/>
+          ) : null}
+          <input
+            id={"didEat" + idx}
+            type={"checkbox"}
+            defaultChecked={val.done ? true : false}
+            disabled={val.done ? true : false}
+            onClick={clickToCheckDrug}
+          />
+        </label>
+      )}
     </SingleDrugLineBox>
   );
 };
