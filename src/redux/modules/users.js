@@ -1,4 +1,4 @@
-import { userApi } from "../../api/basicAPI";
+import { userApi } from "../../api/userAPI";
 
 // Actions
 const KEEP = "user/KEEP";

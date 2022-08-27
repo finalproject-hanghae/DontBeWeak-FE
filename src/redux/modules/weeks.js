@@ -1,4 +1,4 @@
-import { drugApi } from "../../api/basicAPI";
+import { drugApi } from "../../api/drugAPI";
 
 // Actions
 const LOAD = "week/LOAD";

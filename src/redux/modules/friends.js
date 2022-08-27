@@ -1,4 +1,4 @@
-import { friendApi } from "../../api/basicAPI";
+import { friendApi } from "../../api/friendAPI";
 
 // Actions
 const LOAD = "friend/LOAD";

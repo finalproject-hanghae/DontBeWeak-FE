@@ -1,5 +1,5 @@
 import React from "react";
-import { itemApi } from "../api/basicAPI";
+import { itemApi } from "../api/itemAPI";
 
 const useCatItemList = () => {
   const [list, setList] = React.useState();

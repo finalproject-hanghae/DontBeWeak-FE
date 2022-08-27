@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import { catApi } from "../api/basicAPI";
+import { catApi } from "../api/catAPI";
 
 export const useCatPageData = () => {
   const myname = useParams().username;

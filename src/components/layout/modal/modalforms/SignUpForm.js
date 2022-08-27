@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { ColumnFlexDiv } from "../../../../style/styled";
-import { userApi } from "../../../../api/basicAPI";
+import { userApi } from "../../../../api/userAPI";
 
 function SignUpForm() {
   const navigate = useNavigate();
