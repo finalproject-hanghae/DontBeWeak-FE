@@ -10,7 +10,7 @@ const ExpBar = () => {
 
   const updatePercentage = () => {
     setTimeout(() => {
-      setEx(ex + 1);
+      setEx(ex + 100);
     })
   };
  console.log(updatePercentage, "올라라랄라")

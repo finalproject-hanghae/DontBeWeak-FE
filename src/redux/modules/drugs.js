@@ -1,4 +1,4 @@
-import { drugApi } from "../../api/basicAPI";
+import { drugApi } from "../../api/drugApi";
 
 // Actions
 const KEEP = "drug/KEEP";
