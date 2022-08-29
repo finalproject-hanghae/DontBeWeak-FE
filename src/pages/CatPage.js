@@ -16,16 +16,20 @@ import ShopBtn from "../components/layout/button/ShopBtn";
 
 const CatPage = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const Data = useCatPageData();
-  console.log(Data, "에");
 
   const friendList = useSelector((state) => state.friends.friends);
+  const [FriendId, setFriendId] = React.useState();
 
+  const giveId = (e) => {
+    setFriendId(e.target.value);
+    console.log(FriendId, "제발");
+    navigate("/cat/" + FriendId);
+  };
   React.useEffect(() => {
     dispatch(loadFriendDataMW());
   }, []);
-
   return (
     <PageSection>
       {!Data.level && Modals.NotFound}
@@ -35,11 +39,13 @@ const CatPage = () => {
 
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
-            <select>
-              <option style={{cursor:"pointer"}}>{Data?.username}의 고양이　🢓</option>
+            <select onChange={giveId} value={FriendId}>
+              <option>
+                {Data?.username}의 고양이　🢓
+              </option>
               {friendList.map((val, idx) => {
                 return (
-                  <option key={"friendListItem" + idx}>
+                  <option value={val.friendname} key={"friendListItem" + idx}>
                     {val.nickname}의 고양이　🢓
                   </option>
                 );
