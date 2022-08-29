@@ -10,12 +10,12 @@ const useThisApi = applyInterceptorsTo(baseApi);
 
 //cat 관련 API -> catApi
 const apiMyCatStatus = async () => {
-  const dataApiCatStatus = await useThisApi.get("/cat");
+  const dataApiCatStatus = await useThisApi.get("");
   return dataApiCatStatus;
 };
 
 const apiSomeCatStatus = async (path) => {
-  const dataApiSomeCatStatus = await useThisApi.get(`/cat/${path}`);
+  const dataApiSomeCatStatus = await useThisApi.get(`/${path}`);
   return dataApiSomeCatStatus;
 };
 
