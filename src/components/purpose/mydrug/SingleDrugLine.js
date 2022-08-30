@@ -6,7 +6,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { devices } from "../../../device";
-import { drugApi } from "../../../api/drugAPI";
+import { drugApi } from "../../../api/drugApi";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
 import { keepWeekDataMW } from "../../../redux/modules/weeks";
