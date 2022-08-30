@@ -26,7 +26,6 @@ const SingleDrugLine = ({ val, idx }) => {
     };
     drugApi.apiDrugCheck(data).then((res) => {
       dispatch(loadDrugDataMW(username));
-      dispatch(keepWeekDataMW(data, val.customColor));
     });
   };
 
