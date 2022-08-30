@@ -8,30 +8,27 @@ import { useFindWeek } from "../../../hooks/useFindWeek";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 import { useParams } from "react-router-dom";
-import { loadWeekDataMW } from "../../../redux/modules/weeks";
+import { changeWeekData, loadWeekDataMW } from "../../../redux/modules/weeks";
 
 const CalenderSection = () => {
   const dispatch = useDispatch();
 
-  const [week, setWeek] = React.useState(0);
+  const week = useSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
   console.log("startDate", startDate);
   console.log("endDate", endDate);
 
   const myWeek = useSelector((state) => state.weeks.weeks);
 
-  
   const myname = useParams().username;
 
   React.useEffect(() => {
     const params = {
-      startDate:startDate.replace('.',''),
-      endDate:endDate.replace('.',''),
-    }
-    dispatch(loadWeekDataMW(myname,params))
+      startDate: startDate.replace(".", ""),
+      endDate: endDate.replace(".", ""),
+    };
+    dispatch(loadWeekDataMW(myname, params));
   }, [week]);
-
-
 
   const weekName = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -41,7 +38,7 @@ const CalenderSection = () => {
         <img
           src={arrowIcon}
           alt="left_arrow_icon"
-          onClick={() => setWeek((prev) => prev - 1)}
+          onClick={() => dispatch(changeWeekData(week - 1))}
         />
         <h2>
           {startDate} ~ {endDate}
@@ -49,7 +46,7 @@ const CalenderSection = () => {
         <img
           src={arrowIcon}
           alt="right_arrow_icon"
-          onClick={() => setWeek((prev) => prev + 1)}
+          onClick={() => dispatch(changeWeekData(week + 1))}
         />
       </WeekBox>
 

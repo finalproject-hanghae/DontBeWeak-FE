@@ -7,12 +7,25 @@ import { LinkC, RowFlexDiv } from "../../style/styled";
 
 import Logo from "../../assets/images/logo/logo_small.png";
 import { loadDrugDataMW } from "../../redux/modules/drugs";
+import { useFindWeek } from "../../hooks/useFindWeek";
+import { loadWeekDataMW } from "../../redux/modules/weeks";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
   let sessionStorage = window.sessionStorage;
   const authorization = useSelector((state) => state.users.authorization);
+  const week = useSelector((state) => state.weeks.week);
   const username = sessionStorage.getItem("username");
+
+  const ClickToReloadRecordPageData = () => {
+    let [startDate, endDate] = useFindWeek(week);
+    const params = {
+      startDate: startDate.replace(".", ""),
+      endDate: endDate.replace(".", ""),
+    };
+    dispatch(loadDrugDataMW(username));
+    dispatch(loadWeekDataMW(username, params));
+  };
   return (
     <NavBar>
       {/* 로그인 전 후 분기 나눠야함 */}
@@ -26,7 +39,7 @@ const HeaderNavBar = () => {
         </LinkC>
         {authorization && (
           <>
-            <LinkC className="tabLink" to={"/record/" + username} onClick={()=>dispatch(loadDrugDataMW(username))}>
+            <LinkC className="tabLink" to={"/record/" + username} onClick={()=>ClickToReloadRecordPageData()}>
               하루기록
             </LinkC>
 
