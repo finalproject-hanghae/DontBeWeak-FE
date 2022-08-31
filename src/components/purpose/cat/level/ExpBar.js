@@ -4,7 +4,7 @@ import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 
 const ExpBar = () => {
-  const userData = useUserData();
+  // const userData = useUserData();
 
   const [ex, setEx] = useState(0);
 

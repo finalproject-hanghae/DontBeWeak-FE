@@ -10,13 +10,14 @@ export const useCatPageData = () => {
     catApi
       .apiSomeCatStatus(myname)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data,"나와");
         setMyCat({ ...response.data, username: myname });
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  
 
   return myCat;
 };
