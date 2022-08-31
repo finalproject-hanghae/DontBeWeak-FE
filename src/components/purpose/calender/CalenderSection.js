@@ -15,20 +15,16 @@ const CalenderSection = () => {
 
   const week = useSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
-  console.log("startDate", startDate);
-  console.log("endDate", endDate);
 
   const myWeek = useSelector((state) => state.weeks.weeks);
 
   const myname = useParams().username;
 
-  React.useEffect(() => {
-    const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
-    };
-    dispatch(loadWeekDataMW(myname, params));
-  }, [week]);
+  const params = {
+    startDate: startDate.replace(".", ""),
+    endDate: endDate.replace(".", ""),
+  };
+  dispatch(loadWeekDataMW(myname, params));
 
   const weekName = ["일", "월", "화", "수", "목", "금", "토"];
 
