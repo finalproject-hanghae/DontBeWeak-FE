@@ -11,4 +11,4 @@ const useCatBuyItem = async (val) => {
 
 export default useCatBuyItem;
 
-// axios.patch ??? ('/api/data/3', {title: })
+// axios.patch 문법?.. ('/api/data/3', {title: })
