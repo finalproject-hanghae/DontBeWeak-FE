@@ -67,8 +67,8 @@ const LogInForm = () => {
 };
 
 const LogInModalBox = styled(ColumnFlexDiv)`
-  width: 630px;
-  height: 630px;
+  width: 39rem;
+  height: 39rem;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -79,8 +79,8 @@ const Wrap = styled(ColumnFlexDiv)`
   justify-content: center;
   align-items: center;
   h2 {
-    font-size: 35px;
-    margin: 35px 0px;
+    font-size: 2.2rem;
+    margin: 2rem 0px;
   }
   small {
     margin-top: 15px;
@@ -92,8 +92,8 @@ const SignUpLink = styled(LinkC)`
   margin-left: 1%;
 `;
 const LogInInput = styled.input`
-  width: 513px;
-  height: 64px;
+  width: 32rem;
+  height: 4rem;
   margin: auto auto 20px auto;
   border: 0.5px solid #c5c5c5;
   padding: 3%;
@@ -104,8 +104,8 @@ const LogInInput = styled.input`
 `;
 
 const LogInButton = styled.button`
-  width: 513px;
-  height: 64px;
+  width: 32rem;
+  height: 4rem;
   background: #fabc4f;
   color: #000;
   font-weight: 800;
@@ -116,8 +116,8 @@ const LogInButton = styled.button`
 `;
 
 const SnsLoginBtn = styled.button`
-  width: 513px;
-  height: 64px;
+  width: 32rem;
+  height: 4rem;
   background-color: #fff;
   color: #000;
   font-weight: 800;

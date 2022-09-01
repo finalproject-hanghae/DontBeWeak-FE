@@ -6,7 +6,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { devices } from "../../../device";
-import { drugApi } from "../../../api/basicAPI";
+import { drugApi } from "../../../api/drugApi";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
 import { keepWeekDataMW } from "../../../redux/modules/weeks";
@@ -26,7 +26,6 @@ const SingleDrugLine = ({ val, idx }) => {
     };
     drugApi.apiDrugCheck(data).then((res) => {
       dispatch(loadDrugDataMW(username));
-      dispatch(keepWeekDataMW(data, val.customColor));
     });
   };
 
@@ -53,7 +52,7 @@ const SingleDrugLine = ({ val, idx }) => {
       {username == sessionStorage.getItem("username") && (
         <label htmlFor={"didEat" + idx}>
           {val.done ? (
-            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"}/>
           ) : null}
           <input
             id={"didEat" + idx}

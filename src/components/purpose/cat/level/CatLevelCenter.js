@@ -36,7 +36,7 @@ const LevelHole = styled(CenterFlexDiv)`
   width: 36px;
   height: 36px;
   background-color: #fff;
-  border: solid 1px #ffc329;
+  border: solid 1px #fabc4f;
   border-radius: 40px;
   margin: 6px 7px 6px 7px;
 `;

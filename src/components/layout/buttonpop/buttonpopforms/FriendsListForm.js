@@ -15,6 +15,8 @@ import {
 } from "../../../../style/friendList";
 import { useNavigate, useParams } from "react-router-dom";
 import { loadDrugDataMW } from "../../../../redux/modules/drugs";
+import { loadWeekDataMW } from "../../../../redux/modules/weeks";
+import { useFindWeek } from "../../../../hooks/useFindWeek";
 
 const FriendsListForm = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const FriendsListForm = () => {
   const [isAddFriend, setIsAddFriend] = React.useState(false);
   const friendList = useSelector((state) => state.friends.friends);
   const friendname = useParams().username;
+
+  const week = useSelector((state) => state.weeks.week);
 
   React.useEffect(() => {
     dispatch(loadFriendDataMW());
@@ -47,6 +51,17 @@ const FriendsListForm = () => {
       alert("친구추가에 성공했습니다.");
       setIsAddFriend(false);
     }
+  };
+
+  const ClickToReloadRecordPageData = (val) => {
+    let [startDate, endDate] = useFindWeek(week);
+    const params = {
+      startDate: startDate.replace(".", ""),
+      endDate: endDate.replace(".", ""),
+    };
+    navigate("/record/" + val.friendname);
+    dispatch(loadDrugDataMW(val.friendname));
+    dispatch(loadWeekDataMW(val.friendname, params));
   };
 
   return (
@@ -81,8 +96,7 @@ const FriendsListForm = () => {
             <p
               key={"friendListItem" + idx}
               onClick={() => {
-                navigate("/record/" + val.friendname);
-                dispatch(loadDrugDataMW(val.friendname));
+                ClickToReloadRecordPageData(val)
               }}
             >
               {val.nickname}

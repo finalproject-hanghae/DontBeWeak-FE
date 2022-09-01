@@ -1,11 +1,13 @@
-import { drugApi } from "../../api/basicAPI";
+import { drugApi } from "../../api/drugApi";
 
 // Actions
 const LOAD = "week/LOAD";
 const KEEP = "week/KEEP";
+const CHANGE = "week/CHANGE";
 
 const initialState = {
   weeks: [],
+  week: 0,
 };
 
 export function loadWeekData(myWeek) {
@@ -14,12 +16,15 @@ export function loadWeekData(myWeek) {
 export function keepWeekData(myDrug) {
   return { type: KEEP, weeks: myDrug };
 }
+export function changeWeekData(week) {
+  return { type: CHANGE, week: week };
+}
 
 //middlewares
-export function loadWeekDataMW(myname, params) {
+export function loadWeekDataMW(name, params) {
   return function (dispatch) {
     drugApi
-      .apiDrugWeek(myname, params)
+      .apiDrugWeek(name, params)
       .then((response) => {
         console.log(response.data);
         dispatch(loadWeekData([...response.data]));
@@ -46,10 +51,13 @@ export default function reducer(state = initialState, action = {}) {
   //dispatch는 action함수에 접근하여 리턴값으로 reducer의 2번째 매개변수(action)를 제공
   switch (action.type) {
     case "week/LOAD": {
-      return { weeks: [...action.weeks] };
+      return { weeks: [...action.weeks], week: state.week };
     }
     case "week/KEEP": {
-      return { weeks: [...state.weeks, action.weeks] };
+      return { weeks: [...state.weeks, action.weeks], week: state.week };
+    }
+    case "week/CHANGE": {
+      return { weeks: state.weeks, week: action.week };
     }
     // do reducer stuff
     default:

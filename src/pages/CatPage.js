@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
+import { useNavigate } from "react-router-dom";
 
-import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
+import { loadFriendDataMW } from "../redux/modules/friends";
+import { ColumnFlexDiv, LinkC, PageSection, RowFlexDiv } from "../style/styled";
 import { useCatPageData } from "../hooks/useCatPageData";
-
+import ExpBar from "../components/purpose/cat/level/ExpBar";
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
@@ -11,8 +15,16 @@ import Modals from "../components/layout/modal/modalList";
 import ShopBtn from "../components/layout/button/ShopBtn";
 
 const CatPage = () => {
+  const dispatch = useDispatch();
+
   const Data = useCatPageData();
-  console.log(Data,"sksksksk");
+  console.log(Data, "에");
+
+  const friendList = useSelector((state) => state.friends.friends);
+
+  React.useEffect(() => {
+    dispatch(loadFriendDataMW());
+  }, []);
 
   return (
     <PageSection>
@@ -24,14 +36,25 @@ const CatPage = () => {
           {/* 고양이 주인이름과 사진표시 구역 Start */}
           <CatNameAndImage>
             <select>
-              <option>{Data?.username}의 고양이　🢓</option>
-              <option>{Data?.username}의 고양이 🢓</option>
+              <option style={{cursor:"pointer"}}>{Data?.username}의 고양이　🢓</option>
+              {friendList.map((val, idx) => {
+                return (
+                  <option key={"friendListItem" + idx}>
+                    {val.nickname}의 고양이　🢓
+                  </option>
+                );
+              })}
             </select>
             <div>
               <img src={Data?.catImg} alt="" />
             </div>
           </CatNameAndImage>
           {/* 고양이 주인이름과 사진표시 구역 End */}
+
+          {/*  경험치 표시 */}
+          <ExCard>
+            <p>exp</p> <ExpBar />
+          </ExCard>
 
           {/* 고양이 레벨표시 구역 Start */}
           <CatLevelCard>
@@ -63,7 +86,6 @@ const CatNameAndImage = styled(ColumnFlexDiv)`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
   }
   img {
     width: 269px;
@@ -80,15 +102,24 @@ const CatNameAndImage = styled(ColumnFlexDiv)`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
   }
 `;
-
+const ExCard = styled(RowFlexDiv)`
+  width: 50%;
+  height: 50px;
+  margin: auto;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-weight: 670;
+    font-size: 16px;
+  }
+`;
 const CatLevelCard = styled(RowFlexDiv)`
   width: fit-content;
   margin: 0px auto;
 `;
-
-const CatShopCard = styled(ColumnFlexDiv)``;
-
 
 export default CatPage;
