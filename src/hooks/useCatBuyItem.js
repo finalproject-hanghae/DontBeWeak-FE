@@ -1,14 +1,23 @@
-import axios from "axios";
-import applyInterceptorsTo from "../api/axiosInterceptors";
-const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST + "/items",
-});
-const useThisApi = applyInterceptorsTo(baseApi);
-const useCatBuyItem = async (val) => {
-  const dataApiItemBuy = await useThisApi.patch(`/${val.itemName}`);
-  return dataApiItemBuy;
-};
+import React from "react";
+import { useEffect } from "react";
+import { itemApi } from "../api/itemApi"; 
+import useCatItemList from "./useCatItemList";
+
+
+const useCatBuyItem = () => {
+  
+    const [ someItem, setSomeItem ] = React.useState();
+  useEffect(() => { 
+    itemApi
+      .apiItemBuy()
+      .then((res) => {
+        console.log(res.data, '사자사자');
+        // setBuying(res.data);
+      })
+      .catch((err) => {
+        console.log(err)});
+  }, []);
+
+}
 
 export default useCatBuyItem;
-
-// axios.patch 문법?.. ('/api/data/3', {title: })

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { loadFriendDataMW } from "../redux/modules/friends";
-import { useCatPageData } from "../hooks/useCatPageData";
+import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 import { useUserData } from "../hooks/useUserData";
 import Modals from "../components/layout/modal/modalList";
 import SelectBox from "../components/layout/SelectBox";
@@ -20,7 +20,7 @@ const CatPage = () => {
   const friendList = useSelector((state) => state.friends.friends);
   // const [FriendId, setFriendId] = React.useState();
   // const User = useUserData();
-  const Data = useCatPageData();
+  const Data = useSomeCatSatus();
   useEffect(() => {
     dispatch(loadFriendDataMW());
   }, []);
@@ -43,7 +43,7 @@ const CatPage = () => {
             </CatImage>
 
             {/* 경험치 표시바 */}
-            <ExCard>{/* <p>exp</p> <ExpBar /> */}</ExCard>
+            <ExCard><p>exp</p> <ExpBar /></ExCard>
 
             {/* 고양이 레벨표시 구역 Start */}
             <CatLevelCard>
@@ -80,6 +80,7 @@ const FullPage = styled.div`
 `;
 const CatImage = styled(ColumnFlexDiv)`
   align-items: center;
+
   div {
     &:last-child {
       width: 350px;
@@ -87,6 +88,7 @@ const CatImage = styled(ColumnFlexDiv)`
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top:5%;
     }
   }
   img {
@@ -94,15 +96,17 @@ const CatImage = styled(ColumnFlexDiv)`
   }
 `;
 const ExCard = styled(RowFlexDiv)`
-  width: 50%;
+  width: 48%;
   height: 50px;
   margin: auto;
-  margin-bottom: 30px;
-  justify-content: space-between;
+  margin: 15px auto;
+  /* justify-content: center; */
   align-items: center;
+
+
   p {
-    font-weight: 670;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 13px;
   }
 `;
 const CatLevelCard = styled(RowFlexDiv)`

@@ -11,13 +11,12 @@ import DrugCat from "../../../assets/images/cats/cat1.png";
 
 const MyDrugSection = ({ Data }) => {
   const dispatch = useDispatch();
-  const username = useParams().username;
+  // const username = useParams().username;
   const myDrug = useSelector((state) => state.drugs.drugs);
-
+  console.log(myDrug,"잉?")
   React.useEffect(() => {
-    dispatch(loadDrugDataMW(username));
+    dispatch(loadDrugDataMW());
   }, []);
-
   return (
     <MyDrugCard>
       <CatState>

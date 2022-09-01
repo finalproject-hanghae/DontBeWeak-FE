@@ -1,33 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { itemApi } from "../../../../api/itemApi";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import CatItemCost from "./CatItemCost";
+import { useEffect } from "react";
 import useCatBuyItem from "../../../../hooks/useCatBuyItem";
-import axios from "axios";
-import applyInterceptorsTo from "../../../../api/axiosInterceptors";
+import { itemApi } from "../../../../api/itemApi";
+
 const CatItem = ({ val }) => {
- // 아이템 구매 시 Comfirm 모달창
+  // 구매 Confirm 모달창
   const [buyModal, setOpenModal] = useState(false);
+  // Confirm = ok ? axios 실행
+  const [someItem, setSomeItem] = useState("");
 
-const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST + "/items",
-});
-const toBuyItem = (itemName) => {
-    console.log("얍!" + itemName);
-    axios.patch(`baseApi+/${itemName}`)
-    .then(res => {
-      axios.patch(baseApi+`/${itemName}`)
-      .catch(err => {
-        console.log(err)
+  const toBuyItem = () => {
+    itemApi
+      .apiItemBuy(val.itemName)
+      .then((res) => {
+        console.log(res.data, "사자사자");
+        setSomeItem(res.data);
+        console.log(someItem, 'r구매완료!')
       })
-    })
-  };
+      .catch((err) => {
+        console.log(err);
+      });
+  };  
 
 
- 
-  
-  
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <Item>
       <Img onClick={() => setOpenModal(true)}>
@@ -41,9 +43,7 @@ const toBuyItem = (itemName) => {
             <span>{val?.itemName}</span>를(을) 구매하시겠습니까?
           </p>
           <Btn onClick={() => setOpenModal(false)}>아니오</Btn>
-          <Btn onClick={() => toBuyItem(val.itemName,() => {})}>
-            네
-          </Btn>
+          <Btn onClick={toBuyItem}>네</Btn>
         </Confirm>
       ) : null}
     </Item>

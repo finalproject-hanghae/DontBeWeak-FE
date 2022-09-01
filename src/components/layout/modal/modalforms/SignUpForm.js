@@ -58,6 +58,7 @@ function SignUpForm() {
       });
   };
 
+
   return (
     <SignUpModalBox>
       <form onSubmit={submitToSignUp}>

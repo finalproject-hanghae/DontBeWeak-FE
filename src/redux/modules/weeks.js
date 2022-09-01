@@ -26,7 +26,7 @@ export function loadWeekDataMW(name, params) {
     drugApi
       .apiDrugWeek(name, params)
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data,"너니?");
         dispatch(loadWeekData([...response.data]));
       })
       .catch((error) => {
