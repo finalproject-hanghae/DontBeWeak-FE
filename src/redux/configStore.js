@@ -12,7 +12,7 @@ import weeks from "./modules/weeks"
 
 const middlewares = [thunk];
 const enhancer = applyMiddleware(...middlewares);
-const rootReducer = combineReducers({ users, drugs, friends, weeks });
+const rootReducer = combineReducers({ users, drugs, friends, weeks});
 
 const store = createStore(rootReducer, enhancer);
 

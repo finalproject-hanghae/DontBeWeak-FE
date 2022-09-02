@@ -23,6 +23,7 @@ export function loadDrugDataMW(username) {
       .apiDrugList(username)
       .then((res) => {
         dispatch(loadDrugData(res.data));
+        console.log("뿌아")
       })
       .catch((err) => console.log(err));
   };

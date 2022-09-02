@@ -28,17 +28,18 @@ const CatLevelCenter = ({level}) => {
 
 const FlexBox = styled.div`
   display: inline-flex;
-  width: 260px;
+  width: 18rem;
   flex-wrap: wrap;
 `;
 
 const LevelHole = styled(CenterFlexDiv)`
-  width: 36px;
-  height: 36px;
+  width: 2.5rem;
+  height: 2.5rem;
+
   background-color: #fff;
   border: solid 1px #fabc4f;
   border-radius: 40px;
-  margin: 6px 7px 6px 7px;
+  margin: 8px 7px;
 `;
 
 export default CatLevelCenter;

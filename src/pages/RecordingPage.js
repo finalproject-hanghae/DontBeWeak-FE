@@ -8,17 +8,17 @@ import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import Modals from "../components/layout/modal/modalList";
 import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
 import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
-import { useCatPageData } from "../hooks/useCatPageData";
+import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 
 const RecordingPage = () => {
 
-  const Data = useCatPageData();
+
 
   return (
     <PageSection>
       <Wrap>
         <CalenderSection />
-        <MyDrugSection Data={Data} />
+        <MyDrugSection />
         <SearchDrugBtn />
         <FriendsListBtn />
       </Wrap>
