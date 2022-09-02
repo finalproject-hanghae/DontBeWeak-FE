@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../../../device";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { userApi } from "../../../../api/basicAPI";
 
@@ -85,34 +85,44 @@ function SignUpForm() {
 }
 
 const SignUpModalBox = styled(ColumnFlexDiv)`
-  width: 630px;
-  height: 630px;
+   width: 22rem;
+  height: 30rem;
+  align-items: center;
+  align-content: center;
   justify-content: center;
+  @media ${devices.mobileL} {
+    width: 19rem;
+    height: 30rem;
+  }
 
   h2 {
-    font-size: 35px;
-    margin: 35px 0px;
+    font-size: 1.6rem;
+    margin: 2rem 0;
   }
   form {
-    width: 100%;
+    width: 90%;
     height: 90%;
   }
 `;
 
 const SignUpInput = styled.input`
-  width: 513px;
-  height: 64px;
-  margin: auto auto 25px auto;
+  width: 20rem;
+  height: 3rem;
+  margin: auto auto 1rem auto;
   border: 0.5px solid #c5c5c5;
   padding: 3%;
   color: #000;
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 4px;
+  @media ${devices.mobileL} {
+    width: 17rem;
+    height: 2.8rem;
+  }
 `;
 const SignUpButton = styled.button`
-  width: 513px;
-  height: 64px;
+  width: 20rem;
+  height: 3.5rem;
   background: #fabc4f;
   color: #000;
   font-weight: 800;
@@ -121,6 +131,10 @@ const SignUpButton = styled.button`
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 17rem;
+    height: 3.2rem;
+  }
 `;
 
 export default SignUpForm;

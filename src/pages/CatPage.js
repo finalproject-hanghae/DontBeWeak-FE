@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { loadFriendDataMW } from "../redux/modules/friends";
-import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
-import { useUserData } from "../hooks/useUserData";
-import Modals from "../components/layout/modal/modalList";
+import styled from "styled-components";
+//componenets
+import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
 import SelectBox from "../components/layout/SelectBox";
 import ExpBar from "../components/purpose/cat/level/ExpBar";
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import ShopBtn from "../components/layout/button/ShopBtn";
-import styled from "styled-components";
-import { ColumnFlexDiv, LinkC, PageSection, RowFlexDiv } from "../style/styled";
+import Modals from "../components/layout/modal/modalList";
+// img
 import background from "../assets/images/cats/cat_bg.png";
+import useUserData from "../hooks/useUserData";
 
 const CatPage = () => {
   const dispatch = useDispatch();
   const friendList = useSelector((state) => state.friends.friends);
   // const [FriendId, setFriendId] = React.useState();
   const catData = useSomeCatSatus();
+  const userData = useUserData();
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
@@ -32,8 +34,6 @@ const CatPage = () => {
         {!catData.level && Modals.NotFound}
         <FullPage>
           <ColumnFlexDiv>
-
-
             <CatImage>
               {/* 나의 고먐미 ~ 친구네 고먐미 셀렉창 */}
               <SelectBox friendList={friendList} />
@@ -45,7 +45,9 @@ const CatPage = () => {
             </CatImage>
 
             {/* 경험치 표시바 */}
-            <ExCard><p>exp</p> <ExpBar /></ExCard>
+            <ExCard >
+              <p>exp</p> <ExpBar userData={userData} />
+            </ExCard>
 
             {/* 고양이 레벨표시 구역 Start */}
             <CatLevelCard>
@@ -54,8 +56,6 @@ const CatPage = () => {
               <CatLevelRight />
             </CatLevelCard>
             {/* 고양이 레벨표시 구역 End */}
-
-
 
             {/* 상점 Btn */}
             <ShopBtn />
@@ -66,7 +66,7 @@ const CatPage = () => {
   );
 };
 
-// Style
+//Style
 const Bg = styled.div`
   background-image: url(${background});
   background-repeat: no-repeat;
@@ -92,7 +92,7 @@ const CatImage = styled(ColumnFlexDiv)`
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top:5%;
+      margin-top: 5%;
     }
   }
   img {
@@ -104,10 +104,7 @@ const ExCard = styled(RowFlexDiv)`
   height: 50px;
   margin: auto;
   margin: 15px auto;
-  /* justify-content: center; */
   align-items: center;
-
-
   p {
     font-weight: 600;
     font-size: 13px;

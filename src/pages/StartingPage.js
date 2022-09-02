@@ -1,17 +1,16 @@
+import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import React from "react";
 import styled, { keyframes } from "styled-components";
-import { devices } from "../device";
-import { ColumnFlexDiv, PageSection } from "../style/styled";
-import Modals from "../components/layout/modal/modalList";
-
+//components
 import drugIcon from "../assets/images/icons/drug.png";
+import Modals from "../components/layout/modal/modalList";
+import { devices } from "../device";
+import { ColumnFlexDiv, DeviceDiv, PageSection } from "../style/styled";
+//images
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
-import catImg from "../assets/images/cats/cat1.png";
-import bean from "../assets/images/cats/blackbean.png";
-import test2 from "../assets/images/cats/test2.png";
+import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
@@ -78,69 +77,58 @@ const StartingPage = () => {
   );
 };
 
-// styled-component 적용
-const Section = styled(ColumnFlexDiv)`
-  width: 517px;
-  height: 720px;
+// styled
+const Section = styled(DeviceDiv)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 90%;
   margin: 0px auto;
   text-align: center;
-  justify-content: space-between;
-  align-items: center;
   button {
-    width: 260px;
-    height: 60px;
-    border: 2px solid #000;
-    border-radius: 30px;
+    width: 16rem;
+    height: 3.7rem;
+    border: 0.15rem solid #000;
+    border-radius: 1.8rem;
     background-color: #fabc4f;
     color: #000;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 900;
-    margin-bottom: 7%;
-    /* margin: 0px 0px 10px; */
     cursor: pointer;
   }
-  @media ${devices.mobileL} {
-    width: fit-content;
-    min-width: 280px;
-  }
-`;
-const Keyframes = keyframes`
-  100%{
-    background-position: -840px;
-  }
-`;
-const ImgSprite = styled.div`
-  height: 186px;
-  width: 280px;
-  position: absolute;
-  top: 43%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: url(${test2}) left center;
-  animation: ${Keyframes} 0.8s steps(3) infinite;
 `;
 const Main = styled(ColumnFlexDiv)`
   width: 100%;
-  height: 380px;
-  margin: 0 auto;
+  height: 24rem;
   align-items: center;
   text-align: center;
-  justify-content: center;
   h2 {
-    margin-bottom: 40%;
+    font-size: 1.45rem;
+    @media ${devices.mobileL} {
+      font-size: 1.1rem;
+    }
   }
   img {
-    width: 70px;
-    height: 70px;
+    width: 4rem;
+    height: 4rem;
+    @media ${devices.mobileL} {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 `;
-
 const Sub = styled(ColumnFlexDiv)`
-  width: 100%;
-  height: 150px;
-  font-size: 16px;
-  line-height: 24px;
-  /* margin-top: 10% 10%; */
+  width: 80%;
+  height: 10rem;
+  font-size: 1rem;
+  line-height: 1.9rem;
+  margin-left: 1%;
+  margin-bottom: 5%;
+  @media ${devices.tablet} {
+    display: none;
+  }
   div {
     width: 75%;
     height: 50%;
@@ -152,6 +140,29 @@ const Sub = styled(ColumnFlexDiv)`
     width: 40px;
     height: 40px;
     margin-right: 16px;
+  }
+`;
+const Keyframes = keyframes`
+  100%{
+    background-position: -52.5rem;
+  }
+`;
+const ImgSprite = styled.div`
+  width: 17.5rem;
+  height: 11.6rem;
+  position: absolute;
+  top: 47%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  background: url(${spriteImg}) left center;
+  animation: ${Keyframes} 0.8s steps(3) infinite;
+  @media ${devices.mobileL} {
+    left: 50%;
+  }
+  @media ${devices.tablet} {
+    top: 60%;
+    left: 50%;
+    min-width: 280px;
   }
 `;
 

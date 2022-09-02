@@ -16,7 +16,8 @@ const CatItem = ({ val }) => {
       .then((res) => {
         setSomeItem(res.data);
         setOpenModal(false);
-        alert("고먐미 : 냥냠냥냠냥냥 😻");
+        alert("냥냠냥냠냥냥 😻 경험치 +5 증가!");
+        
       })
       .catch((err) => {
         console.log(err);
