@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { devices } from "../device";
 import { ColumnFlexDiv, PageSection } from "../style/styled";
 import Modals from "../components/layout/modal/modalList";
@@ -11,6 +11,7 @@ import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import catImg from "../assets/images/cats/cat1.png";
 import bean from "../assets/images/cats/blackbean.png";
+import test2 from "../assets/images/cats/test2.png";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
@@ -26,21 +27,23 @@ const StartingPage = () => {
             <br />
             영양제도 챙겨 먹어보세요!
           </h2>
-          <img src={bean} alt="cat_img" />
+          <ImgSprite></ImgSprite>
         </Main>
         <Sub>
           <div>
             <img src={one} alt="1st" />
             <p>
               영양제를 제때 챙겨먹으면 경험치가 오르면서
-              <br /> 아픈 고양이를 회복시킬 수 있어요
+              <br />
+              아픈 고양이를 회복시킬 수 있어요
             </p>
           </div>
           <div>
             <img src={two} alt="2nd" />
             <p>
               경험치는 고양이를 성장시키는 것 뿐 아니라
-              <br /> 고양이에게 줄 아이템도 구매할 수 있어요
+              <br />
+              고양이에게 줄 아이템도 구매할 수 있어요
             </p>
           </div>
         </Sub>
@@ -78,27 +81,43 @@ const StartingPage = () => {
 // styled-component 적용
 const Section = styled(ColumnFlexDiv)`
   width: 517px;
-  height: 673px;
+  height: 720px;
   margin: 0px auto;
   text-align: center;
   justify-content: space-between;
   align-items: center;
   button {
-    width: 266px;
-    height: 65px;
+    width: 260px;
+    height: 60px;
     border: 2px solid #000;
     border-radius: 30px;
     background-color: #fabc4f;
     color: #000;
     font-size: 20px;
     font-weight: 900;
-    /* margin: 0px 0px 40px; */
+    margin-bottom: 7%;
+    /* margin: 0px 0px 10px; */
     cursor: pointer;
   }
   @media ${devices.mobileL} {
     width: fit-content;
     min-width: 280px;
   }
+`;
+const Keyframes = keyframes`
+  100%{
+    background-position: -840px;
+  }
+`;
+const ImgSprite = styled.div`
+  height: 186px;
+  width: 280px;
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(${test2}) left center;
+  animation: ${Keyframes} 0.8s steps(3) infinite;
 `;
 const Main = styled(ColumnFlexDiv)`
   width: 100%;
@@ -107,17 +126,12 @@ const Main = styled(ColumnFlexDiv)`
   align-items: center;
   text-align: center;
   justify-content: center;
-
+  h2 {
+    margin-bottom: 40%;
+  }
   img {
-    &:first-child {
-      width: 90px;
-      height: 90px;
-    }
-    &:last-child {
-      width: 219px;
-      height: 164px;
-      margin-top: 30px;
-    }
+    width: 70px;
+    height: 70px;
   }
 `;
 
@@ -126,6 +140,7 @@ const Sub = styled(ColumnFlexDiv)`
   height: 150px;
   font-size: 16px;
   line-height: 24px;
+  /* margin-top: 10% 10%; */
   div {
     width: 75%;
     height: 50%;

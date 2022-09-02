@@ -12,13 +12,13 @@ import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 
 const RecordingPage = () => {
 
-  const Data = useSomeCatSatus();
+
 
   return (
     <PageSection>
       <Wrap>
         <CalenderSection />
-        <MyDrugSection Data={Data} />
+        <MyDrugSection />
         <SearchDrugBtn />
         <FriendsListBtn />
       </Wrap>

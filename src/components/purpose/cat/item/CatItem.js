@@ -1,35 +1,27 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { ColumnFlexDiv } from "../../../../style/styled";
-import CatItemCost from "./CatItemCost";
-import { useEffect } from "react";
-import useCatBuyItem from "../../../../hooks/useCatBuyItem";
 import { itemApi } from "../../../../api/itemApi";
+import CatItemCost from "./CatItemCost";
+import { ColumnFlexDiv } from "../../../../style/styled";
+import styled from "styled-components";
 
 const CatItem = ({ val }) => {
   // 구매 Confirm 모달창
-  const [buyModal, setOpenModal] = useState(false);
-  // Confirm = ok ? axios 실행
-  const [someItem, setSomeItem] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
+  // 아이템 구매, 적용 axios 실행
+  const [someItem, setSomeItem] = useState("");
   const toBuyItem = () => {
-    itemApi
-      .apiItemBuy(val.itemName)
+    const itemId = val.itemId;
+    itemApi.apiItemBuy(itemId)
       .then((res) => {
-        console.log(res.data, "사자사자");
         setSomeItem(res.data);
-        console.log(someItem, 'r구매완료!')
+        setOpenModal(false);
+        alert("고먐미 : 냥냠냥냠냥냥 😻");
       })
       .catch((err) => {
         console.log(err);
       });
-  };  
-
-
-  // useEffect(() => {
-
-  // }, []);
-
+  };
   return (
     <Item>
       <Img onClick={() => setOpenModal(true)}>
@@ -37,8 +29,8 @@ const CatItem = ({ val }) => {
       </Img>
       <Name> {val?.itemName} </Name>
       <CatItemCost cost={val?.itemPoint} />
-      {buyModal ? (
-        <Confirm>
+      {openModal ? (
+        <Confirm className="conirm">
           <p>
             <span>{val?.itemName}</span>를(을) 구매하시겠습니까?
           </p>
@@ -50,6 +42,7 @@ const CatItem = ({ val }) => {
   );
 };
 
+// Style적용
 const Item = styled(ColumnFlexDiv)`
   width: 100px;
   height: 100%;
@@ -106,5 +99,4 @@ const Btn = styled.button`
     font-weight: 700;
   }
 `;
-
 export default CatItem;

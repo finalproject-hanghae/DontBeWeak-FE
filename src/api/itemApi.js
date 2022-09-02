@@ -15,7 +15,7 @@ const apiItemList = async () => {
 };
 
 const apiItemBuy = async (path) => {
-  const dataApiItemBuy = await useThisApi.patch(`/${path}`);
+  const dataApiItemBuy = await useThisApi.patch("/"+`${path}`);
   return dataApiItemBuy;
 };
 

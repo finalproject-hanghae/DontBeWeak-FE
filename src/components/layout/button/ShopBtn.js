@@ -1,10 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-
-import ShopModal from "../buttonpop/ShopModal";
 import useHandleClick from "../../../hooks/useHandleClick";
-
 import shopBtn from "../../../assets/images/icons/shop.png";
+import ShopModal from "../buttonpop/ShopModal";
+import styled from "styled-components";
 
 const ShopBtn = () => {
   const [shop, setShop, showModal, shopModalRef] = useHandleClick();
@@ -17,6 +15,8 @@ const ShopBtn = () => {
     </>
   );
 };
+
+// style 적용
 const BtnWrap = styled.div`
   width: 61px;
   height: 61px;

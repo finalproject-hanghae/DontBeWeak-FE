@@ -27,12 +27,13 @@ export function loadWeekDataMW(name, params) {
       .apiDrugWeek(name, params)
       .then((response) => {
         console.log(response.data,"너니?");
-        dispatch(loadWeekData([...response.data]));
+        // dispatch(loadWeekData([...response.data]));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 }
 
 export const keepWeekDataMW = (data, customColor) => {

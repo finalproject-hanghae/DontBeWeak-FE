@@ -6,12 +6,12 @@ import useCatItemList from "../../../../hooks/useCatItemList";
 import styled from "styled-components";
 
 const CatItemList = () => {
-  const list = useCatItemList();
-
+  const itemList = useCatItemList();
+  
   return (
     <ItemsBox>
-      {list &&
-        list.map((val, idx) => {
+      {itemList &&
+        itemList.map((val, idx) => {
           return <CatItem val={val} />;
         })}
     </ItemsBox>

@@ -2,20 +2,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
-
+import { useSomeCatSatus } from "../../../hooks/useSomeCatSatus";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import SingleDrugLine from "./SingleDrugLine";
 import DrugCat from "../../../assets/images/cats/cat1.png";
 
-const MyDrugSection = ({ Data }) => {
+const MyDrugSection = () => {
+  const Data = useSomeCatSatus();
+  console.log(Data,"뎅터")
   const dispatch = useDispatch();
-  // const username = useParams().username;
+  const username = useParams().username;
   const myDrug = useSelector((state) => state.drugs.drugs);
   console.log(myDrug,"잉?")
   React.useEffect(() => {
-    dispatch(loadDrugDataMW());
+    dispatch(loadDrugDataMW(username));
   }, []);
   return (
     <MyDrugCard>

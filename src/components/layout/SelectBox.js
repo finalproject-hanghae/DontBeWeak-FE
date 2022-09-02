@@ -7,9 +7,8 @@ import { useSomeCatSatus } from "../../hooks/useSomeCatSatus";
 const SelectBox = (friendList) => {
   const navigate = useNavigate();
   const list = friendList.friendList; // 친구리스트
-  const friendCatData = useSomeCatSatus();
   const user = useUserData(); // MY정보
-  const [selected, setSelected] = useState("default"); // onChange에서 받아오는 Id 저장소
+  const [selected, setSelected] = useState(); // onChange에서 받아오는 Id 저장소
 
   //onChange 발동 !!
   const goToFriendCat = (e) => {
@@ -21,7 +20,9 @@ const SelectBox = (friendList) => {
   }, [selected]);
   console.log(selected, "마지막");
 
+  // !selected && navigate("/cat/" + `${user?.username}`);
   return (
+    
     <SelectWrap>
       <select value={selected} defaultValue={selected} onChange={goToFriendCat}>
         <option value={user?.username}>나의 고먐미</option>
