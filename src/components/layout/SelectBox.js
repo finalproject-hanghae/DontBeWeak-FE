@@ -38,14 +38,15 @@ const SelectBox = (friendList) => {
 
 // Style
 const SelectWrap = styled.div`
+  height: 30%;
   select {
+    background-color: yellow;
     width: 308px;
     height: 50px;
     border: 2px solid #fabc4f;
     border-radius: 4px;
     text-align: center;
     font-size: 1.2rem;
-    font-family: inherit;
     background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;

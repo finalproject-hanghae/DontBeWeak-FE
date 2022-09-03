@@ -6,7 +6,7 @@ import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
 export const PageSection = styled.div`
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
