@@ -1,38 +1,40 @@
-/* ***** Level Up Rules ****** 
-  - 최대 레벨 : 30
-  - 1레벨 당 최대 경험치 : 20
-  - 포인트 5점 사용 시 경험치 5씩 증가 => 1/4 씩 바가 채워짐 ,
-  - 1업을 하기 위해선 총 20점의 포인트(=경험치 20)가 필요함. => 4/4 
-*/
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import useUserData from "../../../../hooks/useUserData";
 
-const ExpBar = ({ exp }) => {
-  const myExp = exp;
-  const [ex, setEx] = useState(0);
-
-  const updatePercentage = (e) => {
+const ExpBar = ({ catData }) => {
+  /* *******설명******** 
+    - 1레벨 당 최대 경험치 : 1000
+    - 최대 레벨 : 30
+    - 포인트 1점당 경험치 50씩 증가 => 1/4 씩 바가 채워짐 , 0.2/4
+    - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
+    
+  */
+  console.log(catData, "ㅑㅑ");
+  const [ex, setEx] = useState();
+ 
+  const updatePercentage = () => {
     setTimeout(() => {
-      setEx(ex + myExp);
+      setEx(ex + 50);
       console.log(ex, "올라라랄라");
     });
   };
 
   // 경험치 상승, 레벨업에 따른 초기화 작업
   React.useEffect(() => {
-    if (myExp > 20){
+    if (ex > 20){
       setEx(0);
       return alert('레베럽!')
-    } else {
-      setEx(ex + myExp);
-    }
-  }, []);
+    } 
+  }, [ex]);
 
   return (
     <Container>
-      <small>{myExp} / 20</small>
-      <MyExp width={(myExp/20) * 100 + "%"} onChange={updatePercentage} />
+      {/*%로 부모넓이의 1/5 씩 넓어짐*/}
+      <MyExp width={(ex / 25) * 1000 + "%"} onChange={updatePercentage}>
+        <p> {catData?.exp} </p>
+      </MyExp>
     </Container>
   );
 };

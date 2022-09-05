@@ -12,7 +12,9 @@ import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import ShopBtn from "../components/layout/button/ShopBtn";
 import Modals from "../components/layout/modal/modalList";
-import { devices } from "../device";
+import { loadCatDataMW } from "../redux/modules/cats";
+import { useParams } from "react-router-dom";
+
 // img
 import background from "../assets/images/cats/cat_bg.png";
 import useUserData from "../hooks/useUserData";
@@ -20,20 +22,22 @@ import useUserData from "../hooks/useUserData";
 const CatPage = () => {
   const dispatch = useDispatch();
   const friendList = useSelector((state) => state.friends.friends);
+  const username = useParams().username;
   // const [FriendId, setFriendId] = React.useState();
-  const catData = useSomeCatSatus();
+  const catData = useSelector((state) => state.cats.cats);
   const userData = useUserData();
   console.log(userData, "상위");
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
+    dispatch(loadCatDataMW(username))
   }, []);
 
   return (
     <PageSection>
       <Bg>
         {/* 고양이가 존재하지 않으면 잘못된 접근 추후 백엔드 처리 */}
-        {!catData.level && Modals.NotFound}
+        {/* {!catData.level && Modals.NotFound} */}
 
         <CatImage>
           {/* 나의 고먐미 ~ 친구네 고먐미 셀렉창 */}
