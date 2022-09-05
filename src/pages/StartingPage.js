@@ -11,6 +11,7 @@ import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import catImg from "../assets/images/cats/cat1.png";
 import bean from "../assets/images/cats/blackbean.png";
+import KakaoLogIn from "../components/layout/modal/modalforms/KakaoLogIn";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);

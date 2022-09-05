@@ -1,5 +1,5 @@
 import React from "react";
-import { userApi } from "../api/userAPI";
+import { userApi } from "../api/basicAPI";
 
 const useUserData = () => {
   const [userInfo, setUserInfo] = React.useState();
