@@ -26,13 +26,15 @@ export function loadWeekDataMW(name, params) {
     drugApi
       .apiDrugWeek(name, params)
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data,"너니?");
+        // 무한 렌더링으로 인해 일단 주석처리
         dispatch(loadWeekData([...response.data]));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 }
 
 export const keepWeekDataMW = (data, customColor) => {

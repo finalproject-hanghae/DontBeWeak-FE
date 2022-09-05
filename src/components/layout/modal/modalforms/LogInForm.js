@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
+import { devices } from "../../../../device";
 
 import kakaoIcon from "../../../../assets/images/icons/kakao.png";
 import naverIcon from "../../../../assets/images/icons/naver.png";
@@ -67,24 +68,34 @@ const LogInForm = () => {
 };
 
 const LogInModalBox = styled(ColumnFlexDiv)`
-  width: 39rem;
-  height: 39rem;
+  width: 22rem;
+  height: 30rem;
   align-items: center;
   align-content: center;
   justify-content: center;
+  @media ${devices.mobileL} {
+    width: 19rem;
+    height: 30rem;
+  }
 `;
 const Wrap = styled(ColumnFlexDiv)`
-  width: 100%;
+  width: 90%;
   height: 90%;
   justify-content: center;
   align-items: center;
   h2 {
     font-size: 2.2rem;
-    margin: 2rem 0px;
+    /* margin: 2rem 0px; */
+    @media ${devices.mobileL} {
+      font-size: 1.5rem;
+    }
   }
   small {
     margin-top: 15px;
     font-size: 14px;
+  }
+  @media ${devices.mobileL} {
+    font-size: 1.5rem;
   }
 `;
 const SignUpLink = styled(LinkC)`
@@ -101,6 +112,10 @@ const LogInInput = styled.input`
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 4px;
+  @media ${devices.mobileLL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
 `;
 
 const LogInButton = styled.button`
@@ -113,6 +128,10 @@ const LogInButton = styled.button`
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  @media ${devices.mobileLL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
 `;
 
 const SnsLoginBtn = styled.button`
@@ -122,10 +141,14 @@ const SnsLoginBtn = styled.button`
   color: #000;
   font-weight: 800;
   margin-top: 10px;
-  border: 2px solid #313131;
+  border: 1px solid #313131;
   font-size: 18px;
   border-radius: 4px;
   box-sizing: border-box;
+  @media ${devices.mobileLL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
   cursor: pointer;
   img {
     margin-right: 8px;
