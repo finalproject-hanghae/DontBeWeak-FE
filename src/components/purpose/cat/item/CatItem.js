@@ -1,33 +1,53 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { useParams } from "react-router-dom";
 import { itemApi } from "../../../../api/itemApi";
 import CatItemCost from "./CatItemCost";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 import { loadCatDataMW } from "../../../../redux/modules/cats";
-import { useParams } from "react-router-dom";
 
 const CatItem = ({ val }) => {
-  const dispatch=useDispatch()
-  const username=useParams().username;
+  const dispatch = useDispatch();
+  const username = useParams().username;
   // 구매 Confirm 모달창
   const [openModal, setOpenModal] = useState(false);
+
+  // 구매 완료 모달창 fadeOut 효과로 자동으로 닫히게.
+  const [fadeOut, setFadeOut] = useState(100);
+
+  // const autoRemover = () => {
+  //   if (fadeOut > 96) {
+  //     setTimeout(() => {
+  //       setFadeOut(fadeOut - 1);
+  //     }, 100);
+  //   } else if (fadeOut > 5)
+  //     setTimeout(() => {
+  //       setFadeOut(fadeOut - 8);
+  //     }, 50);
+  // };
+
+  // React.useEffect(() => {
+  //   autoRemover();
+  // }, [autoRemover]);
 
   // 아이템 구매, 적용 axios 실행
   const [someItem, setSomeItem] = useState("");
   const toBuyItem = () => {
     const itemId = val.itemId;
-    itemApi.apiItemBuy(itemId)
+    itemApi
+      .apiItemBuy(itemId)
       .then((res) => {
         setSomeItem(res.data);
         setOpenModal(false);
-        alert("냥냠냥냠냥냥 😻 경험치 +5 증가!");
-        dispatch(loadCatDataMW(username))
+        // autoRemover();
+        dispatch(loadCatDataMW(username));
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <Item>
       <Img onClick={() => setOpenModal(true)}>
@@ -36,13 +56,16 @@ const CatItem = ({ val }) => {
       <Name> {val?.itemName} </Name>
       <CatItemCost cost={val?.itemPoint} />
       {openModal ? (
-        <Confirm className="conirm">
+        <Confirm>
           <p>
             <span>{val?.itemName}</span>를(을) 구매하시겠습니까?
           </p>
           <Btn onClick={() => setOpenModal(false)}>아니오</Btn>
           <Btn onClick={toBuyItem}>네</Btn>
         </Confirm>
+      ) : null}
+      {fadeOut === 100 ? (
+        <FadeOutModal>적용완료! 경험치 5 획득 !</FadeOutModal>
       ) : null}
     </Item>
   );
@@ -87,6 +110,9 @@ const Confirm = styled.div`
   span {
     font-weight: 800;
   }
+`;
+const FadeOutModal = styled.div`
+  /* width:  */
 `;
 const Btn = styled.button`
   width: 55px;

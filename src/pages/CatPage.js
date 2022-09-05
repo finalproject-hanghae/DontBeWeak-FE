@@ -51,7 +51,7 @@ const CatPage = () => {
 
         {/* 경험치 표시바 */}
         <ExCard>
-          <p>exp</p> <ExpBar exp={userData?.exp} />
+          <p>exp</p> <ExpBar catData={catData} />
         </ExCard>
 
         {/* 고양이 레벨표시 구역 Start */}

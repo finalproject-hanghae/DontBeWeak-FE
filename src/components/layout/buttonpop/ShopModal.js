@@ -9,7 +9,7 @@ const ShopModal = React.forwardRef((props, ref) => {
   return (
     <Wrap ref={ref}>
       <TiltelBar>
-        <h3>상점 아이템 구매 </h3>
+        <h3>상점 아이템 구매</h3>
       </TiltelBar>
 
       <Section>
