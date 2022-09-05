@@ -3,8 +3,13 @@ import { itemApi } from "../../../../api/itemApi";
 import CatItemCost from "./CatItemCost";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { loadCatDataMW } from "../../../../redux/modules/cats";
+import { useParams } from "react-router-dom";
 
 const CatItem = ({ val }) => {
+  const dispatch=useDispatch()
+  const username=useParams().username;
   // 구매 Confirm 모달창
   const [openModal, setOpenModal] = useState(false);
 
@@ -17,7 +22,7 @@ const CatItem = ({ val }) => {
         setSomeItem(res.data);
         setOpenModal(false);
         alert("냥냠냥냠냥냥 😻 경험치 +5 증가!");
-        
+        dispatch(loadCatDataMW(username))
       })
       .catch((err) => {
         console.log(err);

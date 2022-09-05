@@ -15,15 +15,19 @@ import Modals from "../components/layout/modal/modalList";
 // img
 import background from "../assets/images/cats/cat_bg.png";
 import useUserData from "../hooks/useUserData";
+import { loadCatDataMW } from "../redux/modules/cats";
+import { useParams } from "react-router-dom";
 
 const CatPage = () => {
   const dispatch = useDispatch();
+  const username = useParams().username;
   const friendList = useSelector((state) => state.friends.friends);
   // const [FriendId, setFriendId] = React.useState();
   const catData = useSelector((state) => state.cats.cats);
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
+    dispatch(loadCatDataMW(username))
   }, []);
 
   return (
