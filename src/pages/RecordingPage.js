@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 
@@ -11,15 +11,14 @@ import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
 import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 
 const RecordingPage = () => {
-
-
+  const username = useParams().username;
 
   return (
     <PageSection>
       <Wrap>
         <CalenderSection />
         <MyDrugSection />
-        <SearchDrugBtn />
+        {username == sessionStorage.getItem("username") && <SearchDrugBtn />}
         <FriendsListBtn />
       </Wrap>
 
