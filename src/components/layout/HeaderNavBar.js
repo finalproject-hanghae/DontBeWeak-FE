@@ -12,7 +12,6 @@ import { loadWeekDataMW } from "../../redux/modules/weeks";
 
 const HeaderNavBar = () => {
   const dispatch = useDispatch();
-  let sessionStorage = window.sessionStorage;
   const authorization = useSelector((state) => state.users.authorization);
   const week = useSelector((state) => state.weeks.week);
   const username = sessionStorage.getItem("username");

@@ -20,8 +20,7 @@ const CatPage = () => {
   const dispatch = useDispatch();
   const friendList = useSelector((state) => state.friends.friends);
   // const [FriendId, setFriendId] = React.useState();
-  const catData = useSomeCatSatus();
-  const userData = useUserData();
+  const catData = useSelector((state) => state.cats.cats);
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
@@ -31,7 +30,7 @@ const CatPage = () => {
     <PageSection>
       <Bg>
         {/* 고양이가 존재하지 않으면 잘못된 접근 추후 백엔드 처리 */}
-        {!catData.level && Modals.NotFound}
+        {/* {!catData.level && Modals.NotFound} */}
         <FullPage>
           <ColumnFlexDiv>
             <CatImage>
@@ -46,7 +45,7 @@ const CatPage = () => {
 
             {/* 경험치 표시바 */}
             <ExCard >
-              <p>exp</p> <ExpBar userData={userData} />
+              <p>exp</p> <ExpBar catData={catData} />
             </ExCard>
 
             {/* 고양이 레벨표시 구역 Start */}

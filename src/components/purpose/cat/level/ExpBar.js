@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 
-const ExpBar = ({ userData }) => {
+const ExpBar = ({ catData }) => {
   /* *******설명******** 
     - 1레벨 당 최대 경험치 : 1000
     - 최대 레벨 : 30
@@ -11,7 +11,7 @@ const ExpBar = ({ userData }) => {
     - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
     
   */
-  console.log(userData, "ㅑㅑ");
+  console.log(catData, "ㅑㅑ");
   const [ex, setEx] = useState();
  
   const updatePercentage = () => {
@@ -33,7 +33,7 @@ const ExpBar = ({ userData }) => {
     <Container>
       {/*%로 부모넓이의 1/5 씩 넓어짐*/}
       <MyExp width={(ex / 25) * 1000 + "%"} onChange={updatePercentage}>
-        <p> {userData?.exp} </p>
+        <p> {catData?.exp} </p>
       </MyExp>
     </Container>
   );
