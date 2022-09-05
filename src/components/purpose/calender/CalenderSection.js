@@ -13,6 +13,7 @@ import { changeWeekData, loadWeekDataMW } from "../../../redux/modules/weeks";
 const CalenderSection = () => {
   const dispatch = useDispatch();
 
+  const [weekHandler, setWeekHandler] = React.useState(0);
   const week = useSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
 
@@ -24,7 +25,10 @@ const CalenderSection = () => {
     startDate: startDate.replace(".", ""),
     endDate: endDate.replace(".", ""),
   };
-  dispatch(loadWeekDataMW(myname, params));
+
+  React.useEffect(() => {
+    dispatch(loadWeekDataMW(myname, params));
+  }, [weekHandler]);
 
   const weekName = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -34,7 +38,10 @@ const CalenderSection = () => {
         <img
           src={arrowIcon}
           alt="left_arrow_icon"
-          onClick={() => dispatch(changeWeekData(week - 1))}
+          onClick={() => {
+            setWeekHandler(weekHandler - 1);
+            dispatch(changeWeekData(week-1));
+          }}
         />
         <h2>
           {startDate} ~ {endDate}
@@ -42,7 +49,10 @@ const CalenderSection = () => {
         <img
           src={arrowIcon}
           alt="right_arrow_icon"
-          onClick={() => dispatch(changeWeekData(week + 1))}
+          onClick={() => {
+            setWeekHandler(weekHandler + 1);
+            dispatch(changeWeekData(week+1));
+          }}
         />
       </WeekBox>
 
