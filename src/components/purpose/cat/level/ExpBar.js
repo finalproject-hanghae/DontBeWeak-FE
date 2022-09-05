@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
+import { useSelector } from "react-redux";
 
 const ExpBar = ({ catData }) => {
   /* *******설명******** 
@@ -11,28 +12,20 @@ const ExpBar = ({ catData }) => {
     - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
     
   */
-  console.log(catData, "ㅑㅑ");
-  const [ex, setEx] = useState();
- 
-  const updatePercentage = () => {
-    setTimeout(() => {
-      setEx(ex + 50);
-    });
-  };
-  console.log(updatePercentage, "올라라랄라");
+  const ex = useSelector(state => state.cats.cats.exp)
 
   // 경험치 상승, 레벨업에 따른 초기화 작업
   React.useEffect(() => {
     if (ex > 20) {
       alert("축하합니다! 레벨UP!");
-      return setEx(1);
+      return 
     }
   }, [ex]);
 
   return (
     <Container>
       {/*%로 부모넓이의 1/5 씩 넓어짐*/}
-      <MyExp width={(ex / 25) * 1000 + "%"} onChange={updatePercentage}>
+      <MyExp width={(ex / 20) * 100 + "%"}>
         <p> {catData?.exp} </p>
       </MyExp>
     </Container>
