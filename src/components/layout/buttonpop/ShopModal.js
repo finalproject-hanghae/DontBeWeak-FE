@@ -1,12 +1,11 @@
 import React from "react";
+import useUserData from "../../../hooks/useUserData";
+import CatItemList from "../../purpose/cat/item/CatItemList";
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
-import CatItemList from "../../purpose/cat/item/CatItemList";
-import useUserData from "../../../hooks/useUserData";
 
 const ShopModal = React.forwardRef((props, ref) => {
   const data = useUserData();
-
   return (
     <Wrap ref={ref}>
       <TiltelBar>
@@ -21,10 +20,11 @@ const ShopModal = React.forwardRef((props, ref) => {
           </p>
         </MyPoint>
       </Section>
-      
     </Wrap>
   );
 });
+
+// style 적용
 const Wrap = styled.div`
   width: 530px;
   /* min-height: 60px; */
@@ -36,7 +36,6 @@ const Wrap = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 `;
-
 const TiltelBar = styled.div`
   padding-left: 5%;
   width: 100%;

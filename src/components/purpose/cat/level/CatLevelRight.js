@@ -16,7 +16,7 @@ const CatLevelRight = () => {
 const SideCard = styled(ColumnFlexDiv)`
 p{
   font-weight:bold;
-  margin: 15px 0px;
+  margin: 1.3rem 0rem;
 }
 `
 

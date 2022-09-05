@@ -3,9 +3,11 @@ import { drugApi } from "../../api/drugApi";
 // Actions
 const LOAD = "week/LOAD";
 const KEEP = "week/KEEP";
+const CHANGE = "week/CHANGE";
 
 const initialState = {
   weeks: [],
+  week: 0,
 };
 
 export function loadWeekData(myWeek) {
@@ -14,20 +16,25 @@ export function loadWeekData(myWeek) {
 export function keepWeekData(myDrug) {
   return { type: KEEP, weeks: myDrug };
 }
+export function changeWeekData(week) {
+  return { type: CHANGE, week: week };
+}
 
 //middlewares
-export function loadWeekDataMW(myname, params) {
+export function loadWeekDataMW(name, params) {
   return function (dispatch) {
     drugApi
-      .apiDrugWeek(myname, params)
+      .apiDrugWeek(name, params)
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data,"너니?");
+        // 무한 렌더링으로 인해 일단 주석처리
         dispatch(loadWeekData([...response.data]));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 }
 
 export const keepWeekDataMW = (data, customColor) => {
@@ -46,10 +53,13 @@ export default function reducer(state = initialState, action = {}) {
   //dispatch는 action함수에 접근하여 리턴값으로 reducer의 2번째 매개변수(action)를 제공
   switch (action.type) {
     case "week/LOAD": {
-      return { weeks: [...action.weeks] };
+      return { weeks: [...action.weeks], week: state.week };
     }
     case "week/KEEP": {
-      return { weeks: [...state.weeks, action.weeks] };
+      return { weeks: [...state.weeks, action.weeks], week: state.week };
+    }
+    case "week/CHANGE": {
+      return { weeks: state.weeks, week: action.week };
     }
     // do reducer stuff
     default:

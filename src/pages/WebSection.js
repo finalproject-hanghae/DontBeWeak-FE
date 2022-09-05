@@ -30,7 +30,7 @@ const WebSection = () => {
 
 const WebCard = styled(ColumnFlexDiv)`
   width: 48.5%;
-  margin-top: 100px;
+  height: 100%;
   justify-content: center;
   @media ${devices.tablet} {
     display: none;
@@ -38,8 +38,8 @@ const WebCard = styled(ColumnFlexDiv)`
 `;
 
 const Section = styled(ColumnFlexDiv)`
-  width: 517px;
-  height: 673px;
+  width: 32rem;
+  height: 42rem;
   margin: 0 auto;
   img {
     &:first-child {
@@ -51,19 +51,19 @@ const Section = styled(ColumnFlexDiv)`
 
 const TextBox = styled(ColumnFlexDiv)`
   width: 100%;
-  height: 580px;
-  margin-top: 30px;
+  height: 36%;
+  /* margin-top: 30px; */
   p {
     &:first-child {
-      font-size: 42px;
+      font-size: 2.5rem;
       font-weight: 800;
-      margin: 0px 0px 30px;
+      /* margin: 0px 0px 30px; */
     }
   }
   p > span {
     font-size: 20px;
     font-weight: 900;
-    border-bottom: 2px solid #000;
+    border-bottom: 1.7px solid #000;
   }
   img {
     width: 271px;

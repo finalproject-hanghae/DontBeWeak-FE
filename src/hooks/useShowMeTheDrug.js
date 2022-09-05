@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import React from "react";
-import { drugApi } from "../api/drugAPI";
+// import { drugApi } from "../api/drugApi";
 
 const useShowMeTheDrug = () => {
   const [myDrug, setMyDrug] = React.useState([]);

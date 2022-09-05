@@ -2,21 +2,21 @@ import { useParams } from "react-router-dom";
 import React from "react";
 import { catApi } from "../api/catApi";
 
-export const useCatPageData = () => {
+export const useSomeCatSatus = () => {
   const myname = useParams().username;
-  const [myCat, setMyCat] = React.useState({});
+  const [someCats, setSomeCats] = React.useState({});
 
   React.useEffect(() => {
     catApi
       .apiSomeCatStatus(myname)
       .then((response) => {
         console.log(response.data);
-        setMyCat({ ...response.data, username: myname });
+        setSomeCats({ ...response.data, username: myname });
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  return myCat;
+  return someCats;
 };

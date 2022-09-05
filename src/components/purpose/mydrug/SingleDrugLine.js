@@ -9,11 +9,19 @@ import { devices } from "../../../device";
 import { drugApi } from "../../../api/drugApi";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
-import { keepWeekDataMW } from "../../../redux/modules/weeks";
+import { keepWeekDataMW, loadWeekDataMW } from "../../../redux/modules/weeks";
+import { useSelector } from "react-redux";
+import { useFindWeek } from "../../../hooks/useFindWeek";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
   const dispatch = useDispatch();
+  const week = useSelector((state) => state.weeks.week);
+  let [startDate, endDate] = useFindWeek(week);
+  const params = {
+    startDate: startDate.replace(".", ""),
+    endDate: endDate.replace(".", ""),
+  };
 
   const clickToCheckDrug = () => {
     var tmpDate = new Date();
@@ -26,7 +34,7 @@ const SingleDrugLine = ({ val, idx }) => {
     };
     drugApi.apiDrugCheck(data).then((res) => {
       dispatch(loadDrugDataMW(username));
-      dispatch(keepWeekDataMW(data, val.customColor));
+      dispatch(loadWeekDataMW(username, params));
     });
   };
 
