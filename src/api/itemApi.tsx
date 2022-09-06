@@ -14,12 +14,12 @@ const apiItemList = async () => {
   return dataApiItemList;
 };
 
-const apiItemBuy = async (path) => {
+const apiItemBuy = async (path:string) => {
   const dataApiItemBuy = await useThisApi.patch(`/${path}`);
   return dataApiItemBuy;
 };
 
 export const itemApi = {
   apiItemList: () => apiItemList(),
-  apiItemBuy: (path) => apiItemBuy(path),
+  apiItemBuy: (path:string) => apiItemBuy(path),
 };

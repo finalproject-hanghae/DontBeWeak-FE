@@ -9,7 +9,7 @@ const baseApi = axios.create({
 const useThisApi = applyInterceptorsTo(baseApi);
 
 //friend 관련 API ->friendApi
-const apiFriendAdd = async (data) => {
+const apiFriendAdd = async (data:{friendname:string}) => {
   const dataApiFriendAdd = await useThisApi.post("", data);
   return dataApiFriendAdd;
 };
@@ -20,6 +20,6 @@ const apiFriendList = async () => {
 };
 
 export const friendApi = {
-  apiFriendAdd: (data) => apiFriendAdd(data),
+  apiFriendAdd: (data:{friendname:string}) => apiFriendAdd(data),
   apiFriendList: () => apiFriendList(),
 };

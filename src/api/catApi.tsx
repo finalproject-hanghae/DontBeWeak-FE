@@ -14,12 +14,12 @@ const apiMyCatStatus = async () => {
   return dataApiCatStatus;
 };
 
-const apiSomeCatStatus = async (path) => {
+const apiSomeCatStatus = async (path: string | undefined) => {
   const dataApiSomeCatStatus = await useThisApi.get(`/${path}`);
   return dataApiSomeCatStatus;
 };
 
 export const catApi = {
   apiMyCatStatus: () => apiMyCatStatus(),
-  apiSomeCatStatus: (path) => apiSomeCatStatus(path),
+  apiSomeCatStatus: (path: string | undefined) => apiSomeCatStatus(path),
 };
