@@ -1,12 +1,12 @@
 import React from "react";
 
-export const useFindWeek = (week) => {
+export const useFindWeek = (week:number) => {
   var value = [];
-  var formatDate = function (date) {
+  var formatDate = function (date:Date) {
     var myMonth = date.getMonth() + 1;
     var myWeekDay = date.getDate();
 
-    var addZero = function (num) {
+    var addZero = function (num:any) {
       if (num < 10) {
         num = "0" + num;
       }
@@ -21,7 +21,7 @@ export const useFindWeek = (week) => {
   var nowDayOfWeek = now.getDay(); //요일 구하기
   var nowDay = now.getDate(); //일 구하기
   var nowMonth = now.getMonth(); //월 구하기
-  var nowYear = now.getYear(); //연 구하기
+  var nowYear = now.getFullYear(); //연 구하기
   nowYear += (nowYear < 2000) ? 1900 : 0;
 
   if (week != 0) {
@@ -29,7 +29,7 @@ export const useFindWeek = (week) => {
     nowDayOfWeek = notNow.getDay(); //요일 구하기
     nowDay = notNow.getDate(); //일 구하기
     nowMonth = notNow.getMonth(); //월 구하기
-    nowYear = notNow.getYear(); //연 구하기
+    nowYear = notNow.getFullYear(); //연 구하기
     nowYear += (nowYear < 2000) ? 1900 : 0;
   }
 

@@ -2,17 +2,17 @@ import React from "react";
 
 const useHandleClick = () => {
   const [isOpened, setIsOpened] = React.useState(false);
-  const openedModalRef = React.useRef();
+  const openedModalRef = React.useRef<HTMLInputElement>(null);
 
   const showModal = () => {
     setIsOpened(true);
   };
 
   React.useEffect(() => {
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (e:any) => {
       if (
         openedModalRef.current &&
-        !openedModalRef.current.contains(e.target)
+        !openedModalRef.current?.contains(e.target)
       ) {
         setIsOpened(false);
       }
