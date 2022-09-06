@@ -3,7 +3,6 @@ import React from "react";
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
-import { useDispatch, useSelector } from "react-redux";
 import {
   keepFriendDataMW,
   loadFriendDataMW,
@@ -17,16 +16,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { loadDrugDataMW } from "../../../../redux/modules/drugs";
 import { loadWeekDataMW } from "../../../../redux/modules/weeks";
 import { useFindWeek } from "../../../../hooks/useFindWeek";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 
 const FriendsListForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  const friendList = useSelector((state) => state.friends.friends);
+  const friendList = useAppSelector((state) => state.friends.friends);
   const friendname = useParams().username;
 
-  const week = useSelector((state) => state.weeks.week);
+  const week = useAppSelector((state) => state.weeks.week);
 
   React.useEffect(() => {
     dispatch(loadFriendDataMW());

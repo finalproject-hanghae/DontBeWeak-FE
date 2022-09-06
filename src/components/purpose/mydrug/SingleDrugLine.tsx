@@ -1,6 +1,5 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
@@ -10,13 +9,13 @@ import { drugApi } from "../../../api/drugApi";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
 import { keepWeekDataMW, loadWeekDataMW } from "../../../redux/modules/weeks";
-import { useSelector } from "react-redux";
 import { useFindWeek } from "../../../hooks/useFindWeek";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 const SingleDrugLine = ({ val, idx }) => {
   const username = useParams().username;
-  const dispatch = useDispatch();
-  const week = useSelector((state) => state.weeks.week);
+  const dispatch = useAppDispatch();
+  const week = useAppSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
   const params = {
     startDate: startDate.replace(".", ""),

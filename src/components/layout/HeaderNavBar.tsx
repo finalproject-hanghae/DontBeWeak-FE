@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../device";
@@ -9,11 +8,12 @@ import Logo from "../../assets/images/logo/logo_small.png";
 import { loadDrugDataMW } from "../../redux/modules/drugs";
 import { useFindWeek } from "../../hooks/useFindWeek";
 import { loadWeekDataMW } from "../../redux/modules/weeks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const HeaderNavBar = () => {
-  const dispatch = useDispatch();
-  const authorization = useSelector((state) => state.users.authorization);
-  const week = useSelector((state) => state.weeks.week);
+  const dispatch = useAppDispatch();
+  const authorization = useAppSelector((state) => state.users.authorization);
+  const week = useAppSelector((state) => state.weeks.week);
   const username = sessionStorage.getItem("username");
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);

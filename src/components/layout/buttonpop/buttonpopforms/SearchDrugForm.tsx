@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import React from "react";
 
 // Open API
@@ -16,9 +15,10 @@ import useHandleClick from "../../../../hooks/useHandleClick";
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 import { getRandomInt } from "../../../../hooks/getRandomInt";
+import { useAppDispatch } from "../../../../redux/hooks";
 
 const SearchDrugForm = ({ setDrug }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   //옵저버 선언
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지

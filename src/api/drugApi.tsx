@@ -16,7 +16,7 @@ const apiDrugAdd = async (data: drug) => {
   return dataApiDrugAdd;
 };
 
-const apiDrugList = async (path: string) => {
+const apiDrugList = async (path: string | null) => {
   const dataApiDrugList = await useThisApi.get(`/${path}`);
   return dataApiDrugList;
 };
@@ -26,7 +26,7 @@ const apiDrugCheck = async (data: drug) => {
   return dataApiDrugCheck;
 };
 
-const apiDrugWeek = async (path: string, params: startAndEndDate) => {
+const apiDrugWeek = async (path: string | null, params: startAndEndDate) => {
   const dataApiDrugWeek = await useThisApi.get(`/${path}/week`, {
     params: params,
   });
@@ -35,8 +35,8 @@ const apiDrugWeek = async (path: string, params: startAndEndDate) => {
 
 export const drugApi = {
   apiDrugAdd: (data: drug) => apiDrugAdd(data),
-  apiDrugList: (path: string) => apiDrugList(path),
+  apiDrugList: (path: string | null) => apiDrugList(path),
   apiDrugCheck: (data: drug) => apiDrugCheck(data),
-  apiDrugWeek: (path: string, params: startAndEndDate) =>
+  apiDrugWeek: (path: string | null, params: startAndEndDate) =>
     apiDrugWeek(path, params),
 };

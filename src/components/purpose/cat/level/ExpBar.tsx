@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../../redux/hooks";
 
 const ExpBar = ({ catData }) => {
   /* *******설명******** 
@@ -12,7 +12,7 @@ const ExpBar = ({ catData }) => {
     - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
     
   */
-  const ex = useSelector(state => state.cats.cats.exp)
+  const ex = useAppSelector(state => state.cats.cats.exp)
 
   // 경험치 상승, 레벨업에 따른 초기화 작업
   React.useEffect(() => {

@@ -1,8 +1,9 @@
 import React from "react";
 import { userApi } from "../api/basicAPI";
+import { user } from "../types/users";
 
 const useUserData = () => {
-  const [userInfo, setUserInfo] = React.useState();
+  const [userInfo, setUserInfo] = React.useState<user>();
   React.useEffect(() => {
     userApi
       .apiUser()

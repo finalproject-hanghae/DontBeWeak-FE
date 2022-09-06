@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 //components
 import drugIcon from "../assets/images/icons/drug.png";
@@ -11,9 +10,10 @@ import { ColumnFlexDiv, DeviceDiv, PageSection } from "../style/styled";
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
+import { useAppSelector } from "../redux/hooks";
 
 const StartingPage = () => {
-  const authorization = useSelector((state) => state.users.authorization);
+  const authorization = useAppSelector((state) => state.users.authorization);
   const navigate = useNavigate();
 
   return (

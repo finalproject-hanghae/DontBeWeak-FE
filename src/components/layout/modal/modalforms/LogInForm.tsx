@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../../../device";
@@ -10,10 +9,11 @@ import naverIcon from "../../../../assets/images/icons/naver.png";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { LinkC } from "../../../../style/styled";
 import { keepAuthDataMW } from "../../../../redux/modules/users";
+import { useAppDispatch } from "../../../../redux/hooks";
 
 const LogInForm = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const logInIDRef = React.useRef(null);
   const logInPWRef = React.useRef(null);

@@ -3,12 +3,12 @@ import { itemApi } from "../../../../api/itemApi";
 import CatItemCost from "./CatItemCost";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 import { loadCatDataMW } from "../../../../redux/modules/cats";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../../../redux/hooks";
 
 const CatItem = ({ val }) => {
-  const dispatch=useDispatch()
+  const dispatch=useAppDispatch()
   const username=useParams().username;
   // 구매 Confirm 모달창
   const [openModal, setOpenModal] = useState(false);

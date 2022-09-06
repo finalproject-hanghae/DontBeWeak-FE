@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
 
 import arrowIcon from "../../../assets/images/icons/arrow.png";
 import { useFindWeek } from "../../../hooks/useFindWeek";
@@ -9,15 +8,16 @@ import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 import { useParams } from "react-router-dom";
 import { changeWeekData, loadWeekDataMW } from "../../../redux/modules/weeks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 const CalenderSection = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [weekHandler, setWeekHandler] = React.useState(0);
-  const week = useSelector((state) => state.weeks.week);
+  const week = useAppSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
 
-  const myWeek = useSelector((state) => state.weeks.weeks);
+  const myWeek = useAppSelector((state) => state.weeks.weeks);
 
   const myname = useParams().username;
 

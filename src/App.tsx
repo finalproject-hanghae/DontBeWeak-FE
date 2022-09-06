@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import React from "react";
 import styled from "styled-components";
 
@@ -8,9 +7,10 @@ import MainSection from "./pages/MainSection";
 import WebSection from "./pages/WebSection";
 
 import "./App.css";
+import { useAppDispatch } from "./redux/hooks";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   React.useEffect(() => {
     let sessionStorage = window.sessionStorage;
     sessionStorage.getItem("authorization") && dispatch(loadSessionDataMW());

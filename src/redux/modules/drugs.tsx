@@ -22,7 +22,7 @@ export function loadDrugData(myDrug: drugList) {
 }
 
 //middlewares
-export function loadDrugDataMW(username: string) {
+export function loadDrugDataMW(username: string | null) {
   return function (dispatch: any) {
     drugApi
       .apiDrugList(username)

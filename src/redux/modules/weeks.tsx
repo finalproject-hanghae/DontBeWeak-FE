@@ -2,8 +2,8 @@ import { drugApi } from "../../api/drugApi";
 import { startAndEndDate, weekList } from "../../types/weeks";
 
 // Actions
-const LOAD = "week/LOAD" as const;;
-const CHANGE = "week/CHANGE" as const;;
+const LOAD = "week/LOAD" as const;
+const CHANGE = "week/CHANGE" as const;
 
 type WeekState = {
   weeks: weekList;
@@ -24,12 +24,12 @@ export function changeWeekData(week: number) {
 }
 
 //middlewares
-export function loadWeekDataMW(name: string, params: startAndEndDate) {
+export function loadWeekDataMW(name: string | null, params: startAndEndDate) {
   return function (dispatch: any) {
     drugApi
       .apiDrugWeek(name, params)
       .then((response) => {
-        console.log(response.data,"너니?");
+        console.log(response.data, "너니?");
         // 무한 렌더링으로 인해 일단 주석처리
         dispatch(loadWeekData([...response.data]));
       })
@@ -37,7 +37,6 @@ export function loadWeekDataMW(name: string, params: startAndEndDate) {
         console.log(error);
       });
   };
-  
 }
 
 export default function reducer(state = initialState, action: any) {

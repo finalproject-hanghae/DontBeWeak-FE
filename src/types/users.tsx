@@ -8,3 +8,11 @@ export type signupData = {
   password: string;
   passwordCheck: string;
 };
+
+export type user = {
+  username: string;
+  nickname: string;
+  level: number;
+  point: number;
+  exp: number;
+};
