@@ -58,7 +58,7 @@ const StartingPage = () => {
         ) : (
           <button
             onClick={() => {
-              navigate("/record/:username/");
+              navigate("/record/"+sessionStorage.getItem("username"));
             }}
           >
             영양제 기록하기
