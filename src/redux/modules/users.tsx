@@ -2,8 +2,8 @@ import { userApi } from "../../api/basicAPI";
 import { loginData } from "../../types/users";
 
 // Actions
-const KEEP = "user/KEEP";
-const AWAY = "user/AWAY";
+const KEEP = "user/KEEP" as const;
+const AWAY = "user/AWAY" as const;
 
 type UserState = {
   authorization: string | null;

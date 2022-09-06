@@ -2,8 +2,8 @@ import { drugApi } from "../../api/drugApi";
 import { startAndEndDate, weekList } from "../../types/weeks";
 
 // Actions
-const LOAD = "week/LOAD";
-const CHANGE = "week/CHANGE";
+const LOAD = "week/LOAD" as const;;
+const CHANGE = "week/CHANGE" as const;;
 
 type WeekState = {
   weeks: weekList;

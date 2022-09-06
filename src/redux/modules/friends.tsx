@@ -2,7 +2,7 @@ import { friendApi } from "../../api/friendApi";
 import { friendList } from "../../types/friends";
 
 // Actions
-const LOAD = "friend/LOAD";
+const LOAD = "friend/LOAD" as const;
 
 type FriendState = {
   friends: friendList;

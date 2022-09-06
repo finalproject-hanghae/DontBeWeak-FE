@@ -1,19 +1,24 @@
 import { catApi } from "../../api/catApi";
 import { drugApi } from "../../api/drugApi";
+import { cat } from "../../types/cats";
 
 // Actions
 // 고양이를 불러와서 덮어씌우기만 하면 되니까 LOAD 액션만 만들었습니다.
-const LOAD = "cat/LOAD";
+const LOAD = "cat/LOAD" as const;
+
+type CatState = {
+  cats?: cat;
+};
 
 // cats State만 있으면 될 것 같습니다.
-const initialState = {
-  cats: [],
+const initialState : CatState = {
+
 };
 
 // Action 함수를 작성했습니다.
 // 액션함수는 리듀서에게 제공할 데이터 catData와 LOAD 한다는 방향성만 정해줍니다.
 // catData라는 프로퍼티에 담아주었습니다.
-export function loadCatData(catData) {
+export function loadCatData(catData:cat) {
   return { type: LOAD, catData: catData };
 }
 
@@ -21,11 +26,11 @@ export function loadCatData(catData) {
 // dispatch로 바로 액션함수를 호출하기엔 데이터가 부족합니다.
 // 액션함수 이전 데이터를 추가로 처리하기 위해 미들웨어를 적용했습니다.
 // 클라이언트는 미들웨어를 name만 제공하여 호출합니다.
-export function loadCatDataMW(name) {
+export function loadCatDataMW(name:string) {
   // 미들웨어는 name을 이용해 지지고 볶아서 catData를 만듭니다.
   // 미들웨어가 catData를 이용해 실제 액션함수를 재호출합니다.
   // username은 고양이 주인입니다. 필요할 것 같아 임시로 추가해뒀습니다.
-  return function (dispatch) {
+  return function (dispatch:any) {
     catApi
       .apiSomeCatStatus(name)
       .then((response) => {
@@ -42,7 +47,7 @@ export function loadCatDataMW(name) {
 //dispatch는 액션함수의 return 즉, 타입과 action을 reducer에게 제공합니다.
 //reducer는 타입에 따라 state를 수정합니다.
 //덮어씌우기만 하면 되므로 cats에 action.catData를 담아주었습니다.
-export default function reducer(state = initialState, action = {}) {
+export default function reducer(state = initialState, action:any = {}) {
   switch (action.type) {
     case "cat/LOAD": {
       return { cats: action.catData };
