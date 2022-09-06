@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -10,28 +11,48 @@ const KakaoLogIn = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=599bca646044fc4147f7f8f4c461f9ca&redirect_uri=
 http://localhost:3000/auth/kakao/callback&response_type=code`;
 
-//   }        // 인가코드 받아오기
-const code = new URL(window.location.href).searchParams.get("code");
+  // 인가코드 받아오기
+  const code = new URL(window.location.href).searchParams.get("code");
   const onClickKakaoLogin = async (e) => {
     window.location.href = KAKAO_AUTH_URL;
 
     //인가코드 넘기기,토큰 받기
     try {
-      const res = await axios.get(`http://localhost:3000/auth/kakao/callback?code=${code}`).then((response) => {
-        console.log(response);
-        const token = response.headers.authorization;
-        window.localStorage.setItem("token", token);
-      });
+      const res = await axios
+        .get(`http://localhost:3000/auth/kakao/callback?code=${code}`)
+        .then((response) => {
+          console.log(response);
+          const token = response.headers.authorization;
+          window.localStorage.setItem("token", token);
+        });
       console.log(res);
     } catch (err) {
       console.error(err);
     }
   };
-    
-  const token = window.localStorage.getItem("token")
 
+  // const Login = (code) => {
+  //   return function (dispatch, getState, { navigate }) {
+  //     axios({
+  //       method: "GET",
+  //       url: `http://localhost:3000/auth/kakao/callback?code=${code}`,
+  //     })
+  //       .then((res) => {
+  //         console.log(res);
+  //         const ACCESS_TOKEN = res.data.accessToken;
+  //         localStorage.setItem("token", ACCESS_TOKEN);
+  //         navigate.replace("/main");
+  //       })
+  //       .catch((err) => {
+  //         console.log("소셜로그인 에러", err);
+  //         window.alert("로그인 실패");
+  //         navigate.replace("/login");
+  //       });
+  //   };
+  // };
 
-  
+  const token = window.localStorage.getItem("token");
+
   return (
     <SnsLoginBtn onClick={onClickKakaoLogin}>
       <img src={kakaoIcon} alt="kakao_icon" />
