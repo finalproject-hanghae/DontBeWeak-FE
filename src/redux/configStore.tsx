@@ -15,5 +15,7 @@ const enhancer = applyMiddleware(...middlewares);
 const rootReducer = combineReducers({ users, drugs, friends, weeks });
 
 const store = createStore(rootReducer, enhancer);
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store;
