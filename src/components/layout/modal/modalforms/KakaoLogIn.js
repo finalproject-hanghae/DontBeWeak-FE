@@ -10,23 +10,6 @@ const KakaoLogIn = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=599bca646044fc4147f7f8f4c461f9ca&redirect_uri=
 http://localhost:3000/auth/kakao/callback&response_type=code`;
 
-//   // 인가코드 받아오기
-//   const code = new URL(window.location.href).searchParams.get("code");
-
-//   const onClickKakaoLogin = (e) => {
-//     window.location.href = KAKAO_AUTH_URL;
-// (async () => {
-//   try {
-//     const res = await axios 
-//     .get(`http://localhost:3000/auth/kakao/callback?code=${code}`)
-// .then((response) => {
-//   const token = response.headers.authorization;
-//   window.localStorage.setItem("token", token);
-// });
-// console.log(res);
-// } catch (err) {
-//   console.error(err)
-// }
 //   }        // 인가코드 받아오기
 const code = new URL(window.location.href).searchParams.get("code");
   const onClickKakaoLogin = async (e) => {
@@ -45,8 +28,10 @@ const code = new URL(window.location.href).searchParams.get("code");
     }
   };
     
-  
+  const token = window.localStorage.getItem("token")
 
+
+  
   return (
     <SnsLoginBtn onClick={onClickKakaoLogin}>
       <img src={kakaoIcon} alt="kakao_icon" />
