@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 import { catApi } from "../api/catApi";
+import { cat } from "../types/cats";
 
 export const useSomeCatSatus = () => {
   const myname = useParams().username;
-  const [someCats, setSomeCats] = React.useState({});
+  const [someCats, setSomeCats] = React.useState<cat>();
 
   React.useEffect(() => {
     catApi

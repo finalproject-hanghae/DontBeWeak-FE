@@ -1,4 +1,5 @@
 import axios from "axios";
+import { username } from "../types/users";
 
 import applyInterceptorsTo from "./axiosInterceptors";
 
@@ -14,12 +15,12 @@ const apiMyCatStatus = async () => {
   return dataApiCatStatus;
 };
 
-const apiSomeCatStatus = async (path: string | undefined) => {
+const apiSomeCatStatus = async (path: username) => {
   const dataApiSomeCatStatus = await useThisApi.get(`/${path}`);
   return dataApiSomeCatStatus;
 };
 
 export const catApi = {
   apiMyCatStatus: () => apiMyCatStatus(),
-  apiSomeCatStatus: (path: string | undefined) => apiSomeCatStatus(path),
+  apiSomeCatStatus: (path: username) => apiSomeCatStatus(path),
 };

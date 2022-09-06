@@ -1,5 +1,6 @@
 import axios from "axios";
 import { drug } from "../types/drugs";
+import { username } from "../types/users";
 import { startAndEndDate } from "../types/weeks";
 
 import applyInterceptorsTo from "./axiosInterceptors";
@@ -16,7 +17,7 @@ const apiDrugAdd = async (data: drug) => {
   return dataApiDrugAdd;
 };
 
-const apiDrugList = async (path: string | null) => {
+const apiDrugList = async (path: username) => {
   const dataApiDrugList = await useThisApi.get(`/${path}`);
   return dataApiDrugList;
 };
@@ -26,7 +27,7 @@ const apiDrugCheck = async (data: drug) => {
   return dataApiDrugCheck;
 };
 
-const apiDrugWeek = async (path: string | null, params: startAndEndDate) => {
+const apiDrugWeek = async (path: username, params: startAndEndDate) => {
   const dataApiDrugWeek = await useThisApi.get(`/${path}/week`, {
     params: params,
   });
@@ -35,8 +36,8 @@ const apiDrugWeek = async (path: string | null, params: startAndEndDate) => {
 
 export const drugApi = {
   apiDrugAdd: (data: drug) => apiDrugAdd(data),
-  apiDrugList: (path: string | null) => apiDrugList(path),
+  apiDrugList: (path: username) => apiDrugList(path),
   apiDrugCheck: (data: drug) => apiDrugCheck(data),
-  apiDrugWeek: (path: string | null, params: startAndEndDate) =>
+  apiDrugWeek: (path: username, params: startAndEndDate) =>
     apiDrugWeek(path, params),
 };

@@ -1,3 +1,5 @@
+export type username = string | null | undefined;
+
 export type loginData = {
   username: string;
   password: string;

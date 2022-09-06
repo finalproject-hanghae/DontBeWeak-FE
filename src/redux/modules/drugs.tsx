@@ -1,5 +1,6 @@
 import { drugApi } from "../../api/drugApi";
 import { drugList, drug } from "../../types/drugs";
+import { username } from "../../types/users";
 
 // Actions
 const KEEP = "drug/KEEP" as const;
@@ -22,7 +23,7 @@ export function loadDrugData(myDrug: drugList) {
 }
 
 //middlewares
-export function loadDrugDataMW(username: string | null) {
+export function loadDrugDataMW(username: username) {
   return function (dispatch: any) {
     drugApi
       .apiDrugList(username)
