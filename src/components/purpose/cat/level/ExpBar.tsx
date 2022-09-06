@@ -2,32 +2,32 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
+import { useSelector } from "react-redux";
 
-const ExpBar = () => {
-  const userData = useUserData();
+const ExpBar = ({ catData }) => {
+  /* *******설명******** 
+    - 1레벨 당 최대 경험치 : 1000
+    - 최대 레벨 : 30
+    - 포인트 1점당 경험치 50씩 증가 => 1/4 씩 바가 채워짐 , 0.2/4
+    - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
+    
+  */
+  const ex = useSelector(state => state.cats.cats.exp)
 
-  const [ex, setEx] = useState(0);
-
-  const updatePercentage = () => {
-    setTimeout(() => {
-      setEx(ex + 100);
-    })
-  };
- console.log(updatePercentage, "올라라랄라")
-
+  // 경험치 상승, 레벨업에 따른 초기화 작업
   React.useEffect(() => {
-    if (ex === 20) {
-      setEx(0);
-      return alert("레벨UP!");
-    } else {
-      setEx(ex + 1);
+    if (ex > 20) {
+      alert("축하합니다! 레벨UP!");
+      return 
     }
-  }, []);
+  }, [ex]);
 
   return (
     <Container>
       {/*%로 부모넓이의 1/5 씩 넓어짐*/}
-      <MyExp width={(ex / 20) * 100 + "%"} />
+      <MyExp width={(ex / 20) * 100 + "%"}>
+        <p> {catData?.exp} </p>
+      </MyExp>
     </Container>
   );
 };
@@ -37,14 +37,14 @@ const Container = styled.div`
   margin: 50px auto;
   background-color: #eee;
   width: 400px;
-  height: 30px;
+  height: 15px;
   display: flex;
   align-items: center;
   border-radius: 20px;
   margin-left: 1%;
 `;
-const MyExp= styled.div`
-  background-color: #FF795B;
+const MyExp = styled.div`
+  background-color: #ff795b;
   width: ${(props) => props.width};
   height: 100%;
   transition: width 0.5s ease-out;

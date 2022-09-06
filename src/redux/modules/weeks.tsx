@@ -29,13 +29,15 @@ export function loadWeekDataMW(name: string, params: startAndEndDate) {
     drugApi
       .apiDrugWeek(name, params)
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data,"너니?");
+        // 무한 렌더링으로 인해 일단 주석처리
         dispatch(loadWeekData([...response.data]));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 }
 
 export default function reducer(state = initialState, action: any) {
