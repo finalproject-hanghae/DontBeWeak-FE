@@ -1,21 +1,19 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import React from "react";
+import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import SelectBox from "../../layout/SelectBox";
+import SingleDrugLine from "./SingleDrugLine";
 import styled from "styled-components";
-import { useSomeCatSatus } from "../../../hooks/useSomeCatSatus";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
-import { loadDrugDataMW } from "../../../redux/modules/drugs";
-import SingleDrugLine from "./SingleDrugLine";
-import DrugCat from "../../../assets/images/cats/cat1.png";
 
 const MyDrugSection = () => {
-  const Data = useSomeCatSatus();
-  console.log(Data,"뎅터")
+  const Data = useSelector((state) => state.cats.cats);
   const dispatch = useDispatch();
   const username = useParams().username;
   const myDrug = useSelector((state) => state.drugs.drugs);
-  console.log(myDrug,"잉?")
+  console.log(myDrug, "잉?");
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));
   }, []);
@@ -34,7 +32,6 @@ const MyDrugSection = () => {
           );
         })}
       </MyDrugs>
-      
     </MyDrugCard>
   );
 };
@@ -52,7 +49,7 @@ const MyDrugCard = styled(RowFlexDiv)`
 const MyDrugs = styled.div`
   width: 65%;
   height: 80%;
-  display: flex; 
+  display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;

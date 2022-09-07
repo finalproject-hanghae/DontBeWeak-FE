@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useState } from "react";
-import useUserData from "../../../../hooks/useUserData";
 import { useSelector } from "react-redux";
 
 const ExpBar = ({ catData }) => {
@@ -12,9 +10,7 @@ const ExpBar = ({ catData }) => {
   - 1업을 하기 위해선 총 20점의 포인트(=경험치 20)가 필요함. => 4/4 
 */
   const ex = useSelector((state) => state.cats.cats.exp);
-
-  // 경험치 상승, 레벨업에 따른 초기화 작업
-  React.useEffect(() => {
+  useEffect(() => {
     if (ex > 20) {
       alert("레베럽!");
       return;
@@ -28,7 +24,6 @@ const ExpBar = ({ catData }) => {
     </Container>
   );
 };
-export default ExpBar;
 
 const Container = styled.div`
   margin: 50px auto;
@@ -55,3 +50,4 @@ const MyExp = styled.div`
   transition: 0.5s ease-out;
   border-radius: 30px;
 `;
+export default ExpBar;

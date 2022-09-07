@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const ShopBtn = () => {
   const [shop, setShop, showModal, shopModalRef] = useHandleClick();
+  console.log(shopModalRef,"알알에포")
   return (
     <>
       <BtnWrap>

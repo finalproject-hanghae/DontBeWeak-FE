@@ -22,12 +22,10 @@ const CatItemCost = ({ cost }) => {
 
 const ItemCost = styled(RowFlexDiv)`
   width: 70%;
-  height: 50px;
-  /* align-items: center; */
   justify-content: center;
   img {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     margin-left: 3%;
   }
 `;
