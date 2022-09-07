@@ -39,12 +39,16 @@ const MyDrugSection = () => {
 const MyDrugCard = styled(RowFlexDiv)`
   width: 90%;
   margin: 0px auto;
-  height: 350px;
+  height: 22rem;
   border-radius: 0.625em;
   border: solid 2px #000;
   box-shadow: 10px 10px 0px #ffc58e;
   justify-content: center;
   align-items: center;
+  @media ${devices.mobileL} {
+    height: 20rem;
+    padding: 1%;
+  }
 `;
 const MyDrugs = styled.div`
   width: 65%;
@@ -71,8 +75,8 @@ const MyDrugs = styled.div`
     background-color: none;
   }
   @media ${devices.mobileL} {
-    padding: 0px;
-    height: 190px;
+    width: 85%;
+    height: 100%;
   }
 `;
 const CatState = styled(ColumnFlexDiv)`
@@ -87,10 +91,22 @@ const CatState = styled(ColumnFlexDiv)`
     margin-bottom: 10%;
     font-weight: 600;
   }
+  @media ${devices.mobileL} {
+    width: 8rem;
+    height: 7rem;
+    p{
+      font-size: 0.7rem;
+    }
+  }
 `;
 const CatImg = styled(ColumnFlexDiv)`
   img {
     width: 9rem;
+  }
+  @media ${devices.mobileL} {
+   img {
+    width: 5rem;
+   } 
   }
 `;
 
