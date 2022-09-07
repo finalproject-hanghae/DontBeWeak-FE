@@ -30,8 +30,9 @@ const RecordingPage = () => {
 };
 
 const Wrap = styled(ColumnFlexDiv)`
-  width: 100%;
+  width: 95%;
   height: 95%;
+  margin: 0 auto;
   overflow: hidden;
 `;
 

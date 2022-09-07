@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../../device";
 import { ColumnFlexDiv } from "../../../style/styled";
 import SeachDrugForm from "./buttonpopforms/SearchDrugForm";
 
@@ -25,6 +25,12 @@ const Wrap = styled(ColumnFlexDiv)`
   right: 124px;
   bottom: 30px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media ${devices.mobileL} {
+    width: 14rem;
+    height: 20rem;
+    right: 3.5rem;
+    bottom: 8rem;
+  }
 `;
 
 export default SearchDrugModal;

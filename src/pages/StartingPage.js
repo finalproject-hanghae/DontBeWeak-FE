@@ -124,8 +124,8 @@ const Sub = styled(ColumnFlexDiv)`
   height: 10rem;
   font-size: 1rem;
   line-height: 1.9rem;
-  margin-left: 1%;
-  margin-bottom: 5%;
+  margin-left: 5.25rem;
+  margin-bottom: 1.5rem;
   @media ${devices.tablet} {
     display: none;
   }
@@ -156,7 +156,13 @@ const ImgSprite = styled.div`
   transform: translate(-50%, -50%);
   background: url(${spriteImg}) left center;
   animation: ${Keyframes} 0.8s steps(3) infinite;
-  @media ${devices.tablet} {
+  @media ${devices.mobileL} {
+    top: 50%;
+    left: 50%;
+    min-width: 280px;
+  }
+  @media ${devices.laptop} {
+    margin-top: 5%;
     top: 50%;
     left: 50%;
     min-width: 280px;
