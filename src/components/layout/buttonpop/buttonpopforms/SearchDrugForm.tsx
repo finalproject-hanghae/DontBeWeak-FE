@@ -16,21 +16,25 @@ import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 import { getRandomInt } from "../../../../hooks/getRandomInt";
 import { useAppDispatch } from "../../../../redux/hooks";
+import { drug, searchDrug } from "../../../../types/drugs";
 
-const SearchDrugForm = ({ setDrug }) => {
+const SearchDrugForm = ({ setDrug }: any) => {
   const dispatch = useAppDispatch();
   //옵저버 선언
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
-  const [searchResult, setSearchResult] = React.useState([]);
-  const randomColor = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
+  const [searchResult, setSearchResult] = React.useState<Array<searchDrug>>();
+  const randomColor = `rgb(${getRandomInt(0, 255)},${getRandomInt(
+    0,
+    255
+  )},${getRandomInt(0, 255)})`;
   const [color, setColor] = React.useState(randomColor);
 
   console.log(pageNumber);
 
   //옵저버 핸들러
-  const obsHandler = (entries) => {
+  const obsHandler = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting && preventRef.current) {
       preventRef.current = false;
@@ -60,10 +64,10 @@ const SearchDrugForm = ({ setDrug }) => {
 
   const [drugName, setDrugName] = React.useState("");
 
-  const [pickMe, setPickMe] = React.useState();
-  const [howEat, setHowEat] = React.useState();
+  const [pickMe, setPickMe] = React.useState<string>();
+  const [howEat, setHowEat] = React.useState<string>();
 
-  const submitToSearch = async (e) => {
+  const submitToSearch = async (e: any) => {
     e.preventDefault();
     setPageNumber(1);
     setSearchResult(await drugSearchAPI(drugName, 1));
@@ -73,7 +77,7 @@ const SearchDrugForm = ({ setDrug }) => {
 
   const clickToAddDrug = () => {
     if (pickMe) {
-      let tmpDrugData = {
+      let tmpDrugData: drug = {
         productName: pickMe.trim(),
         customColor: color,
         done: false,

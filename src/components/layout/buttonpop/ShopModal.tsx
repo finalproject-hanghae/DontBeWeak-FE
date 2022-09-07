@@ -4,7 +4,7 @@ import CatItemList from "../../purpose/cat/item/CatItemList";
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 
-const ShopModal = React.forwardRef((props, ref) => {
+const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   const data = useUserData();
   return (
     <Wrap ref={ref}>

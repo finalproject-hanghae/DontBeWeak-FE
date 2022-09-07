@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { weekList } from "../../../types/weeks";
 
-const DateViewCard = ({ day, myWeek, array }) => {
+type GreetingsProps = {
+  day: string | never;
+  myWeek: weekList;
+  array: string[];
+};
+
+const DateViewCard = ({ day, myWeek, array }: GreetingsProps) => {
   return (
     <DateView>
       <h3>{day}</h3>

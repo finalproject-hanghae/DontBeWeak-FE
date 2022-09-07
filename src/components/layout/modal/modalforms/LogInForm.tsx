@@ -15,9 +15,9 @@ const LogInForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const logInIDRef = React.useRef(null);
-  const logInPWRef = React.useRef(null);
-  const logInAlertRef = React.useRef(null);
+  const logInIDRef = React.useRef<any>(null);
+  const logInPWRef = React.useRef<any>(null);
+  const logInAlertRef = React.useRef<any>(null);
 
   const submitToLogin = (e) => {
     e.preventDefault();

@@ -8,13 +8,14 @@ import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import SingleDrugLine from "./SingleDrugLine";
 import DrugCat from "../../../assets/images/cats/cat1.png";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { drugList } from "../../../types/drugs";
 
 const MyDrugSection = () => {
   const Data = useSomeCatSatus();
   console.log(Data,"뎅터")
   const dispatch = useAppDispatch();
   const username = useParams().username;
-  const myDrug = useAppSelector((state) => state.drugs.drugs);
+  const myDrug:drugList = useAppSelector((state) => state.drugs.drugs);
   console.log(myDrug,"잉?")
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));

@@ -3,15 +3,29 @@ import styled from "styled-components";
 
 import { RowFlexDiv } from "../../../style/styled";
 
-const DirectSearchModal = React.forwardRef((props, ref) => {
-  const directInputRef = React.useRef();
-  return (
-    <DirectSearchCard ref={ref}>
-      <DirectInput ref={directInputRef} placeholder="상품명을 입력해주세요." />
-      <SearchBtn onClick={()=>props.setPickMe(directInputRef.current.value)}> 확인 </SearchBtn>
-    </DirectSearchCard>
-  );
-});
+type GreetingsProps = {
+  setPickMe: any;
+};
+
+const DirectSearchModal = React.forwardRef<HTMLInputElement, GreetingsProps>(
+  (props, ref) => {
+    const directInputRef = React.useRef<any>();
+    return (
+      <DirectSearchCard ref={ref}>
+        <DirectInput
+          ref={directInputRef}
+          placeholder="상품명을 입력해주세요."
+        />
+        <SearchBtn
+          onClick={() => props.setPickMe(directInputRef.current.value)}
+        >
+          {" "}
+          확인{" "}
+        </SearchBtn>
+      </DirectSearchCard>
+    );
+  }
+);
 
 const DirectSearchCard = styled(RowFlexDiv)`
   width: 350px;
@@ -42,7 +56,7 @@ const SearchBtn = styled.button`
   height: 2.5rem;
   text-align: center;
   line-height: 1.9rem;
-  background: #FABC4F;
+  background: #fabc4f;
   color: #fff;
   font-size: 0.8rem;
   border: none;

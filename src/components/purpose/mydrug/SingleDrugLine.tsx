@@ -8,11 +8,17 @@ import { devices } from "../../../device";
 import { drugApi } from "../../../api/drugApi";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
 import { RowFlexDiv } from "../../../style/styled";
-import { keepWeekDataMW, loadWeekDataMW } from "../../../redux/modules/weeks";
+import { loadWeekDataMW } from "../../../redux/modules/weeks";
 import { useFindWeek } from "../../../hooks/useFindWeek";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { drug } from "../../../types/drugs";
 
-const SingleDrugLine = ({ val, idx }) => {
+type GreetingsProps = {
+  val: drug;
+  idx: number;
+};
+
+const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
   const username = useParams().username;
   const dispatch = useAppDispatch();
   const week = useAppSelector((state) => state.weeks.week);
@@ -26,7 +32,7 @@ const SingleDrugLine = ({ val, idx }) => {
     var tmpDate = new Date();
     let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
 
-    const data = {
+    const data:drug = {
       productName: val.productName,
       usedAt: new Date(tmpDate.getTime() - offset).toISOString(),
       done: true,
@@ -60,7 +66,7 @@ const SingleDrugLine = ({ val, idx }) => {
       {username == sessionStorage.getItem("username") && (
         <label htmlFor={"didEat" + idx}>
           {val.done ? (
-            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"}/>
+            <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />
           ) : null}
           <input
             id={"didEat" + idx}

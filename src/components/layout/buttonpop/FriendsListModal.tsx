@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import FriendsListForm from "./buttonpopforms/FriendsListForm";
 
-const FriendsListModal = React.forwardRef((props, ref) => {
+const FriendsListModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   return (
     <Wrap ref={ref}>
       <FriendsListForm />

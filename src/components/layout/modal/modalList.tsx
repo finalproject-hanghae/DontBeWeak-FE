@@ -6,13 +6,13 @@ import SignUpForm from "./modalforms/SignUpForm";
 
 const List = ["LogIn", "SignUp", "NotFound", "Search"];
 
-export const FORM = {
+const FORM = {
   LogIn: <LogInForm />,
   SignUp: <SignUpForm />,
   NotFound: <NotFoundForm />,
   Search: <SearchDrugForm />,
 };
-export const PATH = {
+const PATH = {
   LogIn: "/",
   SignUp: "/",
   NotFound: "/",

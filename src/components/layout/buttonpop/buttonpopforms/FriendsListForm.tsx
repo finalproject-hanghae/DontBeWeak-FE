@@ -17,13 +17,16 @@ import { loadDrugDataMW } from "../../../../redux/modules/drugs";
 import { loadWeekDataMW } from "../../../../redux/modules/weeks";
 import { useFindWeek } from "../../../../hooks/useFindWeek";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { friend, friendList } from "../../../../types/friends";
 
 const FriendsListForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // isAddFriend가 false -> true로 변하면 친구 ID 등록창이 나타나게 함.
   const [isAddFriend, setIsAddFriend] = React.useState(false);
-  const friendList = useAppSelector((state) => state.friends.friends);
+  const friendList: friendList = useAppSelector(
+    (state) => state.friends.friends
+  );
   const friendname = useParams().username;
 
   const week = useAppSelector((state) => state.weeks.week);
@@ -33,7 +36,7 @@ const FriendsListForm = () => {
   }, [friendname]);
 
   const [disabled, setDisabled] = React.useState(true);
-  const friendIdRef = React.useRef(null);
+  const friendIdRef = React.useRef<any>(null);
 
   const change = () => {
     if (friendIdRef.current.value !== "") {
@@ -53,7 +56,7 @@ const FriendsListForm = () => {
     }
   };
 
-  const ClickToReloadRecordPageData = (val) => {
+  const ClickToReloadRecordPageData = (val: friend) => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
       startDate: startDate.replace(".", ""),
@@ -96,7 +99,7 @@ const FriendsListForm = () => {
             <p
               key={"friendListItem" + idx}
               onClick={() => {
-                ClickToReloadRecordPageData(val)
+                ClickToReloadRecordPageData(val);
               }}
             >
               {val.nickname}

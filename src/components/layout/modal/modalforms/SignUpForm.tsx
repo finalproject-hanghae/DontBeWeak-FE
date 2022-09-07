@@ -8,11 +8,11 @@ import { userApi } from "../../../../api/basicAPI";
 function SignUpForm() {
   const navigate = useNavigate();
 
-  const signUpIdRef = React.useRef(); // Id
-  const signUpNicknameRef = React.useRef(); // nickName
-  const signUpPwRef = React.useRef(); // Pw
-  const signUpPwCheckRef = React.useRef(); // PwCheck
-  const signUpAlertRef = React.useRef(); // 경고
+  const signUpIdRef = React.useRef<any>(); // Id
+  const signUpNicknameRef = React.useRef<any>(); // nickName
+  const signUpPwRef = React.useRef<any>(); // Pw
+  const signUpPwCheckRef = React.useRef<any>(); // PwCheck
+  const signUpAlertRef = React.useRef<any>(); // 경고
 
   const submitToSignUp = async (e) => {
     e.preventDefault();

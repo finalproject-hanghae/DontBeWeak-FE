@@ -12,7 +12,7 @@ const SearchDrugBtn = () => {
   return (
     <>
       <BtnWrap>
-        <img src={SearchBtn} alt="search_drug_btn" onClick={showSearchDrug} />
+        <img src={SearchBtn} alt={"Serch_Drug_Btn"} onClick={showSearchDrug} />
       </BtnWrap>
       {drug ? (
         <SearchDrugModal ref={SearchDrugModalRef} setDrug={setDrug} />

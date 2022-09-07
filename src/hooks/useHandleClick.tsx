@@ -4,7 +4,7 @@ const useHandleClick = () => {
   const [isOpened, setIsOpened] = React.useState(false);
   const openedModalRef = React.useRef<HTMLInputElement>(null);
 
-  const showModal = () => {
+  const showModal:any = () => {
     setIsOpened(true);
   };
 

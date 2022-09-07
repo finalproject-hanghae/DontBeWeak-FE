@@ -30,7 +30,7 @@ const CalenderSection = () => {
     dispatch(loadWeekDataMW(myname, params));
   }, [weekHandler]);
 
-  const weekName = ["일", "월", "화", "수", "목", "금", "토"];
+  const weekName:string[] = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
     <CalenderCard>

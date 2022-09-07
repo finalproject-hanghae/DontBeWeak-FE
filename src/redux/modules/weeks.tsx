@@ -1,4 +1,5 @@
 import { drugApi } from "../../api/drugApi";
+import { username } from "../../types/users";
 import { startAndEndDate, weekList } from "../../types/weeks";
 
 // Actions
@@ -24,7 +25,7 @@ export function changeWeekData(week: number) {
 }
 
 //middlewares
-export function loadWeekDataMW(name: string | null, params: startAndEndDate) {
+export function loadWeekDataMW(name: username, params: startAndEndDate) {
   return function (dispatch: any) {
     drugApi
       .apiDrugWeek(name, params)
