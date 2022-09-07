@@ -151,16 +151,13 @@ const ImgSprite = styled.div`
   width: 17.5rem;
   height: 11.6rem;
   position: absolute;
-  top: 47%;
-  left: 25%;
+  top: 45%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: url(${spriteImg}) left center;
   animation: ${Keyframes} 0.8s steps(3) infinite;
-  @media ${devices.mobileL} {
-    left: 50%;
-  }
   @media ${devices.tablet} {
-    top: 60%;
+    top: 50%;
     left: 50%;
     min-width: 280px;
   }

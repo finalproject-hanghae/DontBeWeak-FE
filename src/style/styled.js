@@ -6,7 +6,7 @@ import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
 export const PageSection = styled.div`
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,10 +57,21 @@ export const RelaitiveDiv = styled.div`
   height: 100%;
 `;
 
+export const AlertDiv = styled.div`
+  text-align: center;
+  box-sizing: border-box;
+  background: #fff;
+  border: 0.06rem solid #e9e9e9;
+  box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.625rem;
+  position: absolute;
+  padding: 0.312rem;
+`;
+
 export const DeviceDiv = styled.div`
-@media ${devices.mobileL} {
+  @media ${devices.mobileL} {
     min-height: 653px;
-    max-height: 
+    max-height: ;
   }
   @media ${devices.tablet} {
     min-height: 375px;

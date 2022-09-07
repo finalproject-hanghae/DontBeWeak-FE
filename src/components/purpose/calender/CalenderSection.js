@@ -83,7 +83,6 @@ const WeekBox = styled(RowFlexDiv)`
   width: 80%;
   height: 70px;
   align-items: center;
-
   align-self: center;
   justify-content: center;
   h2 {
@@ -97,8 +96,6 @@ const WeekBox = styled(RowFlexDiv)`
     height: 3rem;
     border-radius: 50px;
     &:hover {
-      width: 3.1rem;
-      height: 3.1rem;
       background-color: #fff;
       box-shadow: 2.5px 2.5px 0px #ffc58e;
       cursor: pointer;

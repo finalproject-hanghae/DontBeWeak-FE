@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const ShopBtn = () => {
   const [shop, setShop, showModal, shopModalRef] = useHandleClick();
+  console.log(shopModalRef,"알알에포")
   return (
     <>
       <BtnWrap>
@@ -24,9 +25,10 @@ const BtnWrap = styled.div`
   text-align: center;
   position: absolute;
   right: 5%;
-  bottom: 0;
+  bottom: 5%;
   &:hover {
     cursor: pointer;
   }
+  
 `;
 export default ShopBtn;
