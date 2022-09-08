@@ -37,7 +37,7 @@ const LogInForm = () => {
     } else if (password === "") {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
-    }
+    } 
     const userData = { username: username, password: password };
     dispatch(keepAuthDataMW(userData, navigate));
   };

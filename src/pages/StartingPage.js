@@ -6,7 +6,10 @@ import styled, { keyframes } from "styled-components";
 import drugIcon from "../assets/images/icons/drug.png";
 import Modals from "../components/layout/modal/modalList";
 import { devices } from "../device";
-import { ColumnFlexDiv, DeviceDiv, PageSection } from "../style/styled";
+import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
+import { ColumnFlexDiv } from "../style/styled";
+import { PageSection } from "../style/styled";
+import { DeviceDiv } from "../style/styled";
 //images
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
@@ -126,7 +129,7 @@ const Sub = styled(ColumnFlexDiv)`
   height: 10rem;
   font-size: 1rem;
   line-height: 1.9rem;
-  margin-left: 5.25rem;
+  margin-left: 12.5%;
   margin-bottom: 1.5rem;
   @media ${devices.tablet} {
     display: none;
