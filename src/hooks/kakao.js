@@ -11,12 +11,13 @@ const kakaoLogin = (code, navigate) => {
         console.log(res);
 
         const ACCESS_TOKEN = res.headers.authorization;
+        sessionStorage.setItem("authorization", ACCESS_TOKEN);
         dispatch(keepAuthData(ACCESS_TOKEN));
 
         const USER_NAME = res.data.username;
         sessionStorage.setItem("username", USER_NAME);
 
-        navigate("/record/:username/");
+        navigate("/record/" + USER_NAME);
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);

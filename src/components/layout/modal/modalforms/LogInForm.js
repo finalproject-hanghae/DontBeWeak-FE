@@ -65,9 +65,6 @@ const LogInForm = () => {
           카카오톡 로그인
         </SnsLoginBtn>
         
-
-        {/* <NaverLogIn /> */}
-
         {/* <SnsLoginBtn>
           <img src={naverIcon} alt="naver_icon" />
           네이버 로그인
