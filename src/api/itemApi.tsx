@@ -3,7 +3,7 @@ import axios from "axios";
 import applyInterceptorsTo from "./axiosInterceptors";
 
 const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST + "items",
+  baseURL: process.env.REACT_APP_DB_HOST + "/items",
 });
 
 const useThisApi = applyInterceptorsTo(baseApi);

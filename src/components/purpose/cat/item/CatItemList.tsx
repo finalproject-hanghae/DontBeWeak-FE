@@ -16,7 +16,7 @@ const CatItemList = () => {
         })}
     </ItemsBox>
   );
-});
+};
 
 const ItemsBox = styled(RowFlexDiv)`
   width: 100%;
@@ -24,4 +24,3 @@ const ItemsBox = styled(RowFlexDiv)`
 `;
 
 export default CatItemList;
-

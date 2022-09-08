@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
 import { useParams } from "react-router-dom";
 import { loadCatDataMW } from "../../../../redux/modules/cats";
 import { itemApi } from "../../../../api/itemApi";
@@ -7,10 +6,16 @@ import CatItemCost from "./CatItemCost";
 import styled from "styled-components";
 import { AlertDiv, ColumnFlexDiv } from "../../../../style/styled";
 import useHandleClick from "../../../../hooks/useHandleClick";
+import { catItem } from "../../../../types/cats";
+import { useAppDispatch } from "../../../../redux/hooks";
 
-const CatItem = ({ val }:GreetingsProps) => {
-  const dispatch=useAppDispatch()
-  const username=useParams().username;
+type GreetingsProps = {
+  val: catItem;
+};
+
+const CatItem = ({ val }: GreetingsProps) => {
+  const dispatch = useAppDispatch();
+  const username = useParams().username;
   // 구매 Confirm 모달창
   const [openModal, setOpenModal] = useState(false);
 
@@ -30,7 +35,7 @@ const CatItem = ({ val }:GreetingsProps) => {
         setFadeOut(fadeOut - 8);
       }, 50);
     }
-  }; 
+  };
   const callBack = useCallback(autoRemover, [fadeOut]);
   useEffect(() => {
     if (notice === true) {
@@ -42,7 +47,8 @@ const CatItem = ({ val }:GreetingsProps) => {
   const [someItem, setSomeItem] = useState("");
   const toBuyItem = () => {
     const itemId = val.itemId;
-    itemApi.apiItemBuy(itemId+"")
+    itemApi
+      .apiItemBuy(itemId + "")
       .then((res) => {
         setSomeItem(res.data);
         dispatch(loadCatDataMW(username));
@@ -61,7 +67,7 @@ const CatItem = ({ val }:GreetingsProps) => {
       </Img>
       <Name> {val?.itemName} </Name>
       <CatItemCost cost={val?.itemPoint} />
-    {/* 구매 의사 컨펌창 */}
+      {/* 구매 의사 컨펌창 */}
       {openModal ? (
         <Confirm>
           <p>
@@ -69,15 +75,22 @@ const CatItem = ({ val }:GreetingsProps) => {
           </p>
           <Btn onClick={() => setOpenModal(false)}>아니오</Btn>
           <Btn
-            onClick={() => {toBuyItem(); autoRemover();}}> 네 </Btn>
+            onClick={() => {
+              toBuyItem();
+              autoRemover();
+            }}
+          >
+            {" "}
+            네{" "}
+          </Btn>
         </Confirm>
       ) : null}
-    {/* 구매 완료 알림창 */}
+      {/* 구매 완료 알림창 */}
       {notice ? (
         <FadeOutModal opacity={`${fadeOut}%`}>
-           구매 완료😻
-           <br />
-           경험치 +5 증가!
+          구매 완료😻
+          <br />
+          경험치 +5 증가!
         </FadeOutModal>
       ) : null}
     </Item>

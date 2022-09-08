@@ -6,7 +6,7 @@ import { startAndEndDate } from "../types/weeks";
 import applyInterceptorsTo from "./axiosInterceptors";
 
 const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST + "schedule",
+  baseURL: process.env.REACT_APP_DB_HOST + "/schedule",
 });
 
 const useThisApi = applyInterceptorsTo(baseApi);

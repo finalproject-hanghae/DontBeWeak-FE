@@ -8,9 +8,10 @@ import SingleDrugLine from "./SingleDrugLine";
 import DrugCat from "../../../assets/images/cats/cat1.png";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { drugList } from "../../../types/drugs";
+import { useSomeCatSatus } from "../../../hooks/useSomeCatSatus";
 
 const MyDrugSection = () => {
-  const Data = useAppSelector((state) => state.cats.cats);
+  const Data = useSomeCatSatus()
   const dispatch = useAppDispatch();
   const username = useParams().username;
   const myDrug:drugList = useAppSelector((state) => state.drugs.drugs);

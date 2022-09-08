@@ -36,8 +36,6 @@ const CatPage = () => {
     <PageSection>
       <Bg>
         {/* 고양이가 존재하지 않으면 잘못된 접근 추후 백엔드 처리 */}
-        {!catData.level && Modals.NotFound}
-
         <CatImage>
           {/* 나의 고먐미 ~ 친구네 고먐미 셀렉창 */}
           <SelectBox friendList={friendList} />
@@ -62,7 +60,7 @@ const CatPage = () => {
         {/* 고양이 레벨표시 구역 End */}
 
         {/* 상점 Btn */}
-        <ShopBtn />
+        {username == sessionStorage.getItem("username") && <ShopBtn />}
       </Bg>
     </PageSection>
   );
