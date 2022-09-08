@@ -16,7 +16,7 @@ export function loadFriendDataMW() {
   return function (dispatch) {
     friendApi.apiFriendList()
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data,'친구데이터')
         dispatch(loadFriendData(res.data));
       })
       .catch((err) => console.log(err));

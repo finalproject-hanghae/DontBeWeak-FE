@@ -1,7 +1,6 @@
 import { Route, Routes, useParams } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
 
 import { ColumnFlexDiv, PageSection } from "../style/styled";
 import CalenderSection from "../components/purpose/calender/CalenderSection";
