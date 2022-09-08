@@ -1,21 +1,19 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import React from "react";
+import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import SelectBox from "../../layout/SelectBox";
+import SingleDrugLine from "./SingleDrugLine";
 import styled from "styled-components";
-import { useSomeCatSatus } from "../../../hooks/useSomeCatSatus";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
-import { loadDrugDataMW } from "../../../redux/modules/drugs";
-import SingleDrugLine from "./SingleDrugLine";
-import DrugCat from "../../../assets/images/cats/cat1.png";
 
 const MyDrugSection = () => {
-  const Data = useSomeCatSatus();
-  console.log(Data,"뎅터")
+  const Data = useSelector((state) => state.cats.cats);
   const dispatch = useDispatch();
   const username = useParams().username;
   const myDrug = useSelector((state) => state.drugs.drugs);
-  console.log(myDrug,"잉?")
+  console.log(myDrug, "잉?");
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));
   }, []);
@@ -34,7 +32,6 @@ const MyDrugSection = () => {
           );
         })}
       </MyDrugs>
-      
     </MyDrugCard>
   );
 };
@@ -42,17 +39,21 @@ const MyDrugSection = () => {
 const MyDrugCard = styled(RowFlexDiv)`
   width: 90%;
   margin: 0px auto;
-  height: 350px;
+  height: 22rem;
   border-radius: 0.625em;
   border: solid 2px #000;
   box-shadow: 10px 10px 0px #ffc58e;
   justify-content: center;
   align-items: center;
+  @media ${devices.mobileL} {
+    height: 20rem;
+    padding: 1%;
+  }
 `;
 const MyDrugs = styled.div`
   width: 65%;
   height: 80%;
-  display: flex; 
+  display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
@@ -74,8 +75,8 @@ const MyDrugs = styled.div`
     background-color: none;
   }
   @media ${devices.mobileL} {
-    padding: 0px;
-    height: 190px;
+    width: 85%;
+    height: 100%;
   }
 `;
 const CatState = styled(ColumnFlexDiv)`
@@ -90,10 +91,22 @@ const CatState = styled(ColumnFlexDiv)`
     margin-bottom: 10%;
     font-weight: 600;
   }
+  @media ${devices.mobileL} {
+    width: 8rem;
+    height: 7rem;
+    p{
+      font-size: 0.7rem;
+    }
+  }
 `;
 const CatImg = styled(ColumnFlexDiv)`
   img {
     width: 9rem;
+  }
+  @media ${devices.mobileL} {
+   img {
+    width: 5rem;
+   } 
   }
 `;
 

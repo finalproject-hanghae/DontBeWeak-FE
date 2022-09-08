@@ -1,5 +1,4 @@
 import { catApi } from "../../api/catApi";
-import { drugApi } from "../../api/drugApi";
 
 // Actions
 // 고양이를 불러와서 덮어씌우기만 하면 되니까 LOAD 액션만 만들었습니다.
@@ -67,3 +66,5 @@ export default function reducer(state = initialState, action = {}) {
 //
 
 // 더이상 const catData = useSomeCatSatus(); 는 필요 없습니다.
+
+//빛하쥰...✨💫

@@ -12,7 +12,7 @@ import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";
 import DirectSearchModal from "../DirectSearchModal";
 import useHandleClick from "../../../../hooks/useHandleClick";
-
+import { devices } from "../../../../device";
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 import { getRandomInt } from "../../../../hooks/getRandomInt";
@@ -24,7 +24,10 @@ const SearchDrugForm = ({ setDrug }) => {
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
   const [searchResult, setSearchResult] = React.useState([]);
-  const randomColor = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
+  const randomColor = `rgb(${getRandomInt(0, 255)},${getRandomInt(
+    0,
+    255
+  )},${getRandomInt(0, 255)})`;
   const [color, setColor] = React.useState(randomColor);
 
   console.log(pageNumber);
@@ -130,14 +133,6 @@ const SearchDrugForm = ({ setDrug }) => {
         <PickMeBox>
           <MyDrug>
             <h4>{pickMe}</h4>
-            <img
-              src={Minus}
-              onClick={() => {
-                setPickMe("");
-                setHowEat("");
-              }}
-              alt="minus_icon"
-            />
             <ColorPicker color={color} setColor={setColor} />
           </MyDrug>
 
@@ -153,10 +148,14 @@ const SearchDrugForm = ({ setDrug }) => {
 
 const Wrap = styled(ColumnFlexDiv)`
   width: 90%;
-  height: 540px;
+  height: 33.7rem;
   align-items: center;
   justify-content: center;
   position: relative;
+  @media ${devices.mobileL} {
+    width: 90%;
+    height: 22rem;
+  }
 `;
 
 const Observer = styled.div`
@@ -176,6 +175,9 @@ const DirectSearch = styled(RowFlexDiv)`
     &:hover {
       border-bottom: 1px solid #f98532;
     }
+  }
+  @media ${devices.mobileL} {
+    font-size: 0.5rem;
   }
 `;
 
@@ -201,6 +203,10 @@ const SearchList = styled.div`
   &::-webkit-scrollbar-track {
     background-color: none;
   }
+  @media ${devices.mobileL} {
+    font-size: 0.5rem;
+    line-height: 2rem;
+  }
 `;
 
 const SearchForm = styled.form`
@@ -220,6 +226,11 @@ const DrugInput = styled.input`
   border-radius: 5px;
   margin-right: 2%;
   outline: none;
+  @media ${devices.mobileL} {
+    width: 75%;
+    height: 1.8rem;
+    font-size: 0.7rem;
+  }
 `;
 
 const Idx = styled.li`
@@ -242,10 +253,20 @@ const SearchBtn = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 3rem;
+    height: 2rem;
+    font-size: 0.7rem;
+  }
 `;
 
 const PickMeBox = styled.div`
   width: 95%;
+  @media ${devices.mobileL} {
+    small {
+      font-size: 0.5rem;
+    }
+  }
 `;
 
 const MyDrug = styled.div`
@@ -253,18 +274,18 @@ const MyDrug = styled.div`
   height: 3.2em;
   background-color: #fcdcbe;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 3%;
   h4 {
     padding-left: 5%;
     line-height: 1.2em;
   }
-  img {
-    width: 25px;
-    height: 25px;
-    margin-left: 5%;
-    cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 100%;
+    height: 2rem;
+    h4 {
+      font-size: 0.5rem;
+    }
   }
 `;
 
@@ -280,6 +301,11 @@ const AddBtn = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 95%;
+    height: 2.5rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export default SearchDrugForm;
