@@ -72,7 +72,7 @@ const StartingPage = () => {
         <Route index element={null} />
         <Route path="login" element={Modals.LogIn} />
         <Route path="signup" element={Modals.SignUp} />
-        {/* <Route path="/auth/kakao/callback" component={KakaoRedirect}></Route> */}
+        <Route path="/auth/kakao/callback" component={KakaoRedirect}></Route>
         <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>

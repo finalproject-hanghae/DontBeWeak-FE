@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { actionCreators as userActions } from "../../../../redux/modules/kakao/";
+import { actionCreators as userActions } from "../../../../redux/modules/kakao";
 // import { userAction } from "../../../../redux/modules/userAction";
 // import userAction from "../../../../redux/modules/kakao";
 const KakaoRedirect = (props) => {
