@@ -1,19 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { actionCreators as userActions } from "../../../../redux/modules/kakao";
-// import { userAction } from "../../../../redux/modules/userAction";
-// import userAction from "../../../../redux/modules/kakao";
+import { useNavigate } from "react-router-dom";
+import { actionCreators as userActions } from "../../../../hooks/kakao";
+
 const KakaoRedirect = (props) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let code = new URL(window.location.href).searchParams.get("code");
+  console.log(code);
 
-    // const href = window.location.href;
-    // let params = new URL(document.URL).searchParams;
-    // let code = params.get("code");
-    let code = new URL(window.location.href).searchParams.get("code");
+  React.useEffect(() => {
+    dispatch(userActions.kakaoLogin(code, navigate));
+  }, []);
 
-    React.useEffect(async () => {
-        await dispatch(userActions.kakaoLogin(code));
-    }, [])
-}
+  return <div></div>;
+};
 
 export default KakaoRedirect;
