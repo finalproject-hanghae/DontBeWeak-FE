@@ -1,5 +1,4 @@
 import React from "react";
-
 import { RowFlexDiv } from "../../../../style/styled";
 import CatItem from "./CatItem";
 import useCatItemList from "../../../../hooks/useCatItemList";
@@ -17,12 +16,12 @@ const CatItemList = () => {
         })}
     </ItemsBox>
   );
-};
+});
+
 const ItemsBox = styled(RowFlexDiv)`
   width: 100%;
-  height: 85%;
-  justify-content: space-between;
-  align-items: center;
+  height: 80%;
 `;
 
 export default CatItemList;
+

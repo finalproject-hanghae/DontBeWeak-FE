@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../../device";
 import SearchDrugModal from "../buttonpop/SearchDrugModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
@@ -22,8 +22,8 @@ const SearchDrugBtn = () => {
 };
 
 const BtnWrap = styled.div`
-  width: 61px;
-  height: 61px;
+  width: 3.8rem;
+  height: 3.8rem;
   padding: 8px;
   text-align: center;
   position: absolute;
@@ -31,6 +31,16 @@ const BtnWrap = styled.div`
   bottom: 15px;
   &:hover {
     cursor: pointer;
+  }
+  @media ${devices.mobileL} {
+    width: 2rem;
+    height: 2rem;
+    right: 1rem;
+    bottom: 1rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 `;
 

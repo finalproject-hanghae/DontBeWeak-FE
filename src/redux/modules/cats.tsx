@@ -1,5 +1,4 @@
 import { catApi } from "../../api/catApi";
-import { drugApi } from "../../api/drugApi";
 import { cat } from "../../types/cats";
 import { username } from "../../types/users";
 
@@ -73,3 +72,5 @@ export default function reducer(state = initialState, action:any = {}) {
 //
 
 // 더이상 const catData = useSomeCatSatus(); 는 필요 없습니다.
+
+//빛하쥰...✨💫

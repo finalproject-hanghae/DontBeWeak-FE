@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import arrowIcon from "../../../assets/images/icons/arrow.png";
 import { useFindWeek } from "../../../hooks/useFindWeek";
-
+import { devices } from "../../../device";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import DateViewCard from "./DateViewCard";
 import { useParams } from "react-router-dom";
@@ -40,7 +40,7 @@ const CalenderSection = () => {
           alt="left_arrow_icon"
           onClick={() => {
             setWeekHandler(weekHandler - 1);
-            dispatch(changeWeekData(week-1));
+            dispatch(changeWeekData(week - 1));
           }}
         />
         <h2>
@@ -51,7 +51,7 @@ const CalenderSection = () => {
           alt="right_arrow_icon"
           onClick={() => {
             setWeekHandler(weekHandler + 1);
-            dispatch(changeWeekData(week+1));
+            dispatch(changeWeekData(week + 1));
           }}
         />
       </WeekBox>
@@ -77,13 +77,16 @@ const CalenderCard = styled(ColumnFlexDiv)`
   height: 10rem;
   align-self: center;
   margin-bottom: 8rem;
+  @media ${devices.mobileL} {
+    width: 88%;
+    height: 6.5rem;
+  }
 `;
 
 const WeekBox = styled(RowFlexDiv)`
   width: 80%;
   height: 70px;
   align-items: center;
-
   align-self: center;
   justify-content: center;
   h2 {
@@ -97,8 +100,6 @@ const WeekBox = styled(RowFlexDiv)`
     height: 3rem;
     border-radius: 50px;
     &:hover {
-      width: 3.1rem;
-      height: 3.1rem;
       background-color: #fff;
       box-shadow: 2.5px 2.5px 0px #ffc58e;
       cursor: pointer;
@@ -107,13 +108,23 @@ const WeekBox = styled(RowFlexDiv)`
       transform: scaleX(-1);
     }
   }
+  @media ${devices.mobileL} {
+    width: 85%;
+    height: 3em;
+    h2{
+      font-size: 1.1rem;
+    }
+    img{
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 `;
 
 const DateBox = styled(RowFlexDiv)`
-  margin: 0 auto;
   width: 100%;
-  height: 20vh;
-  border: 2px solid #000;
+  height: 20rem;
+  border: 0.15rem solid #000;
   box-shadow: 10px 10px 0px #ffc58e;
   border-radius: 10px;
   background-color: white;

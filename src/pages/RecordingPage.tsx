@@ -8,7 +8,6 @@ import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import Modals from "../components/layout/modal/modalList";
 import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
 import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
-import { useSomeCatSatus } from "../hooks/useSomeCatSatus";
 
 const RecordingPage = () => {
   const username = useParams().username;
@@ -31,8 +30,9 @@ const RecordingPage = () => {
 };
 
 const Wrap = styled(ColumnFlexDiv)`
-  width: 100%;
+  width: 95%;
   height: 95%;
+  margin: 0 auto;
   overflow: hidden;
 `;
 

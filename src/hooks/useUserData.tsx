@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { userApi } from "../api/basicAPI";
 import { user } from "../types/users";
 
@@ -8,7 +8,6 @@ const useUserData = () => {
     userApi
       .apiUser()
       .then((res) => {
-        console.log(res.data, "유저정보다ㅏㅏㅏ");
         setUserInfo(res.data);
       })
       .catch((err) => console.log(err));

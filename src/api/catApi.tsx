@@ -4,7 +4,7 @@ import { username } from "../types/users";
 import applyInterceptorsTo from "./axiosInterceptors";
 
 const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST + "/cat",
+  baseURL: process.env.REACT_APP_DB_HOST + "cat",
 });
 
 const useThisApi = applyInterceptorsTo(baseApi);

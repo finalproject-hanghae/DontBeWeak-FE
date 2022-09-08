@@ -1,5 +1,6 @@
 import React, { LegacyRef, RefObject, useRef, useState } from "react";
 import styled from "styled-components";
+import { devices } from "../../device";
 
 type GreetingsProps = {
   color: string;
@@ -31,13 +32,17 @@ const ColorPicker = ({ color, setColor }: GreetingsProps) => {
 const Pallete = styled.div`
   width: 1.6rem;
   height: 1.6rem;
-  /* border: 0.2rem solid orange; */
   box-sizing: border-box;
   border-radius: 5rem;
   background: ${(props) => props.color};
   position: absolute;
   right: 5rem;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 1rem;
+    height: 1rem;
+    right: 0.5rem;
+  }
 `;
 
 export default ColorPicker;

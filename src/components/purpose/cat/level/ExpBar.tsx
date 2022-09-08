@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
@@ -29,14 +29,11 @@ const ExpBar = ({ catData }: GreetingsProps) => {
 
   return (
     <Container>
-      {/*%로 부모넓이의 1/5 씩 넓어짐*/}
-      <MyExp width={(catData?.exp / 20) * 100 + "%"}>
-        <p> {catData?.exp} </p>
-      </MyExp>
+      <small>{catData?.exp} / 20</small>
+      <MyExp width={(catData?.exp / 20) * 100 + "%"} />
     </Container>
   );
 };
-export default ExpBar;
 
 const Container = styled.div`
   margin: 50px auto;
@@ -47,22 +44,20 @@ const Container = styled.div`
   align-items: center;
   border-radius: 20px;
   margin-left: 1%;
+  text-align: center;
+  line-height: 10px;
+  small {
+    position: absolute;
+    left: 48%;
+    color: #fff;
+    font-size: 0.7rem;
+  }
 `;
 const MyExp = styled.div`
   background-color: #ff795b;
   width: ${(props) => props.width};
   height: 100%;
-  transition: width 0.5s ease-out;
+  transition: 0.5s ease-out;
   border-radius: 30px;
 `;
-
-// //프로그레스 바에 원 달아서 프로그레스 바가 차오를 때 같이 차오름
-// const Dot = styled.div`
-//   width: 70px;
-//   height: 70px;
-//   box-sizing: border-box;
-//   border: 10px solid blue;
-//   border-radius: 35px;
-//   background: yellow;
-//   margin-left: -35px;
-// `;
+export default ExpBar;

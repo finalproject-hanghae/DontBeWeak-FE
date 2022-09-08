@@ -2,16 +2,15 @@ import React from "react";
 import useUserData from "../../../hooks/useUserData";
 import CatItemList from "../../purpose/cat/item/CatItemList";
 import styled from "styled-components";
-import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
+import { ColumnFlexDiv } from "../../../style/styled";
 
 const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   const data = useUserData();
   return (
     <Wrap ref={ref}>
       <TiltelBar>
-        <h3>상점 아이템 구매 </h3>
+        <h3>상점 아이템 구매</h3>
       </TiltelBar>
-
       <Section>
         <CatItemList />
         <MyPoint>
@@ -27,7 +26,6 @@ const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
 // style 적용
 const Wrap = styled.div`
   width: 530px;
-  /* min-height: 60px; */
   overflow: hidden;
   background-color: #fff;
   position: absolute;
@@ -48,11 +46,10 @@ const Section = styled(ColumnFlexDiv)`
   height: 200px;
   margin: 20px auto;
 `;
-const MyPoint = styled(RowFlexDiv)`
+const MyPoint = styled.div`
   width: 98%;
-  height: 40px;
-  align-items: center;
-  justify-content: right;
+  height: 1.5rem;
+  text-align: right;
   margin: 0 auto;
   p {
     font-size: 1rem;
