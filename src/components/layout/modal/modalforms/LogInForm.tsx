@@ -103,8 +103,8 @@ const SignUpLink = styled(LinkC)`
   margin-left: 1%;
 `;
 const LogInInput = styled.input`
-  width: 17rem;
-  height: 2.5rem;
+  width: 20rem;
+  height: 4rem;
   margin: auto auto 20px auto;
   border: 0.5px solid #c5c5c5;
   padding: 3%;
@@ -112,11 +112,15 @@ const LogInInput = styled.input`
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 4px;
+  @media ${devices.mobileL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
 `;
 
 const LogInButton = styled.button`
-  width: 17rem;
-  height: 2.5rem;
+  width: 20rem;
+  height: 4rem;
   background: #fabc4f;
   color: #000;
   font-weight: 800;
@@ -124,11 +128,15 @@ const LogInButton = styled.button`
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
 `;
 
 const SnsLoginBtn = styled.button`
-  width: 17rem;
-  height: 2.5rem;
+  width: 20rem;
+  height: 4rem;
   background-color: #fff;
   color: #000;
   font-weight: 800;
@@ -137,6 +145,10 @@ const SnsLoginBtn = styled.button`
   font-size: 18px;
   border-radius: 4px;
   box-sizing: border-box;
+  @media ${devices.mobileL} {
+    width: 17rem;
+    height: 2.5rem;
+  }
   cursor: pointer;
   img {
     margin-right: 8px;
