@@ -8,6 +8,8 @@ import axios from "axios";
 import kakaoIcon from "../../../../assets/images/icons/kakao.png";
 
 const KakaoLogIn = () => {
+  const CLIENT_ID = "599bca646044fc4147f7f8f4c461f9ca";
+  const REDIRECT_URI = "localhost:3000/auth/kakao/callback";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=599bca646044fc4147f7f8f4c461f9ca&redirect_uri=
 http://localhost:3000/auth/kakao/callback&response_type=code`;
 
@@ -19,7 +21,7 @@ http://localhost:3000/auth/kakao/callback&response_type=code`;
     //인가코드 넘기기,토큰 받기
     try {
       const res = await axios
-        .get(`http://localhost:3000/auth/kakao/callback?code=${code}`)
+        .get(`http://3.38.135.93:8080/auth/kakao/callback?code=${code}`)
         .then((response) => {
           console.log(response);
           const token = response.headers.authorization;

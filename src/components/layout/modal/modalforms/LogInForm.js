@@ -11,10 +11,13 @@ import { ColumnFlexDiv } from "../../../../style/styled";
 import { LinkC } from "../../../../style/styled";
 import { keepAuthDataMW } from "../../../../redux/modules/users";
 
-import NaverLogIn from "./NaverLogIn";
-import KakaoLogIn from "./KakaoLogIn";
+import { KAKAO_AUTH_URL } from "../../../../hooks/KakaoOAuth";
 
 const LogInForm = () => {
+  const onClickKakao = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -57,16 +60,13 @@ const LogInForm = () => {
           </ColumnFlexDiv>
         </form>
 
-<KakaoLogIn/>
-
-        {/* <SnsLoginBtn>
+        <SnsLoginBtn onClick={onClickKakao}>
           <img src={kakaoIcon} alt="kakaotalk_icon" />
           카카오톡 로그인
-        </SnsLoginBtn> */}
-
+        </SnsLoginBtn>
+        
 
         {/* <NaverLogIn /> */}
-
 
         {/* <SnsLoginBtn>
           <img src={naverIcon} alt="naver_icon" />
