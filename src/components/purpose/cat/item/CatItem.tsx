@@ -133,7 +133,7 @@ const Confirm = styled(AlertDiv)`
     font-weight: 800;
   }
 `;
-const FadeOutModal = styled(AlertDiv)`
+const FadeOutModal:any = styled(AlertDiv)`
   width: 16.8rem;
   height: 8.1rem;
   line-height: 2.3rem;
@@ -142,7 +142,7 @@ const FadeOutModal = styled(AlertDiv)`
   left: 50%;
   padding-top: 1.25rem;
   margin-left: -8.43rem;
-  opacity: ${(props) => props.opacity};
+  opacity: ${(props:any) => props.opacity};
 `;
 const Btn = styled.button`
   width: 55px;

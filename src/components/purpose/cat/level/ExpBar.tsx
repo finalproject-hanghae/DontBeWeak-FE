@@ -53,9 +53,9 @@ const Container = styled.div`
     font-size: 0.7rem;
   }
 `;
-const MyExp = styled.div`
+const MyExp:any = styled.div`
   background-color: #ff795b;
-  width: ${(props) => props.width};
+  width: ${(props:any) => props.width};
   height: 100%;
   transition: 0.5s ease-out;
   border-radius: 30px;
