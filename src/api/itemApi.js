@@ -3,28 +3,23 @@ import axios from "axios";
 import applyInterceptorsTo from "./axiosInterceptors";
 
 const baseApi = axios.create({
-  baseURL: process.env.REACT_APP_DB_HOST,
+  baseURL: process.env.REACT_APP_DB_HOST + "/items",
 });
 
 const useThisApi = applyInterceptorsTo(baseApi);
 
+//item 관련 API ->itemApi
 const apiItemList = async () => {
-  const dataApiItemList = await useThisApi.get("/items");
+  const dataApiItemList = await useThisApi.get("");
   return dataApiItemList;
 };
 
 const apiItemBuy = async (path) => {
-  const dataApiItemBuy = await useThisApi.patch(`/items/${path}`);
+  const dataApiItemBuy = await useThisApi.patch("/"+`${path}`);
   return dataApiItemBuy;
-};
-
-const apiItemApply = async (path) => {
-  const dataApiItemApply = await useThisApi.get(`/items/${path}`);
-  return dataApiItemApply;
 };
 
 export const itemApi = {
   apiItemList: () => apiItemList(),
   apiItemBuy: (path) => apiItemBuy(path),
-  apiItemApply: (path) => apiItemApply(path),
 };
