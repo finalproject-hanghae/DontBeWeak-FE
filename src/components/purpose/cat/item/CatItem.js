@@ -6,7 +6,7 @@ import { itemApi } from "../../../../api/itemApi";
 import CatItemCost from "./CatItemCost";
 import styled from "styled-components";
 import { AlertDiv, ColumnFlexDiv } from "../../../../style/styled";
-import useHandleClick from "../../../../hooks/useHandleClick";
+import { devices } from "../../../../device";
 
 const CatItem = ({ val }) => {
   const dispatch = useDispatch();
@@ -92,6 +92,9 @@ const Item = styled(ColumnFlexDiv)`
   height: 100%;
   align-items: center;
   justify-content: center;
+  @media ${devices.mobileL} {
+   width: 100%;
+  }
 `;
 const Img = styled(ColumnFlexDiv)`
   width: 4.3rem;
@@ -104,6 +107,10 @@ const Img = styled(ColumnFlexDiv)`
   &:hover {
     width: 4.5rem;
     height: 4.5rem;
+  }
+  @media ${devices.mobileL} {
+   width: 3rem;
+   height: 3rem;
   }
 `;
 const Name = styled.p`
