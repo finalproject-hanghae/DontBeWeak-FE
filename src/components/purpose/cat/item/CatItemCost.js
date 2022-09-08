@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import point from "../../../../assets/images/cats/stamp.png";
 import { RowFlexDiv } from "../../../../style/styled";
+import { devices } from "../../../../device";
 
 const CatItemCost = ({ cost }) => {
   return (
@@ -22,13 +23,18 @@ const CatItemCost = ({ cost }) => {
 
 const ItemCost = styled(RowFlexDiv)`
   width: 70%;
-  height: 50px;
-  /* align-items: center; */
   justify-content: center;
   img {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     margin-left: 3%;
+  }
+  @media ${devices.mobileL} {
+   width: 2.5rem;
+   img{
+    width: 0.8rem;
+    height: 0.8rem;
+   }
   }
 `;
 

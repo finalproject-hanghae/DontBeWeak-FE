@@ -6,11 +6,15 @@ import styled, { keyframes } from "styled-components";
 import drugIcon from "../assets/images/icons/drug.png";
 import Modals from "../components/layout/modal/modalList";
 import { devices } from "../device";
-import { ColumnFlexDiv, DeviceDiv, PageSection } from "../style/styled";
+import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
+import { ColumnFlexDiv } from "../style/styled";
+import { PageSection } from "../style/styled";
+import { DeviceDiv } from "../style/styled";
 //images
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
+import KakaoRedirect from "../components/layout/modal/modalforms/KakaoRedirect";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
@@ -71,6 +75,7 @@ const StartingPage = () => {
         <Route index element={null} />
         <Route path="login" element={Modals.LogIn} />
         <Route path="signup" element={Modals.SignUp} />
+        <Route path="/auth/kakao/callback" component={KakaoRedirect}></Route>
         <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
@@ -124,8 +129,8 @@ const Sub = styled(ColumnFlexDiv)`
   height: 10rem;
   font-size: 1rem;
   line-height: 1.9rem;
-  margin-left: 1%;
-  margin-bottom: 5%;
+  margin-left: 12.5%;
+  margin-bottom: 1.5rem;
   @media ${devices.tablet} {
     display: none;
   }
@@ -151,16 +156,19 @@ const ImgSprite = styled.div`
   width: 17.5rem;
   height: 11.6rem;
   position: absolute;
-  top: 47%;
-  left: 25%;
+  top: 45%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: url(${spriteImg}) left center;
   animation: ${Keyframes} 0.8s steps(3) infinite;
   @media ${devices.mobileL} {
+    top: 50%;
     left: 50%;
+    min-width: 280px;
   }
-  @media ${devices.tablet} {
-    top: 60%;
+  @media ${devices.laptop} {
+    margin-top: 5%;
+    top: 50%;
     left: 50%;
     min-width: 280px;
   }

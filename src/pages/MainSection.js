@@ -17,6 +17,7 @@ const MainSection = () => {
         <Route path="/*" element={<StartingPage />} />
         <Route path="/record/:username/*" element={<RecordingPage />} />
         <Route path="/cat/:username" element={<CatPage />} />
+
       </Routes>
     </MainCard>
   );

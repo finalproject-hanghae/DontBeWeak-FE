@@ -3,6 +3,7 @@ import useHandleClick from "../../../hooks/useHandleClick";
 import shopBtn from "../../../assets/images/icons/shop.png";
 import ShopModal from "../buttonpop/ShopModal";
 import styled from "styled-components";
+import { devices } from "../../../device";
 
 const ShopBtn = () => {
   const [shop, setShop, showModal, shopModalRef] = useHandleClick();
@@ -24,9 +25,20 @@ const BtnWrap = styled.div`
   text-align: center;
   position: absolute;
   right: 5%;
-  bottom: 0;
+  bottom: 5%;
   &:hover {
     cursor: pointer;
   }
+  @media ${devices.mobileL} {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  
 `;
 export default ShopBtn;

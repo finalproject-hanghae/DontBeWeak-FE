@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { useDispatch, useSelector } from "react-redux";
+import { devices } from "../../../../device";
 import {
   keepFriendDataMW,
   loadFriendDataMW,
@@ -93,14 +94,14 @@ const FriendsListForm = () => {
       <FriendsList>
         {friendList.map((val, idx) => {
           return (
-            <p
+            <FriendsName
               key={"friendListItem" + idx}
               onClick={() => {
-                ClickToReloadRecordPageData(val)
+                ClickToReloadRecordPageData(val);
               }}
             >
               {val.nickname}
-            </p>
+            </FriendsName>
           );
         })}
       </FriendsList>
@@ -109,9 +110,9 @@ const FriendsListForm = () => {
 };
 
 // styled-component 적용
-
 const Wrap = styled(ColumnFlexDiv)`
-  padding: 10px 30px;
+  width: 90%;
+  margin: 0.5rem auto;
 `;
 const TrueForm = styled.div`
   width: 100%;
@@ -122,4 +123,11 @@ const TrueForm = styled.div`
   align-items: center;
 `;
 const FalseForm = styled(TrueForm)``;
+const FriendsName = styled.p`
+  cursor: pointer;
+  &:hover {
+    font-weight: 900;
+  }
+`;
+
 export default FriendsListForm;
