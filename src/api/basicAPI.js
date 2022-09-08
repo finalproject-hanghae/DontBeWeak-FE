@@ -24,7 +24,6 @@ const apiUser = async () => {
   return dataApiUser;
 };
 
-
 export const userApi = {
   apiSignup: (data) => apiSignup(data),
   apiLogin: (data) => apiLogin(data),

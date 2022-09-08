@@ -75,6 +75,7 @@ const Bg = styled(ColumnFlexDiv)`
     background: url(${backgroundM}) no-repeat 100%;
     background-size: 100%;
     background-position: bottom;
+  }
 `;
 const CatImage = styled(ColumnFlexDiv)`
   align-items: center;
@@ -93,13 +94,15 @@ const CatImage = styled(ColumnFlexDiv)`
   }
   @media ${devices.mobileL} {
     div {
-    &:last-child {
-      width: 17rem;
-      height: 16rem;
+      &:last-child {
+        width: 17rem;
+        height: 16rem;
+      }
     }
-    img{
+    img {
       width: 13rem;
     }
+  }
 `;
 const ExCard = styled(RowFlexDiv)`
   width: 23rem;
