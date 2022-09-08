@@ -3,8 +3,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 import { useAppSelector } from "../../../../redux/hooks";
+import { cat } from "../../../../types/cats";
 
-const ExpBar = ({ catData }) => {
+type GreetingsProps = {
+  catData: cat;
+};
+
+const ExpBar = ({ catData }: GreetingsProps) => {
   /* *******설명******** 
     - 1레벨 당 최대 경험치 : 1000
     - 최대 레벨 : 30
@@ -12,20 +17,20 @@ const ExpBar = ({ catData }) => {
     - 1업을 하기 위해선 총 250점의 포인트(=경험치 1000)가 필요함. => 4/4
     
   */
-  const ex = useAppSelector(state => state.cats.cats.exp)
+  // const cat:cat = useAppSelector((state) => state.cats.cats);
 
   // 경험치 상승, 레벨업에 따른 초기화 작업
   React.useEffect(() => {
-    if (ex > 20) {
+    if (catData?.exp > 20) {
       alert("축하합니다! 레벨UP!");
-      return 
+      return;
     }
-  }, [ex]);
+  }, [catData]);
 
   return (
     <Container>
       {/*%로 부모넓이의 1/5 씩 넓어짐*/}
-      <MyExp width={(ex / 20) * 100 + "%"}>
+      <MyExp width={(catData?.exp / 20) * 100 + "%"}>
         <p> {catData?.exp} </p>
       </MyExp>
     </Container>

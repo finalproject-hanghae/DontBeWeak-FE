@@ -19,7 +19,7 @@ const LogInForm = () => {
   const logInPWRef = React.useRef<any>(null);
   const logInAlertRef = React.useRef<any>(null);
 
-  const submitToLogin = (e) => {
+  const submitToLogin = (e:any) => {
     e.preventDefault();
     const username = logInIDRef.current.value;
     const password = logInPWRef.current.value;
@@ -112,7 +112,7 @@ const LogInInput = styled.input`
   box-sizing: border-box;
   font-size: 14px;
   border-radius: 4px;
-  @media ${devices.mobileLL} {
+  @media ${devices.mobileL} {
     width: 17rem;
     height: 2.5rem;
   }
@@ -128,7 +128,7 @@ const LogInButton = styled.button`
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
-  @media ${devices.mobileLL} {
+  @media ${devices.mobileL} {
     width: 17rem;
     height: 2.5rem;
   }
@@ -145,7 +145,7 @@ const SnsLoginBtn = styled.button`
   font-size: 18px;
   border-radius: 4px;
   box-sizing: border-box;
-  @media ${devices.mobileLL} {
+  @media ${devices.mobileL} {
     width: 17rem;
     height: 2.5rem;
   }

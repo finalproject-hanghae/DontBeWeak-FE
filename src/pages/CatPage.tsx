@@ -17,13 +17,15 @@ import useUserData from "../hooks/useUserData";
 import { loadCatDataMW } from "../redux/modules/cats";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { friendList } from "../types/friends";
+import { cat } from "../types/cats";
 
 const CatPage = () => {
   const dispatch = useAppDispatch();
   const username = useParams().username;
-  const friendList = useAppSelector((state) => state.friends.friends);
+  const friendList:friendList = useAppSelector((state) => state.friends.friends);
   // const [FriendId, setFriendId] = React.useState();
-  const catData = useAppSelector((state) => state.cats.cats);
+  const catData:cat = useAppSelector((state) => state.cats.cats);
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
@@ -39,7 +41,7 @@ const CatPage = () => {
           <ColumnFlexDiv>
             <CatImage>
               {/* 나의 고먐미 ~ 친구네 고먐미 셀렉창 */}
-              <SelectBox friendList={friendList.friendList} />
+              <SelectBox friendList={friendList} />
 
               {/* 고먐 이미지 */}
               <div>

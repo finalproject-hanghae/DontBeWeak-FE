@@ -1,12 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { LegacyRef, RefObject, useRef, useState } from "react";
 import styled from "styled-components";
 
-const ColorPicker = ({color,setColor}) => {
-  const colorRef = useRef();
+type GreetingsProps = {
+  color: string;
+  setColor: any;
+};
+
+const ColorPicker = ({ color, setColor }: GreetingsProps) => {
+  const colorRef = useRef<any>();
   console.log(colorRef.current);
 
- 
-  const handleColorChange = (e) => {
+  const handleColorChange = (e: any) => {
     setColor(e.target.value);
   };
 

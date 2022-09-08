@@ -1,6 +1,7 @@
 import { catApi } from "../../api/catApi";
 import { drugApi } from "../../api/drugApi";
 import { cat } from "../../types/cats";
+import { username } from "../../types/users";
 
 // Actions
 // 고양이를 불러와서 덮어씌우기만 하면 되니까 LOAD 액션만 만들었습니다.
@@ -26,7 +27,7 @@ export function loadCatData(catData:cat) {
 // dispatch로 바로 액션함수를 호출하기엔 데이터가 부족합니다.
 // 액션함수 이전 데이터를 추가로 처리하기 위해 미들웨어를 적용했습니다.
 // 클라이언트는 미들웨어를 name만 제공하여 호출합니다.
-export function loadCatDataMW(name:string) {
+export function loadCatDataMW(name:username) {
   // 미들웨어는 name을 이용해 지지고 볶아서 catData를 만듭니다.
   // 미들웨어가 catData를 이용해 실제 액션함수를 재호출합니다.
   // username은 고양이 주인입니다. 필요할 것 같아 임시로 추가해뒀습니다.

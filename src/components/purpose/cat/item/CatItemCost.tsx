@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import point from "../../../../assets/images/cats/stamp.png";
 import { RowFlexDiv } from "../../../../style/styled";
+import { catItem } from "../../../../types/cats";
+type GreetingsProps = {
+  cost: catItem["itemPoint"];
+};
 
-const CatItemCost = ({ cost }) => {
+const CatItemCost = ({ cost }: GreetingsProps) => {
   return (
     <ItemCost>
       {cost &&

@@ -6,8 +6,13 @@ import styled from "styled-components";
 import { loadCatDataMW } from "../../../../redux/modules/cats";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../../../redux/hooks";
+import { catItem } from "../../../../types/cats";
 
-const CatItem = ({ val }) => {
+type GreetingsProps = {
+  val:catItem
+};
+
+const CatItem = ({ val }:GreetingsProps) => {
   const dispatch=useAppDispatch()
   const username=useParams().username;
   // 구매 Confirm 모달창
@@ -17,7 +22,7 @@ const CatItem = ({ val }) => {
   const [someItem, setSomeItem] = useState("");
   const toBuyItem = () => {
     const itemId = val.itemId;
-    itemApi.apiItemBuy(itemId)
+    itemApi.apiItemBuy(itemId+"")
       .then((res) => {
         setSomeItem(res.data);
         setOpenModal(false);

@@ -14,7 +14,7 @@ function SignUpForm() {
   const signUpPwCheckRef = React.useRef<any>(); // PwCheck
   const signUpAlertRef = React.useRef<any>(); // 경고
 
-  const submitToSignUp = async (e) => {
+  const submitToSignUp = async (e:any) => {
     e.preventDefault();
     const username = signUpIdRef.current.value;
     const nickname = signUpNicknameRef.current.value;

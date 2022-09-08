@@ -33,11 +33,12 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
     <SelectWrap>
       <select value={selected} defaultValue={selected} onChange={goToFriendCat}>
         <option value={user?.username}>나의 고먐미</option>
-        {list.map((val, idx) => (
-          <option value={val.friendname} key={"friendListItem" + idx}>
-            {val.friendname}
-          </option>
-        ))}
+        {list &&
+          list.map((val, idx) => (
+            <option value={val.friendname} key={"friendListItem" + idx}>
+              {val.friendname}
+            </option>
+          ))}
       </select>
     </SelectWrap>
   );

@@ -1,8 +1,9 @@
 import React from "react";
 import { itemApi } from "../api/itemApi";
+import { catItems } from "../types/cats";
 
-const useCatItemList = () => {
-  const [list, setList] = React.useState();
+const useCatItemList = (): catItems => {
+  const [list, setList] = React.useState<catItems>([]);
   React.useEffect(() => {
     itemApi
       .apiItemList()

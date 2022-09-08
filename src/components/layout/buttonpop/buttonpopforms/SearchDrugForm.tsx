@@ -24,12 +24,12 @@ const SearchDrugForm = ({ setDrug }: any) => {
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [pageNumber, setPageNumber] = React.useState(0);
-  const [searchResult, setSearchResult] = React.useState<Array<searchDrug>>();
+  const [searchResult, setSearchResult] = React.useState<Array<searchDrug>>([]);
   const randomColor = `rgb(${getRandomInt(0, 255)},${getRandomInt(
     0,
     255
   )},${getRandomInt(0, 255)})`;
-  const [color, setColor] = React.useState(randomColor);
+  const [color, setColor] = React.useState<string>(randomColor);
 
   console.log(pageNumber);
 

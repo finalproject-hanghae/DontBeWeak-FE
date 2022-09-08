@@ -1,4 +1,5 @@
 import React from "react";
+import { JsxElement } from "typescript";
 
 const styles = {
   position: "absolute",
@@ -12,24 +13,38 @@ const styles = {
   whiteSpace: "nowrap",
 };
 
-const A11yHidden = ({ tag, focusable, string }) => {
-  const [isFocus, setIsFocus] = React.useState(false);
-  let attrs = {};
-  attrs['tag'] = tag ? tag : undefined ;
-  attrs['focusable'] = focusable ? focusable : undefined;
-  
-  console.log(attrs)
-  console.log(isFocus)
-
-  const Tag = tag || 'span'
-
-  return <Tag style={!focusable ? styles : isFocus ? null : styles}
-  {...attrs}
-  onFocus={()=>{focusable && setIsFocus(true)}}
-  onBlur={()=>{focusable && setIsFocus(false)}}
-  >{string}</Tag>;
+type GreetingsProps = {
+  tag?: string;
+  focusable?: boolean;
+  string?: string;
 };
 
+const A11yHidden = ({ tag, focusable, string }: GreetingsProps) => {
+  const [isFocus, setIsFocus] = React.useState(false);
+  let attrs:GreetingsProps = {};
+  attrs["tag"] = tag ? tag : undefined;
+  attrs["focusable"] = focusable ? focusable : undefined;
+
+  console.log(attrs);
+  console.log(isFocus);
+
+  const Tag:any = tag || "span";
+
+  return (
+    <Tag
+      style={!focusable ? styles : isFocus ? null : styles}
+      {...attrs}
+      onFocus={() => {
+        focusable && setIsFocus(true);
+      }}
+      onBlur={() => {
+        focusable && setIsFocus(false);
+      }}
+    >
+      {string}
+    </Tag>
+  );
+};
 
 // 사용법 <A11yHidden tag={"h1"} string={"제목"} focusable/>
 export default A11yHidden;

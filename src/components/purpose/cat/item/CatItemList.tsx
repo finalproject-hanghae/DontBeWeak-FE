@@ -4,10 +4,11 @@ import { RowFlexDiv } from "../../../../style/styled";
 import CatItem from "./CatItem";
 import useCatItemList from "../../../../hooks/useCatItemList";
 import styled from "styled-components";
+import { catItems } from "../../../../types/cats";
 
 const CatItemList = () => {
-  const itemList = useCatItemList();
-  
+  const itemList: catItems = useCatItemList();
+
   return (
     <ItemsBox>
       {itemList &&

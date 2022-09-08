@@ -3,24 +3,33 @@ import styled from "styled-components";
 
 import stamp from "../../../../assets/images/icons/stamp.png";
 import { CenterFlexDiv } from "../../../../style/styled";
+import { cat } from "../../../../types/cats";
 
-const CatLevelCenter = ({level}) => {
+type GreetingsProps = {
+  level: cat["level"];
+};
+
+const CatLevelCenter = ({ level }: GreetingsProps) => {
   // const level = 30;
   const maxLevel = 30;
   return (
     <FlexBox>
       {/* {level}/{maxLevel} */}
       {level &&
-        Array(Math.floor(level / 2)+1)
+        Array(Math.floor(level / 2) + 1)
           .fill(0)
           .map((val, idx) => {
-            return <LevelHole key={"LevelHoleStamped"+idx}><img src={stamp} alt="stamp" /></LevelHole>;
+            return (
+              <LevelHole key={"LevelHoleStamped" + idx}>
+                <img src={stamp} alt="stamp" />
+              </LevelHole>
+            );
           })}
       {level &&
-        Array(15 - Math.floor(level / 2)-1)
+        Array(15 - Math.floor(level / 2) - 1)
           .fill(0)
           .map((val, idx) => {
-            return <LevelHole key={"LevelHole"+idx} />;
+            return <LevelHole key={"LevelHole" + idx} />;
           })}
     </FlexBox>
   );
