@@ -90,6 +90,7 @@ const NavBar = styled.div`
   padding-left: 5%;
   display: flex;
   align-items: center;
+  z-index: 999;
 `;
 const Wrap = styled(RowFlexDiv)`
   width: 90%;
