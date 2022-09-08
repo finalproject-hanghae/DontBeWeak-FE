@@ -4,6 +4,7 @@ import { loadFriendDataMW } from "../redux/modules/friends";
 import styled from "styled-components";
 //componenets
 import { ColumnFlexDiv, PageSection, RowFlexDiv } from "../style/styled";
+import { devices } from "../device";
 import SelectBox from "../components/layout/SelectBox";
 import ExpBar from "../components/purpose/cat/level/ExpBar";
 import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
@@ -14,7 +15,8 @@ import { loadCatDataMW } from "../redux/modules/cats";
 import { useParams } from "react-router-dom";
 import Modals from "../components/layout/modal/modalList";
 // img
-import background from "../assets/images/cats/cat_bg.png";
+import backgroundL from "../assets/images/cats/bg_L.png";
+import backgroundM from "../assets/images/cats/bg_M.png";
 
 const CatPage = () => {
   const dispatch = useDispatch();
@@ -64,11 +66,15 @@ const CatPage = () => {
 
 //Style
 const Bg = styled(ColumnFlexDiv)`
-  background: url(${background}) no-repeat 100%;
+  background: url(${backgroundL}) no-repeat 100%;
   background-position: bottom;
   width: 100%;
   height: 100%;
   justify-content: center;
+  @media ${devices.mobileL} {
+    background: url(${backgroundM}) no-repeat 100%;
+    background-size: 100%;
+    background-position: bottom;
 `;
 const CatImage = styled(ColumnFlexDiv)`
   align-items: center;
@@ -85,6 +91,15 @@ const CatImage = styled(ColumnFlexDiv)`
   img {
     width: 14rem;
   }
+  @media ${devices.mobileL} {
+    div {
+    &:last-child {
+      width: 17rem;
+      height: 16rem;
+    }
+    img{
+      width: 13rem;
+    }
 `;
 const ExCard = styled(RowFlexDiv)`
   width: 23rem;
@@ -96,10 +111,19 @@ const ExCard = styled(RowFlexDiv)`
     font-weight: 600;
     font-size: 13px;
   }
+  @media ${devices.mobileL} {
+    width: 80%;
+  }
 `;
 const CatLevelCard = styled(RowFlexDiv)`
   width: fit-content;
   margin: 0px auto;
+  justify-content: center;
+  align-items: center;
+  @media ${devices.mobileL} {
+    width: 100%;
+    height: 10rem;
+  }
 `;
 
 export default CatPage;

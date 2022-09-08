@@ -4,6 +4,7 @@ import useUserData from "../../hooks/useUserData";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { loadCatDataMW } from "../../redux/modules/cats";
+import { devices } from "../../device";
 
 const SelectBox = (friendList) => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const SelectBox = (friendList) => {
     navigate(
       "/cat/" + `${selected ? selected : sessionStorage.getItem("username")}`
     );
-    dispatch(loadCatDataMW(selected))
+    dispatch(loadCatDataMW(selected));
   }, [selected]);
 
   return (
@@ -50,11 +51,11 @@ const SelectBox = (friendList) => {
 
 // Style
 const SelectWrap = styled.div`
-  height: 30%;
+  height: 3rem;
   select {
     background-color: yellow;
-    width: 308px;
-    height: 50px;
+    width: 19rem;
+    height: 3rem;
     border: 2px solid #fabc4f;
     border-radius: 4px;
     text-align: center;
@@ -64,6 +65,9 @@ const SelectWrap = styled.div`
     -moz-appearance: none;
     appearance: none;
     cursor: pointer;
+    @media ${devices.mobileL} {
+    width: 15rem;
+    height: 2.5rem;
   }
 `;
 
