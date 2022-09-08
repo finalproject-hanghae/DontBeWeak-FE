@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import drugIcon from "../assets/images/icons/drug.png";
 import Modals from "../components/layout/modal/modalList";
 import { devices } from "../device";
-import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
+// import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
 import { ColumnFlexDiv } from "../style/styled";
 import { PageSection } from "../style/styled";
 import { DeviceDiv } from "../style/styled";
