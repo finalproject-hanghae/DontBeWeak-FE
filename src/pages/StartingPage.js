@@ -6,17 +6,18 @@ import styled, { keyframes } from "styled-components";
 import drugIcon from "../assets/images/icons/drug.png";
 import Modals from "../components/layout/modal/modalList";
 import { devices } from "../device";
-import { ColumnFlexDiv } from "../style/styled";
+import { ColumnFlexDiv, SectionBox } from "../style/styled";
 import { PageSection } from "../style/styled";
-import { DeviceDiv } from "../style/styled";
 //images
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
 import KakaoRedirect from "../social/KakaoRedirect";
+import useUserData from "../hooks/useUserData";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
+  const username = useUserData();
   const navigate = useNavigate();
 
   return (
@@ -61,7 +62,7 @@ const StartingPage = () => {
         ) : (
           <button
             onClick={() => {
-              navigate("/record/:username/");
+              navigate("/record/" + username.username);
             }}
           >
             영양제 기록하기
@@ -81,15 +82,7 @@ const StartingPage = () => {
 };
 
 // styled
-const Section = styled(DeviceDiv)`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  height: 90%;
-  margin: 0px auto;
-  text-align: center;
+const Section = styled(SectionBox)`
   button {
     width: 16rem;
     height: 3.7rem;

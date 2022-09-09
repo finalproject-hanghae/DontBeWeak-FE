@@ -11,23 +11,26 @@ import StartingPage from "./StartingPage";
 import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
 
 const MainSection = () => {
+  
   return (
-    <MainCard>
+    <>
       <HeaderNavBar />
-      <Routes>
-        <Route path="/*" element={<StartingPage />} />
-        <Route path="/record/:username/*" element={<RecordingPage />} />
-        <Route path="/cat/:username" element={<CatPage />} />
-      </Routes>
-      <FeedbackPop />
-    </MainCard>
+      <MainCard>
+        <Routes>
+          <Route path="/*" element={<StartingPage />} />
+          <Route path="/record/:username/*" element={<RecordingPage />} />
+          <Route path="/cat/:username" element={<CatPage />} />
+        </Routes>
+        <FeedbackPop />
+      </MainCard>
+    </>
   );
 };
 
 const MainCard = styled(ColumnFlexDiv)`
   width: 51.5%;
-  min-width: 745px;
-  background-color: #fff;
+  height: 100%;
+  background-color: #FCDCBE;
   @media ${devices.tablet} {
     width: 100%;
     min-width: inherit;

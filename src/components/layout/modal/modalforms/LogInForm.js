@@ -52,7 +52,9 @@ const LogInForm = () => {
             <LogInButton>로그인</LogInButton>
             <small ref={logInAlertRef}>
               아직 회원이 아니신가요?
-              <SignUpLink to="/signup">회원가입</SignUpLink>
+              <span>
+                <LinkC to="/signup">회원가입</LinkC>
+              </span>
             </small>
           </ColumnFlexDiv>
         </form>
@@ -91,7 +93,6 @@ const Wrap = styled(ColumnFlexDiv)`
   align-items: center;
   h2 {
     font-size: 2.2rem;
-    /* margin: 2rem 0px; */
     @media ${devices.mobileL} {
       font-size: 1.5rem;
     }
@@ -100,14 +101,15 @@ const Wrap = styled(ColumnFlexDiv)`
     margin-top: 15px;
     font-size: 14px;
   }
+  span {
+    font-weight: 900;
+    margin-left: 1%;
+  }
   @media ${devices.mobileL} {
     font-size: 1.5rem;
   }
 `;
-const SignUpLink = styled(LinkC)`
-  font-weight: 900;
-  margin-left: 1%;
-`;
+
 const LogInInput = styled.input`
   width: 20rem;
   height: 4rem;

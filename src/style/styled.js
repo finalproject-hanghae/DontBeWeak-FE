@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { devices } from "../device";
+import { Link } from "react-router-dom";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
 export const PageSection = styled.div`
@@ -11,19 +10,8 @@ export const PageSection = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #fcdcbe;
-  @media ${devices.mobileL} {
-    width: 100%;
-    height: 95%;
-  }
   button {
     display: relative;
-  }
-  .Padding {
-    padding: 0px 45px;
-    @media ${devices.tablet} {
-      padding: 0px 5px;
-    }
   }
 `;
 
@@ -39,9 +27,6 @@ export const RowFlexDiv = styled.div`
 `;
 
 export const CenterFlexDiv = styled.div`
-  height: 100%;
-  width: 100%;
-  display: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,22 +52,18 @@ export const AlertDiv = styled.div`
   padding: 0.312rem;
 `;
 
-export const DeviceDiv = styled.div`
-  @media ${devices.mobileL} {
-    min-height: 653px;
-  }
-  @media ${devices.tablet} {
-    min-height: 375px;
-    max-height: 800px;
-  }
-  @media ${devices.laptopL} {
-    min-height: 1200px;
-    max-height: 1440px;
-  }
+export const SectionBox = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  margin: 0px auto;
+  text-align: center;
 `;
 
-//a tag로 이루어진 Link 태그의 밑줄 및 텍스트 컬러 제거
 export const LinkC = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: inherit;
 `;

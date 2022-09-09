@@ -11,6 +11,7 @@ const kakaoLogin = (code, navigate) => {
         console.log(res);
 
         const ACCESS_TOKEN = res.headers.authorization;
+        sessionStorage.setItem("authorization", ACCESS_TOKEN);
         dispatch(keepAuthData(ACCESS_TOKEN));
 
         const USER_NAME = res.data.username;

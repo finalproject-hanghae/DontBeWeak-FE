@@ -50,6 +50,7 @@ const CatItem = ({ val }) => {
         dispatch(loadCatDataMW(username));
         setOpenModal(false);
         //❓❓setOpenModal과 함께 ShopModal도 없애버리고 싶은데...useHandleClick > openedModalRef를 여기서 false 하는 법이 헷깔림...❓❓
+        autoRemover();
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +72,7 @@ const CatItem = ({ val }) => {
           </p>
           <Btn onClick={() => setOpenModal(false)}>아니오</Btn>
           <Btn
-            onClick={() => {toBuyItem(); autoRemover();}}> 네 </Btn>
+            onClick={() => {toBuyItem();}}> 네 </Btn>
         </Confirm>
       ) : null}
     {/* 구매 완료 알림창 */}

@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
-import SelectBox from "../../layout/SelectBox";
 import SingleDrugLine from "./SingleDrugLine";
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
@@ -17,7 +16,7 @@ const MyDrugSection = () => {
   console.log(myDrug, "잉?");
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));
-    dispatch(loadCatDataMW);
+    dispatch(loadCatDataMW(username));
   }, []);
   return (
     <MyDrugCard>
