@@ -1,7 +1,5 @@
-import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import { devices } from "../device";
 
 //페이지를 relative로 제공함으로서 모달의 absolute 위치 제한
@@ -12,6 +10,7 @@ export const PageSection = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   background-color: #fcdcbe;
   @media ${devices.mobileL} {
     width: 100%;
@@ -71,7 +70,6 @@ export const AlertDiv = styled.div`
 export const DeviceDiv = styled.div`
   @media ${devices.mobileL} {
     min-height: 653px;
-    max-height: ;
   }
   @media ${devices.tablet} {
     min-height: 375px;

@@ -4,9 +4,6 @@ import React from "react";
 // Open API
 import { drugSearchAPI } from "../../../../api/drugSearch";
 
-// Icon
-import Minus from "../../../../assets/images/icons/remove.png";
-
 // 스타일 관련
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../../style/styled";

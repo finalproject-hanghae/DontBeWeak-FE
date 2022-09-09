@@ -1,14 +1,12 @@
-import { Route, Routes, useParams } from "react-router-dom";
 import React from "react";
-import styled from "styled-components";
-
-import { ColumnFlexDiv, PageSection } from "../style/styled";
+import { Route, Routes, useParams } from "react-router-dom";
+import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
+import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
 import CalenderSection from "../components/purpose/calender/CalenderSection";
 import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import Modals from "../components/layout/modal/modalList";
-import MyDrugSection from "../components/purpose/mydrug/MyDrugSection";
-import SearchDrugBtn from "../components/layout/button/SearchDrugBtn";
-// import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
+import styled from "styled-components";
+import { ColumnFlexDiv, PageSection } from "../style/styled";
 
 const RecordingPage = () => {
   const username = useParams().username;
@@ -20,7 +18,6 @@ const RecordingPage = () => {
         <MyDrugSection />
         {username == sessionStorage.getItem("username") && <SearchDrugBtn />}
         <FriendsListBtn />
-        {/* <FeedbackPop /> */}
       </Wrap>
 
       <Routes>
