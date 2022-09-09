@@ -8,6 +8,7 @@ import CatPage from "./CatPage";
 import HeaderNavBar from "../components/layout/HeaderNavBar";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
+import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
 
 const MainSection = () => {
   return (
@@ -18,6 +19,7 @@ const MainSection = () => {
         <Route path="/record/:username/*" element={<RecordingPage />} />
         <Route path="/cat/:username" element={<CatPage />} />
       </Routes>
+      <FeedbackPop />
     </MainCard>
   );
 };
