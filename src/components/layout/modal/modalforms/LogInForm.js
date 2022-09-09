@@ -1,23 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { keepAuthDataMW } from "../../../../redux/modules/users";
+import { KAKAO_OAUTH_URL } from "../../../../social/oAuth";
 import styled from "styled-components";
 import { devices } from "../../../../device";
-
-import kakaoIcon from "../../../../assets/images/icons/kakao.png";
-import naverIcon from "../../../../assets/images/icons/naver.png";
-
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { LinkC } from "../../../../style/styled";
-import { keepAuthDataMW } from "../../../../redux/modules/users";
-
-import { KAKAO_AUTH_URL } from "../../../../hooks/KakaoOAuth";
+import kakaoIcon from "../../../../assets/images/icons/kakao.png";
+// import naverIcon from "../../../../assets/images/icons/naver.png";
 
 const LogInForm = () => {
-  const onClickKakao = () => {
-    window.location.href = KAKAO_AUTH_URL;
-  };
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -37,9 +30,13 @@ const LogInForm = () => {
     } else if (password === "") {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
-    } 
+    }
     const userData = { username: username, password: password };
     dispatch(keepAuthDataMW(userData, navigate));
+  };
+
+  const onClickKakao = () => {
+    window.location.href = KAKAO_OAUTH_URL;
   };
 
   return (
@@ -64,7 +61,6 @@ const LogInForm = () => {
           <img src={kakaoIcon} alt="kakaotalk_icon" />
           카카오톡 로그인
         </SnsLoginBtn>
-        
 
         {/* <NaverLogIn /> */}
 

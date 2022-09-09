@@ -49,15 +49,15 @@ const FeedbackPop = () => {
 
 // Style
 const Wrap = styled(RowFlexDiv)`
-  width: 90%;
-  height: 10rem;
+  width: fit-content;
+  height: fit-content;
   margin: auto;
   align-items: center;
   @media ${devices.mobileL} {
     height: 3rem;
   }
   position: fixed;
-  bottom: 0;
+  bottom: 5%;
   left: 5%;
 `;
 

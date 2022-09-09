@@ -7,6 +7,7 @@ import SingleDrugLine from "./SingleDrugLine";
 import styled from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
+import { loadCatDataMW } from "../../../redux/modules/cats";
 
 const MyDrugSection = () => {
   const Data = useSelector((state) => state.cats.cats);
@@ -16,6 +17,7 @@ const MyDrugSection = () => {
   console.log(myDrug, "잉?");
   React.useEffect(() => {
     dispatch(loadDrugDataMW(username));
+    dispatch(loadCatDataMW);
   }, []);
   return (
     <MyDrugCard>

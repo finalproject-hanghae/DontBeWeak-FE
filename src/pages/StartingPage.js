@@ -13,7 +13,7 @@ import { DeviceDiv } from "../style/styled";
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
-import KakaoRedirect from "../components/layout/modal/modalforms/KakaoRedirect";
+import KakaoRedirect from "../social/KakaoRedirect";
 
 const StartingPage = () => {
   const authorization = useSelector((state) => state.users.authorization);
@@ -73,7 +73,7 @@ const StartingPage = () => {
         <Route index element={null} />
         <Route path="login" element={Modals.LogIn} />
         <Route path="signup" element={Modals.SignUp} />
-        <Route path="/auth/kakao/callback" component={KakaoRedirect}></Route>
+        <Route path="/auth/kakao/callback" element={<KakaoRedirect />} />
         <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
