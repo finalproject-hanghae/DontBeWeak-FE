@@ -4,6 +4,7 @@ import CatItemList from "../../purpose/cat/item/CatItemList";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
+import { useAppSelector } from "../../../redux/hooks";
 
 const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   const data = useUserData();
@@ -35,9 +36,9 @@ const Wrap = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   @media ${devices.mobileL} {
-   width: 90%;
-   right: 5%;
-   bottom: 5rem;
+    width: 90%;
+    right: 5%;
+    bottom: 5rem;
   }
 `;
 const TiltelBar = styled.div`

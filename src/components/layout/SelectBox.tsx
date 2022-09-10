@@ -13,7 +13,6 @@ type GreetingsProps = {
 const SelectBox = ({ friendList }: GreetingsProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const list = friendList; // 친구리스트
   const user = useUserData(); // MY정보
   const [selected, setSelected] = React.useState<string>(""); // onChange에서 받아오는 Id 저장소
 
@@ -31,10 +30,10 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
 
   return (
     <SelectWrap>
-      <select value={selected} defaultValue={selected} onChange={goToFriendCat}>
+      <select defaultValue={selected} onChange={goToFriendCat}>
         <option value={user?.username}>나의 고먐미</option>
-        {list &&
-          list.map((val, idx) => (
+        {friendList &&
+          friendList.map((val, idx) => (
             <option value={val.friendname} key={"friendListItem" + idx}>
               {val.friendname}
             </option>

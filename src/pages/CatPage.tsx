@@ -11,11 +11,9 @@ import CatLevelCenter from "../components/purpose/cat/level/CatLevelCenter";
 import CatLevelLeft from "../components/purpose/cat/level/CatLevelLeft";
 import CatLevelRight from "../components/purpose/cat/level/CatLevelRight";
 import ShopBtn from "../components/layout/button/ShopBtn";
-import Modals from "../components/layout/modal/modalList";
 // img
 import backgroundL from "../assets/images/cats/bg_L.png";
 import backgroundM from "../assets/images/cats/bg_M.png";
-import useUserData from "../hooks/useUserData";
 import { loadCatDataMW } from "../redux/modules/cats";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
