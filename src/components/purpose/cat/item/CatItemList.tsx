@@ -12,7 +12,7 @@ const CatItemList = () => {
     <ItemsBox>
       {itemList &&
         itemList.map((val, idx) => {
-          return <CatItem val={val} />;
+          return <CatItem key={"itemList" + idx} val={val} />;
         })}
     </ItemsBox>
   );

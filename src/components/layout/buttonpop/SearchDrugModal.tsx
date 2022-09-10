@@ -5,14 +5,10 @@ import { ColumnFlexDiv } from "../../../style/styled";
 import SeachDrugForm from "./buttonpopforms/SearchDrugForm";
 
 
-type GreetingsProps = {
-  setDrug:any;
-};
-
-const SearchDrugModal = React.forwardRef<HTMLInputElement,GreetingsProps>((props, ref) => {
+const SearchDrugModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   return (
     <Wrap ref={ref}>
-      <SeachDrugForm setDrug={props.setDrug} />
+      <SeachDrugForm />
     </Wrap>
   );
 });

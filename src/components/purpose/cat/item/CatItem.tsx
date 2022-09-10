@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadCatDataMW } from "../../../../redux/modules/cats";
 import { itemApi } from "../../../../api/itemApi";
@@ -7,7 +7,12 @@ import styled from "styled-components";
 import { AlertDiv, ColumnFlexDiv } from "../../../../style/styled";
 import { devices } from "../../../../device";
 import { catItem } from "../../../../types/cats";
-import { useAppDispatch } from "../../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import {
+  switchCatShopModal,
+  switchShopConfirmModal,
+  switchShopNoticeModal,
+} from "../../../../redux/modules/modals";
 
 type GreetingsProps = {
   val: catItem;
@@ -17,31 +22,9 @@ const CatItem = ({ val }: GreetingsProps) => {
   const dispatch = useAppDispatch();
   const username = useParams().username;
   // 구매 Confirm 모달창
-  const [openModal, setOpenModal] = useState(false);
-
-  // 구매 완료 알림(Notice)
-  const [notice, setNotice] = useState(false);
-
-  // 알림창에 autoClose, fadeOut 효과 --> ** 추후 레벨업 알림 등에도 재사용하기 위해 컴포넌트로 빼기 !**
-  const [fadeOut, setFadeOut] = useState(100);
-  const autoRemover = () => {
-    setNotice(true);
-    if (fadeOut > 94) {
-      setTimeout(() => {
-        setFadeOut(fadeOut - 0.5);
-      }, 100);
-    } else if (fadeOut > 5) {
-      setTimeout(() => {
-        setFadeOut(fadeOut - 8);
-      }, 50);
-    }
-  };
-  const callBack = useCallback(autoRemover, [fadeOut]);
-  useEffect(() => {
-    if (notice === true) {
-      callBack();
-    }
-  }, [fadeOut]);
+  const openModal = useAppSelector(
+    (state) => state.modals.modals.shopConfirmModal
+  );
 
   // 아이템 구매, 적용 axios 실행
   const [someItem, setSomeItem] = useState("");
@@ -52,19 +35,19 @@ const CatItem = ({ val }: GreetingsProps) => {
       .then((res) => {
         setSomeItem(res.data);
         dispatch(loadCatDataMW(username));
-        setOpenModal(false);
-        autoRemover();
-        //❓❓setOpenModal과 함께 ShopModal도 없애버리고 싶은데...useHandleClick > openedModalRef를 여기서 false 하는 법이 헷깔림...❓❓
+        dispatch(switchShopNoticeModal(true));
+        dispatch(switchShopConfirmModal(false));
+        dispatch(switchCatShopModal(false));
       })
       .catch((err) => {
         console.log(err);
-        alert("포인트가 부족합니다.")
+        alert("포인트가 부족합니다.");
       });
   };
 
   return (
     <Item>
-      <Img onClick={() => setOpenModal(true)}>
+      <Img onClick={() => dispatch(switchShopConfirmModal(true))}>
         <img src={val?.itemImg} alt={val?.itemName} />
       </Img>
       <Name> {val?.itemName} </Name>
@@ -75,7 +58,9 @@ const CatItem = ({ val }: GreetingsProps) => {
           <p>
             <span>{val?.itemName}</span>를(을) 구매하시겠습니까?
           </p>
-          <Btn onClick={() => setOpenModal(false)}>아니오</Btn>
+          <Btn onClick={() => dispatch(switchShopConfirmModal(false))}>
+            아니오
+          </Btn>
           <Btn
             onClick={() => {
               toBuyItem();
@@ -85,14 +70,6 @@ const CatItem = ({ val }: GreetingsProps) => {
             네{" "}
           </Btn>
         </Confirm>
-      ) : null}
-      {/* 구매 완료 알림창 */}
-      {notice ? (
-        <FadeOutModal opacity={`${fadeOut}%`}>
-          구매 완료😻
-          <br />
-          경험치 +5 증가!
-        </FadeOutModal>
       ) : null}
     </Item>
   );
@@ -141,17 +118,7 @@ const Confirm = styled(AlertDiv)`
     font-weight: 800;
   }
 `;
-const FadeOutModal: any = styled(AlertDiv)`
-  width: 16.8rem;
-  height: 8.1rem;
-  line-height: 2.3rem;
-  top: 50%;
-  margin-top: -4.3rem;
-  left: 50%;
-  padding-top: 1.25rem;
-  margin-left: -8.43rem;
-  opacity: ${(props: any) => props.opacity};
-`;
+
 const Btn = styled.button`
   width: 55px;
   height: 22px;

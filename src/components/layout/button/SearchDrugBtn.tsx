@@ -5,18 +5,30 @@ import SearchDrugModal from "../buttonpop/SearchDrugModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
 import SearchBtn from "../../../assets/images/icons/drug_add.png";
+import {
+  switchDirectModal,
+  switchSearchModal,
+} from "../../../redux/modules/modals";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 const SearchDrugBtn = () => {
-  const [drug, setDrug, showSearchDrug, SearchDrugModalRef] = useHandleClick();
+  const dispatch = useAppDispatch();
+  const drug = useAppSelector((state) => state.modals.modals.searchDrugModal);
+  const SearchDrugModalRef = useHandleClick(switchSearchModal);
 
   return (
     <>
       <BtnWrap>
-        <img src={SearchBtn} alt={"Serch_Drug_Btn"} onClick={showSearchDrug} />
+        <img
+          src={SearchBtn}
+          alt={"Serch_Drug_Btn"}
+          onClick={() => {
+            dispatch(switchSearchModal(true));
+            dispatch(switchDirectModal(false));
+          }}
+        />
       </BtnWrap>
-      {drug ? (
-        <SearchDrugModal ref={SearchDrugModalRef} setDrug={setDrug} />
-      ) : null}
+      {drug ? <SearchDrugModal ref={SearchDrugModalRef} /> : null}
     </>
   );
 };

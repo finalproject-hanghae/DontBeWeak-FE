@@ -2,17 +2,20 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { switchFeedbackModal } from "../../../redux/modules/modals";
 
 const FeedbackPop = () => {
-  const [msg, setMsg] = React.useState(false);
+  const dispatch =useAppDispatch();
+  const msg = useAppSelector((state)=>state.modals.modals.feedbackModal)
   const [isClose, setIsClose] = React.useState(false);
 
   const openMsg = () => {
     if (msg === false) {
-      setMsg(true);
+      dispatch(switchFeedbackModal(true));
       setIsClose(true);
     } else {
-      setMsg(false);
+      dispatch(switchFeedbackModal(false));
       setIsClose(false);
     }
   };

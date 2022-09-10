@@ -12,11 +12,13 @@ import { devices } from "../../../../device";
 import ColorPicker from "../../../purpose/ColorPicker";
 import { keepDrugDataMW } from "../../../../redux/modules/drugs";
 import { getRandomInt } from "../../../../hooks/getRandomInt";
-import { useAppDispatch } from "../../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { drug, searchDrug } from "../../../../types/drugs";
+import { switchDirectModal, switchSearchModal } from "../../../../redux/modules/modals";
 
-const SearchDrugForm = ({ setDrug }: any) => {
+const SearchDrugForm = () => {
   const dispatch = useAppDispatch();
+  const isDirect = useAppSelector(state=>state.modals.modals.directSearchModal)
   //옵저버 선언
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
@@ -70,7 +72,7 @@ const SearchDrugForm = ({ setDrug }: any) => {
     setSearchResult(await drugSearchAPI(drugName, 1));
   };
 
-  const [isDirect, showDirectInput, DirectModalRef] = useHandleClick();
+  const DirectModalRef = useHandleClick(switchDirectModal);
 
   const clickToAddDrug = () => {
     if (pickMe) {
@@ -80,7 +82,7 @@ const SearchDrugForm = ({ setDrug }: any) => {
         done: false,
       };
       dispatch(keepDrugDataMW(tmpDrugData));
-      setDrug(false);
+      dispatch(switchSearchModal(false));
     }
     return;
   };
@@ -100,7 +102,7 @@ const SearchDrugForm = ({ setDrug }: any) => {
       <DirectSearch>
         <p>
           찾으시는 영양제가 없으신가요?
-          <span onClick={showDirectInput}>직접 입력하기</span>
+          <span onClick={()=>dispatch(switchDirectModal(true))}>직접 입력하기</span>
         </p>
         {isDirect ? (
           <DirectSearchModal ref={DirectModalRef} setPickMe={setPickMe} />
