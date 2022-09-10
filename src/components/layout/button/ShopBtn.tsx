@@ -2,7 +2,7 @@ import React from "react";
 import useHandleClick from "../../../hooks/useHandleClick";
 import shopBtn from "../../../assets/images/icons/shop.png";
 import ShopModal from "../buttonpop/ShopModal";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { devices } from "../../../device";
 import {
   switchCatShopModal,
@@ -19,24 +19,11 @@ const ShopBtn = () => {
   const shopModalRef = useHandleClick(switchCatShopModal);
 
   // 알림창에 autoClose, fadeOut 효과 --> ** 추후 레벨업 알림 등에도 재사용하기 위해 컴포넌트로 빼기 !**
-  const [fadeOut, setFadeOut] = React.useState(100);
   const autoRemover = () => {
-    if (fadeOut > 94) {
       setTimeout(() => {
-        setFadeOut(fadeOut - 0.5);
-      }, 100);
-    } else if (fadeOut > 5) {
-      setTimeout(() => {
-        setFadeOut(fadeOut - 8);
-      }, 50);
-    }
+        dispatch(switchShopNoticeModal(false));
+      }, 1500);
   };
-  const callBack = React.useCallback(autoRemover, [fadeOut]);
-  React.useEffect(() => {
-    if (notice === true) {
-      callBack();
-    }
-  }, [fadeOut]);
 
   return (
     <>
@@ -48,14 +35,13 @@ const ShopBtn = () => {
             dispatch(switchCatShopModal(true));
             dispatch(switchShopConfirmModal(false));
             dispatch(switchShopNoticeModal(false));
-            setFadeOut(100) // 이게 없어서 알림창 한번만 떠서 30분동안 고생
           }}
         />
       </BtnWrap>
       {shop && <ShopModal ref={shopModalRef} />}
       {/* 구매 완료 알림창 */}
       {notice ? (
-        <FadeOutModal opacity={`${fadeOut}%`}>
+        <FadeOutModal>
           구매 완료😻
           <br />
           경험치 +5 증가!
@@ -89,6 +75,17 @@ const BtnWrap = styled.div`
     }
   }
 `;
+const OpacityController = keyframes`
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 const FadeOutModal: any = styled(AlertDiv)`
   width: 16.8rem;
@@ -99,6 +96,6 @@ const FadeOutModal: any = styled(AlertDiv)`
   left: 50%;
   padding-top: 1.25rem;
   margin-left: -8.43rem;
-  opacity: ${(props: any) => props.opacity};
+  animation: ${OpacityController} 1.5s alternate;
 `;
 export default ShopBtn;
