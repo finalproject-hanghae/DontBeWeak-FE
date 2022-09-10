@@ -53,10 +53,12 @@ const CatItem = ({ val }: GreetingsProps) => {
         setSomeItem(res.data);
         dispatch(loadCatDataMW(username));
         setOpenModal(false);
+        autoRemover();
         //❓❓setOpenModal과 함께 ShopModal도 없애버리고 싶은데...useHandleClick > openedModalRef를 여기서 false 하는 법이 헷깔림...❓❓
       })
       .catch((err) => {
         console.log(err);
+        alert("포인트가 부족합니다.")
       });
   };
 
@@ -77,7 +79,6 @@ const CatItem = ({ val }: GreetingsProps) => {
           <Btn
             onClick={() => {
               toBuyItem();
-              autoRemover();
             }}
           >
             {" "}
@@ -104,7 +105,7 @@ const Item = styled(ColumnFlexDiv)`
   align-items: center;
   justify-content: center;
   @media ${devices.mobileL} {
-   width: 100%;
+    width: 100%;
   }
 `;
 const Img = styled(ColumnFlexDiv)`
@@ -120,8 +121,8 @@ const Img = styled(ColumnFlexDiv)`
     height: 4.5rem;
   }
   @media ${devices.mobileL} {
-   width: 3rem;
-   height: 3rem;
+    width: 3rem;
+    height: 3rem;
   }
 `;
 const Name = styled.p`
@@ -140,7 +141,7 @@ const Confirm = styled(AlertDiv)`
     font-weight: 800;
   }
 `;
-const FadeOutModal:any = styled(AlertDiv)`
+const FadeOutModal: any = styled(AlertDiv)`
   width: 16.8rem;
   height: 8.1rem;
   line-height: 2.3rem;
@@ -149,7 +150,7 @@ const FadeOutModal:any = styled(AlertDiv)`
   left: 50%;
   padding-top: 1.25rem;
   margin-left: -8.43rem;
-  opacity: ${(props:any) => props.opacity};
+  opacity: ${(props: any) => props.opacity};
 `;
 const Btn = styled.button`
   width: 55px;

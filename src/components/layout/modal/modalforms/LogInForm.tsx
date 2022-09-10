@@ -11,7 +11,7 @@ import { LinkC } from "../../../../style/styled";
 import { keepAuthDataMW } from "../../../../redux/modules/users";
 import { useAppDispatch } from "../../../../redux/hooks";
 
-import { KAKAO_AUTH_URL } from "../../../../hooks/KakaoOAuth";
+import { KAKAO_AUTH_URL } from "../../../../auth/KakaoOAuth";
 
 const LogInForm = () => {
   const onClickKakao = () => {
