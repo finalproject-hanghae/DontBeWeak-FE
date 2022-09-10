@@ -3,10 +3,11 @@ import styled from "styled-components";
 import point from "../../../../assets/images/cats/stamp.png";
 import { RowFlexDiv } from "../../../../style/styled";
 import { catItem } from "../../../../types/cats";
+import { devices } from "../../../../device";
+
 type GreetingsProps = {
   cost: catItem["itemPoint"];
 };
-import { devices } from "../../../../device";
 
 const CatItemCost = ({ cost }: GreetingsProps) => {
   return (
