@@ -29,9 +29,11 @@ const RecordingPage = () => {
 };
 
 const Wrap = styled(ColumnFlexDiv)`
-  width: 95%;
-  height: 95%;
-  margin: 0 auto;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  margin: 0px auto;
+  text-align: center;
 `;
 export default RecordingPage;

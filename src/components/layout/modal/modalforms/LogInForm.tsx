@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../../../../device";
 
 import kakaoIcon from "../../../../assets/images/icons/kakao.png";
-import naverIcon from "../../../../assets/images/icons/naver.png";
+// import naverIcon from "../../../../assets/images/icons/naver.png";
 
 import { ColumnFlexDiv } from "../../../../style/styled";
 import { LinkC } from "../../../../style/styled";
@@ -37,7 +37,7 @@ const LogInForm = () => {
     } else if (password === "") {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
-    } 
+    }
     const userData = { username: username, password: password };
     dispatch(keepAuthDataMW(userData, navigate));
   };
@@ -55,7 +55,9 @@ const LogInForm = () => {
             <LogInButton>로그인</LogInButton>
             <small ref={logInAlertRef}>
               아직 회원이 아니신가요?
-              <SignUpLink to="/signup">회원가입</SignUpLink>
+              <span>
+                <LinkC to="/signup">회원가입</LinkC>
+              </span>
             </small>
           </ColumnFlexDiv>
         </form>
@@ -64,7 +66,6 @@ const LogInForm = () => {
           <img src={kakaoIcon} alt="kakaotalk_icon" />
           카카오톡 로그인
         </SnsLoginBtn>
-        
 
         {/* <NaverLogIn /> */}
 
@@ -95,7 +96,6 @@ const Wrap = styled(ColumnFlexDiv)`
   align-items: center;
   h2 {
     font-size: 2.2rem;
-    /* margin: 2rem 0px; */
     @media ${devices.mobileL} {
       font-size: 1.5rem;
     }
@@ -104,14 +104,15 @@ const Wrap = styled(ColumnFlexDiv)`
     margin-top: 15px;
     font-size: 14px;
   }
+  span {
+    font-weight: 900;
+    margin-left: 1%;
+  }
   @media ${devices.mobileL} {
     font-size: 1.5rem;
   }
 `;
-const SignUpLink = styled(LinkC)`
-  font-weight: 900;
-  margin-left: 1%;
-`;
+
 const LogInInput = styled.input`
   width: 20rem;
   height: 4rem;

@@ -16,7 +16,7 @@ const DateViewCard = ({ day, myWeek, array }: GreetingsProps) => {
       <h3>{day}</h3>
       {myWeek &&
         myWeek
-          .filter((value, index) => value.dayOfWeekValue == array.indexOf(day))
+          .filter((value, index) => value.dayOfWeekValue === array.indexOf(day))
           .map((val, index) => {
             return (
               <div

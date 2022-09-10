@@ -5,18 +5,19 @@ import styled, { keyframes } from "styled-components";
 import drugIcon from "../assets/images/icons/drug.png";
 import Modals from "../components/layout/modal/modalList";
 import { devices } from "../device";
-import { ColumnFlexDiv } from "../style/styled";
+import { ColumnFlexDiv, SectionBox } from "../style/styled";
 import { PageSection } from "../style/styled";
-import { DeviceDiv } from "../style/styled";
 //images
 import one from "../assets/images/icons/num_1.png";
 import two from "../assets/images/icons/num_2.png";
 import spriteImg from "../assets/images/cats/BLKbeen_sprite.png";
 import { useAppSelector } from "../redux/hooks";
 import KakaoRedirect from "../auth/KakaoRedirect";
+import useUserData from "../hooks/useUserData";
 
 const StartingPage = () => {
   const authorization = useAppSelector((state) => state.users.authorization);
+  const username = useUserData();
   const navigate = useNavigate();
 
   return (
@@ -81,15 +82,7 @@ const StartingPage = () => {
 };
 
 // styled
-const Section = styled(DeviceDiv)`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  height: 90%;
-  margin: 0px auto;
-  text-align: center;
+const Section = styled(SectionBox)`
   button {
     width: 16rem;
     height: 3.7rem;
@@ -142,7 +135,7 @@ const Sub = styled(ColumnFlexDiv)`
   img {
     width: 40px;
     height: 40px;
-    margin-right: 16px;
+    margin-right: 1rem;
   }
 `;
 const Keyframes = keyframes`
