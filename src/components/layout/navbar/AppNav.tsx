@@ -7,19 +7,17 @@ const AppNav = () => {
   const dropMenu = () => {};
   return (
     <AppNavs>
-
-    {/* 메뉴 아이콘 */}
+      {/* 메뉴 아이콘 */}
       <MenuIcon>
         <img src={menu} alt="menu" onClick={dropMenu} />
       </MenuIcon>
 
-    {/* 드롭다운 될 메뉴들 */}
+      {/* 드롭다운 될 메뉴들 */}
       <DropMenu>
         <Menu className="menu1">
           <p></p>
         </Menu>
       </DropMenu>
-
     </AppNavs>
   );
 };

@@ -3,7 +3,7 @@ import { LinkC } from "../../../style/styled";
 import styled from "styled-components";
 import { devices } from "../../../device";
 import { CenterFlexDiv, RowFlexDiv } from "../../../style/styled";
-import Logo from "../../../assets/images/logo/logo_small.png"
+import Logo from "../../../assets/images/logo/logo_small.png";
 import AppNav from "./AppNav";
 import WebNav from "./WebNav";
 
