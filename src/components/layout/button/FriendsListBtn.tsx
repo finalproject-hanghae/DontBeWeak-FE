@@ -5,14 +5,18 @@ import FriendsListModal from "../buttonpop/FriendsListModal";
 import useHandleClick from "../../../hooks/useHandleClick";
 
 import AddBtn from "../../../assets/images/icons/friend_add.png";
+import { switchFriendModal } from "../../../redux/modules/modals";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
 const FriendsListBtn = () => {
-  const [friends, setFriends, showModal, friendListModalRef] = useHandleClick();
+  const dispatch = useAppDispatch()
+  const friends = useAppSelector((state)=>state.modals.modals.friendListModal)
+  const friendListModalRef = useHandleClick(switchFriendModal);
 
   return (
     <>
       <BtnWrap>
-        <img src={AddBtn} alt="friend_add_btn" onClick={showModal} />
+        <img src={AddBtn} alt="friend_add_btn" onClick={()=>{dispatch(switchFriendModal(true))}} />
       </BtnWrap>
       {friends ? <FriendsListModal ref={friendListModalRef} /> : null}
     </>

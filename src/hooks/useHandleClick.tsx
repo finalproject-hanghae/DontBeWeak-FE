@@ -1,12 +1,10 @@
 import React from "react";
+import { useAppDispatch } from "../redux/hooks";
 
-const useHandleClick = () => {
-  const [isOpened, setIsOpened] = React.useState(false);
+
+const useHandleClick = (actionFunction:any) => {
+  const dispatch = useAppDispatch()
   const openedModalRef = React.useRef<HTMLInputElement>(null);
-
-  const showModal:any = () => {
-    setIsOpened(true);
-  };
 
   React.useEffect(() => {
     const handleClickOutside = (e:any) => {
@@ -14,7 +12,7 @@ const useHandleClick = () => {
         openedModalRef.current &&
         !openedModalRef.current?.contains(e.target)
       ) {
-        setIsOpened(false);
+        dispatch(actionFunction(false));
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -23,7 +21,7 @@ const useHandleClick = () => {
     };
   }, [openedModalRef]);
 
-  return [isOpened, setIsOpened, showModal, openedModalRef];
+  return openedModalRef;
 };
 
 export default useHandleClick;

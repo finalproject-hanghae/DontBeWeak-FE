@@ -17,7 +17,7 @@ const CatItemCost = ({ cost }: GreetingsProps) => {
           .fill(0)
           .map((val, idx) => {
             return (
-              <div>
+              <div key={"itemCost" + idx}>
                 <img src={point} alt="point" />
               </div>
             );
@@ -35,11 +35,11 @@ const ItemCost = styled(RowFlexDiv)`
     margin-left: 3%;
   }
   @media ${devices.mobileL} {
-   width: 2.5rem;
-   img{
-    width: 0.8rem;
-    height: 0.8rem;
-   }
+    width: 2.5rem;
+    img {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
   }
 `;
 
