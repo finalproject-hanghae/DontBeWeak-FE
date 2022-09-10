@@ -3,10 +3,10 @@ import useHandleClick from "../../../hooks/useHandleClick";
 import shopBtn from "../../../assets/images/icons/shop.png";
 import ShopModal from "../buttonpop/ShopModal";
 import styled from "styled-components";
+import { devices } from "../../../device";
 
 const ShopBtn = () => {
   const [shop, setShop, showModal, shopModalRef] = useHandleClick();
-  console.log(shopModalRef,"알알에포")
   return (
     <>
       <BtnWrap>
@@ -28,6 +28,16 @@ const BtnWrap = styled.div`
   bottom: 5%;
   &:hover {
     cursor: pointer;
+  }
+  @media ${devices.mobileL} {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
   }
   
 `;

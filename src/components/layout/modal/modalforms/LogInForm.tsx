@@ -11,7 +11,13 @@ import { LinkC } from "../../../../style/styled";
 import { keepAuthDataMW } from "../../../../redux/modules/users";
 import { useAppDispatch } from "../../../../redux/hooks";
 
+import { KAKAO_AUTH_URL } from "../../../../hooks/KakaoOAuth";
+
 const LogInForm = () => {
+  const onClickKakao = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -31,7 +37,7 @@ const LogInForm = () => {
     } else if (password === "") {
       logInAlertRef.current.innerText = "비밀번호를 입력하세요.";
       return;
-    }
+    } 
     const userData = { username: username, password: password };
     dispatch(keepAuthDataMW(userData, navigate));
   };
@@ -54,14 +60,18 @@ const LogInForm = () => {
           </ColumnFlexDiv>
         </form>
 
-        <SnsLoginBtn>
+        <SnsLoginBtn onClick={onClickKakao}>
           <img src={kakaoIcon} alt="kakaotalk_icon" />
           카카오톡 로그인
         </SnsLoginBtn>
-        <SnsLoginBtn>
+        
+
+        {/* <NaverLogIn /> */}
+
+        {/* <SnsLoginBtn>
           <img src={naverIcon} alt="naver_icon" />
           네이버 로그인
-        </SnsLoginBtn>
+        </SnsLoginBtn> */}
       </Wrap>
     </LogInModalBox>
   );

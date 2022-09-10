@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { devices } from "../../../../device";
 import stamp from "../../../../assets/images/icons/stamp.png";
 import { CenterFlexDiv } from "../../../../style/styled";
 import { cat } from "../../../../types/cats";
@@ -36,20 +36,30 @@ const CatLevelCenter = ({ level }: GreetingsProps) => {
   );
 };
 
-const FlexBox = styled.div`
-  display: inline-flex;
+const FlexBox = styled(CenterFlexDiv)`
   width: 18rem;
   flex-wrap: wrap;
+  @media ${devices.mobileL} {
+    width: 12rem;
+  }
 `;
 
 const LevelHole = styled(CenterFlexDiv)`
   width: 2.5rem;
   height: 2.5rem;
-
   background-color: #fff;
   border: solid 1px #fabc4f;
   border-radius: 40px;
   margin: 8px 7px;
+  @media ${devices.mobileL} {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 4px 5px;
+    img{
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
 `;
 
 export default CatLevelCenter;

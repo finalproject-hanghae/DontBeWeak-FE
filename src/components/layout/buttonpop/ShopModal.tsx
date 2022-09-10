@@ -3,6 +3,7 @@ import useUserData from "../../../hooks/useUserData";
 import CatItemList from "../../purpose/cat/item/CatItemList";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../../style/styled";
+import { devices } from "../../../device";
 
 const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
   const data = useUserData();
@@ -25,7 +26,7 @@ const ShopModal = React.forwardRef<HTMLInputElement>((props, ref) => {
 
 // style 적용
 const Wrap = styled.div`
-  width: 530px;
+  width: 33rem;
   overflow: hidden;
   background-color: #fff;
   position: absolute;
@@ -33,18 +34,23 @@ const Wrap = styled.div`
   bottom: 129px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  @media ${devices.mobileL} {
+   width: 90%;
+   right: 5%;
+   bottom: 5rem;
+  }
 `;
 const TiltelBar = styled.div`
   padding-left: 5%;
   width: 100%;
-  height: 50px;
+  height: 3.125rem;
   border-bottom: 1px solid #a5a5a5;
-  line-height: 35px;
+  line-height: 2.2rem;
 `;
 const Section = styled(ColumnFlexDiv)`
   width: 90%;
-  height: 200px;
-  margin: 20px auto;
+  height: 12.5rem;
+  margin: 1.25rem auto;
 `;
 const MyPoint = styled.div`
   width: 98%;

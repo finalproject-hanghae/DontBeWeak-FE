@@ -38,8 +38,8 @@ export const keepAuthDataMW = (userData: loginData, navigate: any) => {
         });
       })
       .catch((error) => {
-        console.log(error);
-        alert(error.response.data);
+        console.log(error)
+        alert("아이디 또는 비밀번호를 다시 확인해주세요.");
       });
   };
 };

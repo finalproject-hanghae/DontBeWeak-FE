@@ -6,6 +6,7 @@ import { catItem } from "../../../../types/cats";
 type GreetingsProps = {
   cost: catItem["itemPoint"];
 };
+import { devices } from "../../../../device";
 
 const CatItemCost = ({ cost }: GreetingsProps) => {
   return (
@@ -31,6 +32,13 @@ const ItemCost = styled(RowFlexDiv)`
     width: 1.25rem;
     height: 1.25rem;
     margin-left: 3%;
+  }
+  @media ${devices.mobileL} {
+   width: 2.5rem;
+   img{
+    width: 0.8rem;
+    height: 0.8rem;
+   }
   }
 `;
 
