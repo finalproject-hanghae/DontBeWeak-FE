@@ -22,7 +22,7 @@ const ShopBtn = () => {
   const autoRemover = () => {
       setTimeout(() => {
         dispatch(switchShopNoticeModal(false));
-      }, 1500);
+      }, 1400);
   };
 
   return (
