@@ -23,9 +23,11 @@ import { cat } from "../types/cats";
 const CatPage = () => {
   const dispatch = useAppDispatch();
   const username = useParams().username;
-  const friendList:friendList = useAppSelector((state) => state.friends.friends);
+  const friendList: friendList = useAppSelector(
+    (state) => state.friends.friends
+  );
   // const [FriendId, setFriendId] = React.useState();
-  const catData:cat = useAppSelector((state) => state.cats.cats);
+  const catData: cat = useAppSelector((state) => state.cats.cats);
 
   useEffect(() => {
     dispatch(loadFriendDataMW());
@@ -57,6 +59,13 @@ const CatPage = () => {
           <CatLevelCenter level={catData?.level} />
           <CatLevelRight />
         </CatLevelCard>
+        <MobileCatLevelCard>
+          <ColumnFlexDiv>
+            <span>Lv</span>
+            <span>{catData?.level}</span>
+          </ColumnFlexDiv>
+          <CatLevelCenter level={catData?.level} />
+        </MobileCatLevelCard>
         {/* 고양이 레벨표시 구역 End */}
 
         {/* 상점 Btn */}
@@ -97,12 +106,12 @@ const CatImage = styled(ColumnFlexDiv)`
   @media ${devices.mobileL} {
     div {
       &:last-child {
-        width: 17rem;
-        height: 16rem;
+        width: 15rem;
+        height: 15rem;
       }
     }
     img {
-      width: 13rem;
+      width: 12rem;
     }
   }
 `;
@@ -126,8 +135,23 @@ const CatLevelCard = styled(RowFlexDiv)`
   justify-content: center;
   align-items: center;
   @media ${devices.mobileL} {
-    width: 100%;
-    height: 10rem;
+    display: none;
+  }
+`;
+const MobileCatLevelCard = styled(RowFlexDiv)`
+  display: none;
+  @media ${devices.mobileL} {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0px;
+    span:first-child{
+      text-align:center;
+      font-size:.8rem;
+    }
   }
 `;
 
