@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { loadCatDataMW } from "../../redux/modules/cats";
 import { useAppDispatch } from "../../redux/hooks";
 import { friendList } from "../../types/friends";
+import { devices } from "../../device";
 
 type GreetingsProps = {
   friendList: friendList;
@@ -13,7 +14,6 @@ type GreetingsProps = {
 const SelectBox = ({ friendList }: GreetingsProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const list = friendList; // 친구리스트
   const user = useUserData(); // MY정보
   const [selected, setSelected] = React.useState<string>(""); // onChange에서 받아오는 Id 저장소
 
@@ -31,10 +31,10 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
 
   return (
     <SelectWrap>
-      <select value={selected} defaultValue={selected} onChange={goToFriendCat}>
+      <select defaultValue={selected} onChange={goToFriendCat}>
         <option value={user?.username}>나의 고먐미</option>
-        {list &&
-          list.map((val, idx) => (
+        {friendList &&
+          friendList.map((val, idx) => (
             <option value={val.friendname} key={"friendListItem" + idx}>
               {val.friendname}
             </option>
@@ -46,8 +46,9 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
 
 // Style
 const SelectWrap = styled.div`
+width:300px;
   select {
-    width: 308px;
+    width: 100%;
     height: 50px;
     border: 2px solid #fabc4f;
     border-radius: 4px;
@@ -59,6 +60,12 @@ const SelectWrap = styled.div`
     -moz-appearance: none;
     appearance: none;
     cursor: pointer;
+    &:focus{
+      outline:none;
+    }
+  }
+  @media ${devices.mobileL} {
+    width: 250px;
   }
 `;
 

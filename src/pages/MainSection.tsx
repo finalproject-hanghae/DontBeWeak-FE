@@ -9,11 +9,16 @@ import HeaderNavBar from "../components/layout/HeaderNavBar";
 import RecordingPage from "./RecordingPage";
 import StartingPage from "./StartingPage";
 import FeedbackPop from "../components/layout/buttonpop/FeedbackPop";
+import { useAppSelector } from "../redux/hooks";
+import { ModalBg, ModalBody } from "../style/modal";
+import MenuModal from "../components/layout/buttonpop/MenuModal";
 
 const MainSection = () => {
+  const isMenu = useAppSelector((state) => state.modals.modals.menubarModal);
   return (
     <MainCard>
       <HeaderNavBar />
+      {isMenu && <MenuModal />}
       <Routes>
         <Route path="/*" element={<StartingPage />} />
         <Route path="/record/:username/*" element={<RecordingPage />} />
@@ -25,6 +30,7 @@ const MainSection = () => {
 };
 
 const MainCard = styled(ColumnFlexDiv)`
+  position: relative;
   width: 51.5%;
   min-width: 745px;
   background-color: #fff;

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { devices } from "../../device";
 import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
-import menu from "../../assets/images/icons/menu.png";
 import Logo from "../../assets/images/logo/logo_small.png";
 import { loadDrugDataMW } from "../../redux/modules/drugs";
 import { useFindWeek } from "../../hooks/useFindWeek";
 import { loadWeekDataMW } from "../../redux/modules/weeks";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import MenuBarBtn from "./button/MenuBarBtn";
 
 const HeaderNavBar = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +24,7 @@ const HeaderNavBar = () => {
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
   };
+
   return (
     <NavBar>
       <Wrap>
@@ -34,9 +35,7 @@ const HeaderNavBar = () => {
           </LinkC>
         </LogoBox>
         {/* 모바일 메뉴 */}
-        <MenuBar>
-          <img src={menu} alt="menu" />
-        </MenuBar>
+        <MenuBarBtn />
         <LinkButtons>
           {/* 웹 메뉴 */}
           <LinkC className="tabLink" to="/">
@@ -82,7 +81,7 @@ const HeaderNavBar = () => {
 
 const NavBar = styled.div`
   width: 100%;
-  min-height: 8%;
+  min-height: 70px;
   background-color: #fff;
   border-bottom: solid 0.05rem #a5a5a5;
   box-sizing: border-box;
@@ -106,26 +105,6 @@ const LogoBox = styled.div`
     width: 11rem;
   }
 `;
-const MenuBar = styled.div`
-  width: 30px;
-  height: 30px;
-  @media ${devices.laptopL} {
-    display: none;
-  }
-  @media ${devices.desktop} {
-    display: none;
-  }
-  @media ${devices.mobileL} {
-    display: block;
-  }
-  @media ${devices.tablet} {
-    display: block;
-  }
-  img {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-`;
 
 const LinkButtons = styled(RowFlexDiv)`
   margin: 0 auto;
@@ -147,10 +126,7 @@ const LinkButtons = styled(RowFlexDiv)`
   a {
     margin: 0 3px;
   }
-  @media ${devices.tablet} {
-    display: none;
-  }
-  @media ${devices.mobileL} {
+  @media ${devices.laptopL} {
     display: none;
   }
 `;

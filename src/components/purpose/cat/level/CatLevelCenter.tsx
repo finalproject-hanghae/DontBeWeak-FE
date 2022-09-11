@@ -17,7 +17,7 @@ const CatLevelCenter = ({ level }: GreetingsProps) => {
       {/* {level}/{maxLevel} */}
       {/* ❓레벨 30이 되면 리셋 -> 키웠던 고양이와 키우고 있는 고양이에 대한 데이터 기록을 api를 통해 남겨야하지 않을까..❓ */}
       {level &&
-        Array(Math.floor(level / 2) + 1)
+        Array(Math.floor(level / 2))
           .fill(0)
           .map((val, idx) => {
             return (
@@ -27,7 +27,7 @@ const CatLevelCenter = ({ level }: GreetingsProps) => {
             );
           })}
       {level &&
-        Array(15 - Math.floor(level / 2) - 1)
+        Array(15 - Math.floor(level / 2))
           .fill(0)
           .map((val, idx) => {
             return <LevelHole key={"LevelHole" + idx} />;

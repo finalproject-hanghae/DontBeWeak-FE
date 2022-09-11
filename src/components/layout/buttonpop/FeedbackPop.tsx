@@ -2,17 +2,20 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ColumnFlexDiv, RowFlexDiv } from "../../../style/styled";
 import { devices } from "../../../device";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { switchFeedbackModal } from "../../../redux/modules/modals";
 
 const FeedbackPop = () => {
-  const [msg, setMsg] = React.useState(false);
+  const dispatch =useAppDispatch();
+  const msg = useAppSelector((state)=>state.modals.modals.feedbackModal)
   const [isClose, setIsClose] = React.useState(false);
 
   const openMsg = () => {
     if (msg === false) {
-      setMsg(true);
+      dispatch(switchFeedbackModal(true));
       setIsClose(true);
     } else {
-      setMsg(false);
+      dispatch(switchFeedbackModal(false));
       setIsClose(false);
     }
   };
@@ -65,7 +68,7 @@ const Wrap = styled(RowFlexDiv)`
 const PopBtn = styled(ColumnFlexDiv)`
   display: flex;
   align-items: center;
-  width: 5rem;
+  width: fit-content;
   height: 5rem;
   text-align: center;
   cursor: pointer;
@@ -78,8 +81,8 @@ const PopBtn = styled(ColumnFlexDiv)`
   }
   &:hover {
     img {
-      width: 4rem;
-      height: 4rem;
+      width: 3.6rem;
+      height: 3.6rem;
     }
     small {
       font-size: 0.9rem;
@@ -89,12 +92,23 @@ const PopBtn = styled(ColumnFlexDiv)`
   @media ${devices.mobileL} {
     height: 3rem;
     img {
-      width: 2rem;
-      height: 2em;
+      width: 2.5rem;
+      height: 2.5rem;
     }
     small {
       font-size: 0.5rem;
     }
+
+    &:hover {
+    img {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+    small {
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+  }
   }
 `;
 
@@ -108,7 +122,7 @@ const MsgEffect = keyframes`
 `;
 
 const Contents = styled.div`
-  width: 26rem;
+  width: fit-content;
   height: 3.5rem;
   border-radius: 1rem;
   text-align: center;
@@ -122,7 +136,7 @@ const Contents = styled.div`
     color: #333;
   }
   @media ${devices.mobileL} {
-    width: 60%;
+    width: fit-content;
     height: 2rem;
     border-radius: 0.5rem;
     line-height: 2rem;
