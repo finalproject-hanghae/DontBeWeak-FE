@@ -4,6 +4,7 @@ import { devices } from "../../../device";
 import { useFindWeek } from "../../../hooks/useFindWeek";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
+import { switchMenubarModal } from "../../../redux/modules/modals";
 import { awaySessionDataMW } from "../../../redux/modules/users";
 import { loadWeekDataMW } from "../../../redux/modules/weeks";
 import { ColumnFlexDiv, LinkC, RowFlexDiv } from "../../../style/styled";
@@ -24,7 +25,11 @@ const MenuModal = () => {
   };
   return (
     <MenuModalCard>
-      <LinkC className="tabLink" to="/">
+      <LinkC
+        className="tabLink"
+        to="/"
+        onClick={() => dispatch(switchMenubarModal(false))}
+      >
         About
       </LinkC>
       {authorization && (
@@ -32,11 +37,18 @@ const MenuModal = () => {
           <LinkC
             className="tabLink"
             to={"/record/" + username}
-            onClick={() => ClickToReloadRecordPageData()}
+            onClick={() => {
+              ClickToReloadRecordPageData();
+              dispatch(switchMenubarModal(false));
+            }}
           >
             하루기록
           </LinkC>
-          <LinkC className="tabLink" to={"/cat/" + username}>
+          <LinkC
+            className="tabLink"
+            to={"/cat/" + username}
+            onClick={() => dispatch(switchMenubarModal(false))}
+          >
             고양이 상태
           </LinkC>
         </>
@@ -44,15 +56,29 @@ const MenuModal = () => {
 
       {!authorization ? (
         <>
-          <LinkC className="smalla" to="/login">
+          <LinkC
+            className="smalla"
+            to="/login"
+            onClick={() => dispatch(switchMenubarModal(false))}
+          >
             로그인
           </LinkC>
-          <LinkC className="smalla" to="/signup">
+          <LinkC
+            className="smalla"
+            to="/signup"
+            onClick={() => dispatch(switchMenubarModal(false))}
+          >
             회원가입
           </LinkC>
         </>
       ) : (
-        <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
+        <LinkC
+          to="/"
+          onClick={() => {
+            dispatch(awaySessionDataMW());
+            dispatch(switchMenubarModal(false));
+          }}
+        >
           로그아웃
         </LinkC>
       )}
