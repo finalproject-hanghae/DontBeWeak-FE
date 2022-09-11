@@ -3,19 +3,17 @@ import styled from "styled-components";
 import { devices } from "../../device";
 import { awaySessionDataMW } from "../../redux/modules/users";
 import { LinkC, RowFlexDiv } from "../../style/styled";
-import menu from "../../assets/images/icons/menu.png";
 import Logo from "../../assets/images/logo/logo_small.png";
 import { loadDrugDataMW } from "../../redux/modules/drugs";
 import { useFindWeek } from "../../hooks/useFindWeek";
 import { loadWeekDataMW } from "../../redux/modules/weeks";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { switchMenubarModal } from "../../redux/modules/modals";
+import MenuBarBtn from "./button/MenuBarBtn";
 
 const HeaderNavBar = () => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.users.authorization);
   const week = useAppSelector((state) => state.weeks.week);
-  const isMenu = useAppSelector((state) => state.modals.modals.menubarModal);
   const username = sessionStorage.getItem("username");
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
@@ -27,21 +25,6 @@ const HeaderNavBar = () => {
     dispatch(loadWeekDataMW(username, params));
   };
 
-  const menubarRef = React.useRef<HTMLDivElement>(null);
-
-  const menubarSwitch = () => {
-    isMenu
-      ? dispatch(switchMenubarModal(false))
-      : dispatch(switchMenubarModal(true));
-  };
-
-  React.useEffect(() => {
-    menubarRef.current?.addEventListener("click", menubarSwitch);
-    return () => {
-      menubarRef.current?.removeEventListener("click", menubarSwitch);
-    };
-  }, [isMenu]);
-
   return (
     <NavBar>
       <Wrap>
@@ -52,9 +35,7 @@ const HeaderNavBar = () => {
           </LinkC>
         </LogoBox>
         {/* 모바일 메뉴 */}
-        <MenuBar ref={menubarRef}>
-          <img src={menu} alt="menu" />
-        </MenuBar>
+        <MenuBarBtn />
         <LinkButtons>
           {/* 웹 메뉴 */}
           <LinkC className="tabLink" to="/">
@@ -100,7 +81,7 @@ const HeaderNavBar = () => {
 
 const NavBar = styled.div`
   width: 100%;
-  min-height: 8%;
+  min-height: 70px;
   background-color: #fff;
   border-bottom: solid 0.05rem #a5a5a5;
   box-sizing: border-box;
@@ -122,20 +103,6 @@ const LogoBox = styled.div`
   margin-right: 7%;
   img {
     width: 11rem;
-  }
-`;
-const MenuBar = styled.div`
-  display: none;
-  width: 2rem;
-  height: 2rem;
-  @media ${devices.laptopL} {
-    display: block;
-  }
-  cursor: pointer;
-
-  img {
-    width: 2rem;
-    height: 2rem;
   }
 `;
 
