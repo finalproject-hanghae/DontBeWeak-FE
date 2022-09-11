@@ -6,4 +6,5 @@ export type modals = {
   shopNoticeModal: boolean;
   shopConfirmModal: boolean;
   feedbackModal: boolean;
+  menubarModal: boolean;
 };

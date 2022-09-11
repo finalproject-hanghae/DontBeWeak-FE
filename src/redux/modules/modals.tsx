@@ -8,6 +8,7 @@ const CATSHOP = "switch/CATSHOP" as const;
 const SHOPNOTICE = "switch/SHOPNOTICE" as const;
 const SHOPCONFIRM = "switch/SHOPCONFIRM" as const;
 const FEEDBACK = "switch/FEEDBACK" as const;
+const MENUBAR = "switch/MENUBAR" as const;
 
 //initialState
 type ModalState = {
@@ -23,6 +24,7 @@ const initialState: ModalState = {
     shopNoticeModal: false,
     shopConfirmModal: false,
     feedbackModal: false,
+    menubarModal: false,
   },
 };
 
@@ -48,11 +50,15 @@ export const switchShopNoticeModal = (foo: boolean) => {
 };
 
 export const switchShopConfirmModal = (foo: boolean) => {
-    return { type: SHOPCONFIRM, switch: foo };
-  };
+  return { type: SHOPCONFIRM, switch: foo };
+};
 
 export const switchFeedbackModal = (foo: boolean) => {
   return { type: FEEDBACK, switch: foo };
+};
+
+export const switchMenubarModal = (foo: boolean) => {
+  return { type: MENUBAR, switch: foo };
 };
 
 //Reducer
@@ -62,22 +68,25 @@ export default function reducer(state = initialState, action: any) {
       return { modals: { ...state.modals, friendListModal: action.switch } };
     }
     case "switch/SEARCH": {
-      return { modals: { ...state.modals, searchDrugModal: action.switch } }
+      return { modals: { ...state.modals, searchDrugModal: action.switch } };
     }
     case "switch/DIRECT": {
-      return { modals: { ...state.modals, directSearchModal: action.switch } }
+      return { modals: { ...state.modals, directSearchModal: action.switch } };
     }
     case "switch/CATSHOP": {
-      return { modals: { ...state.modals, catShopModal: action.switch } }
+      return { modals: { ...state.modals, catShopModal: action.switch } };
     }
     case "switch/SHOPNOTICE": {
-      return { modals: { ...state.modals, shopNoticeModal: action.switch } }
+      return { modals: { ...state.modals, shopNoticeModal: action.switch } };
     }
     case "switch/SHOPCONFIRM": {
-        return { modals: { ...state.modals, shopConfirmModal: action.switch } }
-      }
+      return { modals: { ...state.modals, shopConfirmModal: action.switch } };
+    }
     case "switch/FEEDBACK": {
-      return { modals: { ...state.modals, feedbackModal: action.switch } }
+      return { modals: { ...state.modals, feedbackModal: action.switch } };
+    }
+    case "switch/MENUBAR": {
+      return { modals: { ...state.modals, menubarModal: action.switch } };
     }
     // do reducer stuff
     default:

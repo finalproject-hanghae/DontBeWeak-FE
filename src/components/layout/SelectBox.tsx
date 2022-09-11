@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { loadCatDataMW } from "../../redux/modules/cats";
 import { useAppDispatch } from "../../redux/hooks";
 import { friendList } from "../../types/friends";
+import { devices } from "../../device";
 
 type GreetingsProps = {
   friendList: friendList;
@@ -45,8 +46,9 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
 
 // Style
 const SelectWrap = styled.div`
+width:300px;
   select {
-    width: 308px;
+    width: 100%;
     height: 50px;
     border: 2px solid #fabc4f;
     border-radius: 4px;
@@ -58,6 +60,12 @@ const SelectWrap = styled.div`
     -moz-appearance: none;
     appearance: none;
     cursor: pointer;
+    &:focus{
+      outline:none;
+    }
+  }
+  @media ${devices.mobileL} {
+    width: 250px;
   }
 `;
 

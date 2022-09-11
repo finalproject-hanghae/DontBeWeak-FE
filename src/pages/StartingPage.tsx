@@ -34,19 +34,17 @@ const StartingPage = () => {
         <Sub>
           <div>
             <img src={one} alt="1st" />
-            <p>
-              영양제를 제때 챙겨먹으면 경험치가 오르면서
-              <br />
-              아픈 고양이를 회복시킬 수 있어요
-            </p>
+            <span>
+              영양제를 제때 챙겨먹으면 경험치가 오르면서 아픈 고양이를 회복시킬
+              수 있어요
+            </span>
           </div>
           <div>
             <img src={two} alt="2nd" />
-            <p>
-              경험치는 고양이를 성장시키는 것 뿐 아니라
-              <br />
-              고양이에게 줄 아이템도 구매할 수 있어요
-            </p>
+            <span>
+              경험치는 고양이를 성장시키는 것 뿐 아니라 고양이에게 줄 아이템도
+              구매할 수 있어요
+            </span>
           </div>
         </Sub>
         {/* (상태 분기 처리) 로그아웃 : /login , 로그인 : /record/ */}
@@ -61,7 +59,7 @@ const StartingPage = () => {
         ) : (
           <button
             onClick={() => {
-              navigate("/record/"+sessionStorage.getItem("username"));
+              navigate("/record/" + sessionStorage.getItem("username"));
             }}
           >
             영양제 기록하기
@@ -73,7 +71,7 @@ const StartingPage = () => {
         <Route index element={null} />
         <Route path="login" element={Modals.LogIn} />
         <Route path="signup" element={Modals.SignUp} />
-        <Route path="/auth/kakao/callback" element={<KakaoRedirect/>}/>
+        <Route path="/auth/kakao/callback" element={<KakaoRedirect />} />
         <Route path="*" element={Modals.NotFound} />
       </Routes>
     </PageSection>
@@ -123,13 +121,12 @@ const Main = styled(ColumnFlexDiv)`
   }
 `;
 const Sub = styled(ColumnFlexDiv)`
-  width: 80%;
+  width: 70%;
   height: 10rem;
   font-size: 1rem;
   line-height: 1.9rem;
-  margin-left: 12.5%;
   margin-bottom: 1.5rem;
-  @media ${devices.tablet} {
+  @media ${devices.mobileL} {
     display: none;
   }
   div {
@@ -138,6 +135,16 @@ const Sub = styled(ColumnFlexDiv)`
     display: flex;
     align-self: center;
     align-items: center;
+    margin: 10px 0px;
+    span {
+      width: 600px;
+      line-height: 1rem;
+      word-break: keep-all;
+      font-size: 1rem;
+      @media ${devices.tablet} {
+        font-size: 0.7rem;
+      }
+    }
   }
   img {
     width: 40px;
@@ -160,12 +167,6 @@ const ImgSprite = styled.div`
   background: url(${spriteImg}) left center;
   animation: ${Keyframes} 0.8s steps(3) infinite;
   @media ${devices.mobileL} {
-    top: 50%;
-    left: 50%;
-    min-width: 280px;
-  }
-  @media ${devices.laptop} {
-    margin-top: 5%;
     top: 50%;
     left: 50%;
     min-width: 280px;
