@@ -32,7 +32,7 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
     var tmpDate = new Date();
     let offset = tmpDate.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
 
-    const data:drug = {
+    const data: drug = {
       productName: val.productName,
       usedAt: new Date(tmpDate.getTime() - offset).toISOString(),
       done: true,
@@ -47,7 +47,6 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
     <SingleDrugLineBox
       style={{
         backgroundColor: val.done ? "none" : "none",
-        width: "45%",
         fontSize: "0.8rem",
       }}
     >
@@ -57,11 +56,7 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
             backgroundColor: val.customColor,
           }}
         />
-        <span>
-          {val.productName.length > 13
-            ? val.productName.substring(0, 11) + "..."
-            : val.productName}
-        </span>
+        <span>{val.productName}</span>
       </ColorAndDrugName>
       {username == sessionStorage.getItem("username") && (
         <label htmlFor={"didEat" + idx}>
@@ -89,14 +84,30 @@ const ColorAndDrugName = styled(RowFlexDiv)`
     margin-right: 10px;
   }
   span {
+    align-self: center;
+    font-weight: bold;
+    color: #333;
     font-size: 1rem;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media ${devices.tablet} {
+    span {
+      width: 300px;
+    }
+  }
+  @media ${devices.mobileL} {
+    span {
+      width: 120px;
+    }
   }
 `;
 const SingleDrugLineBox = styled(RowFlexDiv)`
   justify-content: space-between;
   align-items: center;
-  width: 50%;
-  padding: 5px;
+  width: 45%;
   label {
     display: flex;
     justify-content: center;
@@ -111,8 +122,13 @@ const SingleDrugLineBox = styled(RowFlexDiv)`
   input {
     display: none;
   }
+  @media ${devices.tablet} {
+    width: 90%;
+    padding-right: 50px;
+  }
   @media ${devices.mobileL} {
-    width: 240px;
+    width: 90%;
+    padding-right: 30px;
   }
 `;
 

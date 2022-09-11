@@ -129,7 +129,7 @@ const Sub = styled(ColumnFlexDiv)`
   line-height: 1.9rem;
   margin-left: 12.5%;
   margin-bottom: 1.5rem;
-  @media ${devices.tablet} {
+  @media ${devices.mobileL} {
     display: none;
   }
   div {
@@ -164,12 +164,12 @@ const ImgSprite = styled.div`
     left: 50%;
     min-width: 280px;
   }
-  @media ${devices.laptop} {
+  /* @media ${devices.laptop} {
     margin-top: 5%;
     top: 50%;
     left: 50%;
     min-width: 280px;
-  }
+  } */
 `;
 
 export default StartingPage;
