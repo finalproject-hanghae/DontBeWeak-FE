@@ -43,15 +43,14 @@ const MenuModal = () => {
       )}
 
       {!authorization ? (
-        <div>
+        <>
           <LinkC className="smalla" to="/login">
             로그인
           </LinkC>
-          　|　
           <LinkC className="smalla" to="/signup">
             회원가입
           </LinkC>
-        </div>
+        </>
       ) : (
         <LinkC to="/" onClick={() => dispatch(awaySessionDataMW())}>
           로그아웃
@@ -79,12 +78,14 @@ const MenuModalCard = styled(ColumnFlexDiv)`
   top: 70px;
   right: 0px;
 
-  width: 230px;
+  width: 170px;
   height: 300px;
 
   padding: 0px 20px;
 
-  background-color: lightblue;
+  background-color: #fabc4f;
+  border-radius: 0px 0px 30px 30px;
+  box-shadow: 2px 2px 2px 2px grey;
   z-index: 1000;
   animation: ${keyRightToLeft} 0.5s linear;
 
@@ -94,8 +95,9 @@ const MenuModalCard = styled(ColumnFlexDiv)`
   }
   a {
     font-weight: bold;
+    font-size: 1.2rem;
     &:hover {
-        color: #333;
+      color: #333;
     }
   }
 `;
