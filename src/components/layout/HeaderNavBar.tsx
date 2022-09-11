@@ -9,11 +9,13 @@ import { loadDrugDataMW } from "../../redux/modules/drugs";
 import { useFindWeek } from "../../hooks/useFindWeek";
 import { loadWeekDataMW } from "../../redux/modules/weeks";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { switchMenubarModal } from "../../redux/modules/modals";
 
 const HeaderNavBar = () => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.users.authorization);
   const week = useAppSelector((state) => state.weeks.week);
+  const isMenu = useAppSelector((state) => state.modals.modals.menubarModal);
   const username = sessionStorage.getItem("username");
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
@@ -24,6 +26,22 @@ const HeaderNavBar = () => {
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
   };
+
+  const menubarRef = React.useRef<HTMLDivElement>(null);
+
+  const menubarSwitch = () => {
+    isMenu
+      ? dispatch(switchMenubarModal(false))
+      : dispatch(switchMenubarModal(true));
+  };
+
+  React.useEffect(() => {
+    menubarRef.current?.addEventListener("click", menubarSwitch);
+    return () => {
+      menubarRef.current?.removeEventListener("click", menubarSwitch);
+    };
+  }, [isMenu]);
+
   return (
     <NavBar>
       <Wrap>
@@ -34,7 +52,7 @@ const HeaderNavBar = () => {
           </LinkC>
         </LogoBox>
         {/* 모바일 메뉴 */}
-        <MenuBar>
+        <MenuBar ref={menubarRef}>
           <img src={menu} alt="menu" />
         </MenuBar>
         <LinkButtons>
@@ -107,23 +125,17 @@ const LogoBox = styled.div`
   }
 `;
 const MenuBar = styled.div`
-  width: 30px;
-  height: 30px;
+  display: none;
+  width: 2rem;
+  height: 2rem;
   @media ${devices.laptopL} {
-    display: none;
-  }
-  @media ${devices.desktop} {
-    display: none;
-  }
-  @media ${devices.mobileL} {
     display: block;
   }
-  @media ${devices.tablet} {
-    display: block;
-  }
+  cursor: pointer;
+
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 `;
 
@@ -147,10 +159,7 @@ const LinkButtons = styled(RowFlexDiv)`
   a {
     margin: 0 3px;
   }
-  @media ${devices.tablet} {
-    display: none;
-  }
-  @media ${devices.mobileL} {
+  @media ${devices.laptopL} {
     display: none;
   }
 `;

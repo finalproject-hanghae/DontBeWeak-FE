@@ -93,12 +93,22 @@ const ColorAndDrugName = styled(RowFlexDiv)`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  @media ${devices.tablet} {
+  @media ${devices.desktop} {
     span {
       width: 300px;
     }
   }
+  @media ${devices.tablet} {
+    span {
+      width: 120px;
+    }
+  }
   @media ${devices.mobileL} {
+    span {
+      width: 220px;
+    }
+  }
+  @media ${devices.mobileS} {
     span {
       width: 120px;
     }
@@ -122,7 +132,7 @@ const SingleDrugLineBox = styled(RowFlexDiv)`
   input {
     display: none;
   }
-  @media ${devices.tablet} {
+  @media ${devices.desktop} {
     width: 90%;
     padding-right: 50px;
   }
