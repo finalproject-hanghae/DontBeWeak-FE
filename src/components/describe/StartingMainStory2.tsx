@@ -1,9 +1,9 @@
 import React from "react";
 
-import styled, { keyframes } from "styled-components";
-import { devices } from "../../device";
+import styled from "styled-components";
 
 import ICat2 from "../../assets/images/cats/cat2.png";
+import { StoryImage } from "../../style/story";
 
 const StartingMainStory2 = () => {
   return (
@@ -11,23 +11,18 @@ const StartingMainStory2 = () => {
       <h2>
         그 다음, 친구를 추가하세요!
         <br />
-        친구가 잘 먹고있나 확인 할 수 있어요!
+        친구가 잘 챙기나 확인 해봐요!
         <br />
-        당연히 친구의 고양이도 볼 수 있죠
+        당연 친구 고양이도 볼 수 있어요
       </h2>
-      <ImgSprite></ImgSprite>
+      <CatImage/>
     </>
   );
 };
 
-const ImgSprite = styled.div`
-  width: 17.5rem;
-  height: 11.6rem;
+const CatImage = styled(StoryImage)`
   background: url(${ICat2}) center no-repeat;
   background-size: contain;
-  @media ${devices.mobileL} {
-    transform: scale(0.7, 0.7);
-    min-width: 280px;
-  }
 `;
+
 export default StartingMainStory2;

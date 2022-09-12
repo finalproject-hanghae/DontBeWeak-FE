@@ -1,34 +1,28 @@
 import React from "react";
 
-import styled, { keyframes } from "styled-components";
-import { devices } from "../../device";
+import styled from "styled-components";
 
 import ICat1 from "../../assets/images/cats/cat1.png";
+import { StoryImage } from "../../style/story";
 
 const StartingMainStory1 = () => {
   return (
     <>
       <h2>
-        우선, 영양제를 등록하세요!
+        우선, 영양제를 등록!
         <br />
-        영양제를 먹으면 포인트를 획득 할 수 있어요
+        체크하면 포인트를 획득해요.
         <br />
-        언제 먹었는지도 한 눈에 확인!
+        언제 먹었는지도 알려줄게요.
       </h2>
-      <ImgSprite></ImgSprite>
+      <CatImage/>
     </>
   );
 };
 
-const ImgSprite = styled.div`
-  width: 17.5rem;
-  height: 11.6rem;
+const CatImage = styled(StoryImage)`
   background: url(${ICat1}) center no-repeat;
   background-size: contain;
-  @media ${devices.mobileL} {
-    transform: scale(0.7, 0.7);
-    min-width: 280px;
-  }
 `;
 
 export default StartingMainStory1;

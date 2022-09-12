@@ -44,7 +44,7 @@ const Section = styled(DeviceDiv)`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 100%;
   height: 90%;
   margin: 0px auto;
   text-align: center;

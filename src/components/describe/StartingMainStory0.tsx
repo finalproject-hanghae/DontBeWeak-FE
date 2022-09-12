@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { devices } from "../../device";
 
 import spriteImg from "../../assets/images/cats/BLKbeen_sprite.png";
+import { StoryImage } from "../../style/story";
 
 const StartingMainStory0 = () => {
   return (
@@ -15,7 +16,7 @@ const StartingMainStory0 = () => {
         <br />
         차근차근 도와줄게요.
       </h2>
-      <ImgSprite></ImgSprite>
+      <CatImgSprite />
     </>
   );
 };
@@ -25,15 +26,9 @@ const Keyframes = keyframes`
     background-position: -52.5rem;
   }
 `;
-const ImgSprite = styled.div`
-  width: 17.5rem;
-  height: 11.6rem;
+const CatImgSprite = styled(StoryImage)`
   background: url(${spriteImg}) left center;
   animation: ${Keyframes} 0.8s steps(3) infinite;
-  @media ${devices.mobileL} {
-    transform: scale(0.7, 0.7);
-    min-width: 280px;
-  }
 `;
 
 export default StartingMainStory0;

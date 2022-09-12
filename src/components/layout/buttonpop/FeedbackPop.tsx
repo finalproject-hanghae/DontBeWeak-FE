@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { switchFeedbackModal } from "../../../redux/modules/modals";
 
 const FeedbackPop = () => {
-  const dispatch =useAppDispatch();
-  const msg = useAppSelector((state)=>state.modals.modals.feedbackModal)
+  const dispatch = useAppDispatch();
+  const msg = useAppSelector((state) => state.modals.modals.feedbackModal);
   const [isClose, setIsClose] = React.useState(false);
 
   const openMsg = () => {
@@ -28,13 +28,7 @@ const FeedbackPop = () => {
             "https://media2.giphy.com/media/FybR3f1cKn5VLlLCkl/giphy.gif?cid=ecf05e4750cae04e05d377fb12692843f61cb9ef6187c771&rid=giphy.gif&ct=s"
           }
         />
-        {isClose ? (
-          <div>
-            <small>X</small>
-          </div>
-        ) : (
-          <small>Click !</small>
-        )}
+        {isClose ? <small>X</small> : <small>Click !</small>}
       </PopBtn>
       {msg ? (
         <Contents>
@@ -42,7 +36,7 @@ const FeedbackPop = () => {
             target="blank"
             href="https://docs.google.com/forms/d/e/1FAIpQLScJdPn8S2gt6h3kHaHvV2mC-g9kR017yAT2kzWKLcVyQgaCPA/viewform"
           >
-            이곳에서 서비스 개선을 위한 피드백을 해주세요 📋
+            서비스 개선을 위한 피드백을 해주세요 📋
           </a>
         </Contents>
       ) : null}
@@ -55,7 +49,7 @@ const Wrap = styled(RowFlexDiv)`
   width: fit-content;
   height: fit-content;
   margin: auto;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
   align-items: center;
   @media ${devices.mobileL} {
     height: 3rem;
@@ -78,13 +72,14 @@ const PopBtn = styled(ColumnFlexDiv)`
   }
   small {
     font-size: 0.8rem;
+    line-height: 0.8rem;
   }
   &:hover {
     img {
-      transform: scale(1.1,1.1);
+      transform: scale(1.1, 1.1);
     }
     small {
-      font-size: 0.9rem;
+      transform: scale(1.1, 1.1);
       font-weight: 800;
     }
   }
@@ -96,17 +91,18 @@ const PopBtn = styled(ColumnFlexDiv)`
     }
     small {
       font-size: 0.5rem;
+      line-height: 0.5rem;
     }
 
     &:hover {
-    img {
-      transform: scale(1.1,1.1);
+      img {
+        transform: scale(1.1, 1.1);
+      }
+      small {
+        transform: scale(1.1, 1.1);
+        font-weight: 800;
+      }
     }
-    small {
-      transform: scale(1.1,1.1);
-      font-weight: 800;
-    }
-  }
   }
 `;
 
@@ -122,6 +118,7 @@ const MsgEffect = keyframes`
 const Contents = styled.div`
   width: fit-content;
   height: 3.5rem;
+  margin-left: 10px;
   border-radius: 1rem;
   text-align: center;
   line-height: 3.5rem;
@@ -131,15 +128,18 @@ const Contents = styled.div`
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
+    margin: 0px 30px;
     color: #333;
   }
   @media ${devices.mobileL} {
     width: fit-content;
     height: 2rem;
+    margin-left: 2px;
     border-radius: 0.5rem;
     line-height: 2rem;
     a {
       font-size: 0.5rem;
+      margin: 0px 5px;
     }
   }
 `;

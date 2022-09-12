@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { devices } from "../device";
 
-
 export const LeftDiv = styled.div`
   width: 20px;
   aspect-ratio: 1;
@@ -18,4 +17,13 @@ export const LeftDiv = styled.div`
 export const RightDiv = styled(LeftDiv)`
   border-style: solid solid none none;
   margin: 0px 0px 0px 20px;
+`;
+
+export const StoryImage = styled.div`
+  width: 17.5rem;
+  height: 11.6rem;
+  @media ${devices.mobileL} {
+    transform: scale(0.7, 0.7);
+    min-width: 280px;
+  }
 `;
