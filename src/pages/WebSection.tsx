@@ -29,15 +29,21 @@ const WebSection = () => {
 // styled-component 적용
 
 const WebCard = styled(ColumnFlexDiv)`
+  z-index: -100;
+  position: sticky;
   width: 48.5%;
   height: 100%;
-  justify-content: center;
-  @media ${devices.tablet} {
+  /* justify-content: center; */
+  @media ${devices.laptopL} {
     display: none;
   }
 `;
 
 const Section = styled(ColumnFlexDiv)`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 32rem;
   height: 42rem;
   margin: 0 auto;

@@ -17,8 +17,8 @@ const MenuModal = () => {
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
+      startDate: startDate,
+      endDate: endDate,
     };
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
@@ -110,7 +110,7 @@ const MenuModalCard = styled(ColumnFlexDiv)`
   padding: 0px 20px;
 
   background-color: #fabc4f;
-  border-radius: 0px 0px 30px 30px;
+  border-radius: 0px 0px 0px 30px;
   box-shadow: 2px 2px 2px 2px grey;
   z-index: 1000;
   animation: ${keyRightToLeft} 0.5s linear;
@@ -122,6 +122,7 @@ const MenuModalCard = styled(ColumnFlexDiv)`
   a {
     font-weight: bold;
     font-size: 1.2rem;
+    text-align:center;
     &:hover {
       color: #333;
     }
