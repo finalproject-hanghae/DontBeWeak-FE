@@ -20,10 +20,11 @@ const CalenderSection = () => {
   const myWeek = useAppSelector((state) => state.weeks.weeks);
 
   const myname = useParams().username;
+  console.log(startDate,endDate)
 
   const params = {
-    startDate: startDate.replace(".", ""),
-    endDate: endDate.replace(".", ""),
+    startDate: startDate,
+    endDate: endDate,
   };
 
   React.useEffect(() => {

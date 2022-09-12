@@ -24,8 +24,8 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
   const week = useAppSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
   const params = {
-    startDate: startDate.replace(".", ""),
-    endDate: endDate.replace(".", ""),
+    startDate: startDate,
+    endDate: endDate,
   };
 
   const clickToCheckDrug = () => {

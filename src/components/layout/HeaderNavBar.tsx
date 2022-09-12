@@ -20,8 +20,8 @@ const HeaderNavBar = () => {
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
+      startDate: startDate,
+      endDate: endDate,
     };
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
@@ -92,7 +92,7 @@ const NavBar = styled.div`
   padding-left: 5%;
   display: flex;
   position: sticky;
-  top:0px;
+  top: 0px;
   align-items: center;
   z-index: 999;
 `;

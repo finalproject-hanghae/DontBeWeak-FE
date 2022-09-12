@@ -59,8 +59,8 @@ const FriendsListForm = () => {
   const ClickToReloadRecordPageData = (val: friend) => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
+      startDate: startDate,
+      endDate: endDate,
     };
     navigate("/record/" + val.friendname);
     dispatch(loadDrugDataMW(val.friendname));

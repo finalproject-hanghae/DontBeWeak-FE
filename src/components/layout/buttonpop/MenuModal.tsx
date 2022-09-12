@@ -17,8 +17,8 @@ const MenuModal = () => {
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
+      startDate: startDate,
+      endDate: endDate,
     };
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
