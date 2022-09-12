@@ -11,10 +11,10 @@
 ![](https://img.shields.io/badge/styled%20components-DB7093.svg?&style=for-the-badge&logo=styled%20components&logoColor=white)
 ![](https://img.shields.io/badge/Burger%20King-D62300.svg?&style=for-the-badge&logo=Burger%20King&logoColor=white)
 
-### 패치노트
+## 패치노트
 - [**패치노트 바로가기**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%8C%A8%EC%B9%98%EB%85%B8%ED%8A%B8-:-%EC%95%BD%ED%95%B4%EC%A7%80%EC%A7%80%EB%A7%88)
 
-### 기술 결정
+## 기술 결정
 **기술 결정 프로세스**<br/>
 
 > 1. 프로젝트의 요구사항 파악
@@ -28,13 +28,13 @@
 - **선제적 타입 선언 (TypeScript)**
   - [문제 #1 : 변수 변경의 불편 - 추가 예상문제 Wiki](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%EB%AC%B8%EC%A0%9C-%231-:-%EB%B3%80%EC%88%98-%EB%B3%80%EA%B2%BD%EC%9D%98-%EB%B6%88%ED%8E%B8#%EC%B6%94%EA%B0%80-%EC%98%88%EC%83%81-%EB%AC%B8%EC%A0%9C)
 
-### 트러블 슈팅
+## 트러블 슈팅
 - **문제 #0 : 이미지 리소스 관리 (이미지 최적화)**
   - [문제 #0 : 이미지 리소스 관리 Wiki](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%EB%AC%B8%EC%A0%9C-%230-:-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B4%80%EB%A6%AC)
 - **문제 #1 : 변수 변경의 불편 (협업능률 및 유지보수) -> TypeScript**
   - [문제 #1 : 변수 변경의 불편 Wiki](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%EB%AC%B8%EC%A0%9C-%231-:-%EB%B3%80%EC%88%98-%EB%B3%80%EA%B2%BD%EC%9D%98-%EB%B6%88%ED%8E%B8)
   
-### 피드백 개선
+## 피드백 개선
 - [**피드백 개선 #0 : 털실만으론 성장 할 수 없어요.**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%94%BC%EB%93%9C%EB%B0%B1-%EA%B0%9C%EC%84%A0-%230-:-%ED%84%B8%EC%8B%A4%EB%A7%8C%EC%9C%BC%EB%A1%A0-%EC%84%B1%EC%9E%A5-%ED%95%A0-%EC%88%98-%EC%97%86%EC%96%B4%EC%9A%94.)
 
 ---
