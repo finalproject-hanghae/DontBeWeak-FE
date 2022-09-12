@@ -79,7 +79,7 @@ const FriendsListForm = () => {
             onChange={change}
           />
           <FriendAddBtn type="button" onClick={submitToFriendId}>
-            친구추가+
+            +
           </FriendAddBtn>
         </TrueForm>
       ) : (
