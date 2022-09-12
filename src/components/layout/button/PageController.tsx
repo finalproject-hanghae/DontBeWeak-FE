@@ -3,6 +3,7 @@ import styled from "styled-components";
 import IDrugAdd from "../../../assets/images/icons/drug_add.png";
 import IFriend from "../../../assets/images/icons/friend_add.png";
 import IShop from "../../../assets/images/icons/shop.png";
+import ICat from "../../../assets/images/cats/drug_cat.png";
 
 import { LeftDiv, RightDiv } from "../../../style/story";
 import { RowFlexDiv } from "../../../style/styled";
@@ -34,14 +35,17 @@ const PageController = ({ storyPage, setStoryPage }: GreetingsProps) => {
     };
   }, []);
 
-  console.log(storyPage % 3);
+  console.log(storyPage % 4);
 
   return (
     <Controller>
       <LeftDiv ref={leftDivRef} />
-      {Math.abs(storyPage % 3) === 0 && <img src={IDrugAdd} alt="Drug_icon" />}
-      {Math.abs(storyPage % 3) === 1 && <img src={IFriend} alt="Friend_icon" />}
-      {Math.abs(storyPage % 3) === 2 && <img src={IShop} alt="Shop_icon" />}
+      {Math.abs(storyPage % 4) === 0 && (
+        <img src={ICat} className="shadow-bottom" alt="Cat_icon" />
+      )}
+      {Math.abs(storyPage % 4) === 1 && <img src={IDrugAdd} alt="Drug_icon" />}
+      {Math.abs(storyPage % 4) === 2 && <img src={IFriend} alt="Friend_icon" />}
+      {Math.abs(storyPage % 4) === 3 && <img src={IShop} alt="Shop_icon" />}
       <RightDiv ref={rightDivRef} />
     </Controller>
   );
@@ -50,11 +54,13 @@ const PageController = ({ storyPage, setStoryPage }: GreetingsProps) => {
 const Controller = styled(RowFlexDiv)`
   justify-content: center;
   align-items: center;
-  /* img {
-    width:64px;
-    height:64px;
-    aspect-ratio:1;
-  } */
+  .shadow-bottom {
+    width: 58px;
+    height: 58px;
+    margin: 0px 3px 6px;
+    border-radius: 100%;
+    box-shadow: 0px 3px 3px #aaaaaa;
+  }
 `;
 
 export default PageController;

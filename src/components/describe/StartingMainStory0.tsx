@@ -12,6 +12,8 @@ const StartingMainStory0 = () => {
         아기고양이를 키우면서
         <br />
         영양제도 챙겨 먹어보세요!
+        <br />
+        차근차근 도와줄게요.
       </h2>
       <ImgSprite></ImgSprite>
     </>
