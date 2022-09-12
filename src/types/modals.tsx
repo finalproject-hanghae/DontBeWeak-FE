@@ -4,7 +4,6 @@ export type modals = {
   directSearchModal: boolean;
   catShopModal: boolean;
   shopNoticeModal: boolean;
-  shopConfirmModal: boolean;
   feedbackModal: boolean;
   menubarModal: boolean;
 };

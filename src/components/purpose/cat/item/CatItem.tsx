@@ -10,7 +10,6 @@ import { catItem } from "../../../../types/cats";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import {
   switchCatShopModal,
-  switchShopConfirmModal,
   switchShopNoticeModal,
 } from "../../../../redux/modules/modals";
 
@@ -21,22 +20,17 @@ type GreetingsProps = {
 const CatItem = ({ val }: GreetingsProps) => {
   const dispatch = useAppDispatch();
   const username = useParams().username;
-  // 구매 Confirm 모달창
-  const openModal = useAppSelector(
-    (state) => state.modals.modals.shopConfirmModal
-  );
 
-  // 아이템 구매, 적용 axios 실행
-  const [someItem, setSomeItem] = useState("");
+  const [openModal, setopenModal] = useState(false);
+    // 아이템 구매, 적용 axios 실행
   const toBuyItem = () => {
     const itemId = val.itemId;
     itemApi
       .apiItemBuy(itemId + "")
       .then((res) => {
-        setSomeItem(res.data);
+        setopenModal(false)
         dispatch(loadCatDataMW(username));
         dispatch(switchShopNoticeModal(true));
-        dispatch(switchShopConfirmModal(false));
         dispatch(switchCatShopModal(false));
       })
       .catch((err) => {
@@ -47,7 +41,7 @@ const CatItem = ({ val }: GreetingsProps) => {
 
   return (
     <Item>
-      <Img onClick={() => dispatch(switchShopConfirmModal(true))}>
+      <Img onClick={() => setopenModal(true)}>
         <img src={val?.itemImg} alt={val?.itemName} />
       </Img>
       <Name> {val?.itemName} </Name>
@@ -58,7 +52,7 @@ const CatItem = ({ val }: GreetingsProps) => {
           <p>
             <span>{val?.itemName}</span>를(을) 구매하시겠습니까?
           </p>
-          <Btn onClick={() => dispatch(switchShopConfirmModal(false))}>
+          <Btn onClick={() => setopenModal(false)}>
             아니오
           </Btn>
           <Btn
