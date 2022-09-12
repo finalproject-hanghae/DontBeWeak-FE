@@ -81,8 +81,7 @@ const PopBtn = styled(ColumnFlexDiv)`
   }
   &:hover {
     img {
-      width: 3.6rem;
-      height: 3.6rem;
+      transform: scale(1.1,1.1);
     }
     small {
       font-size: 0.9rem;
@@ -101,11 +100,10 @@ const PopBtn = styled(ColumnFlexDiv)`
 
     &:hover {
     img {
-      width: 2.6rem;
-      height: 2.6rem;
+      transform: scale(1.1,1.1);
     }
     small {
-      font-size: 0.9rem;
+      transform: scale(1.1,1.1);
       font-weight: 800;
     }
   }
