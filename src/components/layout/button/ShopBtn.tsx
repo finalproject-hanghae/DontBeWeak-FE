@@ -6,7 +6,6 @@ import styled, { keyframes } from "styled-components";
 import { devices } from "../../../device";
 import {
   switchCatShopModal,
-  switchShopConfirmModal,
   switchShopNoticeModal,
 } from "../../../redux/modules/modals";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
@@ -33,7 +32,6 @@ const ShopBtn = () => {
           alt="shop_btn"
           onClick={() => {
             dispatch(switchCatShopModal(true));
-            dispatch(switchShopConfirmModal(false));
             dispatch(switchShopNoticeModal(false));
           }}
         />
