@@ -22,7 +22,6 @@ const initialState: ModalState = {
     directSearchModal: false,
     catShopModal: false,
     shopNoticeModal: false,
-    shopConfirmModal: false,
     feedbackModal: false,
     menubarModal: false,
   },
@@ -47,10 +46,6 @@ export const switchCatShopModal = (foo: boolean) => {
 
 export const switchShopNoticeModal = (foo: boolean) => {
   return { type: SHOPNOTICE, switch: foo };
-};
-
-export const switchShopConfirmModal = (foo: boolean) => {
-  return { type: SHOPCONFIRM, switch: foo };
 };
 
 export const switchFeedbackModal = (foo: boolean) => {
@@ -78,9 +73,6 @@ export default function reducer(state = initialState, action: any) {
     }
     case "switch/SHOPNOTICE": {
       return { modals: { ...state.modals, shopNoticeModal: action.switch } };
-    }
-    case "switch/SHOPCONFIRM": {
-      return { modals: { ...state.modals, shopConfirmModal: action.switch } };
     }
     case "switch/FEEDBACK": {
       return { modals: { ...state.modals, feedbackModal: action.switch } };
