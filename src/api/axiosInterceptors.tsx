@@ -18,25 +18,29 @@ const onApiRequest = (config: AxiosRequestConfig) => {
 };
 
 const onApiRequestError = (error: AxiosError) => {
-  console.log(error)
+  console.log(error);
   return Promise.reject(error); //왜 거부되었는지라도 알려줘!
 };
 
 const onApiResponse = (response: AxiosResponse) => {
   // 응답 데이터를 가공 -> HTTP STATUS 200시 .then() 직전 호출
   // ...
+  console.log(response)
   return response;
 };
 
 const onApiResponseError = (error: AxiosError) => {
   // 오류 응답을 처리 -> HTTP STATUS 200이 아닐 시 .catch() 직전 호출
-  console.log(error)
+  console.log(error);
   const originalRequest = error.config;
-  // 
+  if (JSON.parse(error.request.response).message) {
+    alert(JSON.parse(error.request.response).message);
+  }
+  //
   // 추후 api 예외처리 에러코드를 정형화 하는 시간이 있었으면 좋겠음.(단순 깨달음)
   // swagger UI!
   // ...
-  return  /*axios(originalRequest);*/
+  return; /*axios(originalRequest);*/
 };
 
 export default function applyInterceptorsTo(

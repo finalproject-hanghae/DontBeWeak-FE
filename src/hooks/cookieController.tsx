@@ -36,7 +36,7 @@ export const setCookieAuthorization = (authorization:string)=> {
 }
 export const setCookieUsername = (username:string)=> {
     setCookie({
-        key: "authorization",
+        key: "username",
         value: username,
         days: 3,
       });

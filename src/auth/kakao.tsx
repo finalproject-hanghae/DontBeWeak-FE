@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
-import { setCookie, setCookieAuthorization, setCookieUsername } from "../hooks/cookieController";
+import { setCookieAuthorization, setCookieUsername } from "../hooks/cookieController";
 import { keepAuthData } from "../redux/modules/users";
 
 const kakaoLogin = (code: string | null, navigate: NavigateFunction) => {
