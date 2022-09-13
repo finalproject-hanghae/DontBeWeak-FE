@@ -65,7 +65,7 @@ function SignUpForm() {
       <form onSubmit={submitToSignUp}>
         <ColumnFlexDiv>
           <h2>회원가입</h2>
-          <SignUpInput type="text" placeholder="ID" ref={signUpIdRef} />
+          <SignUpInput type="text" placeholder="ID" minLength={5} ref={signUpIdRef} />
           <SignUpInput
             type="text"
             placeholder="Nick name"
