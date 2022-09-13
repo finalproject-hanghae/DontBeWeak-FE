@@ -19,6 +19,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { friendList } from "../types/friends";
 import { cat } from "../types/cats";
+import { getCookie } from "../hooks/cookieController";
 
 const CatPage = () => {
   const dispatch = useAppDispatch();
@@ -69,7 +70,7 @@ const CatPage = () => {
         {/* 고양이 레벨표시 구역 End */}
 
         {/* 상점 Btn */}
-        {username == sessionStorage.getItem("username") && <ShopBtn />}
+        {username == getCookie("username") && <ShopBtn />}
       </Bg>
     </PageSection>
   );

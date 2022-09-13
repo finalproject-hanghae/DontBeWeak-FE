@@ -12,6 +12,7 @@ import { loadWeekDataMW } from "../../../redux/modules/weeks";
 import { useFindWeek } from "../../../hooks/useFindWeek";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { drug } from "../../../types/drugs";
+import { getCookie } from "../../../hooks/cookieController";
 
 type GreetingsProps = {
   val: drug;
@@ -24,8 +25,8 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
   const week = useAppSelector((state) => state.weeks.week);
   let [startDate, endDate] = useFindWeek(week);
   const params = {
-    startDate: startDate.replace(".", ""),
-    endDate: endDate.replace(".", ""),
+    startDate: startDate,
+    endDate: endDate,
   };
 
   const clickToCheckDrug = () => {
@@ -58,7 +59,7 @@ const SingleDrugLine = ({ val, idx }: GreetingsProps) => {
         />
         <span>{val.productName}</span>
       </ColorAndDrugName>
-      {username == sessionStorage.getItem("username") && (
+      {username == getCookie("username") && (
         <label htmlFor={"didEat" + idx}>
           {val.done ? (
             <FontAwesomeIcon icon={faCheck} size={"1x"} color={"#f98532"} />

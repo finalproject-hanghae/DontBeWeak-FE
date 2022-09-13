@@ -9,17 +9,20 @@ import { useFindWeek } from "../../hooks/useFindWeek";
 import { loadWeekDataMW } from "../../redux/modules/weeks";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import MenuBarBtn from "./button/MenuBarBtn";
+import MenuModal from "./buttonpop/MenuModal";
+import { getCookie } from "../../hooks/cookieController";
 
 const HeaderNavBar = () => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.users.authorization);
   const week = useAppSelector((state) => state.weeks.week);
-  const username = sessionStorage.getItem("username");
+  const isMenu = useAppSelector((state) => state.modals.modals.menubarModal);
+  const username = getCookie("username");
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {
-      startDate: startDate.replace(".", ""),
-      endDate: endDate.replace(".", ""),
+      startDate: startDate,
+      endDate: endDate,
     };
     dispatch(loadDrugDataMW(username));
     dispatch(loadWeekDataMW(username, params));
@@ -36,6 +39,7 @@ const HeaderNavBar = () => {
         </LogoBox>
         {/* 모바일 메뉴 */}
         <MenuBarBtn />
+        {isMenu && <MenuModal />}
         <LinkButtons>
           {/* 웹 메뉴 */}
           <LinkC className="tabLink" to="/">
@@ -88,6 +92,8 @@ const NavBar = styled.div`
   align-content: center;
   padding-left: 5%;
   display: flex;
+  position: sticky;
+  top: 0px;
   align-items: center;
   z-index: 999;
 `;
