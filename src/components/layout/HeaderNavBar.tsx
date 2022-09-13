@@ -10,13 +10,14 @@ import { loadWeekDataMW } from "../../redux/modules/weeks";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import MenuBarBtn from "./button/MenuBarBtn";
 import MenuModal from "./buttonpop/MenuModal";
+import { getCookie } from "../../hooks/cookieController";
 
 const HeaderNavBar = () => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.users.authorization);
   const week = useAppSelector((state) => state.weeks.week);
   const isMenu = useAppSelector((state) => state.modals.modals.menubarModal);
-  const username = sessionStorage.getItem("username");
+  const username = getCookie("username");
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);
     const params = {

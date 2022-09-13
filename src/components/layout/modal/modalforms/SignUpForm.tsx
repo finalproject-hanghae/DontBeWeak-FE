@@ -14,7 +14,7 @@ function SignUpForm() {
   const signUpPwCheckRef = React.useRef<any>(); // PwCheck
   const signUpAlertRef = React.useRef<any>(); // 경고
 
-  const submitToSignUp = async (e:any) => {
+  const submitToSignUp = async (e: any) => {
     e.preventDefault();
     const username = signUpIdRef.current.value;
     const nickname = signUpNicknameRef.current.value;
@@ -47,8 +47,10 @@ function SignUpForm() {
       .apiSignup(data)
       .then((res) => {
         console.log(res);
-        alert("회원가입 성공!");
-        navigate("/login");
+        if (res) {
+          alert("회원가입 성공!");
+          navigate("/login");
+        }
       })
       .catch((err) => {
         if (err.response.data.message === "중복된 아이디가 있습니다") {
@@ -57,7 +59,6 @@ function SignUpForm() {
         }
       });
   };
-
 
   return (
     <SignUpModalBox>
@@ -85,7 +86,7 @@ function SignUpForm() {
 }
 
 const SignUpModalBox = styled(ColumnFlexDiv)`
-   width: 22rem;
+  width: 22rem;
   height: 30rem;
   align-items: center;
   align-content: center;

@@ -7,6 +7,7 @@ import FriendsListBtn from "../components/layout/button/FriendsListBtn";
 import Modals from "../components/layout/modal/modalList";
 import styled from "styled-components";
 import { ColumnFlexDiv, PageSection } from "../style/styled";
+import { getCookie } from "../hooks/cookieController";
 
 const RecordingPage = () => {
   const username = useParams().username;
@@ -16,7 +17,7 @@ const RecordingPage = () => {
       <Wrap>
         <CalenderSection />
         <MyDrugSection />
-        {username == sessionStorage.getItem("username") && <SearchDrugBtn />}
+        {username == getCookie("username") && <SearchDrugBtn />}
         <FriendsListBtn />
       </Wrap>
 

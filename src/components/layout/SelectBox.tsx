@@ -6,6 +6,7 @@ import { loadCatDataMW } from "../../redux/modules/cats";
 import { useAppDispatch } from "../../redux/hooks";
 import { friendList } from "../../types/friends";
 import { devices } from "../../device";
+import { getCookie } from "../../hooks/cookieController";
 
 type GreetingsProps = {
   friendList: friendList;
@@ -24,7 +25,7 @@ const SelectBox = ({ friendList }: GreetingsProps) => {
 
   useEffect(() => {
     navigate(
-      "/cat/" + `${selected ? selected : sessionStorage.getItem("username")}`
+      "/cat/" + `${selected ? selected : getCookie("username")}`
     );
     dispatch(loadCatDataMW(selected));
   }, [selected]);

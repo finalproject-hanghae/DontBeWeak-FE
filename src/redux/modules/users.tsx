@@ -1,4 +1,10 @@
 import { userApi } from "../../api/basicAPI";
+import {
+  deleteCookie,
+  getCookie,
+  setCookieAuthorization,
+  setCookieUsername,
+} from "../../hooks/cookieController";
 import { loginData } from "../../types/users";
 
 // Actions
@@ -28,17 +34,16 @@ export const keepAuthDataMW = (userData: loginData, navigate: any) => {
     userApi
       .apiLogin(userData)
       .then((response) => {
-        let sessionStorage = window.sessionStorage;
-        sessionStorage.setItem("authorization", response.headers.authorization);
+        setCookieAuthorization(response.headers.authorization);
         //이어서 user API실행
         userApi.apiUser().then((res) => {
-          sessionStorage.setItem("username", res.data.username);
+          setCookieUsername(res.data.username);
           dispatch(keepAuthData(response.headers.authorization));
           navigate("/record/" + res.data.username);
         });
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         alert("아이디 또는 비밀번호를 다시 확인해주세요.");
       });
   };
@@ -46,17 +51,15 @@ export const keepAuthDataMW = (userData: loginData, navigate: any) => {
 
 export const loadSessionDataMW = () => {
   return async function (dispatch: any) {
-    let sessionStorage = window.sessionStorage;
-    let authorization = sessionStorage.getItem("authorization");
+    let authorization = getCookie("authorization");
     dispatch(keepAuthData(authorization));
   };
 };
 
 export const awaySessionDataMW = () => {
   return async function (dispatch: any) {
-    let sessionStorage = window.sessionStorage;
-    sessionStorage.removeItem("authorization");
-    sessionStorage.removeItem("username");
+    deleteCookie("authorization");
+    deleteCookie("username");
     dispatch(awayAuthData());
   };
 };
