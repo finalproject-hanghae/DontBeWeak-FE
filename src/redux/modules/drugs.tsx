@@ -40,7 +40,7 @@ export const keepDrugDataMW = (tmpDrugData: drug) => {
       .apiDrugAdd(tmpDrugData)
       .then((res) => {
         console.log(res);
-        dispatch(keepDrugData(tmpDrugData));
+        res && dispatch(keepDrugData(tmpDrugData));
       })
       .catch((err) => console.log(err));
   };
