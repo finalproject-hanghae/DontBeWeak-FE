@@ -39,6 +39,7 @@
 - [**피드백 개선 #1 : 친구추가 버튼 개선 (튀어나옴좌의 크신 뜻을 받듭니다.)**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%94%BC%EB%93%9C%EB%B0%B1-%EA%B0%9C%EC%84%A0-%231-:-%EC%B9%9C%EA%B5%AC%EC%B6%94%EA%B0%80-%EB%B2%84%ED%8A%BC-%EA%B0%9C%EC%84%A0-(%ED%8A%80%EC%96%B4%EB%82%98%EC%98%B4%EC%A2%8C%EC%9D%98-%ED%81%AC%EC%8B%A0-%EB%9C%BB%EC%9D%84-%EB%B0%9B%EB%93%AD%EB%8B%88%EB%8B%A4.))
 - [**피드백 개선 #2 : 서비스 사용방법 제공 (이 게임 쉬워요.)**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%94%BC%EB%93%9C%EB%B0%B1-%EA%B0%9C%EC%84%A0-%232-:-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95-%EC%A0%9C%EA%B3%B5-(%EC%9D%B4-%EA%B2%8C%EC%9E%84-%EC%89%AC%EC%9B%8C%EC%9A%94.))
 - [**피드백 개선 #3 : 달력 오류 해결**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%94%BC%EB%93%9C%EB%B0%B1-%EA%B0%9C%EC%84%A0-%233-:-%EB%8B%AC%EB%A0%A5-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0)
+- [**피드백 개선 #4 : 자동 로그인 (게으름은 세상을 이롭게 한다.)**](https://github.com/finalproject-hanghae/DontBeWeak-FE/wiki/%ED%94%BC%EB%93%9C%EB%B0%B1-%EA%B0%9C%EC%84%A0-%234-:-%EC%9E%90%EB%8F%99-%EB%A1%9C%EA%B7%B8%EC%9D%B8-(%EA%B2%8C%EC%9C%BC%EB%A6%84%EC%9D%80-%EC%84%B8%EC%83%81%EC%9D%84-%EC%9D%B4%EB%A1%AD%EA%B2%8C-%ED%95%9C%EB%8B%A4.))
 
 ---
 
