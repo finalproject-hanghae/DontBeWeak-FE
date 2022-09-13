@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { devices } from "../../../device";
+import { getCookie } from "../../../hooks/cookieController";
 import { useFindWeek } from "../../../hooks/useFindWeek";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { loadDrugDataMW } from "../../../redux/modules/drugs";
@@ -12,7 +13,7 @@ import { ColumnFlexDiv, LinkC, RowFlexDiv } from "../../../style/styled";
 const MenuModal = () => {
   const dispatch = useAppDispatch();
   const authorization = useAppSelector((state) => state.users.authorization);
-  const username = sessionStorage.getItem("username");
+  const username = getCookie("username");
   const week = useAppSelector((state) => state.weeks.week);
   const ClickToReloadRecordPageData = () => {
     let [startDate, endDate] = useFindWeek(week);

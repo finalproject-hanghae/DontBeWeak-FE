@@ -8,12 +8,12 @@ import WebSection from "./pages/WebSection";
 
 import "./App.css";
 import { useAppDispatch } from "./redux/hooks";
+import { getCookie } from "./hooks/cookieController";
 
 function App() {
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    let sessionStorage = window.sessionStorage;
-    sessionStorage.getItem("authorization") && dispatch(loadSessionDataMW());
+    getCookie("authorization") && dispatch(loadSessionDataMW());
   }, []);
 
   return (

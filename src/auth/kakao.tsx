@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
+import { setCookie, setCookieAuthorization, setCookieUsername } from "../hooks/cookieController";
 import { keepAuthData } from "../redux/modules/users";
 
 const kakaoLogin = (code: string | null, navigate: NavigateFunction) => {
@@ -12,9 +13,9 @@ const kakaoLogin = (code: string | null, navigate: NavigateFunction) => {
         const ACCESS_TOKEN = res.headers.authorization;
         const USER_NAME = res.data.username;
 
-        sessionStorage.setItem("authorization", ACCESS_TOKEN);
-        dispatch(keepAuthData(ACCESS_TOKEN))
-        sessionStorage.setItem("username", USER_NAME);
+        setCookieAuthorization(ACCESS_TOKEN);
+        dispatch(keepAuthData(ACCESS_TOKEN));
+        setCookieUsername(USER_NAME);
         navigate("/record/" + USER_NAME);
       })
       .catch((err) => {

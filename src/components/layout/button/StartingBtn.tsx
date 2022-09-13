@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../../hooks/cookieController";
 import { useAppSelector } from "../../../redux/hooks";
 
 const StartingBtn = () => {
@@ -18,7 +19,7 @@ const StartingBtn = () => {
       ) : (
         <button
           onClick={() => {
-            navigate("/record/" + sessionStorage.getItem("username"));
+            navigate("/record/" + getCookie("username"));
           }}
         >
           영양제 기록하기
